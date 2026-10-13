@@ -2879,7 +2879,11 @@
         <label>Cirujano<input type="text" id="cirCirujano" /></label>
         <label>Estado<select id="cirEstado"><option>Programada</option><option>Realizada</option><option>Cancelada</option><option>Postergada</option></select></label>
         <label class="form-full">Notas<textarea id="cirNotas" rows="3"></textarea></label>
-        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalCirugia">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+        <div class="form-full modal-actions">
+          <button type="button" class="btn hidden" id="btnCancelarEdicionCirugia">Cancelar edición</button>
+          <button type="button" class="btn" data-cerrar="modalCirugia">Cancelar</button>
+          <button type="submit" class="btn btn--primary">Guardar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -2894,7 +2898,11 @@
         <label>Puntaje Total<input type="number" step="any" id="promPuntaje" /></label>
         <label class="form-full">Interpretación<input type="text" id="promInterp" /></label>
         <label class="form-full">Notas<textarea id="promNotas" rows="2"></textarea></label>
-        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalProm">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+        <div class="form-full modal-actions">
+          <button type="button" class="btn hidden" id="btnCancelarEdicionProm">Cancelar edición</button>
+          <button type="button" class="btn" data-cerrar="modalProm">Cancelar</button>
+          <button type="submit" class="btn btn--primary">Guardar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -2908,7 +2916,11 @@
         <label>Tipo de estudio<input type="text" id="imgTipo" placeholder="Rx, RM, TAC..." /></label>
         <label>Región<input type="text" id="imgRegion" placeholder="Rodilla, Columna..." /></label>
         <label class="form-full">Hallazgos<textarea id="imgHallazgos" rows="2"></textarea></label>
-        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalImagen">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+        <div class="form-full modal-actions">
+          <button type="button" class="btn hidden" id="btnCancelarEdicionImagen">Cancelar edición</button>
+          <button type="button" class="btn" data-cerrar="modalImagen">Cancelar</button>
+          <button type="submit" class="btn btn--primary">Guardar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -2924,7 +2936,11 @@
         <label>Dolor Después<input type="number" step="any" id="ptDolorDesp" /></label>
         <label>Asistencia<select id="ptAsistencia"><option>Asistió</option><option>Faltó</option><option>Justificada</option></select></label>
         <label class="form-full">Objetivo/Notas<textarea id="ptNotas" rows="2"></textarea></label>
-        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalPT">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+        <div class="form-full modal-actions">
+          <button type="button" class="btn hidden" id="btnCancelarEdicionPT">Cancelar edición</button>
+          <button type="button" class="btn" data-cerrar="modalPT">Cancelar</button>
+          <button type="submit" class="btn btn--primary">Guardar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -2942,7 +2958,11 @@
         <label>Fecha caducidad<input type="date" id="implCaducidad" /></label>
         <label>Estado<select id="implEstado"><option>Disponible</option><option>En uso</option><option>Retirado</option><option>Caducado</option></select></label>
         <label class="form-full">Notas<textarea id="implNotas" rows="2"></textarea></label>
-        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalImplante">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+        <div class="form-full modal-actions">
+          <button type="button" class="btn hidden" id="btnCancelarEdicionImplante">Cancelar edición</button>
+          <button type="button" class="btn" data-cerrar="modalImplante">Cancelar</button>
+          <button type="submit" class="btn btn--primary">Guardar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -2959,7 +2979,11 @@
         <label>Vencimiento<input type="date" id="authVenc" /></label>
         <label>Aseguradora<input type="text" id="authAseg" /></label>
         <label class="form-full">Notas<textarea id="authNotas" rows="2"></textarea></label>
-        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalAutorizacion">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+        <div class="form-full modal-actions">
+          <button type="button" class="btn hidden" id="btnCancelarEdicionAutorizacion">Cancelar edición</button>
+          <button type="button" class="btn" data-cerrar="modalAutorizacion">Cancelar</button>
+          <button type="submit" class="btn btn--primary">Guardar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -2976,7 +3000,11 @@
         <label>Monto<input type="number" step="any" id="cargoMonto" /></label>
         <label>Estado<select id="cargoEstado"><option>Por cobrar</option><option>Cobrado</option><option>Anulado</option><option>Denegado</option></select></label>
         <label class="form-full">Notas<textarea id="cargoNotas" rows="2"></textarea></label>
-        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalCargo">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+        <div class="form-full modal-actions">
+          <button type="button" class="btn hidden" id="btnCancelarEdicionCargo">Cancelar edición</button>
+          <button type="button" class="btn" data-cerrar="modalCargo">Cancelar</button>
+          <button type="submit" class="btn btn--primary">Guardar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -2985,6 +3013,6 @@
   <script type="text/javascript">
     emailjs.init('KrpZvcvHUbBOL96ZB')
   </script>
-  <script src="app.js?v=vis32"></script>
+  <script src="app.js?v=vis33"></script>
 </body>
 </html>

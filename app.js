@@ -11055,6 +11055,51 @@ function guardarPromV2(e){ try{ e.preventDefault(); var f=document.getElementByI
   var fp=document.getElementById('formProm'); if(fp) fp.onsubmit=guardarPromV2;
 })();
 
+
+
+function editarProm(id){
+  var col=State.formularios_proms||[]; var x=col.find(function(y){return y.id===id;}); if(!x) return;
+  var f=document.getElementById('formProm'); var t=document.getElementById('tituloModalProm'); var b=document.getElementById('btnCancelarEdicionProm');
+  if(f){ f.dataset.editingId=String(id); }
+  if(t) t.textContent='Editar PROM';
+  if(b) b.classList.remove('hidden');
+  var sp=document.getElementById('promPaciente'); if(sp){ llenarSelectPacientes(sp); sp.value=x.pacienteId||''; }
+  document.getElementById('promFecha').value=x.fecha||'';
+  document.getElementById('promTipo').value=x.tipo||'';
+  document.getElementById('promPuntaje').value=x.puntajeTotal!=null?x.puntajeTotal:'';
+  document.getElementById('promInterp').value=x.interpretacion||'';
+  document.getElementById('promNotas').value=x.notas||'';
+  var m=document.getElementById('modalProm'); if(m) m.classList.add('open');
+}
+
+function cancelarEdicionProm(){
+  var f=document.getElementById('formProm'); var t=document.getElementById('tituloModalProm'); var b=document.getElementById('btnCancelarEdicionProm');
+  if(f){ f.reset(); f.dataset.editingId=''; }
+  if(t) t.textContent='Nuevo PROM';
+  if(b) b.classList.add('hidden');
+  var m=document.getElementById('modalProm'); if(m) m.classList.remove('open');
+}
+
+function editarImagen(id){
+  var col=State.estudios_imagenes||[]; var x=col.find(function(y){return y.id===id;}); if(!x) return;
+  var f=document.getElementById('formImagen'); var t=document.getElementById('tituloModalImagen'); var b=document.getElementById('btnCancelarEdicionImagen');
+  if(f){ f.dataset.editingId=String(id); }
+  if(t) t.textContent='Editar estudio';
+  if(b) b.classList.remove('hidden');
+  var sp=document.getElementById('imgPaciente'); if(sp){ llenarSelectPacientes(sp); sp.value=x.pacienteId||''; }
+  document.getElementById('imgFecha').value=x.fecha||'';
+  document.getElementById('imgTipo').value=x.estudioTipo||x.tipo||'';
+  document.getElementById('imgRegion').value=x.region||'';
+  document.getElementById('imgHallazgos').value=x.hallazgos||'';
+  var m=document.getElementById('modalImagen'); if(m) m.classList.add('open');
+}
+function cancelarEdicionImagen(){
+  var f=document.getElementById('formImagen'); var t=document.getElementById('tituloModalImagen'); var b=document.getElementById('btnCancelarEdicionImagen');
+  if(f){ f.reset(); f.dataset.editingId=''; }
+  if(t) t.textContent='Nuevo estudio';
+  if(b) b.classList.add('hidden');
+  var m=document.getElementById('modalImagen'); if(m) m.classList.remove('open');
+}
 function abrirModalImagenNueva(){ try{ var m=document.getElementById('modalImagen'); if(m){ m.classList.add('open'); var t=document.getElementById('tituloModalImagen'); if(t) t.textContent='Nuevo estudio'; var f=document.getElementById('formImagen'); if(f){ f.reset(); f.dataset.editingId=''; var fp=document.getElementById('imgPaciente'); if(fp){ var pid=raPacienteId(); if(pid!=null){ fp.value=pid; } } var fd=document.getElementById('imgFecha'); if(fd && !fd.value) fd.value=isoLocal(new Date()); } var sp=document.getElementById('imgPaciente'); if(sp){ llenarSelectPacientes(sp); } } }catch(e){} }
 function abrirModalPTNueva(){ try{ var m=document.getElementById('modalPT'); if(m){ m.classList.add('open'); var t=document.getElementById('tituloModalPT'); if(t) t.textContent='Nueva sesión PT'; var f=document.getElementById('formPT'); if(f){ f.reset(); f.dataset.editingId=''; var fp=document.getElementById('ptPaciente'); if(fp){ var pid=raPacienteId(); if(pid!=null){ fp.value=pid; } } var fd=document.getElementById('ptFecha'); if(fd && !fd.value) fd.value=isoLocal(new Date()); } var sp=document.getElementById('ptPaciente'); if(sp){ llenarSelectPacientes(sp); } } }catch(e){} }
 function guardarImagenV2(e){ try{ e.preventDefault(); var f=document.getElementById('formImagen'); if(!f) return; var pid=parseInt(document.getElementById('imgPaciente').value)||null; var fecha=document.getElementById('imgFecha').value||''; var tipo=document.getElementById('imgTipo').value||''; var region=document.getElementById('imgRegion').value||''; var hall=document.getElementById('imgHallazgos').value||''; var id=f.dataset.editingId||''; var col=State.estudios_imagenes||[]; var nuevo={ id:id?parseInt(id):(Date.now()), pacienteId:pid, fecha:fecha, estudioTipo:tipo, region:region, hallazgos:hall }; if(col.find(x=>x.id===nuevo.id)){ State.estudios_imagenes=col.map(x=>x.id===nuevo.id?nuevo:x); }else{ State.estudios_imagenes.push(nuevo); } saveKey('estudios_imagenes'); renderImagenes(); f.reset(); var m=document.getElementById('modalImagen'); if(m) m.classList.remove('open'); mostrarNotificacion('Estudio guardado'); }catch(e){} }
