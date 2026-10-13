@@ -2867,6 +2867,37 @@
     </div>
   </div>
 
+  <div class="modal-backdrop" id="modalCirugia">
+    <div class="modal-card modal-card--ancho">
+      <div class="modal-head"><h3 id="tituloModalCirugia">Nueva cirugía</h3><button type="button" class="modal-close" data-cerrar="modalCirugia">×</button></div>
+      <form id="formCirugia" class="form-grid">
+        <input type="hidden" id="cirId" />
+        <label>Paciente<select id="cirPaciente"></select></label>
+        <label>Fecha<input type="date" id="cirFecha" /></label>
+        <label>Tipo<input type="text" id="cirTipo" placeholder="Ej. Artroscopia rodilla" /></label>
+        <label>Lado<select id="cirLado"><option>Derecho</option><option>Izquierdo</option><option>Bilateral</option><option>No aplica</option></select></label>
+        <label>Cirujano<input type="text" id="cirCirujano" /></label>
+        <label>Estado<select id="cirEstado"><option>Programada</option><option>Realizada</option><option>Cancelada</option><option>Postergada</option></select></label>
+        <label class="form-full">Notas<textarea id="cirNotas" rows="3"></textarea></label>
+        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalCirugia">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modalProm">
+    <div class="modal-card modal-card--ancho">
+      <div class="modal-head"><h3 id="tituloModalProm">Nuevo PROM</h3><button type="button" class="modal-close" data-cerrar="modalProm">×</button></div>
+      <form id="formProm" class="form-grid">
+        <input type="hidden" id="promId" />
+        <label>Paciente<select id="promPaciente"></select></label>
+        <label>Fecha<input type="date" id="promFecha" /></label>
+        <label>Tipo<input type="text" id="promTipo" placeholder="Ej. WOMAC, VAS, DASH" /></label>
+        <label>Puntaje Total<input type="number" step="any" id="promPuntaje" /></label>
+        <label class="form-full">Interpretación<input type="text" id="promInterp" /></label>
+        <label class="form-full">Notas<textarea id="promNotas" rows="2"></textarea></label>
+        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalProm">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+      </form>
+    </div>
+  </div>
   <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"></script>
   <script type="text/javascript">
