@@ -2898,6 +2898,36 @@
       </form>
     </div>
   </div>
+  <div class="modal-backdrop" id="modalImagen">
+    <div class="modal-card modal-card--ancho">
+      <div class="modal-head"><h3 id="tituloModalImagen">Nuevo estudio</h3><button type="button" class="modal-close" data-cerrar="modalImagen">×</button></div>
+      <form id="formImagen" class="form-grid">
+        <input type="hidden" id="imgId" />
+        <label>Paciente<select id="imgPaciente"></select></label>
+        <label>Fecha<input type="date" id="imgFecha" /></label>
+        <label>Tipo de estudio<input type="text" id="imgTipo" placeholder="Rx, RM, TAC..." /></label>
+        <label>Región<input type="text" id="imgRegion" placeholder="Rodilla, Columna..." /></label>
+        <label class="form-full">Hallazgos<textarea id="imgHallazgos" rows="2"></textarea></label>
+        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalImagen">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modalPT">
+    <div class="modal-card modal-card--ancho">
+      <div class="modal-head"><h3 id="tituloModalPT">Nueva sesión PT</h3><button type="button" class="modal-close" data-cerrar="modalPT">×</button></div>
+      <form id="formPT" class="form-grid">
+        <input type="hidden" id="ptId" />
+        <label>Paciente<select id="ptPaciente"></select></label>
+        <label>Fecha<input type="date" id="ptFecha" /></label>
+        <label>Sesión #<input type="number" id="ptSesion" /></label>
+        <label>Dolor Antes<input type="number" step="any" id="ptDolorAntes" /></label>
+        <label>Dolor Después<input type="number" step="any" id="ptDolorDesp" /></label>
+        <label>Asistencia<select id="ptAsistencia"><option>Asistió</option><option>Faltó</option><option>Justificada</option></select></label>
+        <label class="form-full">Objetivo/Notas<textarea id="ptNotas" rows="2"></textarea></label>
+        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalPT">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+      </form>
+    </div>
+  </div>
   <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"></script>
   <script type="text/javascript">
