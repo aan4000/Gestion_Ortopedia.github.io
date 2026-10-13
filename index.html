@@ -2928,6 +2928,58 @@
       </form>
     </div>
   </div>
+  <div class="modal-backdrop" id="modalImplante">
+    <div class="modal-card modal-card--ancho">
+      <div class="modal-head"><h3 id="tituloModalImplante">Nuevo implante</h3><button type="button" class="modal-close" data-cerrar="modalImplante">×</button></div>
+      <form id="formImplante" class="form-grid">
+        <input type="hidden" id="implId" />
+        <label>Código<input type="text" id="implCodigo" /></label>
+        <label>Fabricante<input type="text" id="implFabricante" /></label>
+        <label>Modelo<input type="text" id="implModelo" /></label>
+        <label>Lote<input type="text" id="implLote" /></label>
+        <label>Serie<input type="text" id="implSerie" /></label>
+        <label>Tamaño<input type="text" id="implTamanio" /></label>
+        <label>Fecha caducidad<input type="date" id="implCaducidad" /></label>
+        <label>Estado<select id="implEstado"><option>Disponible</option><option>En uso</option><option>Retirado</option><option>Caducado</option></select></label>
+        <label class="form-full">Notas<textarea id="implNotas" rows="2"></textarea></label>
+        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalImplante">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modalAutorizacion">
+    <div class="modal-card modal-card--ancho">
+      <div class="modal-head"><h3 id="tituloModalAutorizacion">Nueva autorización</h3><button type="button" class="modal-close" data-cerrar="modalAutorizacion">×</button></div>
+      <form id="formAutorizacion" class="form-grid">
+        <input type="hidden" id="authId" />
+        <label>Paciente<select id="authPaciente"></select></label>
+        <label>Fecha solicitud<input type="date" id="authFechaSol" /></label>
+        <label>Procedimiento CPT<input type="text" id="authCPT" /></label>
+        <label>N° Autorización<input type="text" id="authNum" /></label>
+        <label>Estado<select id="authEstado"><option>Solicitada</option><option>Aprobada</option><option>Denegada</option><option>Vencida</option></select></label>
+        <label>Vencimiento<input type="date" id="authVenc" /></label>
+        <label>Aseguradora<input type="text" id="authAseg" /></label>
+        <label class="form-full">Notas<textarea id="authNotas" rows="2"></textarea></label>
+        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalAutorizacion">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modalCargo">
+    <div class="modal-card modal-card--ancho">
+      <div class="modal-head"><h3 id="tituloModalCargo">Nuevo cargo</h3><button type="button" class="modal-close" data-cerrar="modalCargo">×</button></div>
+      <form id="formCargo" class="form-grid">
+        <input type="hidden" id="cargoId" />
+        <label>Paciente<select id="cargoPaciente"></select></label>
+        <label>Fecha<input type="date" id="cargoFecha" /></label>
+        <label>CPT<input type="text" id="cargoCPT" /></label>
+        <label>HCPCS<input type="text" id="cargoHCPCS" /></label>
+        <label>Unidades<input type="number" step="any" id="cargoUnidades" /></label>
+        <label>Monto<input type="number" step="any" id="cargoMonto" /></label>
+        <label>Estado<select id="cargoEstado"><option>Por cobrar</option><option>Cobrado</option><option>Anulado</option><option>Denegado</option></select></label>
+        <label class="form-full">Notas<textarea id="cargoNotas" rows="2"></textarea></label>
+        <div class="form-full modal-actions"><button type="button" class="btn" data-cerrar="modalCargo">Cancelar</button><button type="submit" class="btn btn--primary">Guardar</button></div>
+      </form>
+    </div>
+  </div>
   <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"></script>
   <script type="text/javascript">
