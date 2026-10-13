@@ -58,7 +58,13 @@ const BD = (() => {
       cirugias: [],
       rehabilitaciones: [],
       ortesis: [],
-      referimientos: []
+      referimientos: [],
+      implantes: [],
+      estudios_imagenes: [],
+      pt_sesiones: [],
+      formularios_proms: [],
+      autorizaciones_preauth: [],
+      cargos_facturacion: []
     },
     config: {}
   };
