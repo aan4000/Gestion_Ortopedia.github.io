@@ -271,8 +271,14 @@ elegirBase()
           recetas: filtrar(todo.recetas),
           pros: filtrar(todo.pros),
           evaluaciones: filtrar(todo.evaluaciones),
-          cirugias: filtrar(todo.cirugias),
-          rehabilitaciones: filtrar(todo.rehabilitaciones)
+          cirugias: filtrar(todo.cirugias || todo.cirugias_list || []),
+          implantes: filtrar(todo.implantes || []),
+          estudios_imagenes: filtrar(todo.estudios_imagenes || todo.imagenes || []),
+          pt_sesiones: filtrar(todo.pt_sesiones || todo.rehabilitaciones || []),
+          formularios_proms: filtrar(todo.formularios_proms || todo.pros || []),
+          autorizaciones_preauth: filtrar(todo.autorizaciones_preauth || todo.autorizaciones || []),
+          cargos_facturacion: filtrar(todo.cargos_facturacion || todo.cargos || []),
+          rehabilitaciones: filtrar(todo.rehabilitaciones || [])
         });
       } catch (err) {
         res.status(500).json({ error: err.message });
