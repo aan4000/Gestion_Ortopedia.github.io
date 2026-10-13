@@ -94,6 +94,13 @@ const CATALOGO = {
   formularios_proms: { tabla: "formularios_proms", campos: ["id", "pacienteId", "fecha", "tipo", "respuestas", "puntajeTotal", "interpretacion", "createdAt"], json: ["respuestas"] },
   autorizaciones_preauth: { tabla: "autorizaciones_preauth", campos: ["id", "pacienteId", "procedimientoCPT", "fechaSolicitud", "estado", "numeroAuth", "vencimiento", "aseguradora", "notas", "createdAt"], json: [] },
   cargos_facturacion: { tabla: "cargos_facturacion", campos: ["id", "pacienteId", "fecha", "origen", "cpt", "hcpcs", "modifier1", "modifier2", "modifier3", "unidades", "dx", "monto", "estado", "denialReason", "globalPeriodRelacionado", "authId", "createdAt"], json: ["dx"] },
+,  cirugias: { tabla: "cirugias", campos: ["id","pacienteId","fecha","tipoCirugia","lado","diagnosticoPre","diagnosticoPost","procedimiento","tiempoQuirurgico","anestesia","cirujano","implantes","complicaciones","notas","estado","createdAt","updatedAt"], json: ["implantes"] },
+  implantes: { tabla: "implantes", campos: ["id","codigo","fabricante","modelo","lote","serie","tamanio","fechaCaducidad","ubicacion","estado","pacienteId","cirugiaId","fechaUso","notas","createdAt"], json: [] },
+  estudios_imagenes: { tabla: "estudios_imagenes", campos: ["id","pacienteId","fecha","estudioTipo","region","lado","descripcion","hallazgos","dcmId","path","url","comparacion","medicoSolicitante","centro","createdAt"], json: ["comparacion"] },
+  pt_sesiones: { tabla: "pt_sesiones", campos: ["id","pacienteId","fecha","numeroSesion","objetivo","ejercicios","dolorAntes","dolorDespues","rom","asistencia","notas","profesional","createdAt"], json: ["rom"] },
+  formularios_proms: { tabla: "formularios_proms", campos: ["id","pacienteId","fecha","tipo","respuestas","puntajeTotal","interpretacion","createdAt"], json: ["respuestas"] },
+  autorizaciones_preauth: { tabla: "autorizaciones_preauth", campos: ["id","pacienteId","procedimientoCPT","fechaSolicitud","estado","numeroAuth","vencimiento","aseguradora","notas","createdAt"], json: [] },
+  cargos_facturacion: { tabla: "cargos_facturacion", campos: ["id","pacienteId","fecha","origen","cpt","hcpcs","modifier1","modifier2","modifier3","unidades","dx","monto","estado","denialReason","globalPeriodRelacionado","authId","createdAt"], json: ["dx"] },
 };
 
 const BOOLEANOS = ["eliminado", "completada", "cancelada"];
