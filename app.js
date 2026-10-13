@@ -10885,12 +10885,13 @@ function mostrarSeccion(sec) {
     sincronizarConPacienteActualCirugias();
     renderCirugias();
   }
-  if (sec === "rehabilitacion") {
-    fillRehabPacientes();
-    renderRehab();
-    fillRefPacientes();
-    renderReferimientos();
-  }
+  if (sec === "proms") { sincronizarConPacienteActualProms(); if (typeof renderProms === "function") renderProms(); }
+  if (sec === "imagenes-dicom" || sec === "imagenes") { sincronizarConPacienteActualImagenes(); if (typeof renderImagenes === "function") renderImagenes(); }
+  if (sec === "rehabilitacion-pt") { fillRehabPacientes(); if (typeof renderRehabPT === "function") renderRehabPT(); fillRefPacientes(); renderReferimientos(); }
+  if (sec === "rehabilitacion") { fillRehabPacientes(); renderRehab(); fillRefPacientes(); renderReferimientos(); }
+  if (sec === "implantes") { if (typeof renderImplantes === "function") renderImplantes(); }
+  if (sec === "autorizaciones") { if (typeof renderAutorizaciones === "function") renderAutorizaciones(); }
+  if (sec === "facturacion-cargos") { if (typeof renderCargos === "function") renderCargos(); }
   const title = document.getElementById("pageTitle");
   if (title) {
     const item = document.querySelector(`.nav-item[data-seccion="${sec}"] > a, .nav-sub-item[data-seccion="${sec}"] > a`);
