@@ -11013,3 +11013,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     initLogin();
   }
 });
+
+// v2 stubs
+function renderProms(f){ try{ var t=document.querySelector('#tblProms tbody'); if(t) t.innerHTML=''; }catch(e){} }
+function renderImagenes(f){ try{ var t=document.querySelector('#tblImagenes tbody'); if(t) t.innerHTML=''; }catch(e){} }
+function renderRehabPT(f){ try{ var t=document.querySelector('#tblPT tbody'); if(t) t.innerHTML=''; }catch(e){} }
+function renderImplantes(f){ try{ var t=document.querySelector('#tblImplantes tbody'); if(t) t.innerHTML=''; }catch(e){} }
+function renderAutorizaciones(f){ try{ var t=document.querySelector('#tblAutorizaciones tbody'); if(t) t.innerHTML=''; }catch(e){} }
+function renderCargos(f){ try{ var t=document.querySelector('#tblCargos tbody'); if(t) t.innerHTML=''; }catch(e){} }
