@@ -80,6 +80,18 @@ const COLECCIONES = {
   ortesis: ["id", "pacienteId", "fecha", "diagnostico", "ortesis", "notas"],
   evaluacionesMedicas: ["id", "pacienteId", "fecha", "motivo", "antecedentes", "signosVitales", "examenFisico", "diagnostico", "plan", "notas"],
   referimientos: ["id", "pacienteId", "fecha", "diagnostico", "planTerapia", "notas"],
+  implantes: ["id", "codigo", "fabricante", "modelo", "lote", "serie", "tamanio", "fechaCaducidad", "ubicacion", "estado", "pacienteId", "cirugiaId", "fechaUso", "notas", "createdAt"],
+  estudios_imagenes: ["id", "pacienteId", "fecha", "estudioTipo", "region", "lado", "descripcion", "hallazgos", "dcmId", "path", "url", "comparacion", "medicoSolicitante", "centro", "createdAt"],
+  pt_sesiones: ["id", "pacienteId", "fecha", "numeroSesion", "objetivo", "ejercicios", "dolorAntes", "dolorDespues", "rom", "asistencia", "notas", "profesional", "createdAt"],
+  formularios_proms: ["id", "pacienteId", "fecha", "tipo", "respuestas", "puntajeTotal", "interpretacion", "createdAt"],
+  autorizaciones_preauth: ["id", "pacienteId", "procedimientoCPT", "fechaSolicitud", "estado", "numeroAuth", "vencimiento", "aseguradora", "notas", "createdAt"],
+  cargos_facturacion: ["id", "pacienteId", "fecha", "origen", "cpt", "hcpcs", "modifier1", "modifier2", "modifier3", "unidades", "dx", "monto", "estado", "denialReason", "globalPeriodRelacionado", "authId", "createdAt"],
+  implantes: ["id", "codigo", "fabricante", "modelo", "lote", "serie", "tamanio", "fechaCaducidad", "ubicacion", "estado", "pacienteId", "cirugiaId", "fechaUso", "notas", "createdAt"],
+  estudios_imagenes: ["id", "pacienteId", "fecha", "estudioTipo", "region", "lado", "descripcion", "hallazgos", "dcmId", "path", "url", "comparacion", "medicoSolicitante", "centro", "createdAt"],
+  pt_sesiones: ["id", "pacienteId", "fecha", "numeroSesion", "objetivo", "ejercicios", "dolorAntes", "dolorDespues", "rom", "asistencia", "notas", "profesional", "createdAt"],
+  formularios_proms: ["id", "pacienteId", "fecha", "tipo", "respuestas", "puntajeTotal", "interpretacion", "createdAt"],
+  autorizaciones_preauth: ["id", "pacienteId", "procedimientoCPT", "fechaSolicitud", "estado", "numeroAuth", "vencimiento", "aseguradora", "notas", "createdAt"],
+  cargos_facturacion: ["id", "pacienteId", "fecha", "origen", "cpt", "hcpcs", "modifier1", "modifier2", "modifier3", "unidades", "dx", "monto", "estado", "denialReason", "globalPeriodRelacionado", "authId", "createdAt"],
 };
 
 const CAMPOS_JSON = new Set(["items", "medicamentos", "indicaciones", "lesiones", "archivo", "proximaCita", "dataUrl", "implantes", "seguimiento", "sesiones", "evaluaciones", "antecedentes", "signosVitales", "antecedentesMorbidos", "antecedentesQuirurgicos", "antecedentesAlergicos", "ortesis", "pruebas", "planTerapia"]);
