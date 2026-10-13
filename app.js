@@ -11033,3 +11033,24 @@ function renderCargos(filtro=''){ try{ const tbody=document.querySelector('#tblC
   function on(id,ev,fn){ var el=document.getElementById(id); if(el) el.addEventListener(ev,fn); }
   // busquedas simples opcionales
 })();
+
+
+// v2 CRUD mínimo
+function abrirModalCirugiaNueva(){ try{ var m=document.getElementById('modalCirugia'); if(m){ m.classList.add('open'); var t=document.getElementById('tituloModalCirugia'); if(t) t.textContent='Nueva cirugía'; var f=document.getElementById('formCirugia'); if(f){ f.reset(); f.dataset.editingId=''; var fp=document.getElementById('cirPaciente'); if(fp){ var pid=raPacienteId(); if(pid!=null){ fp.value=pid; } } var fd=document.getElementById('cirFecha'); if(fd && !fd.value) fd.value=isoLocal(new Date()); } var sp=document.getElementById('cirPaciente'); if(sp){ llenarSelectPacientes(sp); } } }catch(e){} }
+function abrirModalPromNueva(){ try{ var m=document.getElementById('modalProm'); if(m){ m.classList.add('open'); var t=document.getElementById('tituloModalProm'); if(t) t.textContent='Nuevo PROM'; var f=document.getElementById('formProm'); if(f){ f.reset(); f.dataset.editingId=''; var fp=document.getElementById('promPaciente'); if(fp){ var pid=raPacienteId(); if(pid!=null){ fp.value=pid; } } var fd=document.getElementById('promFecha'); if(fd && !fd.value) fd.value=isoLocal(new Date()); } var sp=document.getElementById('promPaciente'); if(sp){ llenarSelectPacientes(sp); } } }catch(e){} }
+function llenarSelectPacientes(sel){ try{ if(!sel) return; var opts=State.pacientes.filter(function(p){return !p.eliminado;}).map(function(p){return '<option value="'+p.id+'">'+escHtml(p.codigo)+' - '+escHtml(p.nombre)+'</option>';}).join(''); sel.innerHTML=opts||'<option value="">Sin pacientes</option>'; }catch(e){} }
+
+function guardarCirugiaV2(e){ try{ e.preventDefault(); var f=document.getElementById('formCirugia'); if(!f) return; var pid=parseInt(document.getElementById('cirPaciente').value)||null; var fecha=document.getElementById('cirFecha').value||''; var tipo=document.getElementById('cirTipo').value||''; var lado=document.getElementById('cirLado').value||''; var cirujano=document.getElementById('cirCirujano').value||''; var estado=document.getElementById('cirEstado').value||''; var notas=document.getElementById('cirNotas').value||''; var id=f.dataset.editingId||''; var nuevo={ id: id?parseInt(id): (Date.now()), pacienteId:pid, fecha:fecha, tipoCirugia:tipo, lateralidad:lado, cirujano:cirujano, estado:estado, notas:notas, implantes:[] }; if(State.cirugias.find(x=>x.id===nuevo.id)){ State.cirugias=State.cirugias.map(x=>x.id===nuevo.id?nuevo:x); }else{ State.cirugias.push(nuevo); } saveKey('cirugias'); renderCirugias(); f.reset(); var m=document.getElementById('modalCirugia'); if(m) m.classList.remove('open'); mostrarNotificacion('Cirugía guardada'); }catch(e){ console.error(e); } }
+function guardarPromV2(e){ try{ e.preventDefault(); var f=document.getElementById('formProm'); if(!f) return; var pid=parseInt(document.getElementById('promPaciente').value)||null; var fecha=document.getElementById('promFecha').value||''; var tipo=document.getElementById('promTipo').value||''; var punt=parseFloat(document.getElementById('promPuntaje').value); if(isNaN(punt)) punt=null; var interp=document.getElementById('promInterp').value||''; var notas=document.getElementById('promNotas').value||''; var id=f.dataset.editingId||''; var col=State.formularios_proms||[]; var nuevo={ id:id?parseInt(id):(Date.now()), pacienteId:pid, fecha:fecha, tipo:tipo, puntajeTotal:punt, interpretacion:interp, notas:notas, respuestas:{} }; if(col.find(x=>x.id===nuevo.id)){ State.formularios_proms=col.map(x=>x.id===nuevo.id?nuevo:x); }else{ State.formularios_proms.push(nuevo); } saveKey('formularios_proms'); renderProms(); f.reset(); var m=document.getElementById('modalProm'); if(m) m.classList.remove('open'); mostrarNotificacion('PROM guardado'); }catch(e){ console.error(e); } }
+
+
+// v2 botones
+(function(){
+  function on(id,ev,fn){ var el=document.getElementById(id); if(el) el.addEventListener(ev,fn); }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-action="nueva-cirugia"]'); if(b){ e.preventDefault(); if(typeof abrirModalCirugiaNueva==='function') abrirModalCirugiaNueva(); return; }
+    var b2=e.target.closest('[data-action="nuevo-prom"]'); if(b2){ e.preventDefault(); if(typeof abrirModalPromNueva==='function') abrirModalPromNueva(); return; }
+  });
+  var fc=document.getElementById('formCirugia'); if(fc) fc.onsubmit=guardarCirugiaV2;
+  var fp=document.getElementById('formProm'); if(fp) fp.onsubmit=guardarPromV2;
+})();
