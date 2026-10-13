@@ -9821,7 +9821,7 @@ renderFacturaItems();
   fillOrtesisPacientes(); try{ syncRaToAll(); }catch(e){}
 
   // Cirugías e implantes
-  const cirugiaForm = document.getElementById("cirugiaForm");
+  const cirugiaForm = document.getElementById("formCirugia") || document.getElementById("cirugiaForm");
   if (cirugiaForm) {
     cirugiaForm.addEventListener("submit", guardarCirugia);
     const btnCancelarEdicionCirugia = document.getElementById("btnCancelarEdicionCirugia");
