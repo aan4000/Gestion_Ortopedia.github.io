@@ -1462,7 +1462,35 @@
       </div>
     </section>
 
-    <section id="seccion-politicas" class="seccion">
+        <section id="seccion-cirugias" class="seccion" hidden>
+      <div class="panel-head"><h2 class="panel-title">Cirugías</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nueva-cirugia"><span class="material-symbols-outlined">add</span> Nueva cirugía</button></div></div>
+      <div class="panel"><div class="tabla-wrap"><table class="tabla" id="tblCirugias"><thead><tr><th>Fecha</th><th>Paciente</th><th>Tipo</th><th>Lado</th><th>Cirujano</th><th>Estado</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+    </section>
+    <section id="seccion-proms" class="seccion" hidden>
+      <div class="panel-head"><h2 class="panel-title">PROMs (Patient Reported Outcome Measures)</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nuevo-prom"><span class="material-symbols-outlined">add</span> Nuevo PROM</button></div></div>
+      <div class="panel"><div class="tabla-wrap"><table class="tabla" id="tblProms"><thead><tr><th>Fecha</th><th>Paciente</th><th>Tipo</th><th>Puntaje</th><th>Interpretación</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+    </section>
+    <section id="seccion-imagenes-dicom" class="seccion" hidden>
+      <div class="panel-head"><h2 class="panel-title">Imágenes (DICOM / archivos)</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nueva-imagen"><span class="material-symbols-outlined">add</span> Nuevo estudio</button></div></div>
+      <div class="panel"><div class="tabla-wrap"><table class="tabla" id="tblImagenes"><thead><tr><th>Fecha</th><th>Paciente</th><th>Estudio</th><th>Región</th><th>Hallazgos</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+    </section>
+    <section id="seccion-rehabilitacion-pt" class="seccion" hidden>
+      <div class="panel-head"><h2 class="panel-title">Rehabilitación PT (Sesiones)</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nueva-sesion-pt"><span class="material-symbols-outlined">add</span> Nueva sesión</button></div></div>
+      <div class="panel"><div class="tabla-wrap"><table class="tabla" id="tblPT"><thead><tr><th>Fecha</th><th>Paciente</th><th>Sesión #</th><th>Dolor Antes/Después</th><th>Asistencia</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+    </section>
+    <section id="seccion-implantes" class="seccion" hidden>
+      <div class="panel-head"><h2 class="panel-title">Implantes</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nuevo-implante"><span class="material-symbols-outlined">add</span> Nuevo implante</button></div></div>
+      <div class="panel"><div class="tabla-wrap"><table class="tabla" id="tblImplantes"><thead><tr><th>Código</th><th>Fabricante</th><th>Modelo</th><th>Estado</th><th>Ubicación/Paciente</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+    </section>
+    <section id="seccion-autorizaciones" class="seccion" hidden>
+      <div class="panel-head"><h2 class="panel-title">Autorizaciones Pre-Auth</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nueva-autorizacion"><span class="material-symbols-outlined">add</span> Nueva autorización</button></div></div>
+      <div class="panel"><div class="tabla-wrap"><table class="tabla" id="tblAutorizaciones"><thead><tr><th>Fecha</th><th>Paciente</th><th>Procedimiento CPT</th><th>N° Auth</th><th>Estado</th><th>Vencimiento</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+    </section>
+    <section id="seccion-facturacion-cargos" class="seccion" hidden>
+      <div class="panel-head"><h2 class="panel-title">Cargos / Facturación</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nuevo-cargo"><span class="material-symbols-outlined">add</span> Nuevo cargo</button></div></div>
+      <div class="panel"><div class="tabla-wrap"><table class="tabla" id="tblCargos"><thead><tr><th>Fecha</th><th>Paciente</th><th>CPT/HCPCS</th><th>Dx</th><th>Monto</th><th>Estado</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+    </section>
+<section id="seccion-politicas" class="seccion">
       <div class="panel politicas-header">
         <div class="politicas-head">
           <span class="material-symbols-outlined politica-ico">privacy_tip</span>
