@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('cbWPSb0bNn1FcBZ7t')
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/citas.css">
+    <title>Citas</title>
+</head>
+<body>
+
+    <div class="formulario_citas">
+
+        
+        
+        <form id="form">
+
+
+            <div class="field">
+                <H2 >Programa tu Cita</H2>
+                <input type="hidden" name="title" value="Cita Programada" id="title">
+                <div class="contenido_registro">
+                    
+                    
+                </div>
+                  
+
+
+                <div class="field ">
+                    <label for="name">Nombre del paciente</label>
+                    <input type="text" name="name" id="name">
+                </div>
+
+
+                  <div class="hora_fecha">
+
+
+                      
+                      <div class="field  fecha">
+                          <!-- <label for="date">Fecha</label> -->
+                          <input type="date" name="date" id="date">
+                        </div>
+                        
+                        
+                        <div class="field hora">
+                            <!-- <label for="time">Hora</label> -->
+                            <input type="time" name="time" id="time">
+                        </div>
+                        
+                    </div>
+                    <div class="field">
+                        <label for="email">Correo Electronoco</label>
+                        <input type="text" name="email" id="email">
+                    </div>
+                    
+            </div>
+            <div class="field">
+                <label for="message"></label>
+                <textarea   type="text" name="message" id="message"  cols="40"  rows="8" placeholder="detalles de la cita"></textarea>
+            </div>
+            <input  class="btn_citas" type="submit" id="button" value="Agendar Cita" >
+        </form>
+
+
+
+        <div class="horarios">
+         <h2>Horarios</h2>
+ 
+     <details>
+      <summary> Consultorio</summary>
+         <div class="accordion-content">
+        <p>9:00 am</p>
+        <img   class="icono_cita" src="/Img/imagen de cita para horario.png" alt="">
+    </div>
+       </details>
+        
+ <details>
+    <summary>Para Citas en general</summary>
+    <div class="accordion-content">
+        <p>9:00 am a 12:00 pm</p>
+        <img   class="icono_cita" src="/Img/imagen de cita para horario.png" alt="">
+    </div>
+</details>
+
+<details>
+    <summary>Consultas</summary>
+    <div class="accordion-content">
+        <p>A partir de las 9:00 am</p>
+        <img   class="icono_cita"       src="/Img/imagen de cita para horario.png" alt="">
+    </div>
+</details>
+
+<details>
+    <summary>Recomendaciones</summary>
+    <div class="accordion-content">
+        <p>
+            Traer su seguro médico<br>
+            Identificación (cédula)<br>
+            Llegar 15 minutos antes
+        </p>
+    </div>
+</details>
+
+      
+   
+
+
+
+    </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="funtions.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+/* Fondo general con textura médica */
+body {
+    background: linear-gradient(135deg, #f7f9fb 0%, #e8f4fa 100%);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Grid */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1300px;
+    margin: auto;
+}
+
+/* Tarjetas estilo médico */
+.card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 14px;
+    border-left: 6px solid #0A4A6A; /* borde médico */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+/* Hover profesional */
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+/* Títulos */
+.card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+    color: #0A4A6A;
+    font-weight: 700;
+}
+
+/* Texto */
+.card p, .card ul {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Listas */
+.card ul {
+    padding-left: 1.2rem;
+}
+
+.card ul li {
+    margin-bottom: .6rem;
+}
+
+/* Iconos médicos en títulos (opcional) */
+.card h2::before {
+    content: "🦴"; /* icono ortopédico */
+    margin-right: .5rem;
+}
+
+
+.back-btn {
+    display: inline-block;
+    margin: 2rem auto;
+    padding: 0.8rem 1.6rem;
+    background-color: #0A4A6A; /* azul médico */
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: background-color .2s ease, transform .2s ease;
+}
+
+/* Hover */
+.back-btn:hover {
+    background-color: #0d5c85;
+    transform: translateY(-3px);
+}

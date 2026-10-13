@@ -1,0 +1,2849 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedHistorical - Sistema Ortopedía</title>
+  <link rel="icon" type="image/svg+xml" href="favicon_ortopedico.svg" />
+  <link rel="stylesheet" href="style.css?v=recv25" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+
+  <div id="nav-container"></div>
+
+  <main class="app-main">
+    <header class="topbar">
+      <h1 id="pageTitle">Inicio / Dashboard</h1>
+      <div class="topbar-right">
+        <span id="todayDate" class="topbar-date"></span>
+        <button id="btnAdmin" class="icon-btn hidden" title="Administración" hidden>
+          <span class="material-symbols-outlined">admin_panel_settings</span>
+        </button>
+        <button id="btnModoOscuro" class="icon-btn" data-toggle-dark title="Modo claro / oscuro">
+          <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="panel panel-registro-actual" hidden>
+      <div class="panel-head">
+        <h2>Registro actual</h2>
+        <span class="tag" id="raCodigo">—</span>
+        <span class="ra-mini-nombre" id="raMiniNombre"></span>
+        <button type="button" id="btnRaToggle" class="btn btn--ghost-dark btn-small ra-toggle" title="Minimizar / Maximizar panel">
+          <span class="material-symbols-outlined" id="btnRaIcon">expand_less</span>
+        </button>
+      </div>
+      <p class="panel-sub">Trabaja con el paciente actual: selecciónalo y usa el menú para ver su ficha, evaluarlo, agendar citas y hacer todos los procesos. Está fijo en todas las secciones.</p>
+      <div class="ra-top">
+        <img id="raSilueta" class="ra-silueta ra-silueta--vacio" src="siluetaPerfil_masculino.jfif" alt="Silueta del paciente actual" />
+        <div class="ra-info">
+          <label class="form-full">Paciente actual
+            <select id="raPaciente"></select>
+          </label>
+          <p id="raResumen">Selecciona el paciente actual para trabajar con él.</p>
+        </div>
+      </div>
+      <div class="ra-menu">
+        <button type="button" class="btn btn--ghost-dark btn-small" data-ra="ficha">
+          <span class="material-symbols-outlined">person</span> Ficha
+        </button>
+<button type="button" class="btn btn--ghost-dark btn-small" data-ra="eval" title="Evaluación física" aria-label="Evaluación física">
+          <span class="material-symbols-outlined">accessibility_new</span>
+        </button>
+        <button type="button" class="btn btn--ghost-dark btn-small" data-ra="cita" title="Agendar cita" aria-label="Agendar cita">
+          <span class="material-symbols-outlined">event</span>
+        </button>
+        <button type="button" class="btn btn--ghost-dark btn-small" data-ra="registro" title="Registro clínico" aria-label="Registro clínico">
+          <span class="material-symbols-outlined">history_edu</span>
+        </button>
+        <button type="button" class="btn btn--ghost-dark btn-small" data-ra="documento" title="Documento" aria-label="Documento">
+          <span class="material-symbols-outlined">folder_open</span>
+        </button>
+        <button type="button" class="btn btn--ghost-dark btn-small" data-ra="factura" title="Factura" aria-label="Factura">
+          <span class="material-symbols-outlined">receipt_long</span>
+        </button>
+        <button type="button" class="btn btn--ghost-dark btn-small" data-ra="receta" title="Receta" aria-label="Receta">
+          <span class="material-symbols-outlined">medication</span>
+        </button>
+      </div>
+    </div>
+
+    <section id="seccion-inicio" class="seccion active">
+      <div class="panel profile-panel">
+        <div class="profile-head">
+          <div class="avatar avatar--lg">
+            <img id="perfilAvatar" alt="" hidden />
+            <span id="perfilAvatarIcon" class="material-symbols-outlined avatar-fallback">account_circle</span>
+          </div>
+          <div class="profile-info">
+            <h2 id="perfilNombre">Usuario</h2>
+            <p id="perfilEmail">—</p>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button type="button" id="btnNuevoPaciente" class="btn btn--primary btn-small">
+            <span class="material-symbols-outlined">person_add</span> Nuevo paciente
+          </button>
+          <button type="button" id="btnAbrirStatsPanel" class="btn btn--primary btn-small">
+            <span class="material-symbols-outlined">monitoring</span> Pacientes atendidos
+          </button>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat-card">
+          <span class="material-symbols-outlined stat-icon">group</span>
+          <div>
+            <strong id="statPacientes">0</strong>
+            <span>Pacientes</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="material-symbols-outlined stat-icon">event</span>
+          <div>
+            <strong id="statCitas">0</strong>
+            <span>Citas registradas</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="material-symbols-outlined stat-icon">folder_open</span>
+          <div>
+            <strong id="statRegistros">0</strong>
+            <span>Registros</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="material-symbols-outlined stat-icon">folder_managed</span>
+          <div>
+            <strong id="statDocumentos">0</strong>
+            <span>Documentos</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="material-symbols-outlined stat-icon">event_busy</span>
+          <div>
+            <strong id="statSinCita">0</strong>
+            <span>Sin cita</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="material-symbols-outlined stat-icon">receipt_long</span>
+          <div>
+            <strong id="statFacturas">0</strong>
+            <span>Facturas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="dashPanelNotas">
+        <div class="panel-head">
+          <h2>Notas rápidas</h2>
+          <button type="button" id="btnAgregarNotaInicio" class="btn btn--primary btn-small">
+            <span class="material-symbols-outlined">note_add</span> Agregar nota
+          </button>
+        </div>
+        <div id="listaNotasInicio" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Próximas citas</h2>
+        <div id="próximasCitas" class="list"></div>
+      </div>
+
+      <div class="panel" id="dashPanelCompletadas">
+        <div class="panel-head">
+          <h2>Citas completadas y díagnóstico</h2>
+          <span class="tag" id="dashCountCompletadas">0</span>
+        </div>
+        <div id="dashCitasCompletadas" class="list"></div>
+      </div>
+
+      <div class="panel" id="dashPanelSinConsulta">
+        <div class="panel-head">
+          <h2>Citas sin consulta</h2>
+          <span class="tag" id="dashCountSinConsulta">0</span>
+        </div>
+        <div id="dashCitasSinConsulta" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Pacientes sin cita</h2>
+          <span class="tag" id="dashCountSinCita">0</span>
+        </div>
+        <div id="dashPacientesSinCita" class="list"></div>
+      </div>
+    </section>
+
+    <div class="modal-backdrop" id="modalPacientes">
+      <div class="modal-card modal-card--ancho">
+        <div class="modal-head">
+          <h2>Pacientes</h2>
+          <button type="button" class="modal-close" data-cerrar="modalPacientes" title="Cerrar">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+    <section id="seccion-pacientes" class="pacientes-modal-body">
+      <div class="panel">
+        <h2>Registrar paciente</h2>
+        <form id="pacienteForm" class="form-grid">
+          <label>Código generado
+            <input type="text" id="pacienteCodigo" readonly />
+          </label>
+          <label>Nombre completo
+            <input type="text" id="pacienteNombre" required placeholder="Nombre del paciente" />
+          </label>
+          <label>Edad
+            <input type="number" id="pacienteEdad" min="0" max="120" placeholder="Edad" />
+          </label>
+          <label>Fecha de nacimiento
+            <input type="date" id="pacienteFechaNacimiento" />
+          </label>
+          <label>Sexo
+            <select id="pacienteSexo">
+              <option value="No especificado">No especificado</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+            </select>
+          </label>
+          <label>Cédula / Documento
+            <input type="text" id="pacienteCedula" placeholder="Cédula de identidad" />
+          </label>
+          <label>Seguro / Aseguradora
+            <select id="pacienteSeguro">
+              <option value="">Sin seguro</option>
+              <optgroup label="Públicos">
+                <option>SENASA</option>
+                <option>ARS SEMMA</option>
+              </optgroup>
+              <optgroup label="Autogestión">
+                <option>ARS CMD</option>
+                <option>ARS Plan Salud Banco Central</option>
+                <option>ARS ISSPOL</option>
+              </optgroup>
+              <optgroup label="Privados">
+                <option>ARS Humano</option>
+                <option>ARS Universal</option>
+                <option>MAPFRE Salud</option>
+                <option>ARS GMA</option>
+                <option>ARS Monumental</option>
+                <option>ARS Palic Salud</option>
+                <option>ARS Futuro</option>
+                <option>ARS Reservas</option>
+                <option>ARS Renacer</option>
+                <option>ARS Yunen</option>
+                <option>ARS Abel González</option>
+                <option>ARS MetaSalud</option>
+                <option>ARS Asmar / APS</option>
+                <option>ARS ASEMAP</option>
+                <option>ARS Simag</option>
+                <option>ARS BMI</option>
+                <option>ARS SDS</option>
+                <option>ARS Semunased</option>
+                <option>Medicard</option>
+                <option>Bupa Dominicana</option>
+              </optgroup>
+              <option value="__otro__">Otro (especificar)</option>
+            </select>
+            <input type="text" id="pacienteSeguroOtro" placeholder="Nombre de la aseguradora" style="display:none" />
+          </label>
+<label>Teléfono
+            <input type="tel" id="pacienteTelefono" placeholder="Teléfono" />
+          </label>
+          <label>Correo
+            <input type="email" id="pacienteEmail" placeholder="Correo (opcional)" />
+          </label>
+          <label>Contacto de emergencia
+            <input type="text" id="pacienteEmergencia" placeholder="Nombre del contacto (opcional)" />
+          </label>
+          <label>Teléfono de emergencia
+            <input type="tel" id="pacienteEmergenciaTel" placeholder="Teléfono del contacto (opcional)" />
+          </label>
+          <label>Ocupación
+            <input type="text" id="pacienteOcupacion" placeholder="Ocupación (opcional)" />
+          </label>
+          <label>Mano dominante
+            <select id="pacienteManoDominante">
+              <option value="">No especificado</option>
+              <option>Derecha</option>
+              <option>Izquierda</option>
+            </select>
+          </label>
+          <label>Razón de la consulta
+            <select id="pacienteRazonConsulta">
+              <option value="">Selecciona una razón</option>
+              <option>Consulta general</option>
+              <option>Dolor articular</option>
+              <option>Dolor lumbar / espalda</option>
+              <option>Dolor cervical / cuello</option>
+              <option>Lesión deportiva</option>
+              <option>Fractura / traumatismo</option>
+              <option>Esguince / distensión</option>
+              <option>Consulta de seguimiento</option>
+              <option>Postoperatorio / control quirúrgico</option>
+              <option>Valoración prequirúrgica</option>
+              <option>Rehabilitación / terapia física</option>
+              <option>Prótesis / reemplazo articular</option>
+              <option>Infección osteoarticular</option>
+              <option>Deformidad / alteración postural</option>
+              <option>Tumor / masa ósea</option>
+              <option value="__otro__">Otro (especificar)</option>
+            </select>
+            <input type="text" id="pacienteRazonConsultaOtro" placeholder="Especifica la razón de la consulta" style="display:none" />
+          </label>
+          <fieldset class="form-full ante-bloque" data-ante="morbido">
+            <legend>
+              <span class="material-symbols-outlined">monitor_heart</span>
+              <span>Antecedentes mórbidos</span>
+            </legend>
+            <div class="ante-toolbar">
+              <span class="ante-count" data-ante-count="morbido">0</span>
+              <button type="button" class="btn--mini" data-ante-all="morbido">Marcar todas</button>
+              <button type="button" class="btn--mini" data-ante-none="morbido">Limpiar</button>
+            </div>
+            <input type="text" class="ante-buscar" data-ante-buscar="morbido" placeholder="Buscar antecedente…" />
+            <span class="ante-group" data-ante-group="morbido">
+              <label class="ante-chk"><input type="checkbox" value="Hipertensión arterial" data-pAntecedente="morbido" /><span>Hipertensión arterial</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Diabetes mellitus" data-pAntecedente="morbido" /><span>Diabetes mellitus</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Cardiopatía isquémica" data-pAntecedente="morbido" /><span>Cardiopatía isquémica</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Insuficiencia cardíaca" data-pAntecedente="morbido" /><span>Insuficiencia cardíaca</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Arritmia / FA" data-pAntecedente="morbido" /><span>Arritmia / FA</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Asma bronquial" data-pAntecedente="morbido" /><span>Asma bronquial</span></label>
+              <label class="ante-chk"><input type="checkbox" value="EPOC" data-pAntecedente="morbido" /><span>EPOC</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Apnea del sueño" data-pAntecedente="morbido" /><span>Apnea del sueño</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Insuficiencia renal crónica" data-pAntecedente="morbido" /><span>Insuficiencia renal crónica</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Litiasis renal" data-pAntecedente="morbido" /><span>Litiasis renal</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Enfermedad hepática" data-pAntecedente="morbido" /><span>Enfermedad hepática</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Dislipidemia" data-pAntecedente="morbido" /><span>Dislipidemia</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Obesidad" data-pAntecedente="morbido" /><span>Obesidad</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Hipotiroidismo" data-pAntecedente="morbido" /><span>Hipotiroidismo</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Hipertiroidismo" data-pAntecedente="morbido" /><span>Hipertiroidismo</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Anemia" data-pAntecedente="morbido" /><span>Anemia</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Trastornos de coagulación" data-pAntecedente="morbido" /><span>Trastornos de coagulación</span></label>
+              <label class="ante-chk"><input type="checkbox" value="TVP / TEP" data-pAntecedente="morbido" /><span>TVP / TEP</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Epilepsia" data-pAntecedente="morbido" /><span>Epilepsia</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Migraña" data-pAntecedente="morbido" /><span>Migraña</span></label>
+              <label class="ante-chk"><input type="checkbox" value="ACV / AIT" data-pAntecedente="morbido" /><span>ACV / AIT</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Parkinson" data-pAntecedente="morbido" /><span>Parkinson</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Demencia / Alzheimer" data-pAntecedente="morbido" /><span>Demencia / Alzheimer</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Artritis reumatoide" data-pAntecedente="morbido" /><span>Artritis reumatoide</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Osteoporosis" data-pAntecedente="morbido" /><span>Osteoporosis</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Osteoartrosis" data-pAntecedente="morbido" /><span>Osteoartrosis</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Gota" data-pAntecedente="morbido" /><span>Gota</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Lupus eritematoso" data-pAntecedente="morbido" /><span>Lupus eritematoso</span></label>
+              <label class="ante-chk"><input type="checkbox" value="VIH / SIDA" data-pAntecedente="morbido" /><span>VIH / SIDA</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Hepatitis" data-pAntecedente="morbido" /><span>Hepatitis</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Tuberculosis" data-pAntecedente="morbido" /><span>Tuberculosis</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Cáncer / neoplasia" data-pAntecedente="morbido" /><span>Cáncer / neoplasia</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Fibromialgia" data-pAntecedente="morbido" /><span>Fibromialgia</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Psoriasis" data-pAntecedente="morbido" /><span>Psoriasis</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Depresión / ansiedad" data-pAntecedente="morbido" /><span>Depresión / ansiedad</span></label>
+              <label class="ante-chk"><input type="checkbox" value="__otro__" data-pAntecedente="morbido" data-ante-otro="morbido" /><span>Otra (especificar)</span></label>
+            </span>
+            <input type="text" class="form-full ante-otro-input" data-ante-otro-input="morbido" placeholder="Especifica otro antecedente mórbido…" style="display:none" />
+          </fieldset>
+          <fieldset class="form-full ante-bloque" data-ante="quirurgico">
+            <legend>
+              <span class="material-symbols-outlined">surgical</span>
+              <span>Antecedentes quirúrgicos</span>
+            </legend>
+            <div class="ante-toolbar">
+              <span class="ante-count" data-ante-count="quirurgico">0</span>
+              <button type="button" class="btn--mini" data-ante-all="quirurgico">Marcar todas</button>
+              <button type="button" class="btn--mini" data-ante-none="quirurgico">Limpiar</button>
+            </div>
+            <input type="text" class="ante-buscar" data-ante-buscar="quirurgico" placeholder="Buscar antecedente…" />
+            <span class="ante-group" data-ante-group="quirurgico">
+              <label class="ante-chk"><input type="checkbox" value="Cesárea" data-pAntecedente="quirurgico" /><span>Cesárea</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Exceresis de lipoma" data-pAntecedente="quirurgico" /><span>Exéresis de lipoma</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Circuncisión" data-pAntecedente="quirurgico" /><span>Circuncisión</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Herniorrafía" data-pAntecedente="quirurgico" /><span>Herniorrafía</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Apendicectomía" data-pAntecedente="quirurgico" /><span>Apendicectomía</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Colecistectomía" data-pAntecedente="quirurgico" /><span>Colecistectomía</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Amigdalectomía" data-pAntecedente="quirurgico" /><span>Amigdalectomía</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Histerectomía" data-pAntecedente="quirurgico" /><span>Histerectomía</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Prostatectomía" data-pAntecedente="quirurgico" /><span>Prostatectomía</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Artroscopía" data-pAntecedente="quirurgico" /><span>Artroscopía</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Osteosíntesis de fractura" data-pAntecedente="quirurgico" /><span>Osteosíntesis de fractura</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Prótesis / reemplazo articular" data-pAntecedente="quirurgico" /><span>Prótesis / reemplazo articular</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Liberación del túnel carpiano" data-pAntecedente="quirurgico" /><span>Liberación del túnel carpiano</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Reparación de ligamentos / tendones" data-pAntecedente="quirurgico" /><span>Reparación de ligamentos / tendones</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Cirugía de columna" data-pAntecedente="quirurgico" /><span>Cirugía de columna</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Osteotomía / fijación segmentaria" data-pAntecedente="quirurgico" /><span>Osteotomía / fijación segmentaria</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Artroplastía de cadera" data-pAntecedente="quirurgico" /><span>Artroplastía de cadera</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Artroplastía de rodilla" data-pAntecedente="quirurgico" /><span>Artroplastía de rodilla</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Cirugía bariátrica" data-pAntecedente="quirurgico" /><span>Cirugía bariátrica</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Cirugía de cataratas" data-pAntecedente="quirurgico" /><span>Cirugía de cataratas</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Cirugía cardiovascular" data-pAntecedente="quirurgico" /><span>Cirugía cardiovascular</span></label>
+              <label class="ante-chk"><input type="checkbox" value="__otro__" data-pAntecedente="quirurgico" data-ante-otro="quirurgico" /><span>Otra (especificar)</span></label>
+            </span>
+            <input type="text" class="form-full ante-otro-input" data-ante-otro-input="quirurgico" placeholder="Especifica otro antecedente quirúrgico…" style="display:none" />
+          </fieldset>
+          <fieldset class="form-full ante-bloque" data-ante="alergico">
+            <legend>
+              <span class="material-symbols-outlined">allergy</span>
+              <span>Antecedentes alérgicos</span>
+            </legend>
+            <div class="ante-toolbar">
+              <span class="ante-count" data-ante-count="alergico">0</span>
+              <button type="button" class="btn--mini" data-ante-all="alergico">Marcar todas</button>
+              <button type="button" class="btn--mini" data-ante-none="alergico">Limpiar</button>
+            </div>
+            <input type="text" class="ante-buscar" data-ante-buscar="alergico" placeholder="Buscar antecedente…" />
+            <span class="ante-group" data-ante-group="alergico">
+              <label class="ante-chk"><input type="checkbox" value="Desconocidos" data-pAntecedente="alergico" /><span>Desconocidos</span></label>
+              <label class="ante-chk"><input type="checkbox" value="AINEs (ibuprofeno, diclofenaco)" data-pAntecedente="alergico" /><span>AINEs (ibuprofeno, diclofenaco)</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Penicilina" data-pAntecedente="alergico" /><span>Penicilina</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Amoxicilina" data-pAntecedente="alergico" /><span>Amoxicilina</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Cefalosporinas" data-pAntecedente="alergico" /><span>Cefalosporinas</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Sulfas" data-pAntecedente="alergico" /><span>Sulfas</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Quinolonas" data-pAntecedente="alergico" /><span>Quinolonas</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Clindamicina" data-pAntecedente="alergico" /><span>Clindamicina</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Tramadol / opioides" data-pAntecedente="alergico" /><span>Tramadol / opioides</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Anestésicos locales" data-pAntecedente="alergico" /><span>Anestésicos locales</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Yodo / contraste" data-pAntecedente="alergico" /><span>Yodo / contraste</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Látex" data-pAntecedente="alergico" /><span>Látex</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Mariscos" data-pAntecedente="alergico" /><span>Mariscos</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Huevo" data-pAntecedente="alergico" /><span>Huevo</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Leche / lácteos" data-pAntecedente="alergico" /><span>Leche / lácteos</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Maní / nueces" data-pAntecedente="alergico" /><span>Maní / nueces</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Gluten" data-pAntecedente="alergico" /><span>Gluten</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Polvo / ácaros" data-pAntecedente="alergico" /><span>Polvo / ácaros</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Pólenes" data-pAntecedente="alergico" /><span>Pólenes</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Picaduras de insectos" data-pAntecedente="alergico" /><span>Picaduras de insectos</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Clorhexidina" data-pAntecedente="alergico" /><span>Clorhexidina</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Alcohol / antisépticos" data-pAntecedente="alergico" /><span>Alcohol / antisépticos</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Metales (níquel, titanio)" data-pAntecedente="alergico" /><span>Metales (níquel, titanio)</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Adhesivos / apósitos" data-pAntecedente="alergico" /><span>Adhesivos / apósitos</span></label>
+              <label class="ante-chk"><input type="checkbox" value="__otro__" data-pAntecedente="alergico" data-ante-otro="alergico" /><span>Otra (especificar)</span></label>
+            </span>
+            <input type="text" class="form-full ante-otro-input" data-ante-otro-input="alergico" placeholder="Especifica otro antecedente alérgico…" style="display:none" />
+          </fieldset>
+          <label class="form-full">Historia actual
+            <textarea id="pacienteHistoriaActual" rows="3" placeholder="Motivo de consulta ampliado, evolución del padecimiento actual, tiempo de evolución..."></textarea>
+          </label>
+          <label class="form-full">Notas
+            <textarea id="pacienteNotas" rows="2" placeholder="Antecedentes, díagnóstico inicial..."></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary form-full">Guardar paciente</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Buscar paciente</h2>
+        </div>
+        <div class="search-bar">
+          <input type="text" id="buscarPaciente" placeholder="Buscar por nombre o código..." />
+          <span class="material-symbols-outlined">search</span>
+        </div>
+        <div id="listaPacientes" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Pacientes sin cita</h2>
+          <span class="tag" id="countSinCita">0</span>
+        </div>
+        <div id="listaSinCitas" class="list"></div>
+      </div>
+
+      <div class="panel" id="detallePacientePanel" hidden>
+        <div class="panel-head">
+          <h2>Ficha del paciente</h2>
+          <div class="panel-actions">
+            <button type="button" id="btnWhatsappFicha" class="btn btn--ghost-dark">
+              <span class="material-symbols-outlined">chat</span> WhatsApp
+            </button>
+            <button type="button" id="btnCorreoFicha" class="btn btn--ghost-dark">
+              <span class="material-symbols-outlined">mail</span> Correo
+            </button>
+            <button type="button" id="btnImprimirFicha" class="btn btn--ghost-dark">
+              <span class="material-symbols-outlined">print</span> Imprimir ficha
+            </button>
+          </div>
+        </div>
+        <div id="detallePaciente"></div>
+      </div>
+    </section>
+      </div>
+    </div>
+
+    <section id="seccion-citas" class="seccion">
+      <div class="section-toolbar">
+        <button type="button" id="btnCalendario" class="btn btn--ghost-dark">
+          <span class="material-symbols-outlined">calendar_month</span> Calendario
+        </button>
+      </div>
+      <div class="panel">
+        <h2>Nueva cita</h2>
+        <form id="citaForm" class="form-grid">
+          <label class="form-full">Paciente
+            <select id="citaPaciente" required></select>
+          </label>
+          <label>Fecha
+            <input type="date" id="citaFecha" required />
+          </label>
+          <label>Hora
+            <div class="hora-wrap">
+              <input type="time" id="citaHora" required />
+              <select id="citaAmPm">
+                <option value="AM">AM</option>
+                <option value="PM" selected>PM</option>
+              </select>
+            </div>
+          </label>
+          <label>Motivo
+            <input type="text" id="citaMotivo" placeholder="Motivo de la consulta" />
+          </label>
+          <button type="submit" class="btn btn--primary form-full">Agendar cita</button>
+          <p class="limite-info" id="citaLimiteInfo"></p>
+        </form>
+      </div>
+
+      <div class="panel" id="panelProximaCita" hidden>
+        <div class="panel-head">
+          <h2>Programar cita próxima</h2>
+          <span class="tag" id="pcCodigo">—</span>
+        </div>
+        <p class="panel-sub">Selecciona un paciente en el formulario para ver su próxima cita, el registro de su cita anterior y programar una nueva consulta si ya fue visto.</p>
+        <div id="pcInfo"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Lista de citas</h2>
+          <div class="panel-actions">
+          <button type="button" id="btnWhatsappTurnos" class="btn btn--ghost-dark">
+            <span class="material-symbols-outlined">chat</span> WhatsApp
+          </button>
+          <button type="button" id="btnCorreoTurnos" class="btn btn--ghost-dark">
+            <span class="material-symbols-outlined">mail</span> Correo
+          </button>
+          <button type="button" id="btnImprimirTurnos" class="btn btn--ghost-dark">
+            <span class="material-symbols-outlined">print</span> Imprimir turnos
+          </button>
+        </div>
+        </div>
+        <div id="listaCitas" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Pacientes en seguimiento</h2>
+          <span class="tag" id="countSeguimiento">0</span>
+        </div>
+        <div id="listaSeguimiento" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Citas canceladas</h2>
+          <span class="tag" id="countCitasCanceladas">0</span>
+        </div>
+        <p class="panel-sub">Citas que cancelaste. Puedes restaurarlas o eliminarlas.</p>
+        <div id="listaCitasCanceladas" class="list"></div>
+      </div>
+    </section>
+
+    <section id="seccion-citas-sin-consulta" class="seccion">
+      <div class="panel" id="panelCitasSinConsulta">
+        <div class="panel-head">
+          <h2>Citas sin consulta</h2>
+          <div class="panel-actions">
+            <button type="button" id="btnCitaSinConsulta" class="btn btn--ghost-dark">
+              <span class="material-symbols-outlined">add</span> Agregar
+            </button>
+            <span class="tag" id="countCitasSinConsulta">0</span>
+          </div>
+        </div>
+        <p class="panel-sub">Citas o casos que todavía no pasan a consulta. Agrégalos aquí y quedarán listados en esta sección.</p>
+        <div id="listaCitasSinConsulta" class="list"></div>
+      </div>
+    </section>
+
+    <section id="seccion-pacientes-sin-cita" class="seccion">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Pacientes sin cita</h2>
+          <span class="tag" id="countSinCitaCitas">0</span>
+        </div>
+        <div id="listaSinCitasCitas" class="list"></div>
+      </div>
+    </section>
+
+<section id="seccion-citas-completadas" class="seccion">
+      <div class="panel" id="panelCitasCompletadas">
+        <div class="panel-head">
+          <h2>Citas completadas y díagnósticos</h2>
+          <span class="tag" id="countCitasCompletadas">0</span>
+        </div>
+        <p class="panel-sub">Citas que el doctor ya atendió. Se guardan con su díagnóstico y tratamiento.</p>
+        <div id="listaCitasCompletadas" class="list"></div>
+      </div>
+    </section>
+
+    <section id="seccion-proxima-cita" class="seccion">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Próxima cita</h2>
+          <span class="tag" id="countProximaCita">0</span>
+        </div>
+        <p class="panel-sub">Pacientes que ya completaron su primera consulta y pueden programar una siguiente visita.</p>
+        <div id="listaProximaCita" class="list"></div>
+      </div>
+    </section>
+
+    <section id="seccion-registros" class="seccion">
+      <div class="panel">
+        <h2>Nuevo registro clínico</h2>
+        <form id="registroForm" class="form-grid">
+          <label class="form-full">Paciente
+            <input type="text" id="registroPaciente" list="listaPacientesBD" required placeholder="Escribe el nombre o código del paciente (puede ser uno nuevo)" autocomplete="off" />
+          <datalist id="listaPacientesBD"></datalist>
+
+          </label>
+          <label class="form-full">Título
+            <input type="text" id="registroTitulo" required placeholder="Ej: Consulta inicial" />
+          </label>
+          <label class="form-full">Tipo
+            <select id="registroTipo">
+              <option value="Motivo de consulta">Motivo de consulta</option>
+              <option value="Examen físico">Examen físico</option>
+              <option value="Díagnóstico">Díagnóstico</option>
+            </select>
+          </label>
+          <label class="form-full">Detalle
+            <textarea id="registroDetalle" rows="3" placeholder="Descripción del registro..."></textarea>
+          </label>
+          <label>Escala EVA (dolor 0-10)
+            <input type="number" id="registroEVA" min="0" max="10" step="1" placeholder="0" />
+          </label>
+          <label>Próxima cita - fecha
+            <input type="date" id="registroProxCitaFecha" />
+          </label>
+          <label>Próxima cita - hora
+            <div class="hora-wrap">
+              <input type="time" id="registroProxCitaHora" />
+              <select id="registroProxCitaAmPm">
+                <option value="AM">AM</option>
+                <option value="PM" selected>PM</option>
+              </select>
+            </div>
+          </label>
+          <span class="form-full rec-hint">Si indicas una próxima cita, se agenda automáticamente en Citas.</span>
+          <label class="form-full">Documento adjunto (opcional)
+            <input type="file" id="registroArchivo" accept=".pdf,image/*" />
+          </label>
+          <button type="submit" class="btn btn--primary form-full">Guardar registro</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Historial clínico</h2>
+          <div class="panel-actions">
+            <button type="button" id="btnRefreshHistorial" class="btn btn--ghost-dark">
+              <span class="material-symbols-outlined">refresh</span> Refrescar archivos
+            </button>
+            <button type="button" id="btnWhatsappResultados" class="btn btn--ghost-dark">
+              <span class="material-symbols-outlined">chat</span> WhatsApp
+            </button>
+            <button type="button" id="btnCorreoResultados" class="btn btn--ghost-dark">
+              <span class="material-symbols-outlined">mail</span> Correo
+            </button>
+            <button type="button" id="btnImprimirResultados" class="btn btn--ghost-dark">
+              <span class="material-symbols-outlined">print</span> Imprimir resultados
+            </button>
+          </div>
+        </div>
+        <div class="search-bar">
+          <input type="text" id="buscarRegistro" placeholder="Buscar por paciente, código, cédula, título o contenido..." />
+          <span class="material-symbols-outlined">search</span>
+        </div>
+        <div id="listaRegistros" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Pacientes eliminados</h2>
+          <div class="panel-actions">
+            <button type="button" id="btnMostrarPacElim" class="btn btn--ghost-dark btn-small">
+              <span class="material-symbols-outlined">visibility</span>
+              <span id="txtMostrarPacElim">Mostrar eliminados</span>
+            </button>
+            <span class="tag" id="countPacientesEliminados">0</span>
+          </div>
+        </div>
+        <p class="limite-info">Los pacientes eliminados desde cualquier sección solo se muestran aquí al pulsar el botón. Usa el icono ⋮ de cada paciente para restaurarlo o eliminarlo definitivamente.</p>
+        <div id="listaPacientesEliminados" class="list" hidden></div>
+      </div>
+
+      </section>
+
+    <section id="seccion-evaluacion-fisica" class="seccion">
+      <div class="eval-layout">
+        <div class="eval-svg-wrap">
+          <span class="eval-svg-caption">Elige la posición en las tarjetas y haz clic sobre las zonas del cuerpo para marcarlas con el color del tipo de lesión</span>
+          <div class="eval-galeria" id="evalGaleria"></div>
+          <div class="eval-vista-grande" id="evalVistaGrande"></div>
+        </div>
+
+        <div class="eval-panel">
+          <h3>Paciente actual</h3>
+          <p id="evalPacienteActual" class="eval-paciente-actual">— Selecciona el paciente actual en el panel superior —</p>
+
+          <h3>Sexo del paciente</h3>
+          <div class="eval-sexo-btns">
+            <button type="button" class="btn eval-sexo active" id="btnEvalMasculino">
+              <span class="material-symbols-outlined">male</span> Masculino
+            </button>
+            <button type="button" class="btn eval-sexo" id="btnEvalFemenino">
+              <span class="material-symbols-outlined">female</span> Femenino
+            </button>
+            <button type="button" class="btn btn--ghost-dark btn-small eval-sexo-auto" id="btnEvalSexoAuto" title="Sincronizar el sexo de la silueta con el del paciente actual. Al seleccionar otro paciente, la silueta reflejará su sexo automáticamente. Puedes cambiarlo a mano; para volver a sincronizar, pulsa aquí.">
+              <span class="material-symbols-outlined">autorenew</span> Auto
+            </button>
+          </div>
+          <p class="eval-auto-msg" id="evalAutoMsg"></p>
+
+          <h3>Tipo de lesión</h3>
+          <div id="lesionTipos" class="eval-tipos"></div>
+          <button type="button" class="btn btn--ghost-dark btn-small" id="btnEvalBorrador">
+            <span class="material-symbols-outlined">ink_eraser</span> Borrador
+          </button>
+
+          <h3>Partes afectadas (<span id="evalContador">0</span>)</h3>
+          <div id="partesAfectadas" class="eval-partes"></div>
+
+          <h3>Pruebas diagnósticas</h3>
+          <div class="eval-pruebas">
+            <div class="eval-prueba-bloque">
+              <span class="eval-prueba-titulo">Signos de Celso</span>
+              <div class="eval-celso">
+                <label class="ante-chk"><input type="checkbox" value="Rubor" data-eval-celso /><span>Rubor</span></label>
+                <label class="ante-chk"><input type="checkbox" value="Calor" data-eval-celso /><span>Calor</span></label>
+                <label class="ante-chk"><input type="checkbox" value="Tumor (aumento de volumen)" data-eval-celso /><span>Tumor</span></label>
+                <label class="ante-chk"><input type="checkbox" value="Dolor" data-eval-celso /><span>Dolor</span></label>
+                <label class="ante-chk"><input type="checkbox" value="Pérdida de la función" data-eval-celso /><span>Pérdida de función</span></label>
+              </div>
+            </div>
+            <label class="eval-prueba-campo">Escala EVA (dolor): <output id="evalEVAVal">0</output> / 10
+              <input type="range" id="evalEVA" min="0" max="10" step="1" value="0" />
+            </label>
+            <label class="eval-prueba-campo">Escala de Daniels (fuerza muscular)
+              <select id="evalDaniels">
+                <option value="">No evaluada</option>
+                <option value="0 – Sin contracción">0 – Sin contracción</option>
+                <option value="1 – Contracción sin movimiento">1 – Contracción sin movimiento</option>
+                <option value="2 – Movimiento sin gravedad">2 – Movimiento sin gravedad</option>
+                <option value="3 – Movimiento contra gravedad">3 – Movimiento contra gravedad</option>
+                <option value="4 – Movimiento contra resistencia">4 – Movimiento contra resistencia</option>
+                <option value="5 – Fuerza normal">5 – Fuerza normal</option>
+              </select>
+            </label>
+            <label class="eval-prueba-campo">Escala del dolor
+              <select id="evalEscalaDolor">
+                <option value="">No evaluada</option>
+                <option value="Sin dolor">Sin dolor</option>
+                <option value="Leve">Leve</option>
+                <option value="Moderado">Moderado</option>
+                <option value="Severo">Severo</option>
+                <option value="Insoportable">Insoportable</option>
+              </select>
+            </label>
+          </div>
+
+          <h3>Columna vertebral</h3>
+          <p class="eval-columna-pista">Marca cervical, dorsal, lumbar, sacro y coxis con el tipo de lesión seleccionado.</p>
+          <button type="button" class="btn btn--ghost-dark btn-small" id="btnEvalColumna">
+            <span class="material-symbols-outlined">skeleton</span> Abrir mapa de columna
+          </button>
+
+          <h3>Nota de la evaluación</h3>
+          <textarea id="evalNota" rows="4" placeholder="Observaciones, hallazgos, sugerencias…"></textarea>
+
+          <div class="eval-acciones">
+            <button type="button" class="btn btn--primary" id="btnEvalGuardar">
+              <span class="material-symbols-outlined">save</span> Guardar resultado
+            </button>
+            <button type="button" class="btn btn--ghost-dark btn-small" id="btnEvalLimpiar">
+              <span class="material-symbols-outlined">restart_alt</span> Limpiar todo
+            </button>
+          </div>
+
+          <h3>Resultados guardados</h3>
+          <div id="evalGuardados" class="eval-partes"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="seccion-evaluacion-medica" class="seccion">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Evaluación médica general</h2>
+          <span class="tag" id="countEvalMed">0</span>
+        </div>
+        <form id="evalMedForm" class="form-grid">
+          <label class="form-full">Paciente
+            <select id="evalMedPaciente" required></select>
+          </label>
+          <label class="form-full">Motivo de la consulta
+            <input type="text" id="evalMedMotivo" placeholder="Ej.: Dolor de rodilla derecha desde hace 2 semanas" />
+          </label>
+          <fieldset class="form-full evalmed-bloque">
+            <legend>Antecedentes</legend>
+            <div class="evalmed-grid">
+              <label>Enfermedades crónicas
+                <input type="text" id="evalMedAntCronicas" placeholder="HTA, DM2, artritis..." />
+              </label>
+              <label>Quirúrgicos
+                <input type="text" id="evalMedAntQuirurgicos" placeholder="Cirugías previas" />
+              </label>
+              <label>Alérgicos
+                <input type="text" id="evalMedAntAlergicos" placeholder="Alergias a medicamentos" />
+              </label>
+              <label>Medicación habitual
+                <input type="text" id="evalMedAntMedicacion" placeholder="Fármacos en uso actual" />
+              </label>
+            </div>
+          </fieldset>
+          <fieldset class="form-full evalmed-bloque">
+            <legend>Signos vitales</legend>
+            <div class="evalmed-grid evalmed-vitales">
+              <label>PA (mmHg)
+                <input type="text" id="evalMedVitalPA" inputmode="numeric" placeholder="120/80" />
+              </label>
+              <label>FC (lpm)
+                <input type="number" id="evalMedVitalFC" min="0" placeholder="72" />
+              </label>
+              <label>FR (rpm)
+                <input type="number" id="evalMedVitalFR" min="0" placeholder="16" />
+              </label>
+              <label>Temp (°C)
+                <input type="number" id="evalMedVitalTemp" min="30" max="45" step="0.1" placeholder="36.8" />
+              </label>
+              <label>Peso (kg)
+                <input type="number" id="evalMedVitalPeso" min="0" inputmode="decimal" placeholder="70" />
+              </label>
+              <label>Talla (cm)
+                <input type="number" id="evalMedVitalTalla" min="0" inputmode="decimal" placeholder="170" />
+              </label>
+              <label>IMC (kg/m²)
+                <input type="text" id="evalMedVitalIMC" readonly placeholder="Se calcula solo" />
+              </label>
+              <label>SatO₂ (%)
+                <input type="number" id="evalMedVitalSatO2" min="0" max="100" placeholder="98" />
+              </label>
+            </div>
+          </fieldset>
+          <label class="form-full">Examen físico general
+            <textarea id="evalMedExamen" rows="3" placeholder="Hallazgos del examen físico"></textarea>
+          </label>
+          <label class="form-full">Impresión diagnóstica
+            <input type="text" id="evalMedDiagnostico" placeholder="Diagnóstico o impresión diagnóstica" />
+          </label>
+          <label class="form-full">Plan e indicaciones
+            <textarea id="evalMedPlan" rows="3" placeholder="Tratamiento, indicaciones, referidos"></textarea>
+          </label>
+          <label class="form-full">Notas
+            <textarea id="evalMedNotas" rows="2" placeholder="Notas adicionales"></textarea>
+          </label>
+          <div class="panel-actions form-full">
+            <button type="submit" class="btn btn--primary">
+              <span class="material-symbols-outlined">save</span> Guardar evaluación
+            </button>
+            <button type="button" class="btn btn--ghost-dark" id="btnEvalMedLimpiar">
+              <span class="material-symbols-outlined">restart_alt</span> Limpiar
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Evaluaciones médicas guardadas</h2>
+          <input type="search" id="buscarEvalMed" class="search-input" placeholder="Buscar por paciente, motivo o diagnóstico..." />
+        </div>
+        <div id="listaEvalMed" class="list"></div>
+      </div>
+    </section>
+
+    <section id="seccion-documentos" class="seccion">
+      <div class="panel">
+        <h2>Subir documento</h2>
+        <form id="documentoForm" class="form-grid">
+          <label class="form-full">Paciente
+            <select id="documentoPaciente" required></select>
+          </label>
+          <label class="form-full">Descripción
+            <input type="text" id="documentoDescripcion" placeholder="Ej: Radiografía, Informe médico" />
+          </label>
+          <label class="form-full">Archivo (PDF, imagen)
+            <input type="file" id="documentoArchivo" accept=".pdf,image/*" required />
+          </label>
+          <button type="submit" class="btn btn--primary form-full">Subir archivo</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Documentos</h2>
+        <div id="listaDocumentos" class="list"></div>
+      </div>
+    </section>
+
+    <section id="seccion-estudios" class="seccion">
+      <div class="panel">
+        <h2>Subir imágenes y estudios (placas, radiografías)</h2>
+        <form id="estudioForm" class="form-grid">
+          <label class="form-full">Paciente
+            <select id="estudioPaciente" required></select>
+          </label>
+          <label class="form-full">Tipo de estudio
+            <select id="estudioTipo" required></select>
+          </label>
+          <label class="form-full">Descripción (opcional)
+            <input type="text" id="estudioDescripcion" placeholder="Ej: Radiografía de rodilla derecha" />
+          </label>
+<label class="form-full">Imágenes (puedes seleccionar varias; también DICOM .dcm)
+            <input type="file" id="estudioArchivo" accept="image/*,.dcm,.dicom" multiple required />
+          </label>
+          <div class="form-full add-item-row">
+            <button type="submit" class="btn btn--primary">
+              <span class="material-symbols-outlined">upload</span> Subir imágenes
+            </button>
+            <button type="button" id="btnImprimirEstudios" class="btn btn--ghost-dark">
+              <span class="material-symbols-outlined">print</span> Imprimir estudios
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Estudios e imágenes médicas</h2>
+        <p class="panel-sub">Cantidad de imágenes subidas: <strong id="countEstudios">0</strong></p>
+        <div id="listaEstudios" class="estudio-grid"></div>
+      </div>
+    </section>
+
+<section id="seccion-imagenes" class="seccion">
+      <div class="panel">
+        <h2>Visor de imágenes médicas (radiografías, CT scans)</h2>
+        <label class="form-full">Paciente
+          <select id="imgPaciente"></select>
+        </label>
+        <div class="img-app" id="imgApp">
+          <div class="img-topbar">
+            <div class="img-pt" id="imgPtInfo">
+              <span class="material-symbols-outlined">person</span>
+              <div class="img-pt-txt">
+                <strong id="imgPtName">Paciente —</strong>
+                <small id="imgPtStudy">Estudio —</small>
+              </div>
+            </div>
+            <div class="img-topbar-actions">
+              <button type="button" class="img-btn" id="btnImgLuz" title="Luces / negatoscopio">
+                <span class="material-symbols-outlined">lightbulb</span>
+              </button>
+              <button type="button" class="img-btn" id="btnImgFull" title="Pantalla completa">
+                <span class="material-symbols-outlined">fullscreen</span>
+              </button>
+              <button type="button" class="img-btn" id="btnImgExport" title="Exportar / imprimir estudio">
+                <span class="material-symbols-outlined">ios_share</span>
+              </button>
+              <button type="button" class="img-btn img-btn--danger" id="btnImgEliminar" title="Eliminar esta imagen">
+                <span class="material-symbols-outlined">delete</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="img-body">
+            <div class="img-toolbar" id="imgToolbar">
+              <div class="img-tool-group">
+                <button type="button" class="img-tool" data-tool="mover" title="Mover imagen (arrastrar)">
+                  <span class="material-symbols-outlined">pan_tool</span>
+                </button>
+                <button type="button" class="img-tool" data-tool="zoom" title="Zoom (arrastra un área)">
+                  <span class="material-symbols-outlined">zoom_in</span>
+                </button>
+                <button type="button" class="img-tool" data-tool="wl" title="Ventana y nivel (arrastra)">
+                  <span class="material-symbols-outlined">tonality</span>
+                </button>
+              </div>
+              <div class="img-tool-group">
+                <button type="button" class="img-tool" data-tool="regla" title="Regla (2 clics)">
+                  <span class="material-symbols-outlined">straighten</span>
+                </button>
+                <button type="button" class="img-tool" data-tool="angulo" title="Ángulo (3 clics)">
+                  <span class="material-symbols-outlined">control_camera</span>
+                </button>
+                <button type="button" class="img-tool" data-tool="eje" title="Eje mecánico (2 clics)">
+                  <span class="material-symbols-outlined">timeline</span>
+                </button>
+                <button type="button" class="img-tool" data-tool="anotar" title="Anotar (1 clic)">
+                  <span class="material-symbols-outlined">edit</span>
+                </button>
+              </div>
+              <div class="img-tool-group">
+                <button type="button" class="img-tool img-tool--accion" data-action="rotar" title="Rotar 90° (tecla R)">
+                  <span class="material-symbols-outlined">rotate_right</span>
+                </button>
+                <button type="button" class="img-tool img-tool--accion" data-action="voltear" title="Voltear horizontal (tecla F)">
+                  <span class="material-symbols-outlined">flip</span>
+                </button>
+                <button type="button" class="img-tool img-tool--accion" data-action="invertir" title="Invertir / negativo (tecla I)">
+                  <span class="material-symbols-outlined">invert_colors_off</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="img-canvas-area">
+              <div class="img-viewer" id="imgViewer">
+                <div class="img-viewer-slot" id="imgSlot"></div>
+                <div class="img-viewer-info" id="imgViewerInfo"></div>
+              </div>
+              <div class="img-statusbar" id="imgStatusBar">
+                <span class="img-status-item" id="stHerramienta">Herramienta: —</span>
+                <span class="img-status-item" id="stFormato">Formato: —</span>
+                <span class="img-status-item" id="stResolucion">Resolución: —</span>
+                <span class="img-status-item" id="stNumero">Imagen: — / —</span>
+              </div>
+              <div class="img-film-nav">
+                <button type="button" class="btn-film-nav btn-film-nav--before" data-nav="before" aria-label="Ver original">Original</button>
+                <button type="button" class="btn-film-nav btn-film-nav--after active" data-nav="after" aria-label="Ver con ajustes">Con ajustes</button>
+              </div>
+              <div class="img-film-scroll" id="imgFilmScroll">
+                <div class="img-film" id="imgFilm"></div>
+              </div>
+            </div>
+
+            <div class="img-rightpanel">
+              <div class="img-panel-group">
+                <h4>Ajustes de imagen</h4>
+                <label class="img-slider-item">Brillo
+                  <input type="range" id="imgBrilloRange" min="25" max="260" value="100" />
+                </label>
+                <label class="img-slider-item">Contraste
+                  <input type="range" id="imgContrasteRange" min="25" max="200" value="100" />
+                </label>
+                <label class="img-slider-item">Nitidez
+                  <input type="range" id="imgNitidezRange" min="0" max="100" value="0" />
+                </label>
+                <label class="img-slider-item">Zoom
+                  <input type="range" id="imgZoomRange" min="40" max="400" value="100" />
+                </label>
+                <button type="button" class="img-btn img-btn--block" id="btnImgResetTodo">
+                  <span class="material-symbols-outlined">restore</span> Restablecer
+                </button>
+              </div>
+              <div class="img-panel-group">
+                <h4 class="img-panel-head">
+                  Mediciones
+                  <button type="button" class="img-btn img-btn--mini" id="btnImgLimpiarMedidas" title="Limpiar todas las mediciones">Limpiar</button>
+                </h4>
+                <div class="img-measure-list" id="imgMeasureList">
+                  <p class="img-ml-vacio">Sin mediciones.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="img-film-title">Proyecciones — haz clic para cambiar de imagen</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="seccion-facturacion" class="seccion">
+      <div class="panel">
+        <h2>Generar factura</h2>
+        <form id="facturaForm" class="form-grid">
+          <label class="form-full">Paciente
+            <select id="facturaPaciente" required></select>
+          </label>
+          <div class="form-full add-item-row">
+            <select id="facturaProcedimiento"></select>
+            <button type="button" id="agregarConcepto" class="btn btn--primary">Agregar procedimiento</button>
+          </div>
+          <div id="facturaItems" class="form-full list"></div>
+          <label class="form-full">Porcentaje de honorarios del doctor (%)
+            <input type="number" id="facturaPorcentaje" min="0" max="100" value="30" required />
+          </label>
+          <div class="form-full resumen" id="facturaResumen">
+            <p>Subtotal: <strong id="resumenSubtotal">$0.00</strong></p>
+            <p>Honorarios del doctor: <strong id="resumenHonorarios">$0.00</strong></p>
+            <p>Neto clínica: <strong id="resumenNeto">$0.00</strong></p>
+            <p class="total">Total a pagar: <strong id="resumenTotal">$0.00</strong></p>
+          </div>
+          <button type="submit" class="btn btn--primary form-full">Emitir factura</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Facturas emitidas</h2>
+        <div id="listaFacturas" class="list"></div>
+      </div>
+
+      <div class="panel">
+<details class="glosario-proc">
+          <summary>
+            <span class="glo-ico material-symbols-outlined">auto_stories</span>
+            <span class="glo-titulo">Glosario de Procedimientos</span>
+            <span class="glo-toggle">
+              <span class="glo-mas material-symbols-outlined">add</span>
+              <span class="glo-menos material-symbols-outlined">remove</span>
+            </span>
+          </summary>
+          <p class="glosario-nota">Precios referenciales en RD$ actualizados según tarifario del Colegio Médico Dominicano (CMD). Úsalos como base para generar facturas y recibos.</p>
+          <div id="glosarioContenido" class="glosario-contenido"></div>
+        </details>
+      </div>
+    </section>
+
+    <section id="seccion-cirugias" class="seccion">
+      <div class="panel">
+        <div class="panel-head">
+          <h2 id="tituloFormCirugia">Registrar cirugía</h2>
+          <span class="tag" id="countCirugias">0</span>
+        </div>
+        <form id="cirugiaForm" class="form-grid">
+          <label class="form-full">Paciente
+            <select id="cirugiaPaciente" required></select>
+          </label>
+          <label>Fecha de la cirugía
+            <input type="date" id="cirugiaFecha" required />
+          </label>
+          <label>Tipo de cirugía
+            <input type="text" id="cirugiaTipo" list="listaCirugiasTipo" required placeholder="Ej.: Artroplastia total de rodilla (prótesis)" />
+          </label>
+          <label>Lateralidad
+            <select id="cirugiaLateralidad">
+              <option value="No aplica">No aplica</option>
+              <option>Derecha</option>
+              <option>Izquierda</option>
+              <option>Bilateral</option>
+            </select>
+          </label>
+          <label>Cirujano
+            <input type="text" id="cirugiaCirujano" placeholder="Médico que opera" />
+          </label>
+          <label>Ayudante(s)
+            <input type="text" id="cirugiaAyudante" placeholder="Ayudante quirúrgico" />
+          </label>
+          <label>Sala / Quirófano
+            <input type="text" id="cirugiaSala" placeholder="Ej.: Quirófano 2" />
+          </label>
+          <label>Anestesia
+            <select id="cirugiaAnestesia">
+              <option value="">Seleccionar</option>
+              <option>Regional</option>
+              <option>General</option>
+              <option>Local</option>
+              <option>Sedación</option>
+            </select>
+          </label>
+          <label>Duración
+            <input type="text" id="cirugiaDuracion" placeholder="Ej.: 1 h 30 min" />
+          </label>
+          <label class="form-full">Descripción del procedimiento
+            <textarea id="cirugiaDescripcion" rows="3" placeholder="Detalle del procedimiento realizado"></textarea>
+          </label>
+          <div class="form-full add-item-row">
+            <button type="button" id="btnAgregarImplante" class="btn btn--primary">
+              <span class="material-symbols-outlined">add_circle</span>
+              Agregar implante / prótesis
+            </button>
+            <span class="rec-hint">Registre cada implante: nombre, marca, modelo, lote y fecha de implantación.</span>
+          </div>
+          <div id="cirugiaImplantes" class="form-full list"></div>
+          <label class="form-full">Complicaciones
+            <textarea id="cirugiaComplicaciones" rows="2" placeholder="Complicaciones trans o postoperatorias (si hubo)"></textarea>
+          </label>
+          <label class="form-full">Notas
+            <textarea id="cirugiaNotas" rows="2" placeholder="Notas adicionales"></textarea>
+          </label>
+          <div class="panel-actions form-full">
+            <button type="submit" class="btn btn--primary">
+              <span class="material-symbols-outlined">save</span> Guardar cirugía
+            </button>
+            <button type="button" class="btn btn--ghost-dark hidden" id="btnCancelarEdicionCirugia">Cancelar edición</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Cirugías registradas</h2>
+          <input type="search" id="buscarCirugia" class="search-input" placeholder="Buscar por paciente, tipo o cirujano..." />
+        </div>
+        <div id="listaCirugias" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Listado de implantes y prótesis</h2>
+          <span class="tag" id="countImplantes">0</span>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Paciente</th>
+                <th>Implante / prótesis</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Lote</th>
+                <th>Fecha</th>
+                <th>Cirugía</th>
+              </tr>
+            </thead>
+            <tbody id="listaImplantes"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <datalist id="listaCirugiasTipo"></datalist>
+      <datalist id="listaImplantesProtesis"></datalist>
+    </section>
+
+    <section id="seccion-rehabilitacion" class="seccion">
+      <div class="panel">
+        <div class="panel-head">
+          <h2 id="tituloFormRehab">Crear plan de rehabilitación</h2>
+          <span class="tag" id="countRehab">0</span>
+        </div>
+        <form id="rehabForm" class="form-grid">
+          <label class="form-full">Paciente
+            <select id="rehabPaciente" required></select>
+          </label>
+          <label>Fecha de inicio
+            <input type="date" id="rehabFechaInicio" required />
+          </label>
+          <label>Fecha de fin (estimada)
+            <input type="date" id="rehabFechaFin" />
+          </label>
+          <label class="form-full">Diagnóstico / condición a tratar
+            <input type="text" id="rehabDiagnostico" placeholder="Ej.: Rehabilitación post quirúrgica de rodilla derecha" required />
+          </label>
+          <label class="form-full">Objetivos del plan
+            <textarea id="rehabObjetivos" rows="2" placeholder="Ej.: Recuperar rango de movimiento, fortalecer cuádriceps, reeducar marcha"></textarea>
+          </label>
+          <label class="form-full">Metas medibles
+            <textarea id="rehabMetas" rows="2" placeholder="Ej.: Lograr flexión de 120° en 6 semanas, deambular sin apoyo en 8 semanas"></textarea>
+          </label>
+          <div class="panel-actions form-full">
+            <button type="submit" class="btn btn--primary">
+              <span class="material-symbols-outlined">save</span> Guardar plan
+            </button>
+            <button type="button" class="btn btn--ghost-dark hidden" id="btnCancelarEdicionRehab">Cancelar edición</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Planes de rehabilitación</h2>
+          <input type="search" id="buscarRehab" class="search-input" placeholder="Buscar por paciente o diagnóstico..." />
+        </div>
+        <div id="listaRehab" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2 id="tituloFormReferimiento">Referimiento a terapia física</h2>
+          <span class="tag" id="countReferimientos">0</span>
+        </div>
+        <form id="referimientoForm" class="form-grid">
+          <label class="form-full">Paciente
+            <select id="refPaciente" required></select>
+          </label>
+          <label>Fecha
+            <input type="date" id="refFecha" required />
+          </label>
+          <label class="form-full">Diagnóstico
+            <input type="text" id="refDiagnostico" placeholder="Ej.: Lumbalgia mecánica con contractura paravertebral" required />
+          </label>
+          <fieldset class="form-full ante-grupo">
+            <legend>Plan de terapia física</legend>
+            <label class="ante-chk"><input type="checkbox" value="Mejorar dolor" data-ref-plan /><span>Mejorar dolor</span></label>
+            <label class="ante-chk"><input type="checkbox" value="Mejorar movilidad" data-ref-plan /><span>Mejorar movilidad</span></label>
+            <label class="ante-chk"><input type="checkbox" value="Fortalecimiento de musculatura paravertebral" data-ref-plan /><span>Fortalecimiento de musculatura paravertebral</span></label>
+            <label class="ante-chk"><input type="checkbox" value="Fortalecimiento de cuádriceps" data-ref-plan /><span>Fortalecimiento de cuádriceps</span></label>
+          </fieldset>
+          <label class="form-full">Notas / indicaciones
+            <textarea id="refNotas" rows="2" placeholder="Número de sesiones, frecuencia, recomendaciones..."></textarea>
+          </label>
+          <div class="panel-actions form-full">
+            <button type="submit" class="btn btn--primary">
+              <span class="material-symbols-outlined">save</span> Guardar referimiento
+            </button>
+            <button type="button" class="btn btn--ghost-dark hidden" id="btnCancelarEdicionRef">Cancelar edición</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Referimientos emitidos</h2>
+          <input type="search" id="buscarReferimiento" class="search-input" placeholder="Buscar por paciente o diagnóstico..." />
+        </div>
+        <div id="listaReferimientos" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Órtesis del paciente</h2>
+          <span class="tag" id="countOrtesis">0</span>
+        </div>
+        <form id="ortesisForm" class="form-grid">
+          <label class="form-full">Paciente
+            <select id="ortesisPaciente" required></select>
+          </label>
+          <label class="form-full">Diagnóstico / indicación
+            <input type="text" id="ortesisDiagnostico" placeholder="Ej.: Fascitis plantar bilateral, esguince de tobillo derecho" />
+          </label>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Selecciona las órtesis por arrastre</h2>
+          <input type="search" id="buscarOrtesis" class="search-input" placeholder="Buscar órtesis por nombre, parte o uso..." />
+        </div>
+        <div class="ortesis-layout">
+          <div class="ortesis-catalogo">
+            <div id="ortesisAcordeon" class="ortesis-acordeon"></div>
+          </div>
+          <div class="ortesis-drop">
+            <div class="ortesis-drop-head">
+              <h3>Órtesis seleccionadas</h3>
+              <span class="tag" id="countOrtesisSel">0</span>
+            </div>
+            <div id="ortesisSeleccion" class="ortesis-seleccion">
+              <p class="empty">Arrastra aquí las órtesis desde el catálogo.</p>
+            </div>
+            <div class="ortesis-acciones">
+              <button type="button" class="btn btn--ghost-dark btn-small" id="btnOrtesisLimpiar">
+                <span class="material-symbols-outlined">cleaning_services</span> Limpiar
+              </button>
+              <button type="button" class="btn btn--primary btn-small" id="btnOrtesisGuardar">
+                <span class="material-symbols-outlined">save</span> Guardar órtesis para el paciente
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Paciente</th>
+                <th>Órtesis</th>
+                <th>Diagnóstico / indicación</th>
+                <th>Fecha</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="listaOrtesis"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="seccion-pros" class="seccion">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Cuestionario de resultados del paciente (PRO)</h2>
+          <span class="tag" id="countPros">0</span>
+        </div>
+        <p class="eval-paciente-actual" id="prosPacienteActual">— Selecciona el paciente actual en el panel superior —</p>
+        <form id="prosForm" class="form-grid">
+          <label class="form-full">Paciente
+            <select id="prosPaciente" required></select>
+          </label>
+          <label>Fecha
+            <input type="date" id="prosFecha" required />
+          </label>
+          <label>Tipo de cuestionario
+            <select id="prosTipo" required></select>
+          </label>
+          <div id="prosCampos" class="form-full"></div>
+          <label class="form-full">Notas (opcional)
+            <textarea id="prosNotas" rows="2" placeholder="Observaciones del evaluador o del paciente"></textarea>
+          </label>
+          <div class="panel-actions form-full">
+            <button type="submit" class="btn btn--primary">
+              <span class="material-symbols-outlined">save</span> Guardar cuestionario
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Cuestionarios registrados</h2>
+          <input type="search" id="buscarPro" class="search-input" placeholder="Buscar por paciente o tipo..." />
+        </div>
+        <div id="listaPros" class="list"></div>
+      </div>
+    </section>
+
+<section id="seccion-recetas" class="seccion">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Generar receta médica</h2>
+          <div class="rec-tabs" role="tablist">
+            <button type="button" class="rec-tab active" data-rec-tab="medicamentos" role="tab" aria-selected="true"><span class="rec-tab-txt">Medicamentos</span></button>
+            <button type="button" class="rec-tab" data-rec-tab="procedimientos" role="tab" aria-selected="false"><span class="rec-tab-txt">Procedimientos e indicaciones</span></button>
+          </div>
+        </div>
+        <form id="recetaForm" class="form-grid">
+          <label class="form-full">Paciente
+            <select id="recetaPaciente" required></select>
+          </label>
+          <label>Edad
+            <input type="text" id="recetaEdad" placeholder="Se completa al elegir paciente" readonly />
+          </label>
+          <label>Fecha
+            <input type="date" id="recetaFecha" required />
+          </label>
+          <div class="rec-panel form-full" id="recPanelMedicamentos">
+            <div class="add-item-row">
+              <button type="button" id="btnAgregarMed" class="btn btn--primary">
+                <span class="material-symbols-outlined">add_circle</span>
+                Agregar medicamento
+              </button>
+              <span class="rec-hint">Cada medicamento genera su propia receta individual (nombre, tipo, vía, presentación, dosis, frecuencia y duración).</span>
+            </div>
+            <div id="recetaMeds" class="rec-lista"></div>
+          </div>
+          <div class="rec-panel form-full hidden" id="recPanelProcedimientos">
+            <div class="add-item-row">
+              <button type="button" id="btnAgregarInd" class="btn btn--primary">
+                <span class="material-symbols-outlined">add_circle</span>
+                Agregar procedimiento / indicación
+              </button>
+              <span class="rec-hint">Imagen (radiografía/sonografía/RM/EMG), analíticas prequirúrgicas, evaluaciones y perfiles. Cada uno genera su propia receta individual.</span>
+            </div>
+            <div id="recetaInds" class="rec-lista"></div>
+          </div>
+          <div class="form-full rec-submit-row">
+            <button type="submit" class="btn btn--primary">
+              <span class="material-symbols-outlined">receipt_long</span>
+              Generar recetas individuales
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Recetas emitidas</h2>
+          <span class="tag" id="countRecetas">0</span>
+        </div>
+        <div id="listaRecetas" class="list"></div>
+      </div>
+
+<div class="panel">
+<details class="glosario-proc" open>
+          <summary>
+            <span class="glo-ico material-symbols-outlined">medical_services</span>
+            <span class="glo-titulo">Glosario de medicamentos Ortopedicos</span>
+            <span class="glo-toggle">
+              <span class="glo-mas material-symbols-outlined">add</span>
+              <span class="glo-menos material-symbols-outlined">remove</span>
+            </span>
+          </summary>
+<p class="glosario-nota">Catálogo de 53 medicamentos ortopédicos en 10 categorías (AINE, analgésicos, relajantes musculares, dolor neuropático, corticoides, condroprotectores, osteoporosis, tópicos, tromboprofilaxis y gota) · registro sanitario DIGEMAPS (MSP), actualizado 2026. Al escribir el nombre del medicamento, el campo sugiere automáticamente las opciones con miligramo, presentación y laboratorio.</p>
+          <div id="glosarioMedsContenido" class="glosario-contenido"></div>
+        </details>
+      </div>
+    </section>
+
+    <section id="seccion-politicas" class="seccion">
+      <div class="panel politicas-header">
+        <div class="politicas-head">
+          <span class="material-symbols-outlined politica-ico">privacy_tip</span>
+          <div>
+            <h2>Política de Privacidad y Tratamiento de Datos Personales</h2>
+            <p class="panel-sub">Aplicable a los registros clínicos de pacientes de <strong>Ortopedia y Traumatología</strong> gestionados en el sistema <strong>MedHistorical – Ortopedía</strong>.</p>
+          </div>
+        </div>
+        <p class="politica-meta">
+          <span class="material-symbols-outlined">update</span>
+          <strong>Última actualización:</strong> octubre de 2026 &nbsp;·&nbsp;
+          <strong>Versión:</strong> 1.0 &nbsp;·&nbsp;
+          <strong>Ámbito:</strong> República Dominicana
+        </p>
+        <div class="politica-alert">
+          <span class="material-symbols-outlined">gavel</span>
+          <p>Los datos relativos a la salud son <strong>datos especialmente protegidos (sensibles)</strong> conforme al numeral 8 del artículo 2 de la <strong>Ley No. 172-13</strong>. Su tratamiento exige el <strong>consentimiento expreso y por escrito</strong> del paciente (artículos 73 y 74 de la misma ley) y el deber de guardar el <strong>secreto médico</strong>.</p>
+        </div>
+      </div>
+
+      <div class="help-grid politicas-resumen">
+        <div class="help-card">
+          <span class="help-card-ico material-symbols-outlined">badge</span>
+          <div>
+            <strong>Responsable</strong>
+            <p>El profesional de Ortopedia y/o el centro de salud que opera este sistema es el responsable del tratamiento de los datos.</p>
+          </div>
+        </div>
+        <div class="help-card">
+          <span class="help-card-ico material-symbols-outlined">menu_book</span>
+          <div>
+            <strong>Base legal</strong>
+            <p>Constitución (art. 44), Ley 172-13, Ley 42-01 General de Salud y Ley 126-02.</p>
+          </div>
+        </div>
+        <div class="help-card">
+          <span class="help-card-ico material-symbols-outlined">health_and_safety</span>
+          <div>
+            <strong>Datos sensibles</strong>
+            <p>Diagnósticos, imágenes, cirugías e historia clínica: protección reforzada y confidencialidad.</p>
+          </div>
+        </div>
+        <div class="help-card">
+          <span class="help-card-ico material-symbols-outlined">verified_user</span>
+          <div>
+            <strong>Tus derechos</strong>
+            <p>Acceso, rectificación, actualización, oposición y supresión (ARCO) y acción de hábeas data.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>1. Responsable del tratamiento</h2>
+        <p>El responsable del tratamiento es el profesional de la salud en <strong>Ortopedia y Traumatología</strong> y/o el centro sanitario que opera el sistema <strong>MedHistorical – Ortopedía</strong>, quien decide sobre las finalidades y los medios del tratamiento de los datos personales de sus pacientes (en lo sucesivo, «el Responsable»).</p>
+        <p>El personal autorizado (médicos, asistentes y personal administrativo) actúa bajo la dirección del Responsable y está obligado a la confidencialidad, conforme al secreto profesional médico.</p>
+      </div>
+
+      <div class="panel">
+        <h2>2. Marco legal aplicable (República Dominicana)</h2>
+        <p>Esta política se rige por la legislación dominicana vigente, en especial:</p>
+        <ul class="politica-list">
+          <li><strong>Constitución de la República Dominicana, artículo 44:</strong> derecho a la intimidad y al honor personal; toda persona puede acceder a los datos que sobre ella reposen en registros públicos o privados y conocer su destino y uso. El tratamiento debe respetar los principios de <em>calidad, licitud, lealtad, seguridad y finalidad</em>.</li>
+          <li><strong>Ley No. 172-13</strong> (G.O. 10737, 15/12/2013) sobre Protección Integral de los Datos Personales: define los datos de salud como <em>datos especialmente protegidos</em> (art. 2, num. 8 y 10), exige consentimiento expreso y por escrito (arts. 73 y 74), regula el deber de seguridad (art. 6), los derechos ARCO (arts. 7, 8, 10 y 15) y la cesión de datos (art. 28).</li>
+          <li><strong>Ley No. 42-01 General de Salud</strong> (8/3/2001): ordena el manejo del expediente clínico, el consentimiento informado y la confidencialidad de la información de salud.</li>
+          <li><strong>Ley No. 126-02</strong> sobre Comercio Electrónico, Documentos y Firmas Digitales: validez y seguridad de los registros y documentos electrónicos.</li>
+          <li><strong>Código de Ética del Colegio Médico Dominicano</strong> y demás normas sobre el secreto profesional y la historia clínica.</li>
+        </ul>
+        <p class="politica-note"><span class="material-symbols-outlined">info</span> Existe un <em>proyecto de ley</em> de Protección de Datos Personales (2026) en discusión en el Congreso Nacional. Cuando sea promulgado, esta política se ajustará a la nueva normativa.</p>
+      </div>
+
+      <div class="panel">
+        <h2>3. Datos personales que tratamos</h2>
+        <p>En el contexto de la atención traumatológica y ortopédica, el sistema puede tratar las siguientes categorías:</p>
+        <ul class="politica-list">
+          <li><strong>Datos identificativos:</strong> nombre, cédula de identidad y electoral, código de paciente, edad, sexo y fotografía.</li>
+          <li><strong>Datos de contacto:</strong> teléfono, correo electrónico y dirección.</li>
+          <li><strong>Datos de salud (sensibles):</strong> motivo de consulta, diagnósticos, antecedentes, evaluaciones físicas y médicas, resultados de estudios e imágenes médicas (radiografías, resonancias, tomografías), cirugías e implantes, tratamientos, rehabilitación y cuestionarios de resultados (PROs).</li>
+          <li><strong>Datos de seguro y facturación:</strong> aseguradora (ARS), número de afiliación y datos necesarios para la facturación de servicios médicos.</li>
+          <li><strong>Datos de cuenta del personal:</strong> usuarios del sistema (nombre, correo y credenciales de acceso cifradas) para controlar el acceso.</li>
+        </ul>
+        <p class="politica-note"><span class="material-symbols-outlined">info</span> El sistema está diseñado para tratar <strong>únicamente los datos necesarios</strong> para la atención (principio de minimización y de finalidad).</p>
+      </div>
+
+      <div class="panel">
+        <h2>4. Finalidad del tratamiento</h2>
+        <ul class="politica-list">
+          <li>Prestar, documentar y dar seguimiento a la atención médica ortopédica y traumatológica.</li>
+          <li>Elaborar y conservar la historia clínica y el expediente del paciente.</li>
+          <li>Agendar y gestionar citas, diagnósticos, cirugías, rehabilitación y evolución del paciente.</li>
+          <li>Emitir recetas, órdenes de estudios, informes y facturas.</li>
+          <li>Fines de administración, estadística interna y mejora de la calidad asistencial (con datos agregados o disociados cuando sea posible).</li>
+          <li>Cumplir obligaciones legales, sanitarias y de facturación aplicables.</li>
+        </ul>
+        <p>Los datos <strong>no se utilizarán para finalidades distintas</strong> a las informadas sin nueva autorización del paciente, salvo las excepciones previstas por la ley.</p>
+      </div>
+
+      <div class="panel">
+        <h2>5. Consentimiento informado</h2>
+        <p>Al registrarse como paciente, la persona otorga su <strong>consentimiento libre, expreso, consciente y por escrito</strong> para el tratamiento de sus datos de salud y de los datos particularmente sensibles, conforme a los artículos 73 y 74 de la Ley No. 172-13.</p>
+        <p>El paciente puede <strong>revocar el consentimiento</strong> en cualquier momento sin efectos retroactivos, salvo cuando el tratamiento sea necesario por razones de salud pública, urgencia, estudios epidemiológicos disociados o cuando exista un deber legal de conservar la información.</p>
+      </div>
+
+      <div class="panel">
+        <h2>6. Confidencialidad y secreto médico</h2>
+        <p>Todo el personal está obligado a guardar el <strong>secreto profesional</strong>. El acceso a la historia clínica se limita al personal autorizado y al paciente titular. La información solo podrá comunicarse a terceros en los casos previstos por la ley (por ejemplo, requerimiento judicial, salud pública o consentimiento del paciente).</p>
+      </div>
+
+      <div class="panel">
+        <h2>7. Medidas de seguridad</h2>
+        <p>Conforme al deber de seguridad de la Ley No. 172-13, el Responsable adopta medidas técnicas, organizativas y de seguridad para evitar la alteración, pérdida, consulta, tratamiento o acceso no autorizados, entre ellas:</p>
+        <ul class="politica-list">
+          <li>Control de acceso mediante <strong>usuario y contraseña</strong> y roles (administrador / usuario).</li>
+          <li>Identificación del paciente mediante <strong>código de acceso</strong> para consultas controladas.</li>
+          <li>Conexión cifrada (HTTPS/SSL) y resguardo de la base de datos en servidores con medidas de protección.</li>
+          <li>Copias de respaldo y políticas de conservación de la información.</li>
+          <li>Práctica de confidencialidad y manejo responsable por parte del personal.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>8. Comunicación y cesión de datos a terceros</h2>
+        <p>Los datos solo podrán ser <strong>cedidos</strong> para fines directamente relacionados con el interés legítimo del cedente y del cesionario y con el <strong>consentimiento previo</strong> del titular, conforme al artículo 28 de la Ley No. 172-13. Podrán comunicarse a:</p>
+        <ul class="politica-list">
+          <li>Aseguradoras (ARS) y entidades de pago, para la facturación de servicios médicos.</li>
+          <li>Laboratorios, centros de imágenes u otros profesionales, cuando sea necesario para la atención del paciente.</li>
+          <li>Autoridades competentes, cuando exista una obligación legal o requerimiento judicial.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>9. Conservación de los datos</h2>
+        <p>Los datos se conservarán durante el tiempo necesario para cumplir con la finalidad asistencial y el <strong>plazo legal de conservación del expediente clínico</strong>. Cumplidos los plazos, los datos serán <strong>suprimidos</strong> o anonimizados, salvo que exista una obligación legal de conservarlos. Durante el plazo de prescripción de eventuales responsabilidades, los datos podrán mantenerse bloqueados a disposición de las autoridades (art. 15 de la Ley No. 172-13).</p>
+      </div>
+
+      <div class="panel">
+        <h2>10. Derechos del titular de los datos</h2>
+        <p>El paciente puede ejercer en cualquier momento sus derechos de <strong>Acceso, Rectificación, Actualización, Oposición y Supresión (ARCO)</strong>, así como conocer el destino y uso de sus datos. En caso de discriminación, inexactitud o error, podrá exigir la suspensión, rectificación o actualización.</p>
+        <p>También puede presentar la <strong>acción judicial de hábeas data</strong> conforme a la Constitución y a la Ley No. 172-13. Las solicitudes se atienden a través de los canales oficiales del Responsable, previa acreditación de la identidad del titular.</p>
+      </div>
+
+      <div class="panel">
+        <h2>11. Menores de edad y personas bajo tutela</h2>
+        <p>Cuando el paciente sea menor de edad o se encuentre legalmente incapacitado, el tratamiento de sus datos y el consentimiento serán otorgados por sus <strong>padres, representantes o tutores legales</strong>, en el interés superior del menor y de la persona bajo tutela.</p>
+      </div>
+
+      <div class="panel">
+        <h2>12. Credenciales, cookies y datos de navegación</h2>
+        <p>El sistema utiliza únicamente los datos técnicos necesarios para <strong>autenticar el acceso</strong> del personal autorizado. Las credenciales de usuario se almacenan de forma resguardada y no se comparten. No se realiza perfilado comercial ni se venden datos personales a terceros.</p>
+      </div>
+
+      <div class="panel">
+        <h2>13. Cambios a esta política</h2>
+        <p>Esta política puede actualizarse para reflejar cambios legales, técnicos u operativos. La versión vigente será siempre la publicada en esta sección del sistema, indicando la fecha de última actualización.</p>
+      </div>
+
+      <div class="panel">
+        <h2>14. Contacto</h2>
+        <p>Para ejercer sus derechos o realizar consultas sobre esta política, el titular puede dirigirse al Responsable del tratamiento a través de los <strong>canales oficiales del consultorio o centro de Ortopedia</strong> (correo electrónico y teléfono registrados en su ficha) o presentarse personalmente en el centro de atención.</p>
+        <p class="politica-nota"><span class="material-symbols-outlined">balance</span> Al usar este sistema, el personal autorizado declara conocer y cumplir esta política y el marco legal dominicano sobre protección de datos personales y salud.</p>
+      </div>
+    </section>
+
+    <section id="seccion-admin" class="seccion">
+      <div class="panel">
+        <h2>Crear usuario</h2>
+        <form id="adminUserForm" class="form-grid">
+          <label>Nombre
+            <input type="text" id="auNombre" required placeholder="Nombre completo" />
+          </label>
+          <label>Correo electrónico
+            <input type="email" id="auEmail" required placeholder="usuario@clinica.com" />
+          </label>
+          <label>Contraseña
+            <input type="text" id="auPassword" required minlength="4" placeholder="Mínimo 4 caracteres" />
+          </label>
+          <label>Rol
+            <select id="auRol">
+              <option value="usuario">Usuario</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn--primary form-full">Crear usuario</button>
+          <p class="form-msg form-full" id="auMsg"></p>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Usuarios del sistema</h2>
+          <span class="tag" id="countUsuarios">0</span>
+        </div>
+        <p class="panel-sub">Cambia el rol de cada usuario, restablece su contraseña o elimínalo.</p>
+        <div id="listaUsuarios" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Opciones del sistema</h2>
+        </div>
+        <p class="panel-sub">Muestra u oculta secciones y funciones para todos los usuarios. Los cambios se aplican de inmedíato.</p>
+        <div id="configOpciones" class="list"></div>
+        <div class="form-grid" id="configLimites">
+          <label>Límite de citas por día
+            <input type="number" id="cfgLimiteDía" min="1" />
+          </label>
+          <label>Límite de citas por semana
+            <input type="number" id="cfgLimiteSemana" min="1" />
+          </label>
+          <label class="form-full">Color de los botones
+            <select id="cfgColorBotones">
+              <option value="actual">Color actual</option>
+              <option value="azul">Azul</option>
+              <option value="verde">Verde</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-full" style="margin-top:1em">
+          <button type="button" id="btnGuardarConfig" class="btn btn--primary">Guardar opciones</button>
+          <p class="form-msg" id="cfgMsg"></p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Zona de peligro</h2>
+        </div>
+        <p class="panel-sub">Reinicia el programa a cero: borra pacientes, citas, evaluaciones, registros clínicos, documentos, facturas, recetas y las estadísticas del dashboard. Se conservan las cuentas de usuario y la base de datos (data.db). Solo tú, como administrador, puedes hacerlo.</p>
+        <button type="button" id="btnEliminarDatosSistema" class="btn btn--danger">Eliminar datos del sistema</button>
+        <p class="form-msg" id="systemMsg"></p>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="modalAgendar">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Agendar cita rápida</h2>
+        <button type="button" class="modal-close" data-cerrar="modalAgendar" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <p class="panel-sub" id="agendarPacienteNombre">—</p>
+      <form id="agendarForm" class="form-grid">
+        <label>Fecha
+          <input type="date" id="agendarFecha" required />
+        </label>
+        <label>Hora
+          <div class="hora-wrap">
+            <input type="time" id="agendarHora" required />
+            <select id="agendarAmPm">
+              <option value="AM">AM</option>
+              <option value="PM" selected>PM</option>
+            </select>
+          </div>
+        </label>
+        <label class="form-full">Motivo
+          <input type="text" id="agendarMotivo" placeholder="Motivo de la consulta" />
+        </label>
+        <p class="form-full limite-info" id="agendarLimiteInfo"></p>
+        <button type="submit" class="btn btn--primary form-full">Confirmar cita</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalCompletarCita">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Completar cita</h2>
+        <button type="button" class="modal-close" data-cerrar="modalCompletarCita" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <p class="panel-sub" id="ccPacienteTexto">—</p>
+      <form id="completarCitaForm" class="form-grid">
+        <label class="form-full">Díagnóstico
+          <textarea id="ccDíagnostico" rows="3" placeholder="Díagnóstico de la consulta"></textarea>
+        </label>
+        <label class="form-full">Tratamiento / Notas
+          <textarea id="ccTratamiento" rows="3" placeholder="Tratamiento, indicaciones o notas"></textarea>
+        </label>
+        <button type="submit" class="btn btn--primary form-full">
+          <span class="material-symbols-outlined">check_circle</span> Guardar cita completada
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalRaFicha">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Ficha del paciente</h2>
+        <button type="button" class="modal-close" data-cerrar="modalRaFicha" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div id="raFicha" class="modal-body"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn--ghost-dark" data-cerrar="modalRaFicha">Cerrar</button>
+        <button type="button" id="btnRaFichaImprimir" class="btn btn--primary">
+          <span class="material-symbols-outlined">print</span> Imprimir ficha
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalSeleccionImpresion">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Seleccionar qué imprimir</h2>
+        <button type="button" class="modal-close" data-cerrar="modalSeleccionImpresion" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <p class="panel-sub">Marca los documentos que deseas imprimir. Solo se imprimirá lo que marques.</p>
+      <div id="printPickerList" class="list"></div>
+      <p class="form-msg" id="printPickerMsg"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn--ghost-dark" data-cerrar="modalSeleccionImpresion">Cancelar</button>
+        <button type="button" id="btnPrintPickerConfirm" class="btn btn--primary">
+          <span class="material-symbols-outlined">print</span> Imprimir selección
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalVerEstudio">
+    <div class="modal-card modal-card--ancho">
+      <div class="modal-head">
+        <h2 id="estudioViewTítulo">Estudio médico</h2>
+        <button type="button" class="modal-close" data-cerrar="modalVerEstudio" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+<p class="panel-sub" id="estudioViewMeta"></p>
+      <img id="estudioViewImg" alt="Estudio médico" class="estudio-view-img" />
+      <div id="estudioViewDicom" class="estudio-dicom" hidden></div>
+      <div id="estudioViewSelector" class="estudio-view-selector"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn--ghost-dark" data-cerrar="modalVerEstudio">Cerrar</button>
+        <button type="button" id="btnImprimirEstudioView" class="btn btn--primary">
+          <span class="material-symbols-outlined">print</span> Imprimir estudio
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalRaRegistro">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Nuevo registro clínico</h2>
+        <button type="button" class="modal-close" data-cerrar="modalRaRegistro" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="raRegistroForm" class="form-grid">
+        <p class="form-full panel-sub" id="raRegistroPaciente">—</p>
+        <label class="form-full">Título
+          <input type="text" id="raRegistroTítulo" required placeholder="Ej: Consulta inicial" />
+        </label>
+        <label class="form-full">Tipo
+          <select id="raRegistroTipo">
+            <option value="Motivo de consulta">Motivo de consulta</option>
+            <option value="Examen físico">Examen físico</option>
+            <option value="Díagnóstico">Díagnóstico</option>
+          </select>
+        </label>
+        <label class="form-full">Detalle
+          <textarea id="raRegistroDetalle" rows="3" placeholder="Descripción del registro..."></textarea>
+        </label>
+        <label>Próxima cita - fecha
+          <input type="date" id="raRegistroProxCitaFecha" />
+        </label>
+        <label>Próxima cita - hora
+          <div class="hora-wrap">
+            <input type="time" id="raRegistroProxCitaHora" />
+            <select id="raRegistroProxCitaAmPm">
+              <option value="AM">AM</option>
+              <option value="PM" selected>PM</option>
+            </select>
+          </div>
+        </label>
+        <label class="form-full">Documento adjunto (opcional)
+          <input type="file" id="raRegistroArchivo" accept=".pdf,image/*" />
+        </label>
+        <button type="submit" class="btn btn--primary form-full">Guardar registro</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalRaDocumento">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Subir documento</h2>
+        <button type="button" class="modal-close" data-cerrar="modalRaDocumento" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="raDocumentoForm" class="form-grid">
+        <p class="form-full panel-sub" id="raDocumentoPaciente">—</p>
+        <label class="form-full">Descripción
+          <input type="text" id="raDocumentoDescripcion" placeholder="Descripción del archivo" />
+        </label>
+        <label class="form-full">Archivo
+          <input type="file" id="raDocumentoArchivo" required />
+        </label>
+        <button type="submit" class="btn btn--primary form-full">Subir archivo</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalStats">
+    <div class="modal-card modal-card--stats">
+      <div class="modal-head">
+        <h2>Estadísticas de pacientes atendidos</h2>
+        <button type="button" class="modal-close" data-cerrar="modalStats" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="form-grid">
+        <label>Desde
+          <input type="date" id="estDesde" />
+        </label>
+        <label>Hasta
+          <input type="date" id="estHasta" />
+        </label>
+        <div class="form-full add-item-row est-rangos">
+          <button type="button" class="btn btn--ghost-dark btn-small" data-rango="semana">
+            <span class="material-symbols-outlined">event</span> Semana actual
+          </button>
+          <button type="button" class="btn btn--ghost-dark btn-small" data-rango="mes">
+            <span class="material-symbols-outlined">calendar_month</span> Mes entero
+          </button>
+          <button type="button" class="btn btn--ghost-dark btn-small" data-rango="3m">
+            <span class="material-symbols-outlined">calendar_view_month</span> 3 meses
+          </button>
+          <button type="button" class="btn btn--ghost-dark btn-small" data-rango="anio">
+            Año
+          </button>
+        </div>
+        <div class="form-full add-item-row">
+          <button type="button" id="btnResetStats" class="btn btn--ghost-dark">
+            <span class="material-symbols-outlined">restart_alt</span> Resetear pizarra
+          </button>
+          <button type="button" id="btnCalcularStats" class="btn btn--primary">
+            <span class="material-symbols-outlined">calculate</span> Calcular
+          </button>
+        </div>
+      </div>
+      <div id="estTotales" class="est-resumen"></div>
+      <div id="estLineas"></div>
+      <div class="est-graficos">
+        <div id="estPeriodo" class="est-pie"></div>
+        <div id="estPie" class="est-pie"></div>
+      </div>
+      <p class="panel-sub" id="estRangoTexto"></p>
+      <div class="modal-actions">
+        <button type="button" id="btnImprimirStats" class="btn btn--primary">
+          <span class="material-symbols-outlined">print</span> Imprimir
+        </button>
+        <button type="button" id="btnExportarStats" class="btn btn--ghost-dark">
+          <span class="material-symbols-outlined">grid_on</span> Exportar Excel / Power BI
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalCalendario">
+    <div class="modal-card modal-card--cal">
+      <div class="modal-head">
+        <h2>Calendario de citas</h2>
+        <button type="button" class="modal-close" data-cerrar="modalCalendario" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <div class="cal-toolbar">
+        <button type="button" id="calPrev" class="icon-btn" title="Mes anterior">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <h3 id="calTítulo"></h3>
+        <button type="button" id="calNext" class="icon-btn" title="Mes siguiente">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+
+      <div class="cal-grid" id="calGrid"></div>
+
+      <div id="calDetalle" class="list cal-detalle"></div>
+
+      <div id="calEditor" class="cal-editor">
+        <h3>Editar cita</h3>
+        <div class="form-grid">
+          <label>Fecha
+            <input type="date" id="calFecha" required />
+          </label>
+          <label>Hora
+            <div class="hora-wrap">
+              <input type="time" id="calHora" required />
+              <select id="calAmPm">
+                <option value="AM">AM</option>
+                <option value="PM" selected>PM</option>
+              </select>
+            </div>
+          </label>
+          <label class="form-full">Motivo
+            <input type="text" id="calMotivo" placeholder="Motivo de la consulta" />
+          </label>
+          <div class="form-full modal-actions">
+            <button type="button" id="btnCancelarCal" class="btn btn--ghost-dark">Cancelar</button>
+            <button type="button" id="btnGuardarCal" class="btn btn--primary">Guardar cambios</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalEditarRegistro">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Editar registro</h2>
+        <button type="button" class="modal-close" data-cerrar="modalEditarRegistro" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="regEForm" class="form-grid">
+        <label class="form-full">Paciente
+          <select id="regEPaciente" required></select>
+        </label>
+        <label class="form-full">Título
+          <input type="text" id="regETitulo" required />
+        </label>
+        <label class="form-full">Tipo
+          <select id="regETipo">
+            <option value="Motivo de consulta">Motivo de consulta</option>
+            <option value="Examen físico">Examen físico</option>
+            <option value="Díagnóstico">Díagnóstico</option>
+          </select>
+        </label>
+        <label>Fecha
+          <input type="date" id="regEFecha" />
+        </label>
+        <label>Escala EVA (dolor 0-10)
+          <input type="number" id="regEEVA" min="0" max="10" step="1" placeholder="0" />
+        </label>
+        <label class="form-full">Detalle
+          <textarea id="regEDetalle" rows="3" placeholder="Descripción del registro..."></textarea>
+        </label>
+        <label class="form-full">Documento adjunto
+          <input type="file" id="regEArchivo" accept=".pdf,image/*" />
+          <span id="regEArchivoActual" class="reg-archivo-actual"></span>
+          <span class="reg-quitar">
+            <input type="checkbox" id="regEQuitarArchivo" /> Quitar documento actual
+          </span>
+        </label>
+        <div class="form-full modal-actions">
+          <button type="button" class="btn btn--ghost-dark" data-cerrar="modalEditarRegistro">Cancelar</button>
+          <button type="submit" class="btn btn--primary">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalConfirmarEliminacion">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="confElimTítulo">Confirmar con contraseña</h3>
+        <button type="button" class="modal-close" data-cerrar="modalConfirmarEliminacion" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <p id="confElimTexto" class="panel-sub"></p>
+      <form class="form-grid" onsubmit="return false;">
+        <label class="form-full">Contraseña de usuario
+          <input type="password" id="confPassword" placeholder="Escribe tu contraseña" autocomplete="current-password" />
+        </label>
+        <p id="confElimMsg" class="form-msg"></p>
+        <div class="form-full modal-actions">
+          <button type="button" class="btn btn--ghost-dark" data-cerrar="modalConfirmarEliminacion">Cancelar</button>
+          <button type="submit" class="btn btn--danger" id="btnConfEliminar">Confirmar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalPacienteEliminado">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Paciente eliminado</h3>
+        <button type="button" class="modal-close" data-cerrar="modalPacienteEliminado" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div id="pacElimInfo" class="panel-sub"></div>
+      <div class="form-grid">
+        <p class="form-msg" id="pacElimMsg">Elige qué hacer con este paciente. Ambas acciones requieren tu contraseña de usuario.</p>
+        <div class="form-full modal-actions">
+          <button type="button" id="btnRestaurarPacElim" class="btn btn--ghost-dark">
+            <span class="material-symbols-outlined">restore</span> Restaurar paciente
+          </button>
+          <button type="button" id="btnBorrarDefPacElim" class="btn btn--danger">
+            <span class="material-symbols-outlined">delete_forever</span> Eliminar por completo
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalCitaSinConsulta">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Agregar cita sin consulta</h3>
+        <button type="button" class="modal-close" data-cerrar="modalCitaSinConsulta" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="citaSinConsultaForm" class="form-grid">
+        <label class="form-full">Paciente
+          <select id="cscPaciente" required></select>
+        </label>
+        <label>Fecha
+          <input type="date" id="cscFecha" required />
+        </label>
+        <label>Hora
+          <div class="hora-wrap">
+            <input type="time" id="cscHora" required />
+            <select id="cscAmPm">
+              <option value="AM">AM</option>
+              <option value="PM" selected>PM</option>
+            </select>
+          </div>
+        </label>
+        <label>Motivo
+          <input type="text" id="cscMotivo" placeholder="Motivo de la consulta" />
+        </label>
+        <div class="form-full modal-actions">
+          <button type="button" class="btn btn--ghost-dark" data-cerrar="modalCitaSinConsulta">Cancelar</button>
+          <button type="submit" class="btn btn--primary">Agregar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalEditarFactura">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="edFactTítulo">Editar factura</h3>
+        <button type="button" class="modal-close" data-cerrar="modalEditarFactura" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form class="form-grid" onsubmit="return false;">
+        <label class="form-full">Paciente
+          <input type="text" id="edFactPaciente" readonly />
+        </label>
+        <label class="form-full">Procedimientos
+          <div id="edFactItems" class="list"></div>
+        </label>
+        <label class="form-full">Porcentaje de honorarios del doctor (%)
+          <input type="number" id="edFactPorcentaje" min="0" max="100" />
+        </label>
+        <div class="form-full resumen" id="edFactResumen">
+          <p>Subtotal: <strong id="edResumenSubtotal">$0.00</strong></p>
+          <p>Honorarios del doctor: <strong id="edResumenHonorarios">$0.00</strong></p>
+          <p>Neto clínica: <strong id="edResumenNeto">$0.00</strong></p>
+          <p class="total">Total a pagar: <strong id="edResumenTotal">$0.00</strong></p>
+        </div>
+        <div class="form-full modal-actions">
+          <button type="button" class="btn btn--ghost-dark" data-cerrar="modalEditarFactura">Cancelar</button>
+          <button type="submit" class="btn btn--primary">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<div class="modal-backdrop" id="modalReceta">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Receta médica</h3>
+        <button type="button" class="modal-close" data-cerrar="modalReceta" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div id="recetaVista"></div>
+      <div class="form-full modal-actions">
+        <button type="button" class="btn btn--ghost-dark" data-cerrar="modalReceta">Cerrar</button>
+        <button type="button" class="btn btn--primary" id="btnImprimirReceta">Imprimir receta</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalVerCirugia">
+    <div class="modal modal--wide">
+      <div class="modal-head">
+        <h3>Detalle de cirugía</h3>
+        <button type="button" class="modal-close" data-cerrar="modalVerCirugia" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div id="cirugiaVista"></div>
+      <div id="cirugiaSegForm" class="form-grid" style="margin-top:14px; display:none;">
+        <label>Fecha del control
+          <input type="date" id="cirugiaSegFecha" />
+        </label>
+        <label>Nota del seguimiento
+          <input type="text" id="cirugiaSegNotas" placeholder="Evolución, signos de alarma, próxima cita..." />
+        </label>
+        <div class="form-full">
+          <button type="button" class="btn btn--primary" id="btnAgregarSegCirugia">
+            <span class="material-symbols-outlined">add</span> Registrar seguimiento
+          </button>
+        </div>
+      </div>
+      <div class="form-full modal-actions">
+        <button type="button" class="btn btn--ghost-dark" data-cerrar="modalVerCirugia">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalVerPro">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Detalle del cuestionario PRO</h3>
+        <button type="button" class="modal-close" data-cerrar="modalVerPro" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div id="proVista"></div>
+      <div class="form-full modal-actions">
+        <button type="button" class="btn btn--ghost-dark" data-cerrar="modalVerPro">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalVerOrtesis">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Detalle de órtesis</h3>
+        <button type="button" class="modal-close" data-cerrar="modalVerOrtesis" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div id="ortesisVista"></div>
+      <div class="form-full modal-actions">
+        <button type="button" class="btn btn--ghost-dark" data-cerrar="modalVerOrtesis">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalVerEvalMed">
+    <div class="modal modal--wide">
+      <div class="modal-head">
+        <h3>Detalle de la evaluación médica</h3>
+        <button type="button" class="modal-close" data-cerrar="modalVerEvalMed" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div id="evalMedVista"></div>
+      <div class="form-full modal-actions">
+        <button type="button" class="btn btn--primary" data-cerrar="modalVerEvalMed">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalVerRehab">
+    <div class="modal modal--wide">
+      <div class="modal-head">
+        <h3>Plan de rehabilitación</h3>
+        <button type="button" class="modal-close" data-cerrar="modalVerRehab" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div id="rehabVista"></div>
+      <div class="rehab-sesion-form form-grid" id="rehabSesionForm">
+        <h4 class="form-full">Registrar sesión de fisioterapia</h4>
+        <label>Fecha
+          <input type="date" id="rehabSesionFecha" required />
+        </label>
+        <label>Tipo de sesión
+          <select id="rehabSesionTipo">
+            <option value="Fisioterapia">Fisioterapia</option>
+            <option value="Terapia ocupacional">Terapia ocupacional</option>
+            <option value="Ejercicio terapéutico">Ejercicio terapéutico</option>
+            <option value="Electroterapia">Electroterapia</option>
+            <option value="Hidroterapia">Hidroterapia</option>
+            <option value="Evaluación / control">Evaluación / control</option>
+          </select>
+        </label>
+        <label>Terapeuta
+          <input type="text" id="rehabSesionTerapeuta" placeholder="Fisioterapeuta a cargo" />
+        </label>
+        <label class="form-full">Ejercicios realizados
+          <textarea id="rehabSesionEjercicios" rows="2" placeholder="Ej.: Isométricos de cuádriceps 3x15, arco de movimiento pasivo, marcha en paralelas"></textarea>
+        </label>
+        <label class="form-full">Notas / evolución
+          <textarea id="rehabSesionNotas" rows="2" placeholder="Evolución, dolor, logros y ajustes"></textarea>
+        </label>
+        <div class="form-full">
+          <button type="button" class="btn btn--primary" id="btnAgregarSesionRehab">
+            <span class="material-symbols-outlined">add_circle</span> Guardar sesión
+          </button>
+        </div>
+      </div>
+      <div class="form-full modal-actions">
+        <button type="button" class="btn btn--ghost-dark" data-cerrar="modalVerRehab">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+<button type="button" id="btnAyuda" class="help-fab hidden" title="Ayuda del sistema" hidden>
+    <span class="material-symbols-outlined">support_agent</span>
+  </button>
+
+  <div class="modal-backdrop" id="modalEvalExtremidad">
+    <div class="modal modal--extrem">
+      <div class="modal-head">
+        <h3 id="evalExtremTítulo">Mano</h3>
+        <button type="button" class="modal-close" data-cerrar="modalEvalExtremidad" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="eval-extrem-layout">
+        <div class="eval-extrem-svg" id="evalExtremSvg"></div>
+        <div class="eval-extrem-panel">
+          <h4>Tipo de lesión</h4>
+          <div id="lesionChipsExtrem" class="eval-tipos"></div>
+          <button type="button" class="btn btn--ghost-dark btn-small" id="btnEvalExtremBorrador">
+            <span class="material-symbols-outlined">ink_eraser</span> Borrador
+          </button>
+          <h4>Marcadas en esta extremidad (<span id="evalExtremContador">0</span>)</h4>
+          <div id="evalExtremPartes" class="eval-partes"></div>
+          <div class="eval-acciones eval-acciones--row">
+            <button type="button" class="btn btn--ghost-dark btn-small" id="btnEvalExtremTodo">
+              <span class="material-symbols-outlined">colorize</span> Marcar extremidad completa
+            </button>
+            <button type="button" class="btn btn--ghost-dark btn-small" id="btnEvalExtremLimpiar">
+              <span class="material-symbols-outlined">cleaning_services</span> Limpiar extremidad
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalEvalResultado">
+    <div class="modal modal--eval-result">
+      <div class="modal-head">
+        <h3>Evaluación física · <span id="evalResultadoTítulo"></span></h3>
+        <button type="button" class="modal-close" data-cerrar="modalEvalResultado" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="eval-resultado">
+        <img id="evalResultadoImg" class="eval-resultado-img" alt="Resultado de la evaluación física" />
+        <div id="evalResultadoLeyenda" class="eval-resultado-leyenda"></div>
+        <h4>Descripción</h4>
+        <p id="evalResultadoNota" class="eval-resultado-nota"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalColumna">
+    <div class="modal-card modal-card--ancho">
+      <div class="modal-head">
+        <h2>Columna vertebral</h2>
+        <button type="button" class="modal-close" data-cerrar="modalColumna" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <p class="eval-columna-hint">Elige el tipo de lesión, haz clic sobre una región de la columna (o su punto/letra) para marcarla. Puedes marcar <b>varios tipos</b> en la misma región: cambia de tipo y vuelve a hacer clic.</p>
+      <div class="eval-columna-tipos">
+        <span class="eval-prueba-titulo">Tipo de lesión</span>
+        <div id="columnaTipos" class="eval-tipos"></div>
+        <button type="button" class="btn btn--ghost-dark btn-small" id="btnColumnaBorrador">
+          <span class="material-symbols-outlined">ink_eraser</span> Borrador
+        </button>
+      </div>
+      <div class="eval-columna-wrap">
+        <div id="columnaSvg" class="eval-columna-svg-wrap"></div>
+      </div>
+      <div id="columnaLeyenda" class="eval-columna-leyenda"></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalCambiarPass">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="cpTítulo">Cambiar contraseña</h2>
+        <button type="button" class="modal-close" data-cerrar="modalCambiarPass" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <p class="panel-sub" id="cpMensaje"></p>
+      <label id="cpActualWrap" class="form-full">Contraseña actual
+        <span class="pass-wrap">
+          <input type="password" id="cpActual" autocomplete="current-password" />
+          <button type="button" class="pass-toggle" data-pass-toggle="cpActual" title="Mostrar / ocultar contraseña">
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+        </span>
+      </label>
+      <label class="form-full">Nueva contraseña
+        <span class="pass-wrap">
+          <input type="password" id="cpNueva" autocomplete="new-password" />
+          <button type="button" class="pass-toggle" data-pass-toggle="cpNueva" title="Mostrar / ocultar contraseña">
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+        </span>
+      </label>
+      <label class="form-full">Confirmar nueva contraseña
+        <span class="pass-wrap">
+          <input type="password" id="cpConfirmar" autocomplete="new-password" />
+          <button type="button" class="pass-toggle" data-pass-toggle="cpConfirmar" title="Mostrar / ocultar contraseña">
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+        </span>
+      </label>
+      <p class="form-msg" id="cpMsg"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn--ghost-dark" id="cpCancelar">Cancelar</button>
+        <button type="button" id="cpGuardar" class="btn btn--primary">
+          <span class="material-symbols-outlined">key</span> Guardar contraseña
+        </button>
+      </div>
+    </div>
+  </div>
+
+<div class="modal-backdrop" id="modalAyuda">
+    <div class="modal modal--help">
+      <div class="modal-head">
+        <h3>Ayuda del sistema</h3>
+        <button type="button" class="modal-close" data-cerrar="modalAyuda" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <p class="panel-sub">Guía rápida de cada opción del sistema. Elige una sección para ver sus tarjetas.</p>
+
+      <div class="help-tabs" role="tablist" aria-label="Secciones de ayuda">
+        <button type="button" class="help-tab active" data-tab="ayuda-inicio"><span class="material-symbols-outlined">space_dashboard</span> Inicio</button>
+        <button type="button" class="help-tab" data-tab="ayuda-pacientes"><span class="material-symbols-outlined">groups</span> Pacientes</button>
+        <button type="button" class="help-tab" data-tab="ayuda-citas"><span class="material-symbols-outlined">event_available</span> Citas</button>
+        <button type="button" class="help-tab" data-tab="ayuda-medica"><span class="material-symbols-outlined">stethoscope</span> Evolución médica</button>
+        <button type="button" class="help-tab" data-tab="ayuda-eval-fisica"><span class="material-symbols-outlined">accessibility_new</span> Evaluación física</button>
+        <button type="button" class="help-tab" data-tab="ayuda-registros"><span class="material-symbols-outlined">folder_open</span> Historial clínico</button>
+        <button type="button" class="help-tab" data-tab="ayuda-archivos"><span class="material-symbols-outlined">image</span> Archivos</button>
+        <button type="button" class="help-tab" data-tab="ayuda-facturacion"><span class="material-symbols-outlined">receipt_long</span> Facturación</button>
+        <button type="button" class="help-tab" data-tab="ayuda-sistema"><span class="material-symbols-outlined">settings</span> Sistema</button>
+        <button type="button" class="help-tab" data-tab="ayuda-tips"><span class="material-symbols-outlined">tips_and_updates</span> Consejos</button>
+      </div>
+
+      <div class="help-section active" id="ayuda-inicio" data-cards="3">
+        <div class="help-section-head">
+          <span class="help-section-ico material-symbols-outlined">space_dashboard</span>
+          <h4>Inicio y agenda</h4>
+          <span class="help-section-tag">3 tarjetas</span>
+          <span class="material-symbols-outlined help-section-chevron">expand_more</span>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">home</span>
+            <div>
+              <strong>Inicio / Dashboard</strong>
+              <p>Resumen con próximas citas, citas completadas y diagnóstico, citas sin consulta y pacientes sin cita. El botón "Pacientes atendidos" abre las estadísticas.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">monitoring</span>
+            <div>
+              <strong>Estadísticas</strong>
+              <p>Rango de fechas con totales y gráficos de dona: citas por período y por día de la semana. Exporta e imprime el reporte.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">calendar_month</span>
+            <div>
+              <strong>Calendario</strong>
+              <p>Vista mensual de citas por día. Haz clic en un día para ver el detalle o editarlo. Navega con las flechas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="help-section" id="ayuda-pacientes" data-cards="3">
+        <div class="help-section-head">
+          <span class="help-section-ico material-symbols-outlined">groups</span>
+          <h4>Pacientes</h4>
+          <span class="help-section-tag">3 tarjetas</span>
+          <span class="material-symbols-outlined help-section-chevron">expand_more</span>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">group</span>
+            <div>
+              <strong>Pacientes</strong>
+              <p>Registra pacientes con código automático, edad, cédula y seguro. Puedes editar, ver la ficha o marcar para eliminar (borrado suave).</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">delete_forever</span>
+            <div>
+              <strong>Pacientes eliminados</strong>
+              <p>Solo los administradores pueden quitar un paciente de la lista. El botón "Mostrar eliminados" permite restablecerlos o eliminarlos por completo con tu contraseña; al borrarlos se eliminan también sus citas, registros, documentos, facturas y recetas.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">person_off</span>
+            <div>
+              <strong>Pacientes sin cita</strong>
+              <p>Lista los pacientes activos que no tienen cita activa. El botón "Agendar cita" los agenda al momento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="help-section" id="ayuda-citas" data-cards="3">
+        <div class="help-section-head">
+          <span class="help-section-ico material-symbols-outlined">event_available</span>
+          <h4>Citas y consultas</h4>
+          <span class="help-section-tag">3 tarjetas</span>
+          <span class="material-symbols-outlined help-section-chevron">expand_more</span>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">event</span>
+            <div>
+              <strong>Citas</strong>
+              <p>Agenda citas por paciente y turno, consulta la lista, envía avisos por WhatsApp o correo e imprime los turnos. Respeta los límites diario y semanal configurados.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">task_alt</span>
+            <div>
+              <strong>Citas completadas y diagnóstico</strong>
+              <p>Desde una cita pendiente puedes marcarla como completada y guardar el diagnóstico y tratamiento. Aquí se lista todo el historial: reabrir o eliminar una entrada.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">pending_actions</span>
+            <div>
+              <strong>Citas sin consulta</strong>
+              <p>Registra casos que aún no pasan a consulta con su fecha y motivo para que no se pierdan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="help-section" id="ayuda-medica" data-cards="6">
+        <div class="help-section-head">
+          <span class="help-section-ico material-symbols-outlined">stethoscope</span>
+          <h4>Evolución médica</h4>
+          <span class="help-section-tag">6 tarjetas</span>
+          <span class="material-symbols-outlined help-section-chevron">expand_more</span>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">folder_open</span>
+            <div>
+              <strong>Historial clínico</strong>
+              <p>Elige el tipo de registro (motivo de consulta, examen físico o diagnóstico), escribe el detalle, agenda la próxima cita y hora, y adjunta documentos (PDF o imagen).</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">stethoscope</span>
+            <div>
+              <strong>Evaluación física</strong>
+              <p>Elige el sexo de la figura anatómica, selecciona un tipo de lesión y haz clic sobre las zonas del cuerpo para marcarlas. Puedes aplicar varios tipos de lesión a una misma zona: selecciona otro tipo y vuelve a hacer clic sobre ella. Manos y pies tienen detalle por dedos. Guarda el resultado para revisarlo después.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">medical_services</span>
+            <div>
+              <strong>Cirugías e implantes</strong>
+              <p>Registra procedimientos quirúrgicos con cirujano, sala, anestesia y duración. Añade las filas de implantes (nombre, marca, modelo, lote y fecha) y anota el seguimiento postoperatorio en cada detalle.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">physical_therapy</span>
+            <div>
+              <strong>Rehabilitación</strong>
+              <p>Crea planes de rehabilitación y fisioterapia con diagnóstico, objetivos y metas, y registra cada sesión (tipo, terapeuta, ejercicios y evolución) desde el detalle del plan.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">fact_check</span>
+            <div>
+              <strong>Cuestionarios (PROs)</strong>
+              <p>Registra resultados reportados por el paciente: EVA de dolor, escala funcional y satisfacción. Cada respuesta se valora con deslizadores y el sistema calcula el promedio automáticamente.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">medication</span>
+            <div>
+              <strong>Recetas médicas</strong>
+              <p>Genera recetas con uno o varios medicamentos: tipo (genérico/comercial), vía (oral/tópica), dosis, frecuencia y duración del tratamiento. Guárdalas, revísalas e imprímelas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="help-section" id="ayuda-eval-fisica" data-cards="4">
+        <div class="help-section-head">
+          <span class="help-section-ico material-symbols-outlined">accessibility_new</span>
+          <h4>Evaluación física</h4>
+          <span class="help-section-tag">4 tarjetas</span>
+          <span class="material-symbols-outlined help-section-chevron">expand_more</span>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">accessibility_new</span>
+            <div>
+              <strong>Figura anatómica</strong>
+              <p>Selecciona el sexo del paciente para mostrar la silueta correspondiente (hombre, mujer o neutra). La figura se usa como base para marcar hallazgos.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">category</span>
+            <div>
+              <strong>Tipos de lesión</strong>
+              <p>Elige una categoría (fractura, luxación, esguince, tendinopatía, contractura, otra) y un color para diferenciar visualmente cada hallazgo en la figura.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">pan_tool</span>
+            <div>
+              <strong>Marcado interactivo</strong>
+              <p>Haz clic sobre la figura para colocar marcas. En manos y pies se abre un detalle por dedos (falanges). Cada clic añade el tipo seleccionado a la zona y puedes combinar varios tipos en una misma zona.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">save</span>
+            <div>
+              <strong>Guardado y revisión</strong>
+              <p>Al guardar se registra el hallazgo con su tipo, color, zonas marcadas y notas. Puedes revisar evaluaciones anteriores desde la lista lateral y ver la figura con las marcas superpuestas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="help-section" id="ayuda-registros" data-cards="4">
+        <div class="help-section-head">
+          <span class="help-section-ico material-symbols-outlined">folder_open</span>
+          <h4>Historial clínico</h4>
+          <span class="help-section-tag">4 tarjetas</span>
+          <span class="material-symbols-outlined help-section-chevron">expand_more</span>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">edit_note</span>
+            <div>
+              <strong>Tipos de registro</strong>
+              <p>Tres categorías: <em>Motivo de consulta</em> (por qué viene), <em>Examen físico</em> (hallazgos objetivos) y <em>Diagnóstico</em> (conclusión y plan). Cada uno se guarda con fecha y hora.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">event</span>
+            <div>
+              <strong>Próxima cita</strong>
+              <p>Puedes agendar la siguiente cita directamente desde el registro: elige fecha, hora y turno. Si el paciente ya tenía cita pendiente, se sugiere reusarla.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">attach_file</span>
+            <div>
+              <strong>Adjuntos</strong>
+              <p>Adjunta PDFs o imágenes (radiografías, consentimientos, estudios) a cada registro. Se muestran en miniatura y se pueden abrir o descargar desde la lista.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">history</span>
+            <div>
+              <strong>Línea de tiempo</strong>
+              <p>Todos los registros del paciente aparecen en orden cronológico inverso con iconos por tipo. Puedes editar, imprimir o eliminar entradas propias; los eliminados se marcan y no se borran definitivamente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="help-section" id="ayuda-facturacion" data-cards="3">
+        <div class="help-section-head">
+          <span class="help-section-ico material-symbols-outlined">receipt_long</span>
+          <h4>Facturación</h4>
+          <span class="help-section-tag">3 tarjetas</span>
+          <span class="material-symbols-outlined help-section-chevron">expand_more</span>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">point_of_sale</span>
+            <div>
+              <strong>Crear factura</strong>
+              <p>Selecciona el paciente y añade filas de procedimientos o conceptos. Cada fila tiene descripción, cantidad, precio unitario y subtotal automático. El total se calcula al momento.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">print</span>
+            <div>
+              <strong>Impresión y código</strong>
+              <p>Al guardar se genera un código único de factura. Usa el botón "Imprimir" para obtener una versión lista para papel o PDF con el desglose completo.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">list_alt</span>
+            <div>
+              <strong>Listado y búsqueda</strong>
+              <p>Todas las facturas emitidas se listan con paciente, fecha, total y código. Puedes filtrar por nombre, código o rango de fechas y reimprimir cualquier factura anterior.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="help-section" id="ayuda-archivos" data-cards="4">
+        <div class="help-section-head">
+          <span class="help-section-ico material-symbols-outlined">image</span>
+          <h4>Archivos, imágenes y facturación</h4>
+          <span class="help-section-tag">4 tarjetas</span>
+          <span class="material-symbols-outlined help-section-chevron">expand_more</span>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">folder_managed</span>
+            <div>
+              <strong>Documentos</strong>
+              <p>Repositorio de archivos del sistema: subir, abrir, descargar y eliminar documentos.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">radiology</span>
+            <div>
+              <strong>Estudios e imágenes (DICOM)</strong>
+              <p>Sube placas, radiografías o archivos DICOM (.dcm). El visor extrae los metadatos (paciente, modalidad, fechas) y muestra la imagen en escala de grises.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">photo_filter</span>
+            <div>
+              <strong>Visor de imágenes</strong>
+              <p>Ajusta brillo, contraste, zoom, rotación e inversión de las imágenes de estudio para inspeccionar con más detalle.</p>
+            </div>
+          </div>
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">receipt_long</span>
+            <div>
+              <strong>Facturación</strong>
+              <p>Emite facturas seleccionando paciente y procedimientos (con precios base), calcula el total y las imprime por código.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="help-section" id="ayuda-sistema" data-cards="2">
+        <div class="help-section-head">
+          <span class="help-section-ico material-symbols-outlined">settings</span>
+          <h4>Sistema</h4>
+          <span class="help-section-tag">2 tarjetas</span>
+          <span class="material-symbols-outlined help-section-chevron">expand_more</span>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <span class="help-card-ico material-symbols-outlined">admin_panel_settings</span>
+            <div>
+              <strong>Administración</strong>
+              <p>Solo visible para administradores: crea usuarios, asigna roles, configura las opciones del sistema (secciones y límites) y elimina definitivamente pacientes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="help-section" id="ayuda-tips">
+        <div class="help-section-head">
+          <span class="help-section-ico material-symbols-outlined">tips_and_updates</span>
+          <h4>Cómo usar el sistema</h4>
+          <span class="material-symbols-outlined help-section-chevron">expand_more</span>
+        </div>
+        <div class="help-tips">
+          <span class="material-symbols-outlined">tips_and_updates</span>
+          <div>
+            <ul>
+              <li>Todo lo que guardas se almacena automáticamente en la base de datos local (SQLite). No necesitas guardar manualmente.</li>
+              <li>El primer usuario registrado es el administrador; solo él ve el botón de administración y este botón de ayuda.</li>
+              <li>Usa "Modo claro / oscuro" (icono de luna) en la barra superior.</li>
+              <li>Cierra sesión desde el menú lateral. Los datos permanecen en el sistema.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalNotaInicio">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Agregar nota</h2>
+        <button type="button" class="modal-close" data-cerrar="modalNotaInicio" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="notaInicioForm" class="form-grid">
+        <label class="form-full">Título (opcional)
+          <input type="text" id="notaTitulo" maxlength="80" placeholder="Título de la nota" />
+        </label>
+        <label class="form-full">Nota
+          <textarea id="notaTexto" rows="4" required placeholder="Escribe aquí la nota..."></textarea>
+        </label>
+        <button type="submit" class="btn btn--primary form-full">Guardar nota</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="printArea"></div>
+
+  <div class="modal-backdrop" id="modalEditarPaciente">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Editar paciente</h2>
+        <button type="button" class="modal-close" data-cerrar="modalEditarPaciente" title="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="editarPacienteForm" class="form-grid">
+        <label class="form-full">Nombre completo
+          <input type="text" id="edPacNombre" required placeholder="Nombre del paciente" />
+        </label>
+        <label>Edad
+          <input type="number" id="edPacEdad" min="0" max="120" placeholder="Edad" />
+        </label>
+        <label>Fecha de nacimiento
+          <input type="date" id="edPacFechaNacimiento" />
+        </label>
+        <label>Sexo
+          <select id="edPacSexo">
+            <option value="No especificado">No especificado</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+          </select>
+        </label>
+        <label>Cédula / Documento
+          <input type="text" id="edPacCedula" placeholder="Cédula de identidad" />
+        </label>
+        <label>Seguro / Aseguradora
+          <input type="text" id="edPacSeguro" placeholder="Aseguradora" />
+        </label>
+        <label>Teléfono
+          <input type="tel" id="edPacTelefono" placeholder="Teléfono" />
+        </label>
+        <label>Correo
+          <input type="email" id="edPacEmail" placeholder="Correo" />
+        </label>
+        <label>Razón de la consulta
+          <select id="edPacRazon">
+            <option value="">Selecciona una razón</option>
+            <option>Consulta general</option>
+            <option>Dolor articular</option>
+            <option>Dolor lumbar / espalda</option>
+            <option>Dolor cervical / cuello</option>
+            <option>Lesión deportiva</option>
+            <option>Fractura / traumatismo</option>
+            <option>Esguince / distensión</option>
+            <option>Consulta de seguimiento</option>
+            <option>Postoperatorio / control quirúrgico</option>
+            <option>Valoración prequirúrgica</option>
+            <option>Rehabilitación / terapia física</option>
+            <option>Prótesis / reemplazo articular</option>
+            <option>Infección osteoarticular</option>
+            <option>Deformidad / alteración postural</option>
+            <option>Tumor / masa ósea</option>
+          </select>
+        </label>
+        <label class="form-full">Historia actual
+          <textarea id="edPacHistoriaActual" rows="3" placeholder="Motivo de consulta ampliado, evolución del padecimiento actual..."></textarea>
+        </label>
+        <label class="form-full">Notas
+          <textarea id="edPacNotas" rows="3" placeholder="Notas del paciente"></textarea>
+        </label>
+        <button type="submit" class="btn btn--primary form-full">Guardar cambios</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"></script>
+  <script type="text/javascript">
+    emailjs.init('KrpZvcvHUbBOL96ZB')
+  </script>
+  <script src="app.js?v=vis25"></script>
+</body>
+</html>

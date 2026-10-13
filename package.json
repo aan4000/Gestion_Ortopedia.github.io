@@ -1,0 +1,23 @@
+{
+  "name": "default-project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "migrate:pg": "node migrar_sqlite_a_postgres.js",
+    "migrate:mysql": "node migrar_sqlite_a_mysql.js",
+    "check": "node check_sistema.js",
+    "check:full": "node check_sistema.js --full"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql2": "^3.24.4",
+    "pg": "^8.23.1"
+  },
+  "optionalDependencies": {
+    "sqlite3": "^5.1.7"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

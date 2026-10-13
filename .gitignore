@@ -1,0 +1,54 @@
+# Dependencias
+node_modules/
+
+# Python
+__pycache__/
+*.py
+
+# Registros
+*.log
+
+# Respaldos y temporales
+*.bak
+*.bak[0-9]*
+*.tmp
+*.orig
+*.restaurado
+*.modern
+
+# Scripts de verificacion / diagnostico (temporales)
+check_*.js
+verify_*.js
+verify.bat
+find_*.js
+get_*.js
+fix_*.js
+probe_*.js
+compare.js
+replace_eval_html.js
+restore_eval_html.js
+analyze_png.js
+ascii_*
+stats_*
+scale_probe.ps1
+make_transparent.ps1
+
+# Scripts locales de arranque / shell
+_*.js
+_*.ps1
+_*.cmd
+_*.txt
+*.ps1
+*.bat
+*.cmd
+*.vbs
+
+# Otros
+diff.txt
+
+# Credenciales locales
+.env
+
+# Base de datos local (los datos viven en Neon, no en el repo)
+data.db
+data.db-journal

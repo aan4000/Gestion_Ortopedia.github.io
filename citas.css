@@ -1,0 +1,288 @@
+/* Fondo */
+body {
+    padding: 20px;
+    margin: 0;
+    background: radial-gradient(circle, #EABAA5 30%, #49E9 103%, black 50%);
+    background-size: 100% 68%;
+}
+
+/* GRID PRINCIPAL */
+.formulario_citas {
+    display: flex;
+    gap: 4rem;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 1rem;
+    
+    
+
+
+    
+}
+
+/* FORMULARIO */
+.campos {
+    flex: 1;
+}
+
+.field {
+    margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+textarea {
+    width: 100%;
+    padding: 1em;
+    border-radius: 10px;
+    border: none;
+}
+
+label {
+    font-size: 18px;
+    color: white;
+}
+
+h2 {
+    color: white;
+    font-size: 32px;
+    border-bottom: solid black 1px;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* Botón */
+.btn_citas {
+    padding: 10px;
+    border-radius: 10px;
+    width: 40%;
+    font-size: 16px;
+    background-color: #4460AA;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn_citas:hover {
+    background-color: #2f4f8a;
+}
+
+/* HORARIOS */
+.horarios {
+    flex: 1;
+    padding: 1rem;
+}
+
+/* ACORDEÓN */
+details {
+
+   
+    margin: 1rem 0;
+       background: linear-gradient(to bottom,rgba(12, 99, 230, 0.507) 26.50%,white 2.60%);
+       background-size: 100%  100%;
+       background-position: top  bottom;
+       background-repeat: no-repeat;
+
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: 0.3s ease;
+
+}
+
+/* ELIMINAR ICONO NATIVO */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+/* ÍCONO + / - */
+summary {
+    content: "";
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    padding-right: 25px;
+    display: flex;
+    justify-content: center;
+    transition: 1s ease;
+
+
+
+    
+}
+
+.accordion-content {
+    
+  display: flex;
+  align-items: center;
+  margin: auto;
+
+
+
+
+
+ }
+
+
+ .accordion-content p{
+    display: flex;
+    justify-content: space-around;
+    margin: auto; 
+    font-size: 20px;
+
+    
+ }
+
+
+ .icon_cita{
+    display: flex;
+    justify-content:space-around;
+    align-self: right;
+    left: 0 ;
+    width: 100%;
+    position: relative;
+    right: 0;
+ }
+
+
+
+
+
+
+
+img{
+  width: 6.25vw;
+  right: 0;
+  top: 5px;
+  position:relative;
+  display: flex;
+}
+
+summary::before {
+    content: "+";
+    position: absolute;
+    right: 0;
+    font-weight: 600;
+    font-size: 22px;
+    transition: transform 0.3s ease;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::marker {
+    content: "";
+}
+
+
+details[open] summary::before {
+    content: "–";
+    font-weight:900;
+    color: #ffff;
+    transform: rotate(180deg);
+}
+details[open]p {
+
+    color: wheat;
+    transform: rotate(180deg);
+}
+
+/* Animación suave del contenido */
+details p {
+    padding: 1rem;
+    animation: fade 0.3s ease;
+}
+
+
+
+
+
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+
+    .formulario_citas {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .campos,
+    .horarios {
+        width: 100%;
+        padding: 0;
+    }
+
+    h2 {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="time"],
+    textarea {
+        font-size: 16px;
+    }
+
+    .btn_citas {
+        width: 100%;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body{
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom:0;
+        font-display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1em;
+
+    }
+    details {
+        padding: 0.8rem;
+    }
+
+    summary {
+        font-size: 18px;
+        padding-right: 30px;
+    }
+
+    .accordion-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .accordion-content p {
+        font-size: 18px;
+        margin: 0;
+    }
+
+    img {
+        width: 20vw; /* más pequeño en móviles */
+        max-width: 120px;
+    }
+
+    .formulario_citas{
+
+        margin: auto;
+        width: 100%;
+    }
+
+
+
+}

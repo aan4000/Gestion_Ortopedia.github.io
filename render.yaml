@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: medhistorical
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DB_BACKEND
+        value: postgres
+      - key: NODE_VERSION
+        value: "20"
+      - key: APP_USER
+        value: admin
+      # Se pedira su valor al crear el servicio en Render (no va en el repo).
+      - key: DATABASE_URL
+        sync: false
+      - key: APP_PASSWORD
+        sync: false

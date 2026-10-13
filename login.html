@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Sistema Ortopedía</title>
+  <link rel="icon" type="image/svg+xml" href="favicon_ortopedico.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body class="login-body">
+
+  <main class="login-wrap">
+    <button class="icon-btn icon-btn--fixed" data-toggle-dark title="Modo claro / oscuro">
+      <span class="material-symbols-outlined">dark_mode</span>
+    </button>
+    <div class="login-card">
+      <div class="login-brand">
+        <span class="material-symbols-outlined">orthopedics</span>
+        <h1>Sistema Ortopedía</h1>
+        <p>Gestión de pacientes, citas y registros</p>
+      </div>
+
+      <div class="login-tabs">
+        <button class="tab active" id="tabLogin">Iniciar sesión</button>
+        <button class="tab" id="tabRegister">Crear usuario</button>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <label>
+          Correo electrónico
+          <input type="email" id="loginEmail" required placeholder="doctor@clinica.com" />
+        </label>
+        <label>
+          Contraseña
+          <span class="pass-wrap">
+            <input type="password" id="loginPassword" required placeholder="••••••••" />
+            <button type="button" class="pass-toggle" data-pass-toggle="loginPassword" title="Mostrar / ocultar contraseña">
+              <span class="material-symbols-outlined">visibility</span>
+            </button>
+          </span>
+        </label>
+        <button type="submit" class="btn btn--primary btn--full">Entrar</button>
+        <p class="login-recover-toggle">
+          <button type="button" id="btnMostrarRecuperar">¿Olvidaste tu contraseña?</button>
+        </p>
+        <p class="form-msg" id="loginMsg"></p>
+      </form>
+
+      <form id="recoverForm" class="login-form hidden">
+        <div data-rec-step="1">
+          <p class="panel-sub">Recupera tu contraseña con tus preguntas de seguridad o con un código que te entregue el administrador.</p>
+          <label>
+            Correo de tu cuenta
+            <input type="email" id="recoverEmail" required placeholder="doctor@clinica.com" />
+          </label>
+          <button type="button" id="recPaso1" class="btn btn--primary btn--full">Continuar</button>
+          <p class="form-msg" id="recPaso1Msg"></p>
+        </div>
+
+        <div data-rec-step="2" class="hidden">
+          <p class="panel-sub" id="recUserInfo"></p>
+          <button type="button" id="recViaPreguntas" class="btn btn--primary btn--full">
+            <span class="material-symbols-outlined">quiz</span> Responder mis preguntas de seguridad
+          </button>
+          <button type="button" id="recViaCodigo" class="btn btn--ghost-dark btn--full">Tengo un código de recuperación del administrador</button>
+          <button type="button" id="recVolver1" class="btn btn--ghost-dark btn--full">Volver a iniciar sesión</button>
+        </div>
+
+        <div data-rec-step="3" class="hidden">
+          <p class="panel-sub">Responde tus preguntas de seguridad (tal como las escribiste al crear tu perfil).</p>
+          <div id="recPreguntas"></div>
+          <p class="form-msg" id="recPregMsg"></p>
+          <button type="button" id="recVerificar" class="btn btn--primary btn--full">Verificar respuestas</button>
+          <button type="button" id="recVolver2" class="btn btn--ghost-dark btn--full">Volver a las opciones</button>
+        </div>
+
+        <div data-rec-step="4" class="hidden">
+          <p class="panel-sub">Escribe el código de recuperación que el administrador te indicó. Solo el administrador puede ver ese código.</p>
+          <label>
+            Código de recuperación
+            <input type="text" id="recCodigo" required placeholder="Ej: 8K2MZP4Q" />
+          </label>
+          <p class="form-msg" id="recCodigoMsg"></p>
+          <button type="button" id="recUsarCodigo" class="btn btn--primary btn--full">Verificar código</button>
+          <button type="button" id="recVolver3" class="btn btn--ghost-dark btn--full">Volver a las opciones</button>
+        </div>
+
+        <div data-rec-step="5" class="hidden">
+          <p class="panel-sub" id="recNuevaInfo">Verificado correctamente. Define tu nueva contraseña (mínimo 4 caracteres).</p>
+          <label>
+            Nueva contraseña
+            <span class="pass-wrap">
+              <input type="password" id="recNueva" required minlength="4" placeholder="Mínimo 4 caracteres" />
+              <button type="button" class="pass-toggle" data-pass-toggle="recNueva" title="Mostrar / ocultar contraseña">
+                <span class="material-symbols-outlined">visibility</span>
+              </button>
+            </span>
+          </label>
+          <label>
+            Confirmar contraseña
+            <span class="pass-wrap">
+              <input type="password" id="recNuevaConfirmar" required placeholder="Repite la contraseña" />
+              <button type="button" class="pass-toggle" data-pass-toggle="recNuevaConfirmar" title="Mostrar / ocultar contraseña">
+                <span class="material-symbols-outlined">visibility</span>
+              </button>
+            </span>
+          </label>
+          <p class="form-msg" id="recNuevaMsg"></p>
+          <button type="button" id="recGuardarNueva" class="btn btn--primary btn--full">Guardar contraseña</button>
+        </div>
+      </form>
+
+      <form id="registerForm" class="login-form hidden">
+        <label>
+          Nombre del doctor / usuario
+          <input type="text" id="regName" required placeholder="Dr. Nombre Apellido" />
+        </label>
+        <label>
+          Correo electrónico
+          <input type="email" id="regEmail" required placeholder="doctor@clinica.com" />
+        </label>
+        <label>
+            Contraseña
+            <span class="pass-wrap">
+              <input type="password" id="regPassword" required minlength="4" placeholder="Mínimo 4 caracteres" />
+              <button type="button" class="pass-toggle" data-pass-toggle="regPassword" title="Mostrar / ocultar contraseña">
+                <span class="material-symbols-outlined">visibility</span>
+              </button>
+            </span>
+          </label>
+        <p class="panel-sub">Preguntas de seguridad — las necesitarás para recuperar tu contraseña. El sistema elige 3 al azar.</p>
+        <div class="reg-preguntas">
+          <label>Pregunta 1
+            <select id="regPreg1" required></select>
+          </label>
+          <label>Respuesta 1
+            <input type="text" id="regResp1" required placeholder="Tu respuesta" />
+          </label>
+          <label>Pregunta 2
+            <select id="regPreg2" required></select>
+          </label>
+          <label>Respuesta 2
+            <input type="text" id="regResp2" required placeholder="Tu respuesta" />
+          </label>
+          <label>Pregunta 3
+            <select id="regPreg3" required></select>
+          </label>
+          <label>Respuesta 3
+            <input type="text" id="regResp3" required placeholder="Tu respuesta" />
+          </label>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">Registrar usuario</button>
+        <p class="form-msg" id="regMsg"></p>
+      </form>
+
+      <p class="login-politicas">
+        <a href="politicas.html">
+          <span class="material-symbols-outlined">privacy_tip</span>
+          Política de Privacidad y Tratamiento de Datos
+        </a>
+      </p>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
