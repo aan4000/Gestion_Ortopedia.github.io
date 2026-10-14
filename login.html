@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Sistema Ortopedia</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body class="login-body">
+
+  <main class="login-wrap">
+    <button class="icon-btn icon-btn--fixed" data-toggle-dark title="Modo claro / oscuro">
+      <span class="material-symbols-outlined">dark_mode</span>
+    </button>
+    <div class="login-card">
+      <div class="login-brand">
+        <span class="material-symbols-outlined">orthopedics</span>
+        <h1>Sistema Ortopedia</h1>
+        <p>Gestión de pacientes, citas y registros</p>
+      </div>
+
+      <div class="login-tabs">
+        <button class="tab active" id="tabLogin">Iniciar sesión</button>
+        <button class="tab" id="tabRegister">Crear usuario</button>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <label>
+          Correo electrónico
+          <input type="email" id="loginEmail" required placeholder="doctor@clinica.com" />
+        </label>
+        <label>
+          Contraseña
+          <input type="password" id="loginPassword" required placeholder="••••••••" />
+        </label>
+        <button type="submit" class="btn btn--primary btn--full">Entrar</button>
+        <p class="login-recover-toggle">
+          <button type="button" id="btnMostrarRecuperar">¿Olvidaste tu contraseña?</button>
+        </p>
+        <p class="form-msg" id="loginMsg"></p>
+      </form>
+
+      <form id="recoverForm" class="login-form hidden">
+        <p class="panel-sub">Escribe el correo de tu cuenta y te mostraremos tu contraseña (esta aplicación funciona de forma local y no envía correos).</p>
+        <label>
+          Correo de tu cuenta
+          <input type="email" id="recoverEmail" required placeholder="doctor@clinica.com" />
+        </label>
+        <button type="submit" class="btn btn--primary btn--full">Recuperar contraseña</button>
+        <p class="form-msg" id="recoverMsg"></p>
+        <button type="button" id="btnVolverLogin" class="btn btn--ghost-dark btn--full">Volver a iniciar sesión</button>
+      </form>
+
+      <form id="registerForm" class="login-form hidden">
+        <label>
+          Nombre del doctor / usuario
+          <input type="text" id="regName" required placeholder="Dr. Nombre Apellido" />
+        </label>
+        <label>
+          Correo electrónico
+          <input type="email" id="regEmail" required placeholder="doctor@clinica.com" />
+        </label>
+        <label>
+          Contraseña
+          <input type="password" id="regPassword" required minlength="4" placeholder="Mínimo 4 caracteres" />
+        </label>
+        <button type="submit" class="btn btn--primary btn--full">Registrar usuario</button>
+        <p class="form-msg" id="regMsg"></p>
+      </form>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
