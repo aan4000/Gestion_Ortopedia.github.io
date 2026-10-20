@@ -9743,6 +9743,27 @@ renderFacturaItems();
   initEvaluacionFisica();
   initEvaluacionMedica();
   registrarAccionesRegistroActual();
+
+  // Mejor UX: accesos rápidos del dashboard sin paciente seleccionado
+  document.querySelectorAll(".dash-quick .quick-action[data-ra]").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      if (raPacienteId()) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      if (typeof mostrarSeccion === "function") {
+        mostrarSeccion("pacientes");
+      }
+      setTimeout(() => {
+        const mp = document.getElementById("modalPacientes");
+        if (mp && mp.classList) mp.classList.add("open");
+        const nuevo = document.getElementById("btnNuevoPaciente");
+        if (nuevo) {
+          try { nuevo.click(); } catch (err) {}
+        }
+      }, 120);
+      alert("Primero selecciona o crea un paciente.");
+    }, true);
+  });
   registrarAccionResetSistema();
   registrarAccionesEstudios();
   registrarAccionesImagenes();
