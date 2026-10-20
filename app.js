@@ -9750,16 +9750,18 @@ renderFacturaItems();
       if (raPacienteId()) return;
       e.preventDefault();
       e.stopImmediatePropagation();
-      if (typeof mostrarSeccion === "function") {
-        mostrarSeccion("pacientes");
+      const mapping = {
+        cita: "citas",
+        eval: "evaluacion-fisica",
+        registro: "registros",
+        receta: "recetas",
+        documento: "documentos",
+        factura: "facturacion"
+      };
+      const sec = mapping[btn.dataset.ra];
+      if (sec && typeof mostrarSeccion === "function") {
+        mostrarSeccion(sec);
       }
-      setTimeout(() => {
-        const mp = document.getElementById("modalPacientes");
-        if (mp && mp.classList) mp.classList.add("open");
-        const nuevo = document.getElementById("btnNuevoPaciente");
-        if (nuevo) { try { nuevo.click(); } catch (err) {} }
-      }, 120);
-      alert("Primero selecciona o crea un paciente.");
     }, true);
   });
 
