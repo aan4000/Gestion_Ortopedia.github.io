@@ -11192,19 +11192,7 @@ body.dark #seccion-pacientes .list-item .item-sub {
   color: rgba(203, 213, 225, 0.72);
 }
 
-/* En pantallas angostas, acciones pasan debajo pero nombre/codigo siguen juntos */
-@media (max-width: 560px) {
-  #seccion-pacientes .list-item {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-      "main"
-      "actions"
-      "sub";
-  }
-  #seccion-pacientes .list-item .item-actions {
-    margin-top: 0.1em;
-  }
-}
+/* El "resto" de informacion (edad/sexo/etc) queda debajo siempre */
 
 /* ============================================================
    TARJETAS DE LISTA (todas las secciones) - info principal EN PARALELO
@@ -11273,19 +11261,258 @@ body.dark .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-r
   color: rgba(203, 213, 225, 0.72);
 }
 
-@media (max-width: 620px) {
-  .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) {
-    grid-template-columns: minmax(0, 1fr);
+/* ============================================================
+   MOBILE: nombres + fechas en UNA LINEA corrida (flex horizontal),
+   acciones a la derecha; el resto del texto debajo en bloque normal.
+   ============================================================ */
+@media (max-width: 720px) {
+  .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row),
+  #seccion-pacientes .list-item {
+    grid-template-columns: minmax(0, 1fr) auto;
     grid-template-areas:
-      "main"
-      "actions"
-      "sub";
+      "main actions"
+      "sub  sub";
+    align-items: center;
+    column-gap: 0.6em;
+    padding: 0.85em 0.95em;
   }
-  .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-actions {
-    margin-top: 0.1em;
+
+  /* La linea principal nunca se apila en columna: corre en horizontal */
+  .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main:not(.ed-fact-fill):not(.ed-fact-price),
+  #seccion-pacientes .list-item .item-main {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.4em 0.5em;
+    padding-bottom: 2px;
+  }
+
+  .seccion:not(#seccion-inicio) .list-item .item-main::-webkit-scrollbar,
+  #seccion-pacientes .list-item .item-main::-webkit-scrollbar {
+    display: none;
+  }
+
+  .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main > *,
+  #seccion-pacientes .list-item .item-main > * {
+    flex: 0 0 auto;
+  }
+
+  .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main strong,
+  #seccion-pacientes .list-item .item-main strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 60vw;
+  }
+
+  .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-actions,
+  #seccion-pacientes .list-item .item-actions {
+    margin-top: 0;
+    flex-wrap: nowrap;
+    gap: 0.3em;
+  }
+
+  .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-sub,
+  #seccion-pacientes .list-item .item-sub {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  /* Historial con silueta en mobile: silueta mas compacta */
+  .list-item.hist-item {
+    gap: 0.7em;
+    padding: 0.85em 0.95em;
+  }
+  .list-item.hist-item .hist-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+  }
+  .list-item.hist-item .item-main {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .list-item.hist-item .item-main::-webkit-scrollbar {
+    display: none;
+  }
+  .list-item.hist-item .item-main > * {
+    flex: 0 0 auto;
+  }
+  .list-item.hist-item .item-actions {
     flex-wrap: wrap;
+    justify-content: flex-end;
   }
 }
+
+/* ============================================================
+   MOBILE UX/UI - Ajuste integral de todas las secciones
+   Screens <= 720px (y <= 480px afinado)
+   ============================================================ */
+
+/* Topbar: titulo, chip y acciones se acomodan sin desbordar */
+@media (max-width: 720px) {
+  .topbar {
+    gap: 0.5em;
+    padding: 0.7rem 0.85rem;
+    border-radius: var(--r-md, 14px);
+  }
+  .topbar h1 {
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+    flex: 1 1 100%;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .topbar-right {
+    gap: 0.5em;
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+  .topbar-ra-chip {
+    order: 3;
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+  .topbar-date {
+    font-size: 0.8rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* Encabezados de seccion: titulo y subtitulo apilados con aire */
+@media (max-width: 720px) {
+  .seccion:not(#seccion-inicio) h1,
+  .seccion:not(#seccion-inicio) > .panel:first-of-type h2:first-child,
+  .panel h2 {
+    font-size: 1.12rem;
+    line-height: 1.25;
+  }
+
+  .seccion:not(#seccion-inicio) .panel-sub,
+  .panel-sub {
+    font-size: 0.85rem;
+  }
+}
+
+/* Toolbars: se envuelven y el boton ocupa ancho comodo */
+@media (max-width: 720px) {
+  .section-toolbar,
+  .cal-toolbar,
+  .img-toolbar,
+  .ante-toolbar {
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+  .seccion:not(#seccion-inicio) > .section-toolbar {
+    justify-content: stretch;
+  }
+  .seccion:not(#seccion-inicio) > .section-toolbar .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+/* Formularios: una sola columna y controles a lo ancho */
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .form-full {
+    grid-column: auto;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* evita zoom automatico en iOS */
+  }
+  .btn {
+    padding: 0.6em 1em;
+  }
+}
+
+/* Tablas: scroll horizontal comodo, sin romper el layout */
+@media (max-width: 720px) {
+  .table-wrap,
+  .tabla-wrap,
+  .pros-tabla-wrap,
+  .glo-tabla-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--r-md, 14px);
+  }
+  .table-wrap > table,
+  .tabla-wrap > table {
+    min-width: 560px;
+  }
+  .table-wrap th,
+  .table-wrap td,
+  .tabla-wrap th,
+  .tabla-wrap td {
+    padding: 0.6em 0.7em;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+}
+
+/* Modales: casi pantalla completa y contenido con scroll */
+@media (max-width: 720px) {
+  .modal-card,
+  .modal-card--ancho,
+  .modal {
+    width: 96vw !important;
+    max-width: 96vw !important;
+    max-height: 92vh;
+    border-radius: var(--r-lg, 16px);
+  }
+  .modal-head {
+    padding: 0.9em 1.1em;
+  }
+  .modal-head h2 {
+    font-size: 1.05rem;
+  }
+  .modal-actions {
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+  .modal-actions .btn {
+    flex: 1 1 auto;
+  }
+}
+
+/* Botones de accion en tarjetas: toque minimo comodo */
+@media (max-width: 720px) {
+  .item-actions .btn-icon {
+    min-width: 34px;
+    min-height: 34px;
+  }
+  .tag {
+    font-size: 0.72rem;
+    padding: 0.22em 0.6em;
+  }
+}
+
+/* Muy angosto: solo un dato por linea si no cabe */
+@media (max-width: 480px) {
+  .app-main {
+    padding-left: 4.5rem;
+  }
+  .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main strong,
+  #seccion-pacientes .list-item .item-main strong {
+    max-width: 52vw;
+  }
+  .stat-card strong {
+    font-size: 1.15rem;
+  }
+}
+
 
 
 
