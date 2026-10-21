@@ -9527,3 +9527,473 @@ body.dark .seccion:not(#seccion-inicio) .modal-head {
     transform: none;
   }
 }
+
+/* ============================================================
+   EVALUACION FISICA v5 - Panel clinico, pruebas diagnosticas,
+   botones y mapa de columna vertebral
+   Scope: #seccion-evaluacion-fisica, #modalColumna, #modalEvalExtremidad
+   No afecta el dashboard ni la logica (solo presentacion).
+   ============================================================ */
+
+/* --- Estructura general del panel de evaluacion --- */
+#seccion-evaluacion-fisica .eval-layout {
+  align-items: start;
+  gap: 1.5rem;
+}
+
+#seccion-evaluacion-fisica .eval-panel {
+  background: var(--surface-1, #fff);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-xl);
+  padding: 1.6rem 1.5rem 1.3rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 10px 36px rgba(15, 23, 42, 0.05);
+}
+
+body.dark #seccion-evaluacion-fisica .eval-panel {
+  background: #131b2e;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* --- Subtitulos h3 como separadores clinicos con acento --- */
+#seccion-evaluacion-fisica .eval-panel h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-terracotta);
+  margin: 1.4em 0 0.7em;
+  padding-bottom: 0.45em;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+#seccion-evaluacion-fisica .eval-panel h3:first-child {
+  margin-top: 0;
+}
+
+#seccion-evaluacion-fisica .eval-panel h3::before {
+  content: "";
+  width: 3px;
+  height: 1em;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--color-terracotta), var(--color-terracotta-light));
+}
+
+/* --- Paciente actual: tarjeta destacada --- */
+#seccion-evaluacion-fisica .eval-paciente-actual {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.7em 0.9em;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-soft);
+  background: var(--surface-0, #f6f8fb);
+  color: var(--text-strong);
+  margin: 0;
+}
+
+body.dark #seccion-evaluacion-fisica .eval-paciente-actual {
+  background: rgba(255, 255, 255, 0.04);
+  color: #e8ecf5;
+}
+
+/* --- Botones del panel: altura y tipografia consistentes --- */
+#seccion-evaluacion-fisica .eval-panel .btn,
+#modalColumna .btn,
+#modalEvalExtremidad .btn {
+  min-height: 2.4em;
+  padding: 0.5em 1em;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  line-height: 1.15;
+  transition: transform 0.15s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+#seccion-evaluacion-fisica .eval-panel .btn:hover,
+#modalColumna .btn:hover,
+#modalEvalExtremidad .btn:hover {
+  transform: translateY(-1px);
+}
+
+#seccion-evaluacion-fisica .eval-panel .btn:active,
+#modalColumna .btn:active,
+#modalEvalExtremidad .btn:active {
+  transform: translateY(0);
+}
+
+#seccion-evaluacion-fisica .eval-panel .btn .material-symbols-outlined,
+#modalColumna .btn .material-symbols-outlined,
+#modalEvalExtremidad .btn .material-symbols-outlined {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* Botones de sexo: par segmentado mas claro */
+#seccion-evaluacion-fisica .eval-sexo-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.5rem;
+}
+
+#seccion-evaluacion-fisica .btn.eval-sexo,
+#seccion-evaluacion-fisica .eval-sexo-auto {
+  min-width: 0;
+  width: 100%;
+}
+
+#seccion-evaluacion-fisica .eval-sexo-btns .eval-sexo.active {
+  background: linear-gradient(135deg, var(--color-navy-dark), var(--color-navy-soft));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.22);
+}
+
+/* Boton "Auto" mas discreto pero legible */
+#seccion-evaluacion-fisica .eval-sexo-auto {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+#seccion-evaluacion-fisica .eval-sexo-auto.active {
+  color: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+}
+
+/* --- Chips de tipo de lesion: mas grandes y legibles --- */
+#seccion-evaluacion-fisica .lesion-chip,
+#modalColumna .lesion-chip,
+#modalEvalExtremidad .lesion-chip {
+  font-size: 0.86rem;
+  padding: 0.5rem 0.85rem;
+  min-height: 2.2em;
+}
+
+#seccion-evaluacion-fisica .lesion-chip.active,
+#modalColumna .lesion-chip.active,
+#modalEvalExtremidad .lesion-chip.active {
+  box-shadow: inset 0 0 0 1.5px var(--chip, #999), 0 3px 10px color-mix(in srgb, var(--chip, #999) 30%, transparent);
+}
+
+/* ============ PRUEBAS DIAGNOSTICAS (bloque clave) ============ */
+#seccion-evaluacion-fisica .eval-pruebas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 0.6rem;
+}
+
+/* Tarjeta contenedora de los signos de Celso */
+#seccion-evaluacion-fisica .eval-prueba-bloque {
+  gap: 0.7rem;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: var(--surface-0, #f6f8fb);
+}
+
+body.dark #seccion-evaluacion-fisica .eval-prueba-bloque {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+#seccion-evaluacion-fisica .eval-prueba-titulo {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-strong);
+  letter-spacing: -0.01em;
+}
+
+/* Signos de Celso como chips de toggle (label + checkbox oculto) */
+#seccion-evaluacion-fisica .eval-celso {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+#seccion-evaluacion-fisica .eval-celso .ante-chk {
+  min-height: 2.3em;
+  padding: 0.45em 0.9em;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: var(--surface-1, #fff);
+}
+
+#seccion-evaluacion-fisica .eval-celso .ante-chk input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#seccion-evaluacion-fisica .eval-celso .ante-chk:has(input:checked) {
+  background: linear-gradient(135deg, var(--color-terracotta), var(--color-terracotta-light));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.28);
+}
+
+/* Campo generico de prueba: etiqueta legible + control */
+#seccion-evaluacion-fisica .eval-prueba-campo {
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+#seccion-evaluacion-fisica .eval-prueba-campo select,
+#seccion-evaluacion-fisica .eval-panel textarea,
+#seccion-evaluacion-fisica .eval-panel select,
+#seccion-evaluacion-fisica .eval-panel input[type="text"],
+#seccion-evaluacion-fisica .eval-panel input[type="number"] {
+  font-size: 0.92rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 11px;
+  border: 1px solid rgba(18, 32, 60, 0.18);
+}
+
+body.dark #seccion-evaluacion-fisica .eval-prueba-campo select,
+body.dark #seccion-evaluacion-fisica .eval-panel textarea,
+body.dark #seccion-evaluacion-fisica .eval-panel select,
+body.dark #seccion-evaluacion-fisica .eval-panel input {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+#seccion-evaluacion-fisica .eval-prueba-campo select:focus,
+#seccion-evaluacion-fisica .eval-panel textarea:focus,
+#seccion-evaluacion-fisica .eval-panel select:focus,
+#seccion-evaluacion-fisica .eval-panel input:focus {
+  border-color: var(--color-terracotta);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.22);
+}
+
+/* Escala EVA: pista y pulgar visibles + valor como badge */
+#seccion-evaluacion-fisica .eval-prueba-campo output {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2em;
+  padding: 0.05em 0.55em;
+  margin-left: 0.35em;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--color-terracotta), var(--color-terracotta-light));
+  color: #fff;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+#seccion-evaluacion-fisica #evalEVA {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-terracotta) 0%, var(--color-terracotta-light) 100%);
+  outline: none;
+  margin-top: 0.15rem;
+}
+
+#seccion-evaluacion-fisica #evalEVA::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--color-terracotta);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+#seccion-evaluacion-fisica #evalEVA::-webkit-slider-thumb:hover {
+  transform: scale(1.08);
+}
+
+#seccion-evaluacion-fisica #evalEVA::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--color-terracotta);
+  cursor: pointer;
+}
+
+/* Escala EVA: colorea la pista segun valor (apoyo en data-attr opcional, fallback ok) */
+#seccion-evaluacion-fisica #evalEVA::-moz-range-track {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-terracotta) 0%, var(--color-terracotta-light) 100%);
+}
+
+/* --- Acciones finales (guardar / limpiar) --- */
+#seccion-evaluacion-fisica .eval-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.3rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+#seccion-evaluacion-fisica .eval-acciones .btn--primary {
+  flex: 1 1 auto;
+}
+
+/* --- Partes afectadas: filas mas legibles --- */
+#seccion-evaluacion-fisica .eval-parte {
+  padding: 0.55rem 0.7rem;
+  border-radius: 11px;
+  gap: 0.6rem;
+}
+
+#seccion-evaluacion-fisica .eval-parte-nombre {
+  font-size: 0.9rem;
+}
+
+#seccion-evaluacion-fisica .eval-parte-nombre strong {
+  font-size: 0.9rem;
+}
+
+/* ============ MAPA DE COLUMNA VERTEBRAL ============ */
+#modalColumna .modal-card--ancho {
+  max-width: 720px;
+}
+
+#modalColumna .eval-columna-hint {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 0.2rem 0 1rem;
+}
+
+#modalColumna .eval-columna-tipos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: var(--surface-0, #f6f8fb);
+  margin: 0 0 1rem;
+}
+
+body.dark #modalColumna .eval-columna-tipos {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+#modalColumna .eval-columna-tipos .eval-prueba-titulo {
+  width: 100%;
+  margin-bottom: 0.2rem;
+}
+
+#modalColumna .eval-columna-wrap {
+  background: linear-gradient(180deg, #fbfaf6 0%, #f1ede2 100%);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  padding: 0.9rem;
+}
+
+body.dark #modalColumna .eval-columna-wrap {
+  background: linear-gradient(180deg, #1b2233 0%, #151b28 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Region de la columna: hover y foco mas evidentes */
+#modalColumna .eval-columna {
+  transition: fill 0.18s ease, filter 0.18s ease;
+}
+
+#modalColumna .eval-columna:hover {
+  fill: #f4ecd4;
+  filter: drop-shadow(0 2px 6px rgba(184, 134, 11, 0.35));
+}
+
+/* Badges (letras A-E): tamano y contraste reforzados */
+#modalColumna .eval-columna-badge circle {
+  transition: fill 0.18s ease, stroke 0.18s ease, transform 0.18s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+#modalColumna .eval-columna-badge text {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+#modalColumna .eval-columna-badge:hover circle {
+  transform: scale(1.08);
+}
+
+#modalColumna .eval-columna-badge.marcado circle {
+  filter: drop-shadow(0 2px 6px rgba(16, 24, 47, 0.35));
+}
+
+/* Leyenda de regiones marcadas */
+#modalColumna .eval-columna-leyenda {
+  gap: 0.5rem 0.7rem;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+#modalColumna .eval-leyenda-item {
+  font-size: 0.84rem;
+  padding: 0.35rem 0.8rem;
+}
+
+#modalColumna .eval-columna-leyenda .empty {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ============ MODAL EXTREMIDAD (coherencia visual) ============ */
+#modalEvalExtremidad .modal-card--extrem {
+  border-radius: var(--r-xl);
+}
+
+#modalEvalExtremidad .eval-extrem-panel h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin: 1em 0 0.6em;
+}
+
+#modalEvalExtremidad .eval-tipos .eval-prueba-titulo {
+  width: 100%;
+  margin-bottom: 0.2rem;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 720px) {
+  #seccion-evaluacion-fisica .eval-sexo-btns {
+    grid-template-columns: 1fr 1fr;
+  }
+  #seccion-evaluacion-fisica .eval-sexo-auto {
+    grid-column: 1 / -1;
+  }
+  #seccion-evaluacion-fisica .eval-panel .btn {
+    font-size: 0.88rem;
+  }
+  #modalColumna .eval-columna-badge text {
+    font-size: 15px;
+  }
+}
+
+/* ============ Reduced motion ============ */
+@media (prefers-reduced-motion: reduce) {
+  #seccion-evaluacion-fisica .eval-panel .btn,
+  #seccion-evaluacion-fisica #evalEVA::-webkit-slider-thumb,
+  #modalColumna .eval-columna-badge circle {
+    transition: none !important;
+  }
+  #seccion-evaluacion-fisica .eval-panel .btn:hover,
+  #modalColumna .eval-columna-badge:hover circle {
+    transform: none;
+  }
+}
