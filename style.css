@@ -9997,3 +9997,273 @@ body.dark #modalColumna .eval-columna-wrap {
     transform: none;
   }
 }
+
+/* ============================================================
+   EVALUACION FISICA v5.1 - Visibilidad en DARK MODE
+   Refuerza contraste de textos, chips, selectores y mapa de columna.
+   Scope: #seccion-evaluacion-fisica, #modalColumna, #modalEvalExtremidad
+   ============================================================ */
+
+/* --- Panel: fondo y borde con buen contraste --- */
+body.dark #seccion-evaluacion-fisica .eval-panel {
+  background: #16203a;
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #eef2fb;
+}
+
+body.dark #seccion-evaluacion-fisica .eval-svg-wrap {
+  background: #16203a;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* --- Subtitulos h3 y separadores --- */
+body.dark #seccion-evaluacion-fisica .eval-panel h3 {
+  color: #5eead4;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark #seccion-evaluacion-fisica .eval-panel h3::before {
+  background: linear-gradient(180deg, #2dd4bf, #5eead4);
+}
+
+/* --- Textos descriptivos / pistas (antes casi invisibles) --- */
+body.dark #seccion-evaluacion-fisica .eval-columna-pista,
+body.dark #seccion-evaluacion-fisica .eval-columna-hint,
+body.dark #seccion-evaluacion-fisica .eval-svg-caption,
+body.dark #seccion-evaluacion-fisica .eval-auto-msg,
+body.dark #seccion-evaluacion-fisica .eval-panel p {
+  color: rgba(226, 232, 240, 0.82);
+}
+
+body.dark #seccion-evaluacion-fisica .eval-svg-caption {
+  opacity: 1;
+}
+
+/* --- Paciente actual --- */
+body.dark #seccion-evaluacion-fisica .eval-paciente-actual {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #eef2fb;
+}
+
+/* --- Titulos y etiquetas de campos / pruebas (var(--text-strong) es oscuro) --- */
+body.dark #seccion-evaluacion-fisica .eval-prueba-titulo,
+body.dark #seccion-evaluacion-fisica .eval-prueba-campo,
+body.dark #seccion-evaluacion-fisica .eval-prueba-campo > label,
+body.dark #modalColumna .eval-prueba-titulo,
+body.dark #modalEvalExtremidad .eval-prueba-titulo {
+  color: #eef2fb;
+}
+
+/* --- Tarjeta de pruebas / tipos en dark --- */
+body.dark #seccion-evaluacion-fisica .eval-prueba-bloque {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark #modalColumna .eval-columna-tipos {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* --- Campos de formulario del panel (select / input / textarea) --- */
+body.dark #seccion-evaluacion-fisica .eval-prueba-campo select,
+body.dark #seccion-evaluacion-fisica .eval-panel select,
+body.dark #seccion-evaluacion-fisica .eval-panel input,
+body.dark #seccion-evaluacion-fisica .eval-panel textarea {
+  background: #0f1830;
+  border-color: rgba(255, 255, 255, 0.24);
+  color: #f1f5fb;
+}
+
+body.dark #seccion-evaluacion-fisica .eval-panel select option {
+  background: #0f1830;
+  color: #f1f5fb;
+}
+
+body.dark #seccion-evaluacion-fisica .eval-panel ::placeholder,
+body.dark #seccion-evaluacion-fisica .eval-panel textarea::placeholder,
+body.dark #seccion-evaluacion-fisica .eval-panel input::placeholder {
+  color: rgba(226, 232, 240, 0.5);
+}
+
+body.dark #seccion-evaluacion-fisica .eval-prueba-campo select:focus,
+body.dark #seccion-evaluacion-fisica .eval-panel select:focus,
+body.dark #seccion-evaluacion-fisica .eval-panel input:focus,
+body.dark #seccion-evaluacion-fisica .eval-panel textarea:focus {
+  border-color: #2dd4bf;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.28);
+}
+
+/* --- Signos de Celso (chips toggle) en dark --- */
+body.dark #seccion-evaluacion-fisica .eval-celso .ante-chk {
+  background: #0f1830;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #e6ecf7;
+}
+
+body.dark #seccion-evaluacion-fisica .eval-celso .ante-chk:hover {
+  border-color: #2dd4bf;
+  background: rgba(45, 212, 191, 0.08);
+}
+
+body.dark #seccion-evaluacion-fisica .eval-celso .ante-chk:has(input:checked) {
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* --- Chips de lesion en dark: borde legible --- */
+body.dark #seccion-evaluacion-fisica .lesion-chip,
+body.dark #modalColumna .lesion-chip,
+body.dark #modalEvalExtremidad .lesion-chip {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #e6ecf7;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+body.dark #seccion-evaluacion-fisica .lesion-chip.active,
+body.dark #modalColumna .lesion-chip.active,
+body.dark #modalEvalExtremidad .lesion-chip.active {
+  color: #fff;
+}
+
+/* --- Botones del panel en dark --- */
+body.dark #seccion-evaluacion-fisica .eval-panel .btn,
+body.dark #modalColumna .btn,
+body.dark #modalEvalExtremidad .btn {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #eef2fb;
+}
+
+body.dark #seccion-evaluacion-fisica .btn.eval-sexo.active,
+body.dark #seccion-evaluacion-fisica .eval-panel .btn--primary {
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  border-color: transparent;
+  color: #fff;
+}
+
+body.dark #seccion-evaluacion-fisica .eval-sexo-auto {
+  color: rgba(226, 232, 240, 0.75);
+}
+
+body.dark #seccion-evaluacion-fisica .eval-sexo-auto.active {
+  color: #5eead4;
+  border-color: #2dd4bf;
+}
+
+/* --- Partes afectadas: filas legibles --- */
+body.dark #seccion-evaluacion-fisica .eval-parte {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #eef2fb;
+}
+
+body.dark #seccion-evaluacion-fisica .eval-parte-nombre,
+body.dark #seccion-evaluacion-fisica .eval-parte-nombre strong {
+  color: #eef2fb;
+}
+
+/* --- Nota: textarea --- */
+body.dark #seccion-evaluacion-fisica #evalNota {
+  background: #0f1830;
+  color: #f1f5fb;
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+/* --- Acciones: separador --- */
+body.dark #seccion-evaluacion-fisica .eval-acciones {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============ MAPA DE COLUMNA VERTEBRAL (dark) ============ */
+
+/* Fondo del lienzo */
+body.dark #modalColumna .eval-columna-wrap {
+  background: linear-gradient(180deg, #1d2740 0%, #161d30 100%);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Eje punteado mas visible */
+body.dark #modalColumna .eval-columna-eje {
+  stroke: rgba(180, 190, 215, 0.5);
+}
+
+/* Regiones: relleno claro sobre fondo oscuro = buen contraste */
+body.dark #modalColumna .eval-columna {
+  fill: #e9cfae;
+  stroke: #6b768f;
+}
+
+body.dark #modalColumna .eval-columna:hover {
+  fill: #f7e4c4;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+/* Punto central de cada region */
+body.dark #modalColumna .eval-columna-punto {
+  fill: #f1f5fb;
+  stroke: #0a1223;
+}
+
+/* Badges A-E: contraste alto y estado marcado distinguible */
+body.dark #modalColumna .eval-columna-badge circle {
+  fill: #0f1830;
+  stroke: #7c8aa8;
+}
+
+body.dark #modalColumna .eval-columna-badge text {
+  fill: #eef2fb;
+}
+
+body.dark #modalColumna .eval-columna-badge.marcado circle {
+  fill: #2dd4bf;
+  stroke: #99f6e4;
+}
+
+body.dark #modalColumna .eval-columna-badge.marcado text {
+  fill: #062c27;
+}
+
+body.dark #modalColumna .eval-columna-badge:hover circle {
+  stroke: #5eead4;
+}
+
+/* Nombres de region: texto claro con halo oscuro */
+body.dark #modalColumna .eval-zone-label {
+  fill: #f8fafc;
+  stroke: rgba(6, 12, 24, 0.95);
+}
+
+body.dark #modalColumna .eval-zone-label:hover {
+  fill: #5eead4;
+}
+
+/* Leyenda de regiones marcadas */
+body.dark #modalColumna .eval-columna-leyenda {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark #modalColumna .eval-leyenda-item {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #eef2fb;
+}
+
+body.dark #modalColumna .eval-columna-leyenda .empty {
+  color: rgba(226, 232, 240, 0.72);
+}
+
+/* ============ VISOR / SILUETA (dark) ============ */
+body.dark #seccion-evaluacion-fisica .eval-vista-grande {
+  background: transparent;
+}
+
+body.dark #modalEvalExtremidad .eval-extrem-panel h4 {
+  color: #eef2fb;
+}
+
+/* Tarjetas de la galeria de posiciones (flip cards) */
+body.dark #seccion-evaluacion-fisica .eval-flip-label {
+  color: #eef2fb;
+}
