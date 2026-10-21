@@ -4756,7 +4756,7 @@ function renderColumna() {
   ).join("");
   cont.innerHTML =
     `<div class="eval-columna-stage">` +
-      `<img class="eval-columna-foto" src="Columna.jfif" alt="Columna vertebral" />` +
+      `<img class="eval-columna-foto" src="Columna.png" alt="Columna vertebral" />` +
       `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="eval-columna-svg">` +
         `${hits}${callouts}${dots}${badges}${nombres}</svg>` +
     `</div>`;
