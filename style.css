@@ -11049,3 +11049,84 @@ body.dark .seccion:not(#seccion-inicio) > .section-toolbar {
     transition: none !important;
   }
 }
+
+/* ============================================================
+   MAPA DE COLUMNA con imagen real (Columna.jfif)
+   La foto es la base visual; el SVG de zonas clicables se
+   superpone exactamente sobre ella.
+   ============================================================ */
+.eval-columna-stage {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  aspect-ratio: 500 / 545;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f4f1ea;
+}
+
+.eval-columna-foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.eval-columna-stage .eval-columna-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Zonas clicables invisibles sobre la foto */
+#modalColumna .eval-columna-hit,
+#seccion-evaluacion-fisica .eval-columna-hit,
+.eval-columna-hit {
+  fill: transparent;
+  stroke: none;
+}
+
+#modalColumna .eval-columna-hit:hover,
+#seccion-evaluacion-fisica .eval-columna-hit:hover,
+.eval-columna-hit:hover {
+  fill: rgba(15, 118, 110, 0.18);
+}
+
+#modalColumna .eval-columna-hit.marcado,
+#seccion-evaluacion-fisica .eval-columna-hit.marcado,
+.eval-columna-hit.marcado {
+  fill: rgba(15, 118, 110, 0.08);
+}
+
+body.dark .eval-columna-stage {
+  background: #151b28;
+}
+
+body.dark #modalColumna .eval-columna-hit,
+body.dark #seccion-evaluacion-fisica .eval-columna-hit,
+body.dark .eval-columna-hit {
+  fill: transparent;
+  stroke: none;
+}
+
+body.dark #modalColumna .eval-columna-hit:hover,
+body.dark #seccion-evaluacion-fisica .eval-columna-hit:hover,
+body.dark .eval-columna-hit:hover {
+  fill: rgba(20, 184, 166, 0.22);
+  filter: none;
+}
+
+body.dark #modalColumna .eval-columna-hit.marcado,
+body.dark #seccion-evaluacion-fisica .eval-columna-hit.marcado,
+body.dark .eval-columna-hit.marcado {
+  fill: rgba(20, 184, 166, 0.1);
+}
+

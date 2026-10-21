@@ -4734,10 +4734,10 @@ function renderColumna() {
   const cont = document.getElementById("columnaSvg");
   if (!cont) return;
   const W = 500, H = 545, cx = 150, bx = 290, rBadge = 15;
-  let shapes = "", callouts = "", dots = "", badges = "";
+  let hits = "", callouts = "", dots = "", badges = "";
   COLUMNA_REGIONES.forEach(r => {
     const cuerpo = r.verts ? columnaVertShape(r.verts) : `<path d="${r.d}"/>`;
-    shapes += `<g class="eval-part eval-columna" data-part="${r.key}">${cuerpo}</g>`;
+    hits += `<g class="eval-part eval-columna eval-columna-hit" data-part="${r.key}">${cuerpo}</g>`;
     callouts += `<polyline class="eval-callout-line" points="${cx + 8},${r.cy} ${bx - rBadge},${r.cy}"/>`;
     const les = normLesiones(lesionesEval[r.key]);
     if (les.length) {
@@ -4756,9 +4756,12 @@ function renderColumna() {
   const nombres = COLUMNA_REGIONES.map(r =>
     `<text class="eval-zone-label eval-columna-nombre" data-part="${r.key}" x="318" y="${r.cy}" dominant-baseline="central" font-size="17">${NOMBRES_PARTES[r.key] || ""}</text>`
   ).join("");
-  cont.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" preserveAspectRatio="xMidYMid meet" class="eval-columna-svg">` +
-    `<line class="eval-columna-eje" x1="${cx}" y1="18" x2="${cx}" y2="${H - 28}"/>` +
-    `${shapes}${callouts}${dots}${badges}${nombres}</svg>`;
+  cont.innerHTML =
+    `<div class="eval-columna-stage">` +
+      `<img class="eval-columna-foto" src="Columna.jfif" alt="Columna vertebral" />` +
+      `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="eval-columna-svg">` +
+        `${hits}${callouts}${dots}${badges}${nombres}</svg>` +
+    `</div>`;
   cont.querySelectorAll("[data-part]").forEach(el => {
     el.addEventListener("click", () => { marcarParte(el.dataset.part); renderColumna(); });
   });
