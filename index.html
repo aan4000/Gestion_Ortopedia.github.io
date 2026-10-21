@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MedHistorical - Sistema Ortopedía</title>
   <link rel="icon" type="image/svg+xml" href="favicon_ortopedico.svg" />
-  <link rel="stylesheet" href="style.css?v=sistemav12" />
+  <link rel="stylesheet" href="style.css?v=sistemav13" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
@@ -1772,7 +1772,7 @@
         <div id="configOpciones" class="list"></div>
         <div class="form-grid" id="configLimites">
           <label>Límite de citas por día
-            <input type="number" id="cfgLimiteDía" min="1" />
+            <input type="number" id="cfgLimiteDia" min="1" />
           </label>
           <label>Límite de citas por semana
             <input type="number" id="cfgLimiteSemana" min="1" />
@@ -1843,8 +1843,8 @@
       </div>
       <p class="panel-sub" id="ccPacienteTexto">—</p>
       <form id="completarCitaForm" class="form-grid">
-        <label class="form-full">Díagnóstico
-          <textarea id="ccDíagnostico" rows="3" placeholder="Díagnóstico de la consulta"></textarea>
+        <label class="form-full">Diagnóstico
+          <textarea id="ccDiagnostico" rows="3" placeholder="Diagnóstico de la consulta"></textarea>
         </label>
         <label class="form-full">Tratamiento / Notas
           <textarea id="ccTratamiento" rows="3" placeholder="Tratamiento, indicaciones o notas"></textarea>
@@ -1897,7 +1897,7 @@
   <div class="modal-backdrop" id="modalVerEstudio">
     <div class="modal-card modal-card--ancho">
       <div class="modal-head">
-        <h2 id="estudioViewTítulo">Estudio médico</h2>
+        <h2 id="estudioViewTitulo">Estudio médico</h2>
         <button type="button" class="modal-close" data-cerrar="modalVerEstudio" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
@@ -1926,7 +1926,7 @@
       <form id="raRegistroForm" class="form-grid">
         <p class="form-full panel-sub" id="raRegistroPaciente">—</p>
         <label class="form-full">Título
-          <input type="text" id="raRegistroTítulo" required placeholder="Ej: Consulta inicial" />
+          <input type="text" id="raRegistroTitulo" required placeholder="Ej: Consulta inicial" />
         </label>
         <label class="form-full">Tipo
           <select id="raRegistroTipo">
@@ -2048,7 +2048,7 @@
         <button type="button" id="calPrev" class="icon-btn" title="Mes anterior">
           <span class="material-symbols-outlined">chevron_left</span>
         </button>
-        <h3 id="calTítulo"></h3>
+        <h3 id="calTitulo"></h3>
         <button type="button" id="calNext" class="icon-btn" title="Mes siguiente">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
@@ -2134,7 +2134,7 @@
   <div class="modal-backdrop" id="modalConfirmarEliminacion">
     <div class="modal">
       <div class="modal-head">
-        <h3 id="confElimTítulo">Confirmar con contraseña</h3>
+        <h3 id="confElimTitulo">Confirmar con contraseña</h3>
         <button type="button" class="modal-close" data-cerrar="modalConfirmarEliminacion" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
@@ -2415,7 +2415,7 @@
   <div class="modal-backdrop" id="modalEvalResultado">
     <div class="modal modal--eval-result">
       <div class="modal-head">
-        <h3>Evaluación física · <span id="evalResultadoTítulo"></span></h3>
+        <h3>Evaluación física · <span id="evalResultadoTitulo"></span></h3>
         <button type="button" class="modal-close" data-cerrar="modalEvalResultado" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
@@ -2455,7 +2455,7 @@
   <div class="modal-backdrop" id="modalCambiarPass">
     <div class="modal-card">
       <div class="modal-head">
-        <h2 id="cpTítulo">Cambiar contraseña</h2>
+        <h2 id="cpTitulo">Cambiar contraseña</h2>
         <button type="button" class="modal-close" data-cerrar="modalCambiarPass" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
@@ -3091,6 +3091,6 @@
   <script type="text/javascript">
     emailjs.init('KrpZvcvHUbBOL96ZB')
   </script>
-  <script src="app.js?v=vis37"></script>
+  <script src="app.js?v=vis38"></script>
 </body>
 </html>

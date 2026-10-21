@@ -3157,8 +3157,10 @@ function guardarCitaCompletada(e) {
   if (!c) return;
   c.completada = true;
   c.fechaCompletada = isoLocal(new Date());
-  c.diagnostico = document.getElementById("ccDiagnostico").value.trim();
-  c.tratamiento = document.getElementById("ccTratamiento").value.trim();
+  const diagEl = document.getElementById("ccDiagnostico");
+  const tratEl = document.getElementById("ccTratamiento");
+  c.diagnostico = diagEl ? diagEl.value.trim() : (c.diagnostico || "");
+  c.tratamiento = tratEl ? tratEl.value.trim() : (c.tratamiento || "");
   saveKey("citas");
   const p = State.pacientes.find(x => x.id === c.pacienteId);
   mostrarNotificacion(`Cita de <b>${p ? p.nombre : "el paciente"}</b> completada correctamente`);
