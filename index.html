@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MedHistorical - Sistema Ortopedía</title>
   <link rel="icon" type="image/svg+xml" href="favicon_ortopedico.svg" />
-  <link rel="stylesheet" href="style.css?v=sistemav7" />
+  <link rel="stylesheet" href="style.css?v=sistemav8" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
@@ -774,8 +774,9 @@
                 <label class="ante-chk"><input type="checkbox" value="Pérdida de la función" data-eval-celso /><span>Pérdida de función</span></label>
               </div>
             </div>
-            <label class="eval-prueba-campo">Escala EVA (dolor): <output id="evalEVAVal">0</output> / 10
+            <label class="eval-prueba-campo">Escala EVA (dolor): <output id="evalEVAVal">0</output> / 10<span id="evalEVABand" class="eva-band">Sin dolor</span>
               <input type="range" id="evalEVA" min="0" max="10" step="1" value="0" />
+              <span class="eva-marks"><span>0 · Sin dolor</span><span>5 · Moderado</span><span>10 · Severo</span></span>
             </label>
             <label class="eval-prueba-campo">Escala de Daniels (fuerza muscular)
               <select id="evalDaniels">

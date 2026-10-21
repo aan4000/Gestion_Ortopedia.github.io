@@ -4968,7 +4968,8 @@ function initEvaluacionFisica() {
   const evaInput = document.getElementById("evalEVA");
   const evaOut = document.getElementById("evalEVAVal");
   if (evaInput && evaOut) {
-    evaInput.addEventListener("input", () => { evaOut.textContent = evaInput.value; });
+    aplicarColorEVA(evaInput.value);
+    evaInput.addEventListener("input", () => { aplicarColorEVA(evaInput.value); });
   }
   renderEvalPacienteActual();
   renderEvaluacionesGuardadas();
@@ -6673,14 +6674,45 @@ function recogerPruebasEval() {
   };
 }
 
+function evaColorPara(valor) {
+  const v = Math.max(0, Math.min(10, Number(valor) || 0));
+  if (v === 0) return "#16a34a";
+  if (v <= 3) return "#84cc16";
+  if (v <= 6) return "#f59e0b";
+  return "#dc2626";
+}
+
+function aplicarColorEVA(valor) {
+  const evaOut = document.getElementById("evalEVAVal");
+  const evaInput = document.getElementById("evalEVA");
+  const evaBand = document.getElementById("evalEVABand");
+  const v = Math.max(0, Math.min(10, Number(valor) || 0));
+  const color = evaColorPara(v);
+  const banda = v === 0 ? "Sin dolor" : v <= 3 ? "Leve" : v <= 6 ? "Moderado" : "Severo";
+  const bandId = v === 0 ? "none" : v <= 3 ? "leve" : v <= 6 ? "moderado" : "severo";
+  if (evaOut) {
+    evaOut.textContent = String(v);
+    evaOut.style.setProperty("--eva-color", color);
+    evaOut.dataset.evaBand = bandId;
+  }
+  if (evaInput) {
+    evaInput.style.setProperty("--eva-color", color);
+    evaInput.style.setProperty("--eva-pct", (v / 10 * 100) + "%");
+    evaInput.dataset.evaBand = bandId;
+  }
+  if (evaBand) {
+    evaBand.textContent = banda;
+    evaBand.style.setProperty("--eva-color", color);
+  }
+}
+
 function aplicarPruebasEval(pruebas) {
   const p = pruebas && typeof pruebas === "object" ? pruebas : {};
   const celso = Array.isArray(p.celso) ? p.celso : [];
   document.querySelectorAll("[data-eval-celso]").forEach(cb => { cb.checked = celso.includes(cb.value); });
   const evaEl = document.getElementById("evalEVA");
   if (evaEl) evaEl.value = p.eva != null ? String(p.eva) : "0";
-  const evaVal = document.getElementById("evalEVAVal");
-  if (evaVal) evaVal.textContent = evaEl ? evaEl.value : "0";
+  aplicarColorEVA(evaEl ? evaEl.value : 0);
   const danielsEl = document.getElementById("evalDaniels");
   if (danielsEl) danielsEl.value = p.daniels || "";
   const dolorEl = document.getElementById("evalEscalaDolor");
