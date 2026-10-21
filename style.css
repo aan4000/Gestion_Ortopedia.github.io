@@ -11206,4 +11206,86 @@ body.dark #seccion-pacientes .list-item .item-sub {
   }
 }
 
+/* ============================================================
+   TARJETAS DE LISTA (todas las secciones) - info principal EN PARALELO
+   Fila 1: nombre/codigo/cantidades (izq) + acciones (der).
+   Fila 2+: el resto de informacion debajo, sin apilar la principal.
+   ============================================================ */
+.seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "main actions"
+    "sub  sub";
+  align-items: center;
+  column-gap: 0.9em;
+  row-gap: 0.4em;
+}
+
+.seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main:not(.ed-fact-fill):not(.ed-fact-price) {
+  grid-area: main;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45em 0.6em;
+  min-width: 0;
+}
+
+.seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main strong {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1.25;
+  margin-right: 0.15em;
+}
+
+.seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main .item-price {
+  margin-left: auto;
+}
+
+.seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-actions {
+  grid-area: actions;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  flex-shrink: 0;
+}
+
+.seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-sub {
+  grid-area: sub;
+  margin-top: 0;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* Los sub bloques con id propio (detalles) tambien van en la columna sub */
+.seccion:not(#seccion-inicio) .list-item.detalles-factura,
+.seccion:not(#seccion-inicio) .list-item .detalles-factura {
+  grid-area: sub;
+}
+
+body.dark .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main strong {
+  color: #eef2f9;
+}
+
+body.dark .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-sub {
+  color: rgba(203, 213, 225, 0.72);
+}
+
+@media (max-width: 620px) {
+  .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "main"
+      "actions"
+      "sub";
+  }
+  .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-actions {
+    margin-top: 0.1em;
+    flex-wrap: wrap;
+  }
+}
+
+
 
