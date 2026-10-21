@@ -7422,6 +7422,113 @@ body.dark .ante-buscar {
   font-size: 0.95rem;
 }
 
+/* ===== Plan de terapia fisica (referimiento) ===== */
+#referimientoForm .ante-grupo {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.55em;
+  margin: 0;
+  padding: 1.05em 1.1em 1.1em;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg, 16px);
+  background: linear-gradient(180deg, #f4f9f9, #eaf2f5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+#referimientoForm .ante-grupo legend {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.28em 0.85em;
+  margin-bottom: 0.15em;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-terracotta, #0f766e);
+  background: color-mix(in srgb, var(--color-terracotta, #0f766e) 9%, #fff);
+  border: 1px solid color-mix(in srgb, var(--color-terracotta, #0f766e) 22%, transparent);
+  border-radius: 999px;
+}
+
+#referimientoForm .ante-grupo legend::before {
+  content: "fitness_center";
+  font-family: "Material Symbols Outlined";
+  font-size: 1.05em;
+  line-height: 1;
+  color: var(--color-terracotta-light, #14b8a6);
+}
+
+#referimientoForm .ante-chk {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+  min-height: 0;
+  padding: 0.4em 0.85em;
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--surface-1, #fff);
+  transition: border-color 0.16s ease, color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+#referimientoForm .ante-chk:hover {
+  border-color: color-mix(in srgb, var(--color-terracotta, #0f766e) 40%, var(--line-soft));
+  color: var(--color-terracotta, #0f766e);
+  background: color-mix(in srgb, var(--color-terracotta, #0f766e) 5%, transparent);
+  box-shadow: none;
+  transform: translateY(-1px);
+}
+
+#referimientoForm .ante-chk:has(input:checked) {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--color-terracotta, #0f766e), var(--color-terracotta-light, #14b8a6));
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--color-terracotta, #0f766e) 30%, transparent);
+}
+
+/* Marcas de seleccion mas pequenas */
+#referimientoForm .ante-chk input[type="checkbox"] {
+  width: 0.92em;
+  height: 0.92em;
+  margin: 0;
+  flex: 0 0 auto;
+  accent-color: var(--color-terracotta, #0f766e);
+}
+
+body.dark #referimientoForm .ante-grupo {
+  background: linear-gradient(180deg, #1b2438, #141d2e);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+body.dark #referimientoForm .ante-grupo legend {
+  color: #5eead4;
+  background: rgba(45, 212, 191, 0.12);
+  border-color: rgba(45, 212, 191, 0.26);
+}
+
+body.dark #referimientoForm .ante-chk {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #cfd8ea;
+}
+
+body.dark #referimientoForm .ante-chk:hover {
+  border-color: rgba(94, 234, 212, 0.5);
+  color: #5eead4;
+  background: rgba(45, 212, 191, 0.12);
+}
+
+body.dark #referimientoForm .ante-chk:has(input:checked) {
+  background: linear-gradient(135deg, var(--color-terracotta, #0f766e), var(--color-terracotta-light, #14b8a6));
+  color: #fff;
+}
+
 /* ===== Políticas de Privacidad ===== */
 .politicas-header .politicas-head {
   display: flex;
