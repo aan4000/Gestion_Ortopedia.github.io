@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MedHistorical - Sistema Ortopedía</title>
   <link rel="icon" type="image/svg+xml" href="favicon_ortopedico.svg" />
-  <link rel="stylesheet" href="style.css?v=sistemav9" />
+  <link rel="stylesheet" href="style.css?v=sistemav10" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
@@ -18,6 +18,14 @@
   <main class="app-main">
     <header class="topbar">
       <h1 id="pageTitle">Inicio / Dashboard</h1>
+      <button type="button" id="topbarRaChip" class="topbar-ra-chip" hidden title="Restaurar panel Registro actual" aria-label="Restaurar panel Registro actual">
+        <span class="material-symbols-outlined topbar-ra-chip__icon">clinical_notes</span>
+        <span class="topbar-ra-chip__text">
+          <span class="topbar-ra-chip__label">Registro actual</span>
+          <span class="topbar-ra-chip__paciente" id="topbarRaPaciente">Sin paciente</span>
+        </span>
+        <span class="topbar-ra-chip__expand material-symbols-outlined">expand_more</span>
+      </button>
       <div class="topbar-right">
         <span id="todayDate" class="topbar-date"></span>
         <button id="btnAdmin" class="icon-btn hidden" title="Administración" hidden>
@@ -3083,6 +3091,6 @@
   <script type="text/javascript">
     emailjs.init('KrpZvcvHUbBOL96ZB')
   </script>
-  <script src="app.js?v=vis36"></script>
+  <script src="app.js?v=vis37"></script>
 </body>
 </html>

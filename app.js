@@ -5982,6 +5982,14 @@ function renderRegistroActual() {
   }
   const mini = document.getElementById("raMiniNombre");
   if (mini) mini.textContent = p ? p.nombre : "";
+  const chipPac = document.getElementById("topbarRaPaciente");
+  if (chipPac) {
+    chipPac.textContent = p
+      ? (p.nombre || "Paciente") + (p.codigo ? " · " + p.codigo : "")
+      : "Sin paciente";
+  }
+  const chip = document.getElementById("topbarRaChip");
+  if (chip) chip.classList.toggle("topbar-ra-chip--vacio", !p);
   pacienteActual = id;
   renderEvalPacienteActual();
   sincronizarConPacienteActualImagenes();
@@ -9586,89 +9594,26 @@ const pacienteForm = document.getElementById("pacienteForm");
     const raPanel = document.querySelector(".panel-registro-actual");
     const btnRaToggle = document.getElementById("btnRaToggle");
     const raIcon = document.getElementById("btnRaIcon");
-    const colocarPillRegistroActual = () => {
+    const chip = document.getElementById("topbarRaChip");
+
+    const aplicarEstadoRegistroActual = (minimizado) => {
       if (!raPanel) return;
-      const w = raPanel.offsetWidth || 96;
-      const h = raPanel.offsetHeight || 56;
-      const guardado = DB.get("orto_raPos");
-      if (
-        guardado &&
-        isFinite(guardado.left) &&
-        isFinite(guardado.top) &&
-        guardado.left >= 2 &&
-        guardado.top >= 2 &&
-        guardado.left <= Math.max(2, window.innerWidth - w - 2) &&
-        guardado.top <= Math.max(2, window.innerHeight - h - 2)
-      ) {
-        raPanel.style.left = guardado.left + "px";
-        raPanel.style.top = guardado.top + "px";
-      } else {
-        raPanel.style.left = Math.max(2, Math.round((window.innerWidth - w) / 2)) + "px";
-        raPanel.style.top = "12px";
-      }
-      raPanel.style.transform = "none";
+      raPanel.classList.toggle("ra-min", minimizado);
+      if (raIcon) raIcon.textContent = minimizado ? "expand_more" : "expand_less";
+      document.body.classList.toggle("ra-minimizado", minimizado);
+      if (chip) chip.hidden = !minimizado;
     };
-    const reclamarPillRegistroActual = () => {
-      if (!raPanel || !btnRaToggle) return;
-      if (!raPanel.classList.contains("ra-min")) return;
-      const r = raPanel.getBoundingClientRect();
-      const okV = r.left >= 0 && r.top >= 0 && r.right <= window.innerWidth && r.bottom <= window.innerHeight;
-      if (okV) return;
-      colocarPillRegistroActual();
-    };
+
+    const restaurarRegistroActual = () => aplicarEstadoRegistroActual(false);
+
     if (btnRaToggle && raPanel) {
       btnRaToggle.addEventListener("click", () => {
-        const minimizado = !raPanel.classList.contains("ra-min");
-        raPanel.classList.toggle("ra-min", minimizado);
-        if (raIcon) raIcon.textContent = minimizado ? "expand_more" : "expand_less";
-        if (minimizado) {
-          requestAnimationFrame(colocarPillRegistroActual);
-        } else {
-          raPanel.style.left = "";
-          raPanel.style.top = "";
-          raPanel.style.transform = "";
-        }
+        aplicarEstadoRegistroActual(!raPanel.classList.contains("ra-min"));
       });
-      window.addEventListener("resize", reclamarPillRegistroActual);
     }
 
-    if (raPanel) {
-      let arrastreRa = null;
-      const iniciarArrastre = (e) => {
-        if (!raPanel.classList.contains("ra-min")) return;
-        if (e.target.closest("button")) return;
-        arrastreRa = {
-          startX: e.clientX,
-          startY: e.clientY,
-          curLeft: parseFloat(raPanel.style.left) || raPanel.getBoundingClientRect().left,
-          curTop: parseFloat(raPanel.style.top) || raPanel.getBoundingClientRect().top
-        };
-        raPanel.setPointerCapture(e.pointerId);
-        raPanel.classList.add("ra-drag");
-        e.preventDefault();
-      };
-      const moverArrastre = (e) => {
-        if (!arrastreRa) return;
-        const w = raPanel.offsetWidth;
-        const h = raPanel.offsetHeight;
-        const nx = Math.min(Math.max(2, arrastreRa.curLeft + e.clientX - arrastreRa.startX), window.innerWidth - w - 2);
-        const ny = Math.min(Math.max(2, arrastreRa.curTop + e.clientY - arrastreRa.startY), window.innerHeight - h - 2);
-        raPanel.style.left = nx + "px";
-        raPanel.style.top = ny + "px";
-        raPanel.style.transform = "none";
-      };
-      const soltarArrastre = () => {
-        if (!arrastreRa) return;
-        arrastreRa = null;
-        raPanel.classList.remove("ra-drag");
-        const l = parseFloat(raPanel.style.left);
-        const t = parseFloat(raPanel.style.top);
-        if (!isNaN(l) && !isNaN(t)) DB.set("orto_raPos", { left: Math.round(l), top: Math.round(t) });
-      };
-      raPanel.addEventListener("pointerdown", iniciarArrastre);
-      raPanel.addEventListener("pointermove", moverArrastre);
-      raPanel.addEventListener("pointerup", soltarArrastre);
-      raPanel.addEventListener("pointercancel", soltarArrastre);
+    if (chip) {
+      chip.addEventListener("click", restaurarRegistroActual);
     }
 
     const raPac = document.getElementById("raPaciente");
@@ -10952,6 +10897,8 @@ function mostrarSeccion(sec) {
   if (target) target.classList.add("active");
   const raPanel = document.querySelector(".panel-registro-actual");
   if (raPanel) raPanel.hidden = sec === "inicio";
+  const raChip = document.getElementById("topbarRaChip");
+  if (raChip) raChip.hidden = sec === "inicio" || !raPanel || !raPanel.classList.contains("ra-min");
   if (sec === "inicio") renderHome();
   if (sec === "estudios") sincronizarConPacienteActualImagenes();
   if (sec === "proxima-cita") renderProximaCitasElegibles();

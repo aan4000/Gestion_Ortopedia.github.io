@@ -10438,3 +10438,170 @@ body.dark #seccion-evaluacion-fisica .eval-prueba-campo--eva .eva-marks span:nth
 body.dark #seccion-evaluacion-fisica .eval-prueba-campo--eva .eva-marks span:last-child {
   color: #f87171;
 }
+
+/* ============================================================
+   REGISTRO ACTUAL -> BARRA DE ESTADO (topbar)
+   Al minimizar, el panel se integra como chip en el topbar.
+   ============================================================ */
+
+/* El panel minimizado deja de flotar: se oculta (vive en el chip). */
+.panel-registro-actual.ra-min {
+  display: none !important;
+}
+
+/* Chip en la barra de estado */
+.topbar-ra-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.55rem 0.4rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(45, 165, 160, 0.4);
+  background: linear-gradient(135deg, rgba(45, 165, 160, 0.12), rgba(45, 165, 160, 0.06));
+  color: var(--text-strong);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  max-width: min(46vw, 420px);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease, background 0.18s ease;
+  animation: ra-chip-entrar 0.32s cubic-bezier(0.22, 0.68, 0.35, 1) both;
+}
+
+.topbar-ra-chip[hidden] {
+  display: none;
+}
+
+.topbar-ra-chip:hover {
+  border-color: #14b8a6;
+  background: linear-gradient(135deg, rgba(45, 165, 160, 0.2), rgba(45, 165, 160, 0.1));
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.22);
+  transform: translateY(-1px);
+}
+
+.topbar-ra-chip:focus-visible {
+  outline: none;
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.3);
+}
+
+.topbar-ra-chip__icon {
+  font-size: 1.2rem;
+  color: #0f766e;
+  flex: 0 0 auto;
+}
+
+.topbar-ra-chip__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  min-width: 0;
+}
+
+.topbar-ra-chip__label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0f766e;
+}
+
+.topbar-ra-chip__paciente {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-strong);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+.topbar-ra-chip--vacio {
+  border-color: var(--line-soft);
+  background: color-mix(in srgb, var(--surface-1, #fff) 70%, transparent);
+}
+
+.topbar-ra-chip--vacio .topbar-ra-chip__icon,
+.topbar-ra-chip--vacio .topbar-ra-chip__label {
+  color: var(--text-muted);
+}
+
+.topbar-ra-chip--vacio .topbar-ra-chip__paciente {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-style: italic;
+}
+
+.topbar-ra-chip__expand {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  flex: 0 0 auto;
+  transition: color 0.18s ease;
+}
+
+.topbar-ra-chip:hover .topbar-ra-chip__expand {
+  color: #0f766e;
+}
+
+@keyframes ra-chip-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar-ra-chip {
+    animation: none;
+  }
+}
+
+/* Dark mode */
+body.dark .topbar-ra-chip {
+  border-color: rgba(45, 212, 191, 0.35);
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.16), rgba(45, 212, 191, 0.07));
+  color: #eef2fb;
+}
+
+body.dark .topbar-ra-chip:hover {
+  border-color: #2dd4bf;
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.24), rgba(45, 212, 191, 0.12));
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+body.dark .topbar-ra-chip__icon,
+body.dark .topbar-ra-chip__label {
+  color: #5eead4;
+}
+
+body.dark .topbar-ra-chip__paciente {
+  color: #eef2fb;
+}
+
+body.dark .topbar-ra-chip--vacio {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark .topbar-ra-chip--vacio .topbar-ra-chip__icon,
+body.dark .topbar-ra-chip--vacio .topbar-ra-chip__label,
+body.dark .topbar-ra-chip--vacio .topbar-ra-chip__paciente {
+  color: rgba(226, 232, 240, 0.7);
+}
+
+/* Documentos minimos: en pantallas pequenas el chip ocupa el ancho util */
+@media (max-width: 720px) {
+  .topbar-ra-chip {
+    max-width: 100%;
+    order: 3;
+    flex: 1 1 100%;
+    justify-content: flex-start;
+  }
+
+  .topbar-ra-chip__paciente {
+    max-width: none;
+  }
+}
