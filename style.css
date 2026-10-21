@@ -10605,3 +10605,237 @@ body.dark .topbar-ra-chip--vacio .topbar-ra-chip__paciente {
     max-width: none;
   }
 }
+
+/* ============================================================
+   ANTECEDENTES v1 - Refinamiento UX/UI (seccion Pacientes)
+   Tarjetas limpias, controles compactos, chips mas finos.
+   Scope: #seccion-pacientes (alta especificidad)
+   ============================================================ */
+
+/* Tarjeta del bloque de antecedentes */
+#seccion-pacientes .ante-bloque {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--surface-1, #fff) 82%, var(--surface-0, #f6f8fb));
+  padding: 0.85em 0.95em 0.95em;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+#seccion-pacientes .ante-bloque:focus-within {
+  border-color: color-mix(in srgb, var(--color-terracotta, #0f766e) 45%, var(--line-soft));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-terracotta, #0f766e) 12%, transparent);
+}
+
+/* Cabecera del bloque */
+#seccion-pacientes .ante-bloque legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--text-strong);
+  padding: 0.22em 0.7em;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-terracotta, #0f766e) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-terracotta, #0f766e) 18%, transparent);
+}
+
+#seccion-pacientes .ante-bloque legend .material-symbols-outlined {
+  font-size: 1.05rem;
+  color: var(--color-terracotta, #0f766e);
+}
+
+/* Barra de acciones: compacta y alineada */
+#seccion-pacientes .ante-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45em;
+  margin: 0.55em 0 0.5em;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+
+/* Contador como badge discreto */
+#seccion-pacientes .ante-count {
+  min-width: 1.9em;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-terracotta, #0f766e);
+  background: color-mix(in srgb, var(--color-terracotta, #0f766e) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-terracotta, #0f766e) 22%, transparent);
+}
+
+#seccion-pacientes .ante-count::before {
+  content: "Seleccionados: ";
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+/* Botones mini mas pequenos y refinados */
+#seccion-pacientes .btn--mini {
+  padding: 0.3em 0.72em;
+  min-height: 0;
+  line-height: 1.35;
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--surface-1, #fff);
+  transition: border-color 0.16s ease, color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+}
+
+#seccion-pacientes .btn--mini:hover {
+  border-color: color-mix(in srgb, var(--color-terracotta, #0f766e) 45%, transparent);
+  color: var(--color-terracotta, #0f766e);
+  background: color-mix(in srgb, var(--color-terracotta, #0f766e) 6%, transparent);
+  box-shadow: none;
+}
+
+#seccion-pacientes .btn--mini:focus-visible {
+  outline: none;
+  border-color: var(--color-terracotta, #0f766e);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-terracotta, #0f766e) 18%, transparent);
+}
+
+/* Buscador del bloque: mas compacto */
+#seccion-pacientes .ante-buscar {
+  width: 100%;
+  margin-bottom: 0.6em;
+  padding: 0.42em 0.85em;
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  background: var(--surface-0, #f6f8fb);
+  color: var(--text-strong);
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+#seccion-pacientes .ante-buscar:focus {
+  outline: none;
+  border-color: var(--color-terracotta, #0f766e);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-terracotta, #0f766e) 16%, transparent);
+}
+
+/* Rejilla de chips mas densa y ordenada */
+#seccion-pacientes .ante-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+/* Chip de antecedente: mas fino, hover y estado marcado refinados */
+#seccion-pacientes .ante-chk {
+  padding: 0.32em 0.7em;
+  min-height: 0;
+  gap: 0.4em;
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--surface-1, #fff);
+  transition: border-color 0.16s ease, color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+}
+
+#seccion-pacientes .ante-chk:hover {
+  border-color: color-mix(in srgb, var(--color-terracotta, #0f766e) 40%, var(--line-soft));
+  color: var(--color-terracotta, #0f766e);
+  background: color-mix(in srgb, var(--color-terracotta, #0f766e) 5%, transparent);
+  box-shadow: none;
+}
+
+#seccion-pacientes .ante-chk:has(input:checked) {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--color-terracotta, #0f766e), var(--color-terracotta-light, #14b8a6));
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--color-terracotta, #0f766e) 30%, transparent);
+}
+
+/* Marcas de seleccion mas pequenas */
+#seccion-pacientes .ante-chk input[type="checkbox"] {
+  width: 0.95em;
+  height: 0.95em;
+  margin: 0;
+  accent-color: var(--color-terracotta, #0f766e);
+}
+
+#seccion-pacientes .ante-chk {
+  gap: 0.45em;
+  font-size: 0.8rem;
+}
+
+/* --- Dark mode --- */
+body.dark #seccion-pacientes .ante-bloque {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark #seccion-pacientes .ante-bloque legend {
+  color: #eef2fb;
+  background: rgba(45, 212, 191, 0.12);
+  border-color: rgba(45, 212, 191, 0.24);
+}
+
+body.dark #seccion-pacientes .ante-bloque legend .material-symbols-outlined {
+  color: #5eead4;
+}
+
+body.dark #seccion-pacientes .ante-count {
+  color: #5eead4;
+  background: rgba(45, 212, 191, 0.14);
+  border-color: rgba(45, 212, 191, 0.28);
+}
+
+body.dark #seccion-pacientes .btn--mini {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: rgba(226, 232, 240, 0.82);
+}
+
+body.dark #seccion-pacientes .btn--mini:hover {
+  border-color: #2dd4bf;
+  color: #5eead4;
+  background: rgba(45, 212, 191, 0.1);
+}
+
+body.dark #seccion-pacientes .ante-buscar {
+  background: #0f1830;
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #f1f5fb;
+}
+
+body.dark #seccion-pacientes .ante-chk {
+  background: #0f1830;
+  border-color: rgba(255, 255, 255, 0.16);
+  color: rgba(226, 232, 240, 0.85);
+}
+
+body.dark #seccion-pacientes .ante-chk:hover {
+  border-color: #2dd4bf;
+  color: #5eead4;
+  background: rgba(45, 212, 191, 0.08);
+}
+
+body.dark #seccion-pacientes .ante-chk:has(input:checked) {
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  border-color: transparent;
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #seccion-pacientes .ante-chk,
+  #seccion-pacientes .btn--mini,
+  #seccion-pacientes .ante-buscar,
+  #seccion-pacientes .ante-bloque {
+    transition: none !important;
+  }
+}
