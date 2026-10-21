@@ -10267,3 +10267,54 @@ body.dark #modalEvalExtremidad .eval-extrem-panel h4 {
 body.dark #seccion-evaluacion-fisica .eval-flip-label {
   color: #eef2fb;
 }
+
+/* ============================================================
+   EVALUACION FISICA v5.2 - DARK: bloque PRUEBAS DIAGNOSTICAS
+   Refuerzo especifico del texto dentro de "Pruebas diagnosticas".
+   ============================================================ */
+
+/* Todo el texto del bloque de pruebas en color claro */
+body.dark #seccion-evaluacion-fisica .eval-pruebas,
+body.dark #seccion-evaluacion-fisica .eval-pruebas label,
+body.dark #seccion-evaluacion-fisica .eval-prueba-titulo,
+body.dark #seccion-evaluacion-fisica .eval-prueba-campo,
+body.dark #seccion-evaluacion-fisica .eval-prueba-campo span {
+  color: #f1f5fb;
+}
+
+/* Titulo "Signos de Celso" con acento para destacar */
+body.dark #seccion-evaluacion-fisica .eval-prueba-titulo {
+  color: #5eead4;
+}
+
+/* Valor EVA: badge legible y con contraste sobre dark */
+body.dark #seccion-evaluacion-fisica .eval-prueba-campo output {
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  color: #ffffff;
+}
+
+/* Etiquetas de los desplegables (Daniels / escala del dolor) */
+body.dark #seccion-evaluacion-fisica .eval-prueba-campo select {
+  color: #f8fafc;
+  background: #0f1830;
+}
+
+body.dark #seccion-evaluacion-fisica .eval-prueba-campo select option {
+  color: #f8fafc;
+  background: #0f1830;
+}
+
+/* Chips de Celso: texto siempre visible en ambos estados */
+body.dark #seccion-evaluacion-fisica .eval-celso .ante-chk {
+  color: #eaf0fa;
+}
+
+body.dark #seccion-evaluacion-fisica .eval-celso .ante-chk:has(input:checked) {
+  color: #ffffff;
+}
+
+/* Pista de ayuda del bloque de pruebas */
+body.dark #seccion-evaluacion-fisica .eval-pruebas .eval-columna-pista,
+body.dark #seccion-evaluacion-fisica .eval-pruebas .eval-columna-hint {
+  color: rgba(226, 232, 240, 0.85);
+}
