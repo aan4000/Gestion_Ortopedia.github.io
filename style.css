@@ -10931,3 +10931,121 @@ body.dark .img-btn--danger:hover {
     transition: none !important;
   }
 }
+
+/* ============================================================
+   CHIPS DE LESION + TOOLBAR DE CITAS  (v1)
+   Refinamiento del lenguaje visual: terracota/teal, compacto y elegante.
+   Aplica a: #seccion-evaluacion-fisica, #modalColumna, #modalEvalExtremidad
+   ============================================================ */
+
+/* --- Chips de tipo de lesion: compactos, con punto de color y estado activo pulido --- */
+#seccion-evaluacion-fisica .lesion-chip,
+#modalColumna .lesion-chip,
+#modalEvalExtremidad .lesion-chip {
+  border-radius: 999px;
+  border: 1.5px solid var(--line-soft);
+  background: var(--surface-1);
+  color: var(--text-strong);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.42rem 0.82rem 0.42rem 0.62rem;
+  min-height: 0;
+  gap: 0.45rem;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+#seccion-evaluacion-fisica .lesion-chip .lesion-dot,
+#modalColumna .lesion-chip .lesion-dot,
+#modalEvalExtremidad .lesion-chip .lesion-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--chip, #999) 22%, transparent);
+}
+
+#seccion-evaluacion-fisica .lesion-chip:hover,
+#modalColumna .lesion-chip:hover,
+#modalEvalExtremidad .lesion-chip:hover {
+  border-color: color-mix(in srgb, var(--chip, var(--color-terracotta)) 45%, var(--line-soft));
+  background: color-mix(in srgb, var(--chip, #999) 8%, var(--surface-1));
+  transform: translateY(-1px);
+}
+
+#seccion-evaluacion-fisica .lesion-chip:focus-visible,
+#modalColumna .lesion-chip:focus-visible,
+#modalEvalExtremidad .lesion-chip:focus-visible {
+  outline: 2px solid var(--color-terracotta-light);
+  outline-offset: 2px;
+}
+
+#seccion-evaluacion-fisica .lesion-chip.active,
+#modalColumna .lesion-chip.active,
+#modalEvalExtremidad .lesion-chip.active {
+  border-color: var(--chip, #999);
+  background: color-mix(in srgb, var(--chip, #999) 15%, var(--surface-1));
+  color: var(--text-strong);
+  font-weight: 700;
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--chip, #999) 26%, transparent);
+}
+
+/* --- Toolbar de citas: barra ligera, sin gradiente pesado ni barra de acento --- */
+.seccion:not(#seccion-inicio) > .section-toolbar {
+  background: var(--surface-1);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  padding: 0.7em 0.95em;
+  margin-bottom: 1em;
+  box-shadow: var(--shadow-card);
+  overflow: visible;
+}
+
+.seccion:not(#seccion-inicio) > .section-toolbar::before {
+  display: none;
+}
+
+.seccion:not(#seccion-inicio) .section-toolbar .btn {
+  font-size: 0.85rem;
+  padding: 0.5em 0.95em;
+  border-radius: 999px;
+  gap: 0.35em;
+}
+
+.seccion:not(#seccion-inicio) .section-toolbar .btn .material-symbols-outlined {
+  font-size: 1.15em;
+}
+
+/* --- Dark mode --- */
+body.dark #seccion-evaluacion-fisica .lesion-chip,
+body.dark #modalColumna .lesion-chip,
+body.dark #modalEvalExtremidad .lesion-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #e6ecf7;
+}
+
+body.dark #seccion-evaluacion-fisica .lesion-chip:hover,
+body.dark #modalColumna .lesion-chip:hover,
+body.dark #modalEvalExtremidad .lesion-chip:hover {
+  background: color-mix(in srgb, var(--chip, #999) 14%, rgba(255, 255, 255, 0.04));
+  border-color: color-mix(in srgb, var(--chip, #999) 55%, transparent);
+}
+
+body.dark #seccion-evaluacion-fisica .lesion-chip.active,
+body.dark #modalColumna .lesion-chip.active,
+body.dark #modalEvalExtremidad .lesion-chip.active {
+  background: color-mix(in srgb, var(--chip, #999) 24%, transparent);
+  border-color: var(--chip, #999);
+  color: #fff;
+}
+
+body.dark .seccion:not(#seccion-inicio) > .section-toolbar {
+  background: var(--surface-1);
+  border-color: var(--line-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #seccion-evaluacion-fisica .lesion-chip,
+  #modalColumna .lesion-chip,
+  #modalEvalExtremidad .lesion-chip {
+    transition: none !important;
+  }
+}
