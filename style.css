@@ -9135,3 +9135,395 @@ body.dark .seccion:not(#seccion-inicio) .form-grid {
     transform: none;
   }
 }
+
+/* ============================================================
+   REFINAMIENTO v4 - SECCIONES CLINICAS
+   Investigacion aplicada: M3 tone-based surfaces, jerarquia visual,
+   color + etiqueta redundante, proximidad espacial, microinteracciones.
+   Solo secciones != #seccion-inicio.
+   ============================================================ */
+
+:root {
+  --surf-0: #ffffff;
+  --surf-1: #fbfcfd;
+  --surf-2: #f5f7fa;
+  --surf-3: #eef2f6;
+  --line-hair: rgba(15, 23, 42, 0.07);
+  --line-strong: rgba(15, 23, 42, 0.14);
+  --focus-ring: 0 0 0 3px rgba(20, 184, 166, 0.28);
+}
+
+body.dark {
+  --surf-0: #0f172a;
+  --surf-1: #131b2e;
+  --surf-2: #172033;
+  --surf-3: #1d2740;
+  --line-hair: rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --focus-ring: 0 0 0 3px rgba(45, 212, 191, 0.32);
+}
+
+.seccion:not(#seccion-inicio) {
+  background: var(--surf-1);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--r-xl);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03), 0 12px 36px rgba(15, 23, 42, 0.05);
+  padding: 1.6em 1.6em 0.4em;
+  margin-bottom: 1.6em;
+}
+
+body.dark .seccion:not(#seccion-inicio) {
+  background: var(--surf-1);
+  border-color: var(--line-hair);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 12px 36px rgba(0, 0, 0, 0.3);
+}
+
+.seccion:not(#seccion-inicio) > h1:first-child {
+  position: relative;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-strong);
+  padding: 0 0 0.9em 0;
+  margin: 0 0 1.3em 0;
+  border-bottom: 1px solid var(--line-hair);
+}
+
+.seccion:not(#seccion-inicio) > h1:first-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 56px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--color-terracotta) 0%, var(--color-terracotta-light) 100%);
+}
+
+.seccion:not(#seccion-inicio) .panel {
+  background: var(--surf-0);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--r-lg);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
+  padding: 1.5em 1.6em;
+  margin-bottom: 1.2em;
+  transition: box-shadow 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+}
+
+body.dark .seccion:not(#seccion-inicio) .panel {
+  background: var(--surf-2);
+  border-color: var(--line-hair);
+}
+
+.seccion:not(#seccion-inicio) .panel:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+}
+
+.seccion:not(#seccion-inicio) .panel > h2:first-child,
+.seccion:not(#seccion-inicio) .panel-head h2,
+.seccion:not(#seccion-inicio) .panel-head {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text-strong);
+}
+
+.seccion:not(#seccion-inicio) .panel > h2:first-child,
+.seccion:not(#seccion-inicio) .panel-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  border-bottom: 1px solid var(--line-hair);
+  padding-bottom: 0.7em;
+  margin: 0 0 1.2em 0;
+}
+
+.seccion:not(#seccion-inicio) .panel-head h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+.seccion:not(#seccion-inicio) .panel-head-ico,
+.seccion:not(#seccion-inicio) .panel h2 .material-symbols-outlined {
+  font-size: 1.25rem;
+  color: var(--color-terracotta);
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 24;
+  line-height: 1;
+}
+
+.seccion:not(#seccion-inicio) .section-toolbar,
+.seccion:not(#seccion-inicio) .cal-toolbar,
+.seccion:not(#seccion-inicio) .img-toolbar,
+.seccion:not(#seccion-inicio) .ante-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.85em 1em;
+  background: var(--surf-2);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--r-lg);
+  padding: 0.85em 1.1em;
+  margin-bottom: 1.2em;
+}
+
+body.dark .seccion:not(#seccion-inicio) .section-toolbar,
+body.dark .seccion:not(#seccion-inicio) .cal-toolbar,
+body.dark .seccion:not(#seccion-inicio) .img-toolbar,
+body.dark .seccion:not(#seccion-inicio) .ante-toolbar {
+  background: var(--surf-3);
+}
+
+.seccion:not(#seccion-inicio) .search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.seccion:not(#seccion-inicio) .search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 0.6em 0.9em;
+  font-size: 0.9rem;
+  background: var(--surf-0);
+  color: var(--text);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+body.dark .seccion:not(#seccion-inicio) .search-input {
+  background: var(--surf-2);
+}
+
+.seccion:not(#seccion-inicio) .search-input:focus,
+.seccion:not(#seccion-inicio) input:focus-visible,
+.seccion:not(#seccion-inicio) select:focus-visible,
+.seccion:not(#seccion-inicio) textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-terracotta);
+  box-shadow: var(--focus-ring);
+}
+
+.seccion:not(#seccion-inicio) table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--line-hair);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--surf-0);
+}
+
+.seccion:not(#seccion-inicio) thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--surf-2);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 0.75em 1em;
+  border-bottom: 1px solid var(--line-strong);
+  white-space: nowrap;
+}
+
+body.dark .seccion:not(#seccion-inicio) thead th {
+  background: var(--surf-3);
+}
+
+.seccion:not(#seccion-inicio) tbody td {
+  padding: 0.78em 1em;
+  font-size: 0.87rem;
+  border-bottom: 1px solid var(--line-hair);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+.seccion:not(#seccion-inicio) tbody tr:nth-child(even) td {
+  background: rgba(15, 23, 42, 0.012);
+}
+
+body.dark .seccion:not(#seccion-inicio) tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.seccion:not(#seccion-inicio) tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.seccion:not(#seccion-inicio) tbody tr:hover td {
+  background: rgba(20, 184, 166, 0.06);
+}
+
+body.dark .seccion:not(#seccion-inicio) tbody tr:hover td {
+  background: rgba(45, 212, 191, 0.08);
+}
+
+.seccion:not(#seccion-inicio) td.text-right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.seccion:not(#seccion-inicio) .form-grid {
+  gap: 1.1rem 1.3rem;
+  background: var(--surf-2);
+  padding: 1.4em;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-hair);
+  margin-bottom: 1.2em;
+}
+
+body.dark .seccion:not(#seccion-inicio) .form-grid {
+  background: var(--surf-3);
+}
+
+.seccion:not(#seccion-inicio) .form-grid label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  gap: 0.45em;
+}
+
+.seccion:not(#seccion-inicio) .form-grid input,
+.seccion:not(#seccion-inicio) .form-grid select,
+.seccion:not(#seccion-inicio) .form-grid textarea {
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 0.58em 0.8em;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.seccion:not(#seccion-inicio) .list-item {
+  position: relative;
+  background: var(--surf-0);
+  border: 1px solid var(--line-hair);
+  padding: 0.95em 1.15em;
+  border-radius: var(--r-lg);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.015);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+body.dark .seccion:not(#seccion-inicio) .list-item {
+  background: var(--surf-2);
+}
+
+.seccion:not(#seccion-inicio) .list-item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  border-radius: var(--r-lg) 0 0 var(--r-lg);
+  background: var(--color-terracotta);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.seccion:not(#seccion-inicio) .list-item:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+  transform: translateY(-1px);
+}
+
+.seccion:not(#seccion-inicio) .list-item:hover::before {
+  opacity: 1;
+}
+
+.seccion:not(#seccion-inicio) .empty-state,
+.seccion:not(#seccion-inicio) .sin-datos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  padding: 2.2em 1.2em;
+  color: var(--text-muted);
+  text-align: center;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-lg);
+  background: var(--surf-2);
+}
+
+.seccion:not(#seccion-inicio) .empty-state .material-symbols-outlined {
+  font-size: 2.2rem;
+  color: var(--line-strong);
+}
+
+.seccion:not(#seccion-inicio) .modal-card {
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line-hair);
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18);
+}
+
+.seccion:not(#seccion-inicio) .modal-head {
+  background: var(--surf-2);
+  padding: 1.1em 1.5em;
+  border-bottom: 1px solid var(--line-hair);
+}
+
+body.dark .seccion:not(#seccion-inicio) .modal-head {
+  background: var(--surf-3);
+}
+
+.seccion:not(#seccion-inicio) .btn {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: transform 0.15s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.seccion:not(#seccion-inicio) .btn:hover {
+  transform: translateY(-1px);
+}
+
+.seccion:not(#seccion-inicio) .btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 1100px) {
+  .seccion:not(#seccion-inicio) {
+    padding: 1.3em 1.2em 0.3em;
+  }
+  .seccion:not(#seccion-inicio) .panel {
+    padding: 1.25em;
+  }
+}
+
+@media (max-width: 720px) {
+  .seccion:not(#seccion-inicio) {
+    padding: 1em 0.9em 0.2em;
+    border-radius: var(--r-lg);
+  }
+  .seccion:not(#seccion-inicio) .panel,
+  .seccion:not(#seccion-inicio) .form-grid {
+    padding: 1.05em;
+  }
+  .seccion:not(#seccion-inicio) .section-toolbar,
+  .seccion:not(#seccion-inicio) .cal-toolbar,
+  .seccion:not(#seccion-inicio) .img-toolbar,
+  .seccion:not(#seccion-inicio) .ante-toolbar {
+    padding: 0.75em;
+  }
+  .seccion:not(#seccion-inicio) thead th {
+    position: static;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seccion:not(#seccion-inicio) .panel,
+  .seccion:not(#seccion-inicio) .list-item,
+  .seccion:not(#seccion-inicio) .btn,
+  .seccion:not(#seccion-inicio) .search-input,
+  .seccion:not(#seccion-inicio) .list-item::before {
+    transition: none !important;
+  }
+  .seccion:not(#seccion-inicio) .list-item:hover,
+  .seccion:not(#seccion-inicio) .btn:hover {
+    transform: none;
+  }
+}
