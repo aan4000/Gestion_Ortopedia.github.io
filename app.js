@@ -2045,8 +2045,9 @@ function renderPacientesEliminados() {
         <strong>${p.nombre}</strong>
         <span class="tag">${p.codigo}</span>
         <span class="tag tag-elim">Eliminado ${p.fechaEliminado || ""}</span>
+        <span class="tag">${nTotal} registro(s)</span>
       </div>
-      <div class="item-sub">Cédula: ${p.cedula || "-"} · Edad: ${p.edad || "-"} · Tel: ${p.telefono || "-"} · ID interno: ${p.id} · ${nTotal} registro(s) relacionados en su historial</div>
+      <div class="item-sub">Cédula: ${p.cedula || "-"} · Edad: ${p.edad || "-"} · Tel: ${p.telefono || "-"} · ID interno: ${p.id}</div>
       <div class="item-actions">
         <button class="btn-icon" data-acciones-pac-elim="${p.id}" title="Opciones: restaurar o eliminar por completo">
           <span class="material-symbols-outlined">more_vert</span>

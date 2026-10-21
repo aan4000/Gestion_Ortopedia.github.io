@@ -11130,3 +11130,80 @@ body.dark .eval-columna-hit.marcado {
   fill: rgba(20, 184, 166, 0.1);
 }
 
+/* ============================================================
+   TARJETAS DE PACIENTE - nombre + codigo + etiquetas EN PARALELO
+   Layout en dos filas: fila 1 (nombre, codigo, tags a la izquierda
+   y acciones a la derecha), fila 2 (edad/sexo/seguro/tel debajo).
+   ============================================================ */
+#seccion-pacientes .list-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "main actions"
+    "sub  sub";
+  align-items: center;
+  column-gap: 0.9em;
+  row-gap: 0.4em;
+}
+
+#seccion-pacientes .list-item .item-main {
+  grid-area: main;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em 0.6em;
+  min-width: 0;
+}
+
+#seccion-pacientes .list-item .item-main strong {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1.25;
+  margin-right: 0.15em;
+}
+
+#seccion-pacientes .list-item .item-main .tag {
+  flex: 0 0 auto;
+}
+
+#seccion-pacientes .list-item .item-actions {
+  grid-area: actions;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  flex-shrink: 0;
+}
+
+#seccion-pacientes .list-item .item-sub {
+  grid-area: sub;
+  margin-top: 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+body.dark #seccion-pacientes .list-item .item-main strong {
+  color: #eef2f9;
+}
+
+body.dark #seccion-pacientes .list-item .item-sub {
+  color: rgba(203, 213, 225, 0.72);
+}
+
+/* En pantallas angostas, acciones pasan debajo pero nombre/codigo siguen juntos */
+@media (max-width: 560px) {
+  #seccion-pacientes .list-item {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "main"
+      "actions"
+      "sub";
+  }
+  #seccion-pacientes .list-item .item-actions {
+    margin-top: 0.1em;
+  }
+}
+
+
