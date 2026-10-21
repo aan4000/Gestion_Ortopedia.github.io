@@ -4576,25 +4576,22 @@ function colorearPartes() {
   document.querySelectorAll(".eval-part, .eval-subpart").forEach(el => {
     const les = normLesiones(lesionesEval[el.dataset.part]);
     const esFoto = !!el.closest(".eval-hitlayer");
+    /* Columna sobre foto: zonas y puntos transparentes (no tapan la imagen) */
+    if (!les.length && (el.classList.contains("eval-columna") || el.classList.contains("eval-columna-punto"))) {
+      el.style.fill = "";
+      el.style.fillOpacity = "";
+      el.style.stroke = "";
+      el.style.strokeOpacity = "";
+      el.style.strokeWidth = "";
+      return;
+    }
     if (les.length) {
       const col = les[0].color;
       el.style.fill = col;
-      el.style.fillOpacity = esFoto ? "0.55" : "1";
+      el.style.fillOpacity = (esFoto || el.classList.contains("eval-columna") || el.classList.contains("eval-columna-punto")) ? "0.55" : "1";
       el.style.stroke = oscurecerColor(col, 0.72);
       el.style.strokeOpacity = "0.9";
       el.style.strokeWidth = "2.5";
-    } else if (el.classList.contains("eval-columna")) {
-      el.style.fill = "#e7dfcc";
-      el.style.fillOpacity = "1";
-      el.style.stroke = "#b6a888";
-      el.style.strokeOpacity = "1";
-      el.style.strokeWidth = "1.6";
-    } else if (el.classList.contains("eval-columna-punto")) {
-      el.style.fill = "#c9b98f";
-      el.style.fillOpacity = "1";
-      el.style.stroke = "#8f7f57";
-      el.style.strokeOpacity = "1";
-      el.style.strokeWidth = "2";
     } else if (esFoto) {
       const esPunto = el.classList.contains("eval-punto-ext") || PUNTOS_FOTO.indexOf(el.dataset.part) !== -1 || /^(muslo|rodilla|tobillo)/.test(el.dataset.part);
       if (esPunto) {
@@ -4713,15 +4710,15 @@ function renderPartesAfectadas() {
 }
 
 const COLUMNA_REGIONES = [
-  { key: "columnaCervical", letra: "A", cy: 82,  verts: { y0: 30,  n: 7,  step: 15, h: 12, w: 24 } },
-  { key: "columnaDorsal",   letra: "B", cy: 216, verts: { y0: 146, n: 12, step: 12, h: 9,  w: 32 } },
-  { key: "columnaLumbar",   letra: "C", cy: 340, verts: { y0: 302, n: 5,  step: 16, h: 13, w: 40 } },
-  { key: "columnaSacro",    letra: "D", cy: 426, d: "M128,392 L172,392 L160,462 L140,462 Z" },
-  { key: "columnaCoxis",    letra: "E", cy: 489, d: "M144,473 L156,473 L150,507 Z" }
+  { key: "columnaCervical", letra: "A", cy: 250,  verts: { y0: 130, n: 7,  step: 32, h: 26, w: 74 } },
+  { key: "columnaDorsal",   letra: "B", cy: 720,  verts: { y0: 470, n: 12, step: 42, h: 30, w: 96 } },
+  { key: "columnaLumbar",   letra: "C", cy: 1210, verts: { y0: 1010, n: 5, step: 52, h: 40, w: 112 } },
+  { key: "columnaSacro",    letra: "D", cy: 1430, d: "M552,1300 L648,1300 L622,1470 L578,1470 Z" },
+  { key: "columnaCoxis",    letra: "E", cy: 1560, d: "M582,1500 L618,1500 L600,1600 Z" }
 ];
 
 function columnaVertShape(v) {
-  const cx = 150;
+  const cx = 600;
   const out = [];
   for (let i = 0; i < v.n; i++) {
     const y = v.y0 + i * v.step;
@@ -4734,28 +4731,28 @@ function columnaVertShape(v) {
 function renderColumna() {
   const cont = document.getElementById("columnaSvg");
   if (!cont) return;
-  const W = 500, H = 545, cx = 150, bx = 290, rBadge = 15;
+  const W = 1200, H = 1816, cx = 600, nameX = 300, bxR = 930, rBadge = 32;
   let hits = "", callouts = "", dots = "", badges = "";
   COLUMNA_REGIONES.forEach(r => {
     const cuerpo = r.verts ? columnaVertShape(r.verts) : `<path d="${r.d}"/>`;
     hits += `<g class="eval-part eval-columna eval-columna-hit" data-part="${r.key}">${cuerpo}</g>`;
-    callouts += `<polyline class="eval-callout-line" points="${cx + 8},${r.cy} ${bx - rBadge},${r.cy}"/>`;
+    callouts += `<polyline class="eval-callout-line" points="${cx + 24},${r.cy} ${bxR - rBadge},${r.cy}"/>`;
     const les = normLesiones(lesionesEval[r.key]);
     if (les.length) {
       les.forEach((l, i) => {
-        dots += `<circle class="eval-punto eval-columna-punto" data-part="${r.key}" cx="${cx + 16 + i * 13}" cy="${r.cy}" r="6" style="fill:${l.color};stroke:${oscurecerColor(l.color, 0.7)}"/>`;
+        dots += `<circle class="eval-punto eval-columna-punto" data-part="${r.key}" cx="${cx - 44 - i * 32}" cy="${r.cy}" r="15" style="fill:${l.color};stroke:${oscurecerColor(l.color, 0.7)}"/>`;
       });
     } else {
-      dots += `<circle class="eval-part eval-punto eval-columna-punto" data-part="${r.key}" cx="${cx}" cy="${r.cy}" r="7"/>`;
+      dots += `<circle class="eval-part eval-punto eval-columna-punto" data-part="${r.key}" cx="${cx}" cy="${r.cy}" r="17"/>`;
     }
     const marcado = normLesiones(lesionesEval[r.key]).length ? " marcado" : "";
     badges += `<g class="eval-columna-badge${marcado}" data-part="${r.key}">` +
-      `<circle cx="${bx}" cy="${r.cy}" r="${rBadge}"/>` +
-      `<text x="${bx}" y="${r.cy}" text-anchor="middle" dominant-baseline="central" font-size="16" font-weight="700">${r.letra}</text>` +
+      `<circle cx="${bxR}" cy="${r.cy}" r="${rBadge}"/>` +
+      `<text x="${bxR}" y="${r.cy}" text-anchor="middle" dominant-baseline="central" font-size="33" font-weight="700">${r.letra}</text>` +
       `</g>`;
   });
   const nombres = COLUMNA_REGIONES.map(r =>
-    `<text class="eval-zone-label eval-columna-nombre" data-part="${r.key}" x="318" y="${r.cy}" dominant-baseline="central" font-size="17">${NOMBRES_PARTES[r.key] || ""}</text>`
+    `<text class="eval-zone-label eval-columna-nombre" data-part="${r.key}" x="${nameX}" y="${r.cy}" text-anchor="end" dominant-baseline="central" font-size="30">${NOMBRES_PARTES[r.key] || ""}</text>`
   ).join("");
   cont.innerHTML =
     `<div class="eval-columna-stage">` +
