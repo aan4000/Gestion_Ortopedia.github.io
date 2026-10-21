@@ -10839,3 +10839,95 @@ body.dark #seccion-pacientes .ante-chk:has(input:checked) {
     transition: none !important;
   }
 }
+
+/* ============================================================
+   BOTONES MINI v1 - Unificacion con el sistema de diseno
+   Refina .img-btn / .img-btn--mini al lenguaje terracota-teal.
+   ============================================================ */
+
+.img-btn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 0.6rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  background: var(--surface-1, #fff);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: border-color 0.16s ease, color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.img-btn .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.img-btn:hover {
+  border-color: color-mix(in srgb, var(--color-terracotta, #0f766e) 45%, transparent);
+  color: var(--color-terracotta, #0f766e);
+  background: color-mix(in srgb, var(--color-terracotta, #0f766e) 6%, transparent);
+  transform: none;
+  box-shadow: none;
+}
+
+.img-btn:focus-visible {
+  outline: none;
+  border-color: var(--color-terracotta, #0f766e);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-terracotta, #0f766e) 18%, transparent);
+}
+
+.img-btn.activo {
+  background: linear-gradient(135deg, var(--color-terracotta, #0f766e), var(--color-terracotta-light, #14b8a6));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--color-terracotta, #0f766e) 30%, transparent);
+}
+
+.img-btn--danger:hover {
+  border-color: #dc2626;
+  color: #dc2626;
+  background: color-mix(in srgb, #dc2626 7%, transparent);
+}
+
+.img-btn--block {
+  height: 34px;
+}
+
+.img-btn--mini {
+  min-width: auto;
+  height: 24px;
+  padding: 0 0.55rem;
+  font-size: 0.72rem;
+  border-radius: 8px;
+}
+
+/* Dark mode */
+body.dark .img-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: rgba(226, 232, 240, 0.85);
+}
+
+body.dark .img-btn:hover {
+  border-color: #2dd4bf;
+  color: #5eead4;
+  background: rgba(45, 212, 191, 0.1);
+}
+
+body.dark .img-btn.activo {
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  border-color: transparent;
+  color: #fff;
+}
+
+body.dark .img-btn--danger:hover {
+  border-color: #f87171;
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img-btn {
+    transition: none !important;
+  }
+}
