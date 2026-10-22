@@ -3594,6 +3594,24 @@ body.dark .eval-punto {
   color: var(--color-muted, #5b6b86);
 }
 
+/* Icono de columna: mas acorde y visible */
+.btn-columna-ico {
+  gap: 0.5em;
+}
+.btn-columna-ico .material-symbols-outlined {
+  font-size: 1.6em;
+  font-variation-settings: "wght" 600, "opsz" 40;
+  color: var(--color-terracotta-light, #14b8a6);
+  line-height: 1;
+  vertical-align: middle;
+}
+.btn-columna-ico:hover .material-symbols-outlined {
+  color: var(--color-terracotta, #0f766e);
+}
+body.dark .btn-columna-ico .material-symbols-outlined {
+  color: #5eead4;
+}
+
 .eval-columna-hint {
   margin: 0.2rem 0 0.8rem;
   font-size: 0.9rem;
@@ -11276,11 +11294,22 @@ body.dark .eval-columna-hit.marcado {
 
 #seccion-pacientes .list-item .item-main {
   grid-area: main;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5em 0.6em;
+  display: block;
+  white-space: normal;
+  line-height: 1.5;
   min-width: 0;
+}
+
+#seccion-pacientes .list-item .item-main > strong {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.5em 0.15em 0;
+}
+
+#seccion-pacientes .list-item .item-main > .tag {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.5em 0.15em 0;
 }
 
 #seccion-pacientes .list-item .item-main strong {
@@ -11387,6 +11416,48 @@ body.dark .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-r
 
 body.dark .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-sub {
   color: rgba(203, 213, 225, 0.72);
+}
+
+/* ============================================================
+   NOMBRES + CODIGOS EN PARALELO (inline-block, no en columnas)
+   La fila principal fluye como texto: nombre y codigo quedan uno
+   junto al otro, no apilados. Solo secciones != dashboard.
+   ============================================================ */
+.seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main:not(.ed-fact-fill):not(.ed-fact-price) {
+  display: block;
+  white-space: normal;
+  line-height: 1.5;
+  min-width: 0;
+}
+
+.seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main:not(.ed-fact-fill):not(.ed-fact-price) > strong {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.5em 0.15em 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1.35;
+}
+
+.seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main:not(.ed-fact-fill):not(.ed-fact-price) > .tag {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.5em 0.15em 0;
+  white-space: nowrap;
+}
+
+.seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main:not(.ed-fact-fill):not(.ed-fact-price) > * {
+  vertical-align: middle;
+}
+
+.seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main:not(.ed-fact-fill):not(.ed-fact-price) .item-price {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+body.dark .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-row) .item-main:not(.ed-fact-fill):not(.ed-fact-price) > strong {
+  color: #eef2f9;
 }
 
 /* ============================================================

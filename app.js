@@ -4710,7 +4710,7 @@ function renderPartesAfectadas() {
 }
 
 const COLUMNA_REGIONES = [
-  { key: "columnaCervical", letra: "A", cy: 250,  verts: { y0: 130, n: 7,  step: 32, h: 26, w: 74 } },
+  { key: "columnaCervical", letra: "A", cy: 255,  verts: { y0: 135, n: 7,  step: 32, h: 26, w: 74 } },
   { key: "columnaDorsal",   letra: "B", cy: 720,  verts: { y0: 470, n: 12, step: 42, h: 30, w: 96 } },
   { key: "columnaLumbar",   letra: "C", cy: 1210, verts: { y0: 1010, n: 5, step: 52, h: 40, w: 112 } },
   { key: "columnaSacro",    letra: "D", cy: 1430, d: "M552,1300 L648,1300 L622,1470 L578,1470 Z" },
