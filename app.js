@@ -5991,8 +5991,23 @@ function renderRegistroActual() {
   const chipPac = document.getElementById("topbarRaPaciente");
   if (chipPac) {
     chipPac.textContent = p
-      ? (p.nombre || "Paciente") + (p.codigo ? " · " + p.codigo : "")
+      ? (p.nombre || "Paciente") + (p.codigo ? " • " + p.codigo : "")
       : "Sin paciente";
+  }
+  const navPac = document.getElementById("navPacienteNombre");
+  const navCod = document.getElementById("navPacienteCodigo");
+  if (navPac) navPac.textContent = p ? (p.nombre || "Sin nombre") : "Sin paciente";
+  if (navCod) navCod.textContent = p && p.codigo ? p.codigo : "";
+  const navBtn = document.getElementById("navPacienteBtn");
+  if (navBtn) {
+    navBtn.onclick = () => {
+      if (p) {
+        mostrarSeccion("pacientes");
+        if (typeof seleccionarPaciente === "function") seleccionarPaciente(p.id);
+      } else {
+        mostrarSeccion("pacientes");
+      }
+    };
   }
   const chip = document.getElementById("topbarRaChip");
   if (chip) chip.classList.toggle("topbar-ra-chip--vacio", !p);

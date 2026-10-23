@@ -16,14 +16,22 @@
     </div>
 
     <nav class="sidebar-nav" aria-label="Navegación principal">
-      <p class="nav-group">Atención</p>
+      <div class="nav-paciente-activo">
+        <p class="nav-group">Paciente activo</p>
+        <div class="nav-paciente-chip" id="navPacienteActivo">
+          <span class="material-symbols-outlined nav-paciente-ico">person</span>
+          <div class="nav-paciente-info">
+            <span class="nav-paciente-nombre" id="navPacienteNombre">Sin paciente</span>
+            <span class="nav-paciente-codigo" id="navPacienteCodigo"></span>
+          </div>
+          <button type="button" class="nav-paciente-btn" id="navPacienteBtn" title="Ver/seleccionar paciente">
+            <span class="material-symbols-outlined">open_in_new</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="nav-group">Pacientes</p>
       <ul>
-        <li class="nav-item" data-seccion="inicio">
-          <a href="#inicio">
-            <span class="material-symbols-outlined nav-ico-sym">dashboard</span>
-            <span class="nav-label">Inicio / Dashboard</span>
-          </a>
-        </li>
         <li class="nav-item" data-seccion="pacientes">
           <a href="#pacientes">
             <span class="material-symbols-outlined nav-ico-sym">person_search</span>
@@ -63,12 +71,10 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item" data-seccion="recetas">
-          <a href="#recetas">
-            <span class="material-symbols-outlined nav-ico-sym">pill</span>
-            <span class="nav-label">Recetas</span>
-          </a>
-        </li>
+      </ul>
+
+      <p class="nav-group">Evaluaciones</p>
+      <ul>
         <li class="nav-item" data-seccion="evaluacion-fisica">
           <a href="#evaluacion-fisica">
             <span class="material-symbols-outlined nav-ico-sym">accessibility_new</span>
@@ -83,41 +89,7 @@
         </li>
       </ul>
 
-      <p class="nav-group">Tratamiento</p>
-      <ul>
-        <li class="nav-item" data-seccion="cirugias">
-          <a href="#cirugias">
-            <span class="material-symbols-outlined nav-ico-sym">surgical</span>
-            <span class="nav-label">Cirugías e implantes</span>
-          </a>
-        </li>
-        <li class="nav-item" data-seccion="rehabilitacion">
-          <a href="#rehabilitacion">
-            <span class="material-symbols-outlined nav-ico-sym">physical_therapy</span>
-            <span class="nav-label">Rehabilitación</span>
-          </a>
-        </li>
-        <li class="nav-item" data-seccion="pros">
-          <a href="#pros">
-            <span class="material-symbols-outlined nav-ico-sym">assignment</span>
-            <span class="nav-label">Cuestionarios (PROs)</span>
-          </a>
-        </li>
-        <li class="nav-item" data-seccion="rehabilitacion-pt">
-          <a href="#rehabilitacion-pt">
-            <span class="material-symbols-outlined nav-ico-sym">exercise</span>
-            <span class="nav-label">Rehabilitación PT</span>
-          </a>
-        </li>
-        <li class="nav-item" data-seccion="implantes">
-          <a href="#implantes">
-            <span class="material-symbols-outlined nav-ico-sym">settings_input_component</span>
-            <span class="nav-label">Implantes</span>
-          </a>
-        </li>
-      </ul>
-
-      <p class="nav-group">Registros e imágenes</p>
+      <p class="nav-group">Registros</p>
       <ul>
         <li class="nav-item" data-seccion="registros">
           <a href="#registros">
@@ -131,44 +103,81 @@
             <span class="nav-label">Gestión de documentos</span>
           </a>
         </li>
-        <li class="nav-item" data-seccion="estudios">
-          <a href="#estudios">
-            <span class="material-symbols-outlined nav-ico-sym">radiology</span>
-            <span class="nav-label">Imágenes y estudios</span>
-          </a>
-        </li>
-        <li class="nav-item" data-seccion="imagenes">
-          <a href="#imagenes">
-            <span class="material-symbols-outlined nav-ico-sym">photo_library</span>
-            <span class="nav-label">Imágenes médicas</span>
-          </a>
-        </li>
-        <li class="nav-item" data-seccion="imagenes-dicom">
-          <a href="#imagenes-dicom">
-            <span class="material-symbols-outlined nav-ico-sym">image_search</span>
-            <span class="nav-label">Imágenes (DICOM)</span>
+        <li class="nav-item" data-seccion="referimientos">
+          <a href="#referimientos">
+            <span class="material-symbols-outlined nav-ico-sym">send</span>
+            <span class="nav-label">Referimientos</span>
           </a>
         </li>
       </ul>
 
-      <p class="nav-group">Gestión</p>
+      <p class="nav-group">Procedimientos</p>
       <ul>
-        <li class="nav-item" data-seccion="facturacion">
-          <a href="#facturacion">
-            <span class="material-symbols-outlined nav-ico-sym">receipt_long</span>
-            <span class="nav-label">Recibos / Facturación</span>
+        <li class="nav-item" data-seccion="procedimientos">
+          <a href="#procedimientos">
+            <span class="material-symbols-outlined nav-ico-sym">medical_services</span>
+            <span class="nav-label">Procedimientos</span>
+            <span class="material-symbols-outlined nav-caret">expand_more</span>
+          </a>
+          <ul class="nav-sub">
+            <li class="nav-sub-item" data-seccion="cirugias">
+              <a href="#cirugias">
+                <span class="material-symbols-outlined nav-ico-sym">surgical</span>
+                <span class="nav-label">Cirugías</span>
+              </a>
+            </li>
+            <li class="nav-sub-item" data-seccion="implantes">
+              <a href="#implantes">
+                <span class="material-symbols-outlined nav-ico-sym">settings_input_component</span>
+                <span class="nav-label">Implantes</span>
+              </a>
+            </li>
+            <li class="nav-sub-item" data-seccion="imagenes">
+              <a href="#imagenes">
+                <span class="material-symbols-outlined nav-ico-sym">photo_library</span>
+                <span class="nav-label">Imágenes</span>
+              </a>
+            </li>
+            <li class="nav-sub-item" data-seccion="imagenes-dicom">
+              <a href="#imagenes-dicom">
+                <span class="material-symbols-outlined nav-ico-sym">image_search</span>
+                <span class="nav-label">Imágenes (DICOM)</span>
+              </a>
+            </li>
+            <li class="nav-sub-item" data-seccion="estudios">
+              <a href="#estudios">
+                <span class="material-symbols-outlined nav-ico-sym">radiology</span>
+                <span class="nav-label">Estudios</span>
+              </a>
+            </li>
+            <li class="nav-sub-item" data-seccion="recetas">
+              <a href="#recetas">
+                <span class="material-symbols-outlined nav-ico-sym">pill</span>
+                <span class="nav-label">Recetas</span>
+              </a>
+            </li>
+            <li class="nav-sub-item" data-seccion="pros">
+              <a href="#pros">
+                <span class="material-symbols-outlined nav-ico-sym">assignment</span>
+                <span class="nav-label">Cuestionarios (PROs)</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <p class="nav-group">Seguimiento</p>
+      <ul>
+        <li class="nav-item" data-seccion="rehabilitacion">
+          <a href="#rehabilitacion">
+            <span class="material-symbols-outlined nav-ico-sym">physical_therapy</span>
+            <span class="nav-label">Rehabilitación</span>
           </a>
         </li>
-        <li class="nav-item" data-seccion="facturacion-cargos">
-          <a href="#facturacion-cargos">
-            <span class="material-symbols-outlined nav-ico-sym">paid</span>
-            <span class="nav-label">Cargos / Facturación</span>
-          </a>
-        </li>
-        <li class="nav-item" data-seccion="autorizaciones">
-          <a href="#autorizaciones">
-            <span class="material-symbols-outlined nav-ico-sym">verified_user</span>
-            <span class="nav-label">Autorizaciones</span>
+        <li class="nav-item" data-seccion="rehabilitacion-pt">
+          <a href="#rehabilitacion-pt">
+            <span class="material-symbols-outlined nav-ico-sym">exercise</span>
+            <span class="nav-label">Rehabilitación PT</span>
           </a>
         </li>
         <li class="nav-item" data-seccion="proms">
@@ -179,15 +188,50 @@
         </li>
       </ul>
 
+      <p class="nav-group">Administración</p>
+      <ul>
+        <li class="nav-item" data-seccion="autorizaciones">
+          <a href="#autorizaciones">
+            <span class="material-symbols-outlined nav-ico-sym">verified_user</span>
+            <span class="nav-label">Preautorizaciones</span>
+          </a>
+        </li>
+        <li class="nav-item" data-seccion="facturacion">
+          <a href="#facturacion">
+            <span class="material-symbols-outlined nav-ico-sym">receipt_long</span>
+            <span class="nav-label">Facturación</span>
+          </a>
+        </li>
+        <li class="nav-item" data-seccion="facturacion-cargos">
+          <a href="#facturacion-cargos">
+            <span class="material-symbols-outlined nav-ico-sym">paid</span>
+            <span class="nav-label">Cargos / Facturación</span>
+          </a>
+        </li>
+      </ul>
+
       <p class="nav-group">Sistema</p>
       <ul>
+        <li class="nav-item" data-seccion="inicio">
+          <a href="#inicio">
+            <span class="material-symbols-outlined nav-ico-sym">dashboard</span>
+            <span class="nav-label">Inicio / Dashboard</span>
+          </a>
+        </li>
         <li class="nav-item" data-seccion="politicas">
           <a href="#politicas">
             <span class="material-symbols-outlined nav-ico-sym">policy</span>
             <span class="nav-label">Políticas de privacidad</span>
           </a>
         </li>
+        <li class="nav-item" data-seccion="admin">
+          <a href="#admin">
+            <span class="material-symbols-outlined nav-ico-sym">admin_panel_settings</span>
+            <span class="nav-label">Administración</span>
+          </a>
+        </li>
       </ul>
+    </nav>
     </nav>
 
     <div class="sidebar-footer">
