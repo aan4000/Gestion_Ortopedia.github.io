@@ -12033,4 +12033,8 @@ body.dark .seccion-flujo__btn--next:hover {
  b o d y . d a r k   . n a v - p a c i e n t e - b t n   {  
      c o l o r :   # 5 e e a d 4 ;  
  }  
+ / *   p a c i e n t e s   i n t e g r a d a   * /  
+ . s e c c i o n . p a c i e n t e s - i n t e g r a d a { d i s p l a y : n o n e }  
+ . s e c c i o n . p a c i e n t e s - i n t e g r a d a . a c t i v e { d i s p l a y : b l o c k }  
+ . p a c i e n t e s - i n t e g r a d a   . p a n e l { m a x - w i d t h : 1 1 0 0 p x ; m a r g i n : 0   a u t o   1 . 2 e m }  
  
