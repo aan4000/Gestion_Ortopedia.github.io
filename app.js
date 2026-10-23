@@ -9464,6 +9464,8 @@ const pacienteForm = document.getElementById("pacienteForm");
     });
   });
 
+  if (typeof construirNavSecciones === "function") construirNavSecciones();
+
   document.querySelectorAll("[data-cerrar]").forEach(btn => {
     btn.addEventListener("click", () => {
       const mId = btn.dataset.cerrar;
@@ -10881,6 +10883,101 @@ function guardarSeguimientoCirugia() {
   abrirModalCirugia(cid);
   mostrarNotificacion("Seguimiento registrado");
   renderCirugias();
+}
+
+/* ============================================================
+   NAVEGACION ENTRE SECCIONES (flujo clinico continuo)
+   Agrega una barra de enlace al final de cada seccion para pasar
+   a la anterior/siguiente sin abrir el menu lateral.
+   No aplica al dashboard (#seccion-inicio).
+   ============================================================ */
+const FLUJO_SECCIONES = [
+  { id: "pacientes",          icon: "person_search" },
+  { id: "citas",              icon: "event_available" },
+  { id: "citas-completadas",  icon: "check_circle" },
+  { id: "citas-sin-consulta", icon: "event_busy" },
+  { id: "pacientes-sin-cita", icon: "person_off" },
+  { id: "proxima-cita",       icon: "upcoming" },
+  { id: "recetas",            icon: "pill" },
+  { id: "evaluacion-fisica",  icon: "accessibility_new" },
+  { id: "evaluacion-medica",  icon: "clinical_notes" },
+  { id: "cirugias",           icon: "surgical" },
+  { id: "rehabilitacion",     icon: "physical_therapy" },
+  { id: "rehabilitacion-pt",  icon: "exercise" },
+  { id: "pros",               icon: "assignment" },
+  { id: "proms",              icon: "bar_chart" },
+  { id: "implantes",          icon: "settings_input_component" },
+  { id: "autorizaciones",     icon: "verified_user" },
+  { id: "facturacion",        icon: "receipt_long" },
+  { id: "facturacion-cargos", icon: "paid" },
+  { id: "registros",          icon: "folder_open" },
+  { id: "documentos",         icon: "description" },
+  { id: "estudios",           icon: "radiology" },
+  { id: "imagenes",           icon: "photo_library" },
+  { id: "imagenes-dicom",     icon: "image_search" },
+  { id: "politicas",          icon: "policy" }
+];
+
+function tituloSeccion(sec) {
+  const item = document.querySelector(
+    `.nav-item[data-seccion="${sec}"] > a .nav-label, .nav-sub-item[data-seccion="${sec}"] > a .nav-label`
+  );
+  return item ? item.textContent.trim() : sec;
+}
+
+function construirNavSecciones() {
+  const orden = FLUJO_SECCIONES.filter(s => document.getElementById("seccion-" + s.id));
+  orden.forEach((s, idx) => {
+    const section = document.getElementById("seccion-" + s.id);
+    if (!section || section.dataset.navFlujo === "1") return;
+    const prev = idx > 0 ? orden[idx - 1] : null;
+    const next = idx < orden.length - 1 ? orden[idx + 1] : null;
+
+    const bar = document.createElement("div");
+    bar.className = "seccion-flujo";
+    const paso = `${idx + 1} / ${orden.length}`;
+    const btnPrev = prev
+      ? `<button type="button" class="seccion-flujo__btn seccion-flujo__btn--prev" data-flujo-ir="${prev.id}">
+           <span class="material-symbols-outlined">arrow_back</span>
+           <span class="seccion-flujo__txt"><small>Anterior</small><strong>${escHtml(tituloSeccion(prev.id))}</strong></span>
+         </button>`
+      : `<span class="seccion-flujo__btn seccion-flujo__btn--prev is-disabled">
+           <span class="material-symbols-outlined">arrow_back</span>
+           <span class="seccion-flujo__txt"><small>Anterior</small><strong>Inicio</strong></span>
+         </span>`;
+    const btnNext = next
+      ? `<button type="button" class="seccion-flujo__btn seccion-flujo__btn--next" data-flujo-ir="${next.id}">
+           <span class="seccion-flujo__txt"><small>Siguiente</small><strong>${escHtml(tituloSeccion(next.id))}</strong></span>
+           <span class="material-symbols-outlined">arrow_forward</span>
+         </button>`
+      : `<button type="button" class="seccion-flujo__btn seccion-flujo__btn--next seccion-flujo__btn--fin" data-flujo-ir="inicio">
+           <span class="seccion-flujo__txt"><small>Fin del recorrido</small><strong>Volver al inicio</strong></span>
+           <span class="material-symbols-outlined">home</span>
+         </button>`;
+
+    bar.innerHTML =
+      `<div class="seccion-flujo__meta">
+         <span class="material-symbols-outlined seccion-flujo__ico">${s.icon}</span>
+         <span class="seccion-flujo__paso">${paso}</span>
+       </div>
+       <div class="seccion-flujo__btns">${btnPrev}${btnNext}</div>`;
+
+    section.appendChild(bar);
+    section.dataset.navFlujo = "1";
+  });
+
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-flujo-ir]");
+    if (!btn) return;
+    const sec = btn.dataset.flujoIr;
+    document.querySelectorAll(".modal-backdrop.open").forEach(bk => {
+      if (bk.id !== "modalCambiarPass") bk.classList.remove("open");
+    });
+    if (typeof mostrarSeccion === "function") {
+      mostrarSeccion(sec);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  });
 }
 
 function mostrarSeccion(sec) {
