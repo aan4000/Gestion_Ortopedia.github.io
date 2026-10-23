@@ -4228,15 +4228,18 @@ function guardarRegistroEditado() {
     mostrarNotificacion("Selecciona un paciente para guardar.");
     return;
   }
-  r.pacienteId = pacienteIdSel || raId;
-  r.titulo = titulo;
-  const tipoEl = document.getElementById("regETipo");
-  if (tipoEl) r.tipo = tipoEl.value;
-  const fechaEl = document.getElementById("regEFecha").value;
-  r.fecha = fechaEl ? fmtFechaES(fechaEl) : new Date().toLocaleDateString("es-ES");
-  r.detalle = document.getElementById("regEDetalle").value.trim();
-  const evaEdit = document.getElementById("regEEVA");
-  r.eva = evaEdit && evaEdit.value !== "" ? Number(evaEdit.value) : null;
+      r.pacienteId = pacienteIdSel || raId;
+      r.titulo = titulo;
+      const tipoEl = document.getElementById("regETipo");
+      if (tipoEl) r.tipo = tipoEl.value;
+      const fechaEl = document.getElementById("regEFecha").value;
+      r.fecha = fechaEl ? fmtFechaES(fechaEl) : new Date().toLocaleDateString("es-ES");
+      r.detalle = document.getElementById("regEDetalle").value.trim();
+      const evaEdit = document.getElementById("regEEVA");
+      r.eva = evaEdit && evaEdit.value !== "" ? Number(evaEdit.value) : null;
+      if (!r.editadoPor) {
+        r.editadoPor = { id: State.session ? State.session.id : null, name: State.session ? State.session.name : null, fecha: new Date().toISOString() };
+      }
 
   const file = document.getElementById("regEArchivo").files[0];
   if (file) {
@@ -9037,7 +9040,11 @@ const pacienteForm = document.getElementById("pacienteForm");
         titulo: "Registro de ingreso - ficha del paciente",
         tipo: "Registro de ingreso",
         detalle: detalleIngresoPaciente(paciente),
-        fecha: new Date().toLocaleDateString("es-ES")
+        fecha: new Date().toLocaleDateString("es-ES"),
+        fechaISO: new Date().toISOString(),
+        creadoPor: State.session ? { id: State.session.id, name: State.session.name, email: State.session.email, role: State.session.role } : null,
+        usuarioId: State.session ? State.session.id : null,
+        usuarioNombre: State.session ? State.session.name : null
       });
       saveKey("registros");
 
@@ -9291,7 +9298,11 @@ const pacienteForm = document.getElementById("pacienteForm");
         tipo: document.getElementById("registroTipo").value,
         detalle: document.getElementById("registroDetalle").value.trim(),
         eva: evaVal,
-        fecha: new Date().toLocaleDateString("es-ES")
+        fecha: new Date().toLocaleDateString("es-ES"),
+        fechaISO: new Date().toISOString(),
+        creadoPor: State.session ? { id: State.session.id, name: State.session.name, email: State.session.email, role: State.session.role } : null,
+        usuarioId: State.session ? State.session.id : null,
+        usuarioNombre: State.session ? State.session.name : null
       };
       if (prox.fecha) registro.proximaCita = { fecha: prox.fecha, hora: prox.hora || "", amPm: prox.amPm };
       const file = document.getElementById("registroArchivo").files[0];
@@ -9309,7 +9320,21 @@ const pacienteForm = document.getElementById("pacienteForm");
   }
 
   function pushRegistro(registro, form, prox) {
-    State.registros.push(registro);
+    State.registros.push({
+      id: registro.id,
+      pacienteId: registro.pacienteId,
+      titulo: registro.titulo,
+      tipo: registro.tipo,
+      detalle: registro.detalle,
+      eva: registro.eva,
+      fecha: registro.fecha,
+      fechaISO: registro.fechaISO,
+      creadoPor: registro.creadoPor,
+      usuarioId: registro.usuarioId,
+      usuarioNombre: registro.usuarioNombre,
+      proximaCita: registro.proximaCita,
+      archivo: registro.archivo
+    });
     saveKey("registros");
     if (prox && prox.fecha) {
       const error = validarLimiteCitas(prox.fecha);
@@ -9410,7 +9435,7 @@ const pacienteForm = document.getElementById("pacienteForm");
       }
 
       const { subtotal, porcentaje, honorarios, neto } = calcFactura();
-      const factura = {
+  const factura = {
         id: Date.now(),
         codigo: "FAC-" + (1000 + State.facturas.length),
         pacienteId,
@@ -9421,7 +9446,12 @@ const pacienteForm = document.getElementById("pacienteForm");
         neto,
         total: subtotal,
         doctor: State.session ? State.session.name : "Doctor",
-        fecha: new Date().toLocaleDateString("es-ES")
+        facturadoPor: State.session ? { id: State.session.id, name: State.session.name, email: State.session.email, role: State.session.role } : null,
+        creadoPor: State.session ? { id: State.session.id, name: State.session.name, email: State.session.email, role: State.session.role } : null,
+        usuarioId: State.session ? State.session.id : null,
+        usuarioNombre: State.session ? State.session.name : null,
+        fecha: new Date().toLocaleDateString("es-ES"),
+        fechaCreacion: new Date().toISOString()
       };
 
       State.facturas.push(factura);

@@ -1608,7 +1608,7 @@ textarea {
 
 .list-item.hist-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1em;
 }
 
@@ -1616,11 +1616,42 @@ textarea {
   margin-left: auto;
   flex: none;
   margin-top: 0;
+  align-self: center;
 }
 
 .hist-item-body {
   flex: 1 1 auto;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+/* Historial clínico: nombre, fecha y tipo en línea alineados */
+.list-item.hist-item .item-main {
+  display: block;
+  line-height: 1.6;
+  white-space: normal;
+  margin: 0;
+}
+
+.list-item.hist-item .item-main > strong {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.55em 0.1em 0;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.list-item.hist-item .item-main > .tag {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.45em 0.1em 0;
+}
+
+.list-item.hist-item .item-sub {
+  margin-top: 0;
+  line-height: 1.5;
 }
 
 .hist-avatar {
@@ -2406,6 +2437,29 @@ body.dark .ficha-pestana.active {
 
 .item-compact {
   padding: 0.7em 1em;
+}
+
+.item-compact .item-main {
+  display: block;
+  line-height: 1.6;
+  white-space: normal;
+  margin: 0;
+}
+
+.item-compact .item-main > strong {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.5em 0.1em 0;
+}
+
+.item-compact .item-main > .tag {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.45em 0.1em 0;
+}
+
+.item-compact .item-sub {
+  margin-top: 0.15em;
 }
 
 .item-price {
@@ -11841,21 +11895,17 @@ body.dark .seccion:not(#seccion-inicio) .list-item:not(.hist-item):not(.toggle-r
   pointer-events: none;
 }
 
-body.dark .seccion-flujo {
-  background: linear-gradient(180deg, #1b2438, #141d2e);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-body.dark .seccion-flujo__ico {
-  color: #5eead4;
-  background: rgba(45, 212, 191, 0.14);
-  border-color: rgba(45, 212, 191, 0.26);
-}
-
 body.dark .seccion-flujo__btn {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  border-color: rgba(94, 234, 212, 0.28);
+  color: #e6f1f8;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+body.dark .seccion-flujo__btn:hover {
+  border-color: rgba(94, 234, 212, 0.6);
+  background: linear-gradient(180deg, rgba(94, 234, 212, 0.18), rgba(20, 184, 166, 0.12));
+  box-shadow: 0 4px 16px rgba(20, 184, 166, 0.25);
 }
 
 body.dark .seccion-flujo__btn .material-symbols-outlined {
@@ -11863,16 +11913,20 @@ body.dark .seccion-flujo__btn .material-symbols-outlined {
 }
 
 body.dark .seccion-flujo__txt small {
-  color: rgba(203, 213, 225, 0.66);
+  color: rgba(203, 213, 225, 0.78);
 }
 
 body.dark .seccion-flujo__txt strong {
-  color: #eef2f9;
+  color: #f8fafc;
 }
 
 body.dark .seccion-flujo__btn--next {
-  background: linear-gradient(135deg, var(--color-terracotta, #0f766e), var(--color-terracotta-light, #14b8a6));
-  border-color: transparent;
+  background: linear-gradient(135deg, var(--color-terracotta-light, #14b8a6), var(--color-terracotta, #0f766e));
+  border-color: rgba(94, 234, 212, 0.4);
+}
+
+body.dark .seccion-flujo__btn--next:hover {
+  box-shadow: 0 6px 22px rgba(20, 184, 166, 0.38);
 }
 
 @media (max-width: 720px) {
