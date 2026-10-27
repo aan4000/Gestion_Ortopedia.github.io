@@ -10998,7 +10998,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const navContainer = document.getElementById("nav-container");
 
   if (navContainer) {
-    const cachedNav = sessionStorage.getItem("navHTML_v15");
+    const cachedNav = sessionStorage.getItem("navHTML_v16");
     if (cachedNav) {
       navContainer.innerHTML = cachedNav;
       initApp();
@@ -11009,7 +11009,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           return response.text();
         })
         .then(data => {
-          sessionStorage.setItem("navHTML_v15", data);
+          sessionStorage.setItem("navHTML_v16", data);
           navContainer.innerHTML = data;
           initApp();
         })

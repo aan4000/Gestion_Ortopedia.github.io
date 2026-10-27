@@ -1,9 +1,9 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MedHistorical - Sistema Ortoped√≠a</title>
+  <title>MedHistorical - Sistema OrtopedÌa</title>
   <link rel="icon" type="image/svg+xml" href="favicon_ortopedico.svg" />
   <link rel="stylesheet" href="style.css?v=recv25" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
@@ -17,7 +17,7 @@
       <h1 id="pageTitle">Inicio / Dashboard</h1>
       <div class="topbar-right">
         <span id="todayDate" class="topbar-date"></span>
-        <button id="btnAdmin" class="icon-btn hidden" title="Administraci√≥n" hidden>
+        <button id="btnAdmin" class="icon-btn hidden" title="AdministraciÛn" hidden>
           <span class="material-symbols-outlined">admin_panel_settings</span>
         </button>
         <button id="btnModoOscuro" class="icon-btn" data-toggle-dark title="Modo claro / oscuro">
@@ -29,33 +29,33 @@
     <div class="panel panel-registro-actual" hidden>
       <div class="panel-head">
         <h2>Registro actual</h2>
-        <span class="tag" id="raCodigo">‚Äî</span>
+        <span class="tag" id="raCodigo">ó</span>
         <span class="ra-mini-nombre" id="raMiniNombre"></span>
         <button type="button" id="btnRaToggle" class="btn btn--ghost-dark btn-small ra-toggle" title="Minimizar / Maximizar panel">
           <span class="material-symbols-outlined" id="btnRaIcon">expand_less</span>
         </button>
       </div>
-      <p class="panel-sub">Trabaja con el paciente actual: selecci√≥nalo y usa el men√∫ para ver su ficha, evaluarlo, agendar citas y hacer todos los procesos. Est√° fijo en todas las secciones.</p>
+      <p class="panel-sub">Trabaja con el paciente actual: selecciÛnalo y usa el men˙ para ver su ficha, evaluarlo, agendar citas y hacer todos los procesos. Est· fijo en todas las secciones.</p>
       <div class="ra-top">
         <img id="raSilueta" class="ra-silueta ra-silueta--vacio" src="siluetaPerfil_masculino.jfif" alt="Silueta del paciente actual" />
         <div class="ra-info">
           <label class="form-full">Paciente actual
             <select id="raPaciente"></select>
           </label>
-          <p id="raResumen">Selecciona el paciente actual para trabajar con √©l.</p>
+          <p id="raResumen">Selecciona el paciente actual para trabajar con Èl.</p>
         </div>
       </div>
       <div class="ra-menu">
         <button type="button" class="btn btn--ghost-dark btn-small" data-ra="ficha">
           <span class="material-symbols-outlined">person</span> Ficha
         </button>
-<button type="button" class="btn btn--ghost-dark btn-small" data-ra="eval" title="Evaluaci√≥n f√≠sica" aria-label="Evaluaci√≥n f√≠sica">
+<button type="button" class="btn btn--ghost-dark btn-small" data-ra="eval" title="EvaluaciÛn fÌsica" aria-label="EvaluaciÛn fÌsica">
           <span class="material-symbols-outlined">accessibility_new</span>
         </button>
         <button type="button" class="btn btn--ghost-dark btn-small" data-ra="cita" title="Agendar cita" aria-label="Agendar cita">
           <span class="material-symbols-outlined">event</span>
         </button>
-        <button type="button" class="btn btn--ghost-dark btn-small" data-ra="registro" title="Registro cl√≠nico" aria-label="Registro cl√≠nico">
+        <button type="button" class="btn btn--ghost-dark btn-small" data-ra="registro" title="Registro clÌnico" aria-label="Registro clÌnico">
           <span class="material-symbols-outlined">history_edu</span>
         </button>
         <button type="button" class="btn btn--ghost-dark btn-small" data-ra="documento" title="Documento" aria-label="Documento">
@@ -79,7 +79,7 @@
           </div>
           <div class="profile-info">
             <h2 id="perfilNombre">Usuario</h2>
-            <p id="perfilEmail">‚Äî</p>
+            <p id="perfilEmail">ó</p>
           </div>
         </div>
         <div class="profile-actions">
@@ -138,7 +138,7 @@
 
       <div class="panel" id="dashPanelNotas">
         <div class="panel-head">
-          <h2>Notas r√°pidas</h2>
+          <h2>Notas r·pidas</h2>
           <button type="button" id="btnAgregarNotaInicio" class="btn btn--primary btn-small">
             <span class="material-symbols-outlined">note_add</span> Agregar nota
           </button>
@@ -147,13 +147,13 @@
       </div>
 
       <div class="panel">
-        <h2>Pr√≥ximas citas</h2>
-        <div id="pr√≥ximasCitas" class="list"></div>
+        <h2>PrÛximas citas</h2>
+        <div id="prÛximasCitas" class="list"></div>
       </div>
 
       <div class="panel" id="dashPanelCompletadas">
         <div class="panel-head">
-          <h2>Citas completadas y d√≠agn√≥stico</h2>
+          <h2>Citas completadas y dÌagnÛstico</h2>
           <span class="tag" id="dashCountCompletadas">0</span>
         </div>
         <div id="dashCitasCompletadas" class="list"></div>
@@ -188,7 +188,7 @@
       <div class="panel">
         <h2>Registrar paciente</h2>
         <form id="pacienteForm" class="form-grid">
-          <label>C√≥digo generado
+          <label>CÛdigo generado
             <input type="text" id="pacienteCodigo" readonly />
           </label>
           <label>Nombre completo
@@ -207,17 +207,17 @@
               <option value="Femenino">Femenino</option>
             </select>
           </label>
-          <label>C√©dula / Documento
-            <input type="text" id="pacienteCedula" placeholder="C√©dula de identidad" />
+          <label>CÈdula / Documento
+            <input type="text" id="pacienteCedula" placeholder="CÈdula de identidad" />
           </label>
           <label>Seguro / Aseguradora
             <select id="pacienteSeguro">
               <option value="">Sin seguro</option>
-              <optgroup label="P√∫blicos">
+              <optgroup label="P˙blicos">
                 <option>SENASA</option>
                 <option>ARS SEMMA</option>
               </optgroup>
-              <optgroup label="Autogesti√≥n">
+              <optgroup label="AutogestiÛn">
                 <option>ARS CMD</option>
                 <option>ARS Plan Salud Banco Central</option>
                 <option>ARS ISSPOL</option>
@@ -233,7 +233,7 @@
                 <option>ARS Reservas</option>
                 <option>ARS Renacer</option>
                 <option>ARS Yunen</option>
-                <option>ARS Abel Gonz√°lez</option>
+                <option>ARS Abel Gonz·lez</option>
                 <option>ARS MetaSalud</option>
                 <option>ARS Asmar / APS</option>
                 <option>ARS ASEMAP</option>
@@ -248,8 +248,8 @@
             </select>
             <input type="text" id="pacienteSeguroOtro" placeholder="Nombre de la aseguradora" style="display:none" />
           </label>
-<label>Tel√©fono
-            <input type="tel" id="pacienteTelefono" placeholder="Tel√©fono" />
+<label>TelÈfono
+            <input type="tel" id="pacienteTelefono" placeholder="TelÈfono" />
           </label>
           <label>Correo
             <input type="email" id="pacienteEmail" placeholder="Correo (opcional)" />
@@ -257,11 +257,11 @@
           <label>Contacto de emergencia
             <input type="text" id="pacienteEmergencia" placeholder="Nombre del contacto (opcional)" />
           </label>
-          <label>Tel√©fono de emergencia
-            <input type="tel" id="pacienteEmergenciaTel" placeholder="Tel√©fono del contacto (opcional)" />
+          <label>TelÈfono de emergencia
+            <input type="tel" id="pacienteEmergenciaTel" placeholder="TelÈfono del contacto (opcional)" />
           </label>
-          <label>Ocupaci√≥n
-            <input type="text" id="pacienteOcupacion" placeholder="Ocupaci√≥n (opcional)" />
+          <label>OcupaciÛn
+            <input type="text" id="pacienteOcupacion" placeholder="OcupaciÛn (opcional)" />
           </label>
           <label>Mano dominante
             <select id="pacienteManoDominante">
@@ -270,60 +270,60 @@
               <option>Izquierda</option>
             </select>
           </label>
-          <label>Raz√≥n de la consulta
+          <label>RazÛn de la consulta
             <select id="pacienteRazonConsulta">
-              <option value="">Selecciona una raz√≥n</option>
+              <option value="">Selecciona una razÛn</option>
               <option>Consulta general</option>
               <option>Dolor articular</option>
               <option>Dolor lumbar / espalda</option>
               <option>Dolor cervical / cuello</option>
-              <option>Lesi√≥n deportiva</option>
+              <option>LesiÛn deportiva</option>
               <option>Fractura / traumatismo</option>
-              <option>Esguince / distensi√≥n</option>
+              <option>Esguince / distensiÛn</option>
               <option>Consulta de seguimiento</option>
-              <option>Postoperatorio / control quir√∫rgico</option>
-              <option>Valoraci√≥n prequir√∫rgica</option>
-              <option>Rehabilitaci√≥n / terapia f√≠sica</option>
-              <option>Pr√≥tesis / reemplazo articular</option>
-              <option>Infecci√≥n osteoarticular</option>
-              <option>Deformidad / alteraci√≥n postural</option>
-              <option>Tumor / masa √≥sea</option>
+              <option>Postoperatorio / control quir˙rgico</option>
+              <option>ValoraciÛn prequir˙rgica</option>
+              <option>RehabilitaciÛn / terapia fÌsica</option>
+              <option>PrÛtesis / reemplazo articular</option>
+              <option>InfecciÛn osteoarticular</option>
+              <option>Deformidad / alteraciÛn postural</option>
+              <option>Tumor / masa Ûsea</option>
               <option value="__otro__">Otro (especificar)</option>
             </select>
-            <input type="text" id="pacienteRazonConsultaOtro" placeholder="Especifica la raz√≥n de la consulta" style="display:none" />
+            <input type="text" id="pacienteRazonConsultaOtro" placeholder="Especifica la razÛn de la consulta" style="display:none" />
           </label>
           <fieldset class="form-full ante-bloque" data-ante="morbido">
             <legend>
               <span class="material-symbols-outlined">monitor_heart</span>
-              <span>Antecedentes m√≥rbidos</span>
+              <span>Antecedentes mÛrbidos</span>
             </legend>
             <div class="ante-toolbar">
               <span class="ante-count" data-ante-count="morbido">0</span>
               <button type="button" class="btn--mini" data-ante-all="morbido">Marcar todas</button>
               <button type="button" class="btn--mini" data-ante-none="morbido">Limpiar</button>
             </div>
-            <input type="text" class="ante-buscar" data-ante-buscar="morbido" placeholder="Buscar antecedente‚Ä¶" />
+            <input type="text" class="ante-buscar" data-ante-buscar="morbido" placeholder="Buscar antecedenteÖ" />
             <span class="ante-group" data-ante-group="morbido">
-              <label class="ante-chk"><input type="checkbox" value="Hipertensi√≥n arterial" data-pAntecedente="morbido" /><span>Hipertensi√≥n arterial</span></label>
+              <label class="ante-chk"><input type="checkbox" value="HipertensiÛn arterial" data-pAntecedente="morbido" /><span>HipertensiÛn arterial</span></label>
               <label class="ante-chk"><input type="checkbox" value="Diabetes mellitus" data-pAntecedente="morbido" /><span>Diabetes mellitus</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Cardiopat√≠a isqu√©mica" data-pAntecedente="morbido" /><span>Cardiopat√≠a isqu√©mica</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Insuficiencia card√≠aca" data-pAntecedente="morbido" /><span>Insuficiencia card√≠aca</span></label>
+              <label class="ante-chk"><input type="checkbox" value="CardiopatÌa isquÈmica" data-pAntecedente="morbido" /><span>CardiopatÌa isquÈmica</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Insuficiencia cardÌaca" data-pAntecedente="morbido" /><span>Insuficiencia cardÌaca</span></label>
               <label class="ante-chk"><input type="checkbox" value="Arritmia / FA" data-pAntecedente="morbido" /><span>Arritmia / FA</span></label>
               <label class="ante-chk"><input type="checkbox" value="Asma bronquial" data-pAntecedente="morbido" /><span>Asma bronquial</span></label>
               <label class="ante-chk"><input type="checkbox" value="EPOC" data-pAntecedente="morbido" /><span>EPOC</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Apnea del sue√±o" data-pAntecedente="morbido" /><span>Apnea del sue√±o</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Insuficiencia renal cr√≥nica" data-pAntecedente="morbido" /><span>Insuficiencia renal cr√≥nica</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Apnea del sueÒo" data-pAntecedente="morbido" /><span>Apnea del sueÒo</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Insuficiencia renal crÛnica" data-pAntecedente="morbido" /><span>Insuficiencia renal crÛnica</span></label>
               <label class="ante-chk"><input type="checkbox" value="Litiasis renal" data-pAntecedente="morbido" /><span>Litiasis renal</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Enfermedad hep√°tica" data-pAntecedente="morbido" /><span>Enfermedad hep√°tica</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Enfermedad hep·tica" data-pAntecedente="morbido" /><span>Enfermedad hep·tica</span></label>
               <label class="ante-chk"><input type="checkbox" value="Dislipidemia" data-pAntecedente="morbido" /><span>Dislipidemia</span></label>
               <label class="ante-chk"><input type="checkbox" value="Obesidad" data-pAntecedente="morbido" /><span>Obesidad</span></label>
               <label class="ante-chk"><input type="checkbox" value="Hipotiroidismo" data-pAntecedente="morbido" /><span>Hipotiroidismo</span></label>
               <label class="ante-chk"><input type="checkbox" value="Hipertiroidismo" data-pAntecedente="morbido" /><span>Hipertiroidismo</span></label>
               <label class="ante-chk"><input type="checkbox" value="Anemia" data-pAntecedente="morbido" /><span>Anemia</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Trastornos de coagulaci√≥n" data-pAntecedente="morbido" /><span>Trastornos de coagulaci√≥n</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Trastornos de coagulaciÛn" data-pAntecedente="morbido" /><span>Trastornos de coagulaciÛn</span></label>
               <label class="ante-chk"><input type="checkbox" value="TVP / TEP" data-pAntecedente="morbido" /><span>TVP / TEP</span></label>
               <label class="ante-chk"><input type="checkbox" value="Epilepsia" data-pAntecedente="morbido" /><span>Epilepsia</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Migra√±a" data-pAntecedente="morbido" /><span>Migra√±a</span></label>
+              <label class="ante-chk"><input type="checkbox" value="MigraÒa" data-pAntecedente="morbido" /><span>MigraÒa</span></label>
               <label class="ante-chk"><input type="checkbox" value="ACV / AIT" data-pAntecedente="morbido" /><span>ACV / AIT</span></label>
               <label class="ante-chk"><input type="checkbox" value="Parkinson" data-pAntecedente="morbido" /><span>Parkinson</span></label>
               <label class="ante-chk"><input type="checkbox" value="Demencia / Alzheimer" data-pAntecedente="morbido" /><span>Demencia / Alzheimer</span></label>
@@ -335,62 +335,62 @@
               <label class="ante-chk"><input type="checkbox" value="VIH / SIDA" data-pAntecedente="morbido" /><span>VIH / SIDA</span></label>
               <label class="ante-chk"><input type="checkbox" value="Hepatitis" data-pAntecedente="morbido" /><span>Hepatitis</span></label>
               <label class="ante-chk"><input type="checkbox" value="Tuberculosis" data-pAntecedente="morbido" /><span>Tuberculosis</span></label>
-              <label class="ante-chk"><input type="checkbox" value="C√°ncer / neoplasia" data-pAntecedente="morbido" /><span>C√°ncer / neoplasia</span></label>
+              <label class="ante-chk"><input type="checkbox" value="C·ncer / neoplasia" data-pAntecedente="morbido" /><span>C·ncer / neoplasia</span></label>
               <label class="ante-chk"><input type="checkbox" value="Fibromialgia" data-pAntecedente="morbido" /><span>Fibromialgia</span></label>
               <label class="ante-chk"><input type="checkbox" value="Psoriasis" data-pAntecedente="morbido" /><span>Psoriasis</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Depresi√≥n / ansiedad" data-pAntecedente="morbido" /><span>Depresi√≥n / ansiedad</span></label>
+              <label class="ante-chk"><input type="checkbox" value="DepresiÛn / ansiedad" data-pAntecedente="morbido" /><span>DepresiÛn / ansiedad</span></label>
               <label class="ante-chk"><input type="checkbox" value="__otro__" data-pAntecedente="morbido" data-ante-otro="morbido" /><span>Otra (especificar)</span></label>
             </span>
-            <input type="text" class="form-full ante-otro-input" data-ante-otro-input="morbido" placeholder="Especifica otro antecedente m√≥rbido‚Ä¶" style="display:none" />
+            <input type="text" class="form-full ante-otro-input" data-ante-otro-input="morbido" placeholder="Especifica otro antecedente mÛrbidoÖ" style="display:none" />
           </fieldset>
           <fieldset class="form-full ante-bloque" data-ante="quirurgico">
             <legend>
               <span class="material-symbols-outlined">surgical</span>
-              <span>Antecedentes quir√∫rgicos</span>
+              <span>Antecedentes quir˙rgicos</span>
             </legend>
             <div class="ante-toolbar">
               <span class="ante-count" data-ante-count="quirurgico">0</span>
               <button type="button" class="btn--mini" data-ante-all="quirurgico">Marcar todas</button>
               <button type="button" class="btn--mini" data-ante-none="quirurgico">Limpiar</button>
             </div>
-            <input type="text" class="ante-buscar" data-ante-buscar="quirurgico" placeholder="Buscar antecedente‚Ä¶" />
+            <input type="text" class="ante-buscar" data-ante-buscar="quirurgico" placeholder="Buscar antecedenteÖ" />
             <span class="ante-group" data-ante-group="quirurgico">
-              <label class="ante-chk"><input type="checkbox" value="Ces√°rea" data-pAntecedente="quirurgico" /><span>Ces√°rea</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Exceresis de lipoma" data-pAntecedente="quirurgico" /><span>Ex√©resis de lipoma</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Circuncisi√≥n" data-pAntecedente="quirurgico" /><span>Circuncisi√≥n</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Herniorraf√≠a" data-pAntecedente="quirurgico" /><span>Herniorraf√≠a</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Apendicectom√≠a" data-pAntecedente="quirurgico" /><span>Apendicectom√≠a</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Colecistectom√≠a" data-pAntecedente="quirurgico" /><span>Colecistectom√≠a</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Amigdalectom√≠a" data-pAntecedente="quirurgico" /><span>Amigdalectom√≠a</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Histerectom√≠a" data-pAntecedente="quirurgico" /><span>Histerectom√≠a</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Prostatectom√≠a" data-pAntecedente="quirurgico" /><span>Prostatectom√≠a</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Artroscop√≠a" data-pAntecedente="quirurgico" /><span>Artroscop√≠a</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Osteos√≠ntesis de fractura" data-pAntecedente="quirurgico" /><span>Osteos√≠ntesis de fractura</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Pr√≥tesis / reemplazo articular" data-pAntecedente="quirurgico" /><span>Pr√≥tesis / reemplazo articular</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Liberaci√≥n del t√∫nel carpiano" data-pAntecedente="quirurgico" /><span>Liberaci√≥n del t√∫nel carpiano</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Reparaci√≥n de ligamentos / tendones" data-pAntecedente="quirurgico" /><span>Reparaci√≥n de ligamentos / tendones</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Cirug√≠a de columna" data-pAntecedente="quirurgico" /><span>Cirug√≠a de columna</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Osteotom√≠a / fijaci√≥n segmentaria" data-pAntecedente="quirurgico" /><span>Osteotom√≠a / fijaci√≥n segmentaria</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Artroplast√≠a de cadera" data-pAntecedente="quirurgico" /><span>Artroplast√≠a de cadera</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Artroplast√≠a de rodilla" data-pAntecedente="quirurgico" /><span>Artroplast√≠a de rodilla</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Cirug√≠a bari√°trica" data-pAntecedente="quirurgico" /><span>Cirug√≠a bari√°trica</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Cirug√≠a de cataratas" data-pAntecedente="quirurgico" /><span>Cirug√≠a de cataratas</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Cirug√≠a cardiovascular" data-pAntecedente="quirurgico" /><span>Cirug√≠a cardiovascular</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Ces·rea" data-pAntecedente="quirurgico" /><span>Ces·rea</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Exceresis de lipoma" data-pAntecedente="quirurgico" /><span>ExÈresis de lipoma</span></label>
+              <label class="ante-chk"><input type="checkbox" value="CircuncisiÛn" data-pAntecedente="quirurgico" /><span>CircuncisiÛn</span></label>
+              <label class="ante-chk"><input type="checkbox" value="HerniorrafÌa" data-pAntecedente="quirurgico" /><span>HerniorrafÌa</span></label>
+              <label class="ante-chk"><input type="checkbox" value="ApendicectomÌa" data-pAntecedente="quirurgico" /><span>ApendicectomÌa</span></label>
+              <label class="ante-chk"><input type="checkbox" value="ColecistectomÌa" data-pAntecedente="quirurgico" /><span>ColecistectomÌa</span></label>
+              <label class="ante-chk"><input type="checkbox" value="AmigdalectomÌa" data-pAntecedente="quirurgico" /><span>AmigdalectomÌa</span></label>
+              <label class="ante-chk"><input type="checkbox" value="HisterectomÌa" data-pAntecedente="quirurgico" /><span>HisterectomÌa</span></label>
+              <label class="ante-chk"><input type="checkbox" value="ProstatectomÌa" data-pAntecedente="quirurgico" /><span>ProstatectomÌa</span></label>
+              <label class="ante-chk"><input type="checkbox" value="ArtroscopÌa" data-pAntecedente="quirurgico" /><span>ArtroscopÌa</span></label>
+              <label class="ante-chk"><input type="checkbox" value="OsteosÌntesis de fractura" data-pAntecedente="quirurgico" /><span>OsteosÌntesis de fractura</span></label>
+              <label class="ante-chk"><input type="checkbox" value="PrÛtesis / reemplazo articular" data-pAntecedente="quirurgico" /><span>PrÛtesis / reemplazo articular</span></label>
+              <label class="ante-chk"><input type="checkbox" value="LiberaciÛn del t˙nel carpiano" data-pAntecedente="quirurgico" /><span>LiberaciÛn del t˙nel carpiano</span></label>
+              <label class="ante-chk"><input type="checkbox" value="ReparaciÛn de ligamentos / tendones" data-pAntecedente="quirurgico" /><span>ReparaciÛn de ligamentos / tendones</span></label>
+              <label class="ante-chk"><input type="checkbox" value="CirugÌa de columna" data-pAntecedente="quirurgico" /><span>CirugÌa de columna</span></label>
+              <label class="ante-chk"><input type="checkbox" value="OsteotomÌa / fijaciÛn segmentaria" data-pAntecedente="quirurgico" /><span>OsteotomÌa / fijaciÛn segmentaria</span></label>
+              <label class="ante-chk"><input type="checkbox" value="ArtroplastÌa de cadera" data-pAntecedente="quirurgico" /><span>ArtroplastÌa de cadera</span></label>
+              <label class="ante-chk"><input type="checkbox" value="ArtroplastÌa de rodilla" data-pAntecedente="quirurgico" /><span>ArtroplastÌa de rodilla</span></label>
+              <label class="ante-chk"><input type="checkbox" value="CirugÌa bari·trica" data-pAntecedente="quirurgico" /><span>CirugÌa bari·trica</span></label>
+              <label class="ante-chk"><input type="checkbox" value="CirugÌa de cataratas" data-pAntecedente="quirurgico" /><span>CirugÌa de cataratas</span></label>
+              <label class="ante-chk"><input type="checkbox" value="CirugÌa cardiovascular" data-pAntecedente="quirurgico" /><span>CirugÌa cardiovascular</span></label>
               <label class="ante-chk"><input type="checkbox" value="__otro__" data-pAntecedente="quirurgico" data-ante-otro="quirurgico" /><span>Otra (especificar)</span></label>
             </span>
-            <input type="text" class="form-full ante-otro-input" data-ante-otro-input="quirurgico" placeholder="Especifica otro antecedente quir√∫rgico‚Ä¶" style="display:none" />
+            <input type="text" class="form-full ante-otro-input" data-ante-otro-input="quirurgico" placeholder="Especifica otro antecedente quir˙rgicoÖ" style="display:none" />
           </fieldset>
           <fieldset class="form-full ante-bloque" data-ante="alergico">
             <legend>
               <span class="material-symbols-outlined">allergy</span>
-              <span>Antecedentes al√©rgicos</span>
+              <span>Antecedentes alÈrgicos</span>
             </legend>
             <div class="ante-toolbar">
               <span class="ante-count" data-ante-count="alergico">0</span>
               <button type="button" class="btn--mini" data-ante-all="alergico">Marcar todas</button>
               <button type="button" class="btn--mini" data-ante-none="alergico">Limpiar</button>
             </div>
-            <input type="text" class="ante-buscar" data-ante-buscar="alergico" placeholder="Buscar antecedente‚Ä¶" />
+            <input type="text" class="ante-buscar" data-ante-buscar="alergico" placeholder="Buscar antecedenteÖ" />
             <span class="ante-group" data-ante-group="alergico">
               <label class="ante-chk"><input type="checkbox" value="Desconocidos" data-pAntecedente="alergico" /><span>Desconocidos</span></label>
               <label class="ante-chk"><input type="checkbox" value="AINEs (ibuprofeno, diclofenaco)" data-pAntecedente="alergico" /><span>AINEs (ibuprofeno, diclofenaco)</span></label>
@@ -401,30 +401,30 @@
               <label class="ante-chk"><input type="checkbox" value="Quinolonas" data-pAntecedente="alergico" /><span>Quinolonas</span></label>
               <label class="ante-chk"><input type="checkbox" value="Clindamicina" data-pAntecedente="alergico" /><span>Clindamicina</span></label>
               <label class="ante-chk"><input type="checkbox" value="Tramadol / opioides" data-pAntecedente="alergico" /><span>Tramadol / opioides</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Anest√©sicos locales" data-pAntecedente="alergico" /><span>Anest√©sicos locales</span></label>
+              <label class="ante-chk"><input type="checkbox" value="AnestÈsicos locales" data-pAntecedente="alergico" /><span>AnestÈsicos locales</span></label>
               <label class="ante-chk"><input type="checkbox" value="Yodo / contraste" data-pAntecedente="alergico" /><span>Yodo / contraste</span></label>
-              <label class="ante-chk"><input type="checkbox" value="L√°tex" data-pAntecedente="alergico" /><span>L√°tex</span></label>
+              <label class="ante-chk"><input type="checkbox" value="L·tex" data-pAntecedente="alergico" /><span>L·tex</span></label>
               <label class="ante-chk"><input type="checkbox" value="Mariscos" data-pAntecedente="alergico" /><span>Mariscos</span></label>
               <label class="ante-chk"><input type="checkbox" value="Huevo" data-pAntecedente="alergico" /><span>Huevo</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Leche / l√°cteos" data-pAntecedente="alergico" /><span>Leche / l√°cteos</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Man√≠ / nueces" data-pAntecedente="alergico" /><span>Man√≠ / nueces</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Leche / l·cteos" data-pAntecedente="alergico" /><span>Leche / l·cteos</span></label>
+              <label class="ante-chk"><input type="checkbox" value="ManÌ / nueces" data-pAntecedente="alergico" /><span>ManÌ / nueces</span></label>
               <label class="ante-chk"><input type="checkbox" value="Gluten" data-pAntecedente="alergico" /><span>Gluten</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Polvo / √°caros" data-pAntecedente="alergico" /><span>Polvo / √°caros</span></label>
-              <label class="ante-chk"><input type="checkbox" value="P√≥lenes" data-pAntecedente="alergico" /><span>P√≥lenes</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Polvo / ·caros" data-pAntecedente="alergico" /><span>Polvo / ·caros</span></label>
+              <label class="ante-chk"><input type="checkbox" value="PÛlenes" data-pAntecedente="alergico" /><span>PÛlenes</span></label>
               <label class="ante-chk"><input type="checkbox" value="Picaduras de insectos" data-pAntecedente="alergico" /><span>Picaduras de insectos</span></label>
               <label class="ante-chk"><input type="checkbox" value="Clorhexidina" data-pAntecedente="alergico" /><span>Clorhexidina</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Alcohol / antis√©pticos" data-pAntecedente="alergico" /><span>Alcohol / antis√©pticos</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Metales (n√≠quel, titanio)" data-pAntecedente="alergico" /><span>Metales (n√≠quel, titanio)</span></label>
-              <label class="ante-chk"><input type="checkbox" value="Adhesivos / ap√≥sitos" data-pAntecedente="alergico" /><span>Adhesivos / ap√≥sitos</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Alcohol / antisÈpticos" data-pAntecedente="alergico" /><span>Alcohol / antisÈpticos</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Metales (nÌquel, titanio)" data-pAntecedente="alergico" /><span>Metales (nÌquel, titanio)</span></label>
+              <label class="ante-chk"><input type="checkbox" value="Adhesivos / apÛsitos" data-pAntecedente="alergico" /><span>Adhesivos / apÛsitos</span></label>
               <label class="ante-chk"><input type="checkbox" value="__otro__" data-pAntecedente="alergico" data-ante-otro="alergico" /><span>Otra (especificar)</span></label>
             </span>
-            <input type="text" class="form-full ante-otro-input" data-ante-otro-input="alergico" placeholder="Especifica otro antecedente al√©rgico‚Ä¶" style="display:none" />
+            <input type="text" class="form-full ante-otro-input" data-ante-otro-input="alergico" placeholder="Especifica otro antecedente alÈrgicoÖ" style="display:none" />
           </fieldset>
           <label class="form-full">Historia actual
-            <textarea id="pacienteHistoriaActual" rows="3" placeholder="Motivo de consulta ampliado, evoluci√≥n del padecimiento actual, tiempo de evoluci√≥n..."></textarea>
+            <textarea id="pacienteHistoriaActual" rows="3" placeholder="Motivo de consulta ampliado, evoluciÛn del padecimiento actual, tiempo de evoluciÛn..."></textarea>
           </label>
           <label class="form-full">Notas
-            <textarea id="pacienteNotas" rows="2" placeholder="Antecedentes, d√≠agn√≥stico inicial..."></textarea>
+            <textarea id="pacienteNotas" rows="2" placeholder="Antecedentes, dÌagnÛstico inicial..."></textarea>
           </label>
           <button type="submit" class="btn btn--primary form-full">Guardar paciente</button>
         </form>
@@ -435,7 +435,7 @@
           <h2>Buscar paciente</h2>
         </div>
         <div class="search-bar">
-          <input type="text" id="buscarPaciente" placeholder="Buscar por nombre o c√≥digo..." />
+          <input type="text" id="buscarPaciente" placeholder="Buscar por nombre o cÛdigo..." />
           <span class="material-symbols-outlined">search</span>
         </div>
         <div id="listaPacientes" class="list"></div>
@@ -504,10 +504,10 @@
 
       <div class="panel" id="panelProximaCita" hidden>
         <div class="panel-head">
-          <h2>Programar cita pr√≥xima</h2>
-          <span class="tag" id="pcCodigo">‚Äî</span>
+          <h2>Programar cita prÛxima</h2>
+          <span class="tag" id="pcCodigo">ó</span>
         </div>
-        <p class="panel-sub">Selecciona un paciente en el formulario para ver su pr√≥xima cita, el registro de su cita anterior y programar una nueva consulta si ya fue visto.</p>
+        <p class="panel-sub">Selecciona un paciente en el formulario para ver su prÛxima cita, el registro de su cita anterior y programar una nueva consulta si ya fue visto.</p>
         <div id="pcInfo"></div>
       </div>
 
@@ -558,7 +558,7 @@
             <span class="tag" id="countCitasSinConsulta">0</span>
           </div>
         </div>
-        <p class="panel-sub">Citas o casos que todav√≠a no pasan a consulta. Agr√©galos aqu√≠ y quedar√°n listados en esta secci√≥n.</p>
+        <p class="panel-sub">Citas o casos que todavÌa no pasan a consulta. AgrÈgalos aquÌ y quedar·n listados en esta secciÛn.</p>
         <div id="listaCitasSinConsulta" class="list"></div>
       </div>
     </section>
@@ -576,10 +576,10 @@
 <section id="seccion-citas-completadas" class="seccion">
       <div class="panel" id="panelCitasCompletadas">
         <div class="panel-head">
-          <h2>Citas completadas y d√≠agn√≥sticos</h2>
+          <h2>Citas completadas y dÌagnÛsticos</h2>
           <span class="tag" id="countCitasCompletadas">0</span>
         </div>
-        <p class="panel-sub">Citas que el doctor ya atendi√≥. Se guardan con su d√≠agn√≥stico y tratamiento.</p>
+        <p class="panel-sub">Citas que el doctor ya atendiÛ. Se guardan con su dÌagnÛstico y tratamiento.</p>
         <div id="listaCitasCompletadas" class="list"></div>
       </div>
     </section>
@@ -587,7 +587,7 @@
     <section id="seccion-proxima-cita" class="seccion">
       <div class="panel">
         <div class="panel-head">
-          <h2>Pr√≥xima cita</h2>
+          <h2>PrÛxima cita</h2>
           <span class="tag" id="countProximaCita">0</span>
         </div>
         <p class="panel-sub">Pacientes que ya completaron su primera consulta y pueden programar una siguiente visita.</p>
@@ -597,33 +597,33 @@
 
     <section id="seccion-registros" class="seccion">
       <div class="panel">
-        <h2>Nuevo registro cl√≠nico</h2>
+        <h2>Nuevo registro clÌnico</h2>
         <form id="registroForm" class="form-grid">
           <label class="form-full">Paciente
-            <input type="text" id="registroPaciente" list="listaPacientesBD" required placeholder="Escribe el nombre o c√≥digo del paciente (puede ser uno nuevo)" autocomplete="off" />
+            <input type="text" id="registroPaciente" list="listaPacientesBD" required placeholder="Escribe el nombre o cÛdigo del paciente (puede ser uno nuevo)" autocomplete="off" />
           <datalist id="listaPacientesBD"></datalist>
 
           </label>
-          <label class="form-full">T√≠tulo
+          <label class="form-full">TÌtulo
             <input type="text" id="registroTitulo" required placeholder="Ej: Consulta inicial" />
           </label>
           <label class="form-full">Tipo
             <select id="registroTipo">
               <option value="Motivo de consulta">Motivo de consulta</option>
-              <option value="Examen f√≠sico">Examen f√≠sico</option>
-              <option value="D√≠agn√≥stico">D√≠agn√≥stico</option>
+              <option value="Examen fÌsico">Examen fÌsico</option>
+              <option value="DÌagnÛstico">DÌagnÛstico</option>
             </select>
           </label>
           <label class="form-full">Detalle
-            <textarea id="registroDetalle" rows="3" placeholder="Descripci√≥n del registro..."></textarea>
+            <textarea id="registroDetalle" rows="3" placeholder="DescripciÛn del registro..."></textarea>
           </label>
           <label>Escala EVA (dolor 0-10)
             <input type="number" id="registroEVA" min="0" max="10" step="1" placeholder="0" />
           </label>
-          <label>Pr√≥xima cita - fecha
+          <label>PrÛxima cita - fecha
             <input type="date" id="registroProxCitaFecha" />
           </label>
-          <label>Pr√≥xima cita - hora
+          <label>PrÛxima cita - hora
             <div class="hora-wrap">
               <input type="time" id="registroProxCitaHora" />
               <select id="registroProxCitaAmPm">
@@ -632,7 +632,7 @@
               </select>
             </div>
           </label>
-          <span class="form-full rec-hint">Si indicas una pr√≥xima cita, se agenda autom√°ticamente en Citas.</span>
+          <span class="form-full rec-hint">Si indicas una prÛxima cita, se agenda autom·ticamente en Citas.</span>
           <label class="form-full">Documento adjunto (opcional)
             <input type="file" id="registroArchivo" accept=".pdf,image/*" />
           </label>
@@ -642,7 +642,7 @@
 
       <div class="panel">
         <div class="panel-head">
-          <h2>Historial cl√≠nico</h2>
+          <h2>Historial clÌnico</h2>
           <div class="panel-actions">
             <button type="button" id="btnRefreshHistorial" class="btn btn--ghost-dark">
               <span class="material-symbols-outlined">refresh</span> Refrescar archivos
@@ -659,7 +659,7 @@
           </div>
         </div>
         <div class="search-bar">
-          <input type="text" id="buscarRegistro" placeholder="Buscar por paciente, c√≥digo, c√©dula, t√≠tulo o contenido..." />
+          <input type="text" id="buscarRegistro" placeholder="Buscar por paciente, cÛdigo, cÈdula, tÌtulo o contenido..." />
           <span class="material-symbols-outlined">search</span>
         </div>
         <div id="listaRegistros" class="list"></div>
@@ -676,7 +676,7 @@
             <span class="tag" id="countPacientesEliminados">0</span>
           </div>
         </div>
-        <p class="limite-info">Los pacientes eliminados desde cualquier secci√≥n solo se muestran aqu√≠ al pulsar el bot√≥n. Usa el icono ‚ãÆ de cada paciente para restaurarlo o eliminarlo definitivamente.</p>
+        <p class="limite-info">Los pacientes eliminados desde cualquier secciÛn solo se muestran aquÌ al pulsar el botÛn. Usa el icono ? de cada paciente para restaurarlo o eliminarlo definitivamente.</p>
         <div id="listaPacientesEliminados" class="list" hidden></div>
       </div>
 
@@ -685,14 +685,14 @@
     <section id="seccion-evaluacion-fisica" class="seccion">
       <div class="eval-layout">
         <div class="eval-svg-wrap">
-          <span class="eval-svg-caption">Elige la posici√≥n en las tarjetas y haz clic sobre las zonas del cuerpo para marcarlas con el color del tipo de lesi√≥n</span>
+          <span class="eval-svg-caption">Elige la posiciÛn en las tarjetas y haz clic sobre las zonas del cuerpo para marcarlas con el color del tipo de lesiÛn</span>
           <div class="eval-galeria" id="evalGaleria"></div>
           <div class="eval-vista-grande" id="evalVistaGrande"></div>
         </div>
 
         <div class="eval-panel">
           <h3>Paciente actual</h3>
-          <p id="evalPacienteActual" class="eval-paciente-actual">‚Äî Selecciona el paciente actual en el panel superior ‚Äî</p>
+          <p id="evalPacienteActual" class="eval-paciente-actual">ó Selecciona el paciente actual en el panel superior ó</p>
 
           <h3>Sexo del paciente</h3>
           <div class="eval-sexo-btns">
@@ -702,13 +702,13 @@
             <button type="button" class="btn eval-sexo" id="btnEvalFemenino">
               <span class="material-symbols-outlined">female</span> Femenino
             </button>
-            <button type="button" class="btn btn--ghost-dark btn-small eval-sexo-auto" id="btnEvalSexoAuto" title="Sincronizar el sexo de la silueta con el del paciente actual. Al seleccionar otro paciente, la silueta reflejar√° su sexo autom√°ticamente. Puedes cambiarlo a mano; para volver a sincronizar, pulsa aqu√≠.">
+            <button type="button" class="btn btn--ghost-dark btn-small eval-sexo-auto" id="btnEvalSexoAuto" title="Sincronizar el sexo de la silueta con el del paciente actual. Al seleccionar otro paciente, la silueta reflejar· su sexo autom·ticamente. Puedes cambiarlo a mano; para volver a sincronizar, pulsa aquÌ.">
               <span class="material-symbols-outlined">autorenew</span> Auto
             </button>
           </div>
           <p class="eval-auto-msg" id="evalAutoMsg"></p>
 
-          <h3>Tipo de lesi√≥n</h3>
+          <h3>Tipo de lesiÛn</h3>
           <div id="lesionTipos" class="eval-tipos"></div>
           <button type="button" class="btn btn--ghost-dark btn-small" id="btnEvalBorrador">
             <span class="material-symbols-outlined">ink_eraser</span> Borrador
@@ -717,7 +717,7 @@
           <h3>Partes afectadas (<span id="evalContador">0</span>)</h3>
           <div id="partesAfectadas" class="eval-partes"></div>
 
-          <h3>Pruebas diagn√≥sticas</h3>
+          <h3>Pruebas diagnÛsticas</h3>
           <div class="eval-pruebas">
             <div class="eval-prueba-bloque">
               <span class="eval-prueba-titulo">Signos de Celso</span>
@@ -726,7 +726,7 @@
                 <label class="ante-chk"><input type="checkbox" value="Calor" data-eval-celso /><span>Calor</span></label>
                 <label class="ante-chk"><input type="checkbox" value="Tumor (aumento de volumen)" data-eval-celso /><span>Tumor</span></label>
                 <label class="ante-chk"><input type="checkbox" value="Dolor" data-eval-celso /><span>Dolor</span></label>
-                <label class="ante-chk"><input type="checkbox" value="P√©rdida de la funci√≥n" data-eval-celso /><span>P√©rdida de funci√≥n</span></label>
+                <label class="ante-chk"><input type="checkbox" value="PÈrdida de la funciÛn" data-eval-celso /><span>PÈrdida de funciÛn</span></label>
               </div>
             </div>
             <label class="eval-prueba-campo">Escala EVA (dolor): <output id="evalEVAVal">0</output> / 10
@@ -735,12 +735,12 @@
             <label class="eval-prueba-campo">Escala de Daniels (fuerza muscular)
               <select id="evalDaniels">
                 <option value="">No evaluada</option>
-                <option value="0 ‚Äì Sin contracci√≥n">0 ‚Äì Sin contracci√≥n</option>
-                <option value="1 ‚Äì Contracci√≥n sin movimiento">1 ‚Äì Contracci√≥n sin movimiento</option>
-                <option value="2 ‚Äì Movimiento sin gravedad">2 ‚Äì Movimiento sin gravedad</option>
-                <option value="3 ‚Äì Movimiento contra gravedad">3 ‚Äì Movimiento contra gravedad</option>
-                <option value="4 ‚Äì Movimiento contra resistencia">4 ‚Äì Movimiento contra resistencia</option>
-                <option value="5 ‚Äì Fuerza normal">5 ‚Äì Fuerza normal</option>
+                <option value="0 ñ Sin contracciÛn">0 ñ Sin contracciÛn</option>
+                <option value="1 ñ ContracciÛn sin movimiento">1 ñ ContracciÛn sin movimiento</option>
+                <option value="2 ñ Movimiento sin gravedad">2 ñ Movimiento sin gravedad</option>
+                <option value="3 ñ Movimiento contra gravedad">3 ñ Movimiento contra gravedad</option>
+                <option value="4 ñ Movimiento contra resistencia">4 ñ Movimiento contra resistencia</option>
+                <option value="5 ñ Fuerza normal">5 ñ Fuerza normal</option>
               </select>
             </label>
             <label class="eval-prueba-campo">Escala del dolor
@@ -756,13 +756,13 @@
           </div>
 
           <h3>Columna vertebral</h3>
-          <p class="eval-columna-pista">Marca cervical, dorsal, lumbar, sacro y coxis con el tipo de lesi√≥n seleccionado.</p>
+          <p class="eval-columna-pista">Marca cervical, dorsal, lumbar, sacro y coxis con el tipo de lesiÛn seleccionado.</p>
           <button type="button" class="btn btn--ghost-dark btn-small" id="btnEvalColumna">
             <span class="material-symbols-outlined">skeleton</span> Abrir mapa de columna
           </button>
 
-          <h3>Nota de la evaluaci√≥n</h3>
-          <textarea id="evalNota" rows="4" placeholder="Observaciones, hallazgos, sugerencias‚Ä¶"></textarea>
+          <h3>Nota de la evaluaciÛn</h3>
+          <textarea id="evalNota" rows="4" placeholder="Observaciones, hallazgos, sugerenciasÖ"></textarea>
 
           <div class="eval-acciones">
             <button type="button" class="btn btn--primary" id="btnEvalGuardar">
@@ -782,7 +782,7 @@
     <section id="seccion-evaluacion-medica" class="seccion">
       <div class="panel">
         <div class="panel-head">
-          <h2>Evaluaci√≥n m√©dica general</h2>
+          <h2>EvaluaciÛn mÈdica general</h2>
           <span class="tag" id="countEvalMed">0</span>
         </div>
         <form id="evalMedForm" class="form-grid">
@@ -795,17 +795,17 @@
           <fieldset class="form-full evalmed-bloque">
             <legend>Antecedentes</legend>
             <div class="evalmed-grid">
-              <label>Enfermedades cr√≥nicas
+              <label>Enfermedades crÛnicas
                 <input type="text" id="evalMedAntCronicas" placeholder="HTA, DM2, artritis..." />
               </label>
-              <label>Quir√∫rgicos
-                <input type="text" id="evalMedAntQuirurgicos" placeholder="Cirug√≠as previas" />
+              <label>Quir˙rgicos
+                <input type="text" id="evalMedAntQuirurgicos" placeholder="CirugÌas previas" />
               </label>
-              <label>Al√©rgicos
+              <label>AlÈrgicos
                 <input type="text" id="evalMedAntAlergicos" placeholder="Alergias a medicamentos" />
               </label>
-              <label>Medicaci√≥n habitual
-                <input type="text" id="evalMedAntMedicacion" placeholder="F√°rmacos en uso actual" />
+              <label>MedicaciÛn habitual
+                <input type="text" id="evalMedAntMedicacion" placeholder="F·rmacos en uso actual" />
               </label>
             </div>
           </fieldset>
@@ -821,7 +821,7 @@
               <label>FR (rpm)
                 <input type="number" id="evalMedVitalFR" min="0" placeholder="16" />
               </label>
-              <label>Temp (¬∞C)
+              <label>Temp (∞C)
                 <input type="number" id="evalMedVitalTemp" min="30" max="45" step="0.1" placeholder="36.8" />
               </label>
               <label>Peso (kg)
@@ -830,19 +830,19 @@
               <label>Talla (cm)
                 <input type="number" id="evalMedVitalTalla" min="0" inputmode="decimal" placeholder="170" />
               </label>
-              <label>IMC (kg/m¬≤)
+              <label>IMC (kg/m≤)
                 <input type="text" id="evalMedVitalIMC" readonly placeholder="Se calcula solo" />
               </label>
-              <label>SatO‚ÇÇ (%)
+              <label>SatO2 (%)
                 <input type="number" id="evalMedVitalSatO2" min="0" max="100" placeholder="98" />
               </label>
             </div>
           </fieldset>
-          <label class="form-full">Examen f√≠sico general
-            <textarea id="evalMedExamen" rows="3" placeholder="Hallazgos del examen f√≠sico"></textarea>
+          <label class="form-full">Examen fÌsico general
+            <textarea id="evalMedExamen" rows="3" placeholder="Hallazgos del examen fÌsico"></textarea>
           </label>
-          <label class="form-full">Impresi√≥n diagn√≥stica
-            <input type="text" id="evalMedDiagnostico" placeholder="Diagn√≥stico o impresi√≥n diagn√≥stica" />
+          <label class="form-full">ImpresiÛn diagnÛstica
+            <input type="text" id="evalMedDiagnostico" placeholder="DiagnÛstico o impresiÛn diagnÛstica" />
           </label>
           <label class="form-full">Plan e indicaciones
             <textarea id="evalMedPlan" rows="3" placeholder="Tratamiento, indicaciones, referidos"></textarea>
@@ -852,7 +852,7 @@
           </label>
           <div class="panel-actions form-full">
             <button type="submit" class="btn btn--primary">
-              <span class="material-symbols-outlined">save</span> Guardar evaluaci√≥n
+              <span class="material-symbols-outlined">save</span> Guardar evaluaciÛn
             </button>
             <button type="button" class="btn btn--ghost-dark" id="btnEvalMedLimpiar">
               <span class="material-symbols-outlined">restart_alt</span> Limpiar
@@ -863,8 +863,8 @@
 
       <div class="panel">
         <div class="panel-head">
-          <h2>Evaluaciones m√©dicas guardadas</h2>
-          <input type="search" id="buscarEvalMed" class="search-input" placeholder="Buscar por paciente, motivo o diagn√≥stico..." />
+          <h2>Evaluaciones mÈdicas guardadas</h2>
+          <input type="search" id="buscarEvalMed" class="search-input" placeholder="Buscar por paciente, motivo o diagnÛstico..." />
         </div>
         <div id="listaEvalMed" class="list"></div>
       </div>
@@ -877,8 +877,8 @@
           <label class="form-full">Paciente
             <select id="documentoPaciente" required></select>
           </label>
-          <label class="form-full">Descripci√≥n
-            <input type="text" id="documentoDescripcion" placeholder="Ej: Radiograf√≠a, Informe m√©dico" />
+          <label class="form-full">DescripciÛn
+            <input type="text" id="documentoDescripcion" placeholder="Ej: RadiografÌa, Informe mÈdico" />
           </label>
           <label class="form-full">Archivo (PDF, imagen)
             <input type="file" id="documentoArchivo" accept=".pdf,image/*" required />
@@ -895,7 +895,7 @@
 
     <section id="seccion-estudios" class="seccion">
       <div class="panel">
-        <h2>Subir im√°genes y estudios (placas, radiograf√≠as)</h2>
+        <h2>Subir im·genes y estudios (placas, radiografÌas)</h2>
         <form id="estudioForm" class="form-grid">
           <label class="form-full">Paciente
             <select id="estudioPaciente" required></select>
@@ -903,15 +903,15 @@
           <label class="form-full">Tipo de estudio
             <select id="estudioTipo" required></select>
           </label>
-          <label class="form-full">Descripci√≥n (opcional)
-            <input type="text" id="estudioDescripcion" placeholder="Ej: Radiograf√≠a de rodilla derecha" />
+          <label class="form-full">DescripciÛn (opcional)
+            <input type="text" id="estudioDescripcion" placeholder="Ej: RadiografÌa de rodilla derecha" />
           </label>
-<label class="form-full">Im√°genes (puedes seleccionar varias; tambi√©n DICOM .dcm)
+<label class="form-full">Im·genes (puedes seleccionar varias; tambiÈn DICOM .dcm)
             <input type="file" id="estudioArchivo" accept="image/*,.dcm,.dicom" multiple required />
           </label>
           <div class="form-full add-item-row">
             <button type="submit" class="btn btn--primary">
-              <span class="material-symbols-outlined">upload</span> Subir im√°genes
+              <span class="material-symbols-outlined">upload</span> Subir im·genes
             </button>
             <button type="button" id="btnImprimirEstudios" class="btn btn--ghost-dark">
               <span class="material-symbols-outlined">print</span> Imprimir estudios
@@ -921,15 +921,15 @@
       </div>
 
       <div class="panel">
-        <h2>Estudios e im√°genes m√©dicas</h2>
-        <p class="panel-sub">Cantidad de im√°genes subidas: <strong id="countEstudios">0</strong></p>
+        <h2>Estudios e im·genes mÈdicas</h2>
+        <p class="panel-sub">Cantidad de im·genes subidas: <strong id="countEstudios">0</strong></p>
         <div id="listaEstudios" class="estudio-grid"></div>
       </div>
     </section>
 
 <section id="seccion-imagenes" class="seccion">
       <div class="panel">
-        <h2>Visor de im√°genes m√©dicas (radiograf√≠as, CT scans)</h2>
+        <h2>Visor de im·genes mÈdicas (radiografÌas, CT scans)</h2>
         <label class="form-full">Paciente
           <select id="imgPaciente"></select>
         </label>
@@ -938,8 +938,8 @@
             <div class="img-pt" id="imgPtInfo">
               <span class="material-symbols-outlined">person</span>
               <div class="img-pt-txt">
-                <strong id="imgPtName">Paciente ‚Äî</strong>
-                <small id="imgPtStudy">Estudio ‚Äî</small>
+                <strong id="imgPtName">Paciente ó</strong>
+                <small id="imgPtStudy">Estudio ó</small>
               </div>
             </div>
             <div class="img-topbar-actions">
@@ -964,7 +964,7 @@
                 <button type="button" class="img-tool" data-tool="mover" title="Mover imagen (arrastrar)">
                   <span class="material-symbols-outlined">pan_tool</span>
                 </button>
-                <button type="button" class="img-tool" data-tool="zoom" title="Zoom (arrastra un √°rea)">
+                <button type="button" class="img-tool" data-tool="zoom" title="Zoom (arrastra un ·rea)">
                   <span class="material-symbols-outlined">zoom_in</span>
                 </button>
                 <button type="button" class="img-tool" data-tool="wl" title="Ventana y nivel (arrastra)">
@@ -975,10 +975,10 @@
                 <button type="button" class="img-tool" data-tool="regla" title="Regla (2 clics)">
                   <span class="material-symbols-outlined">straighten</span>
                 </button>
-                <button type="button" class="img-tool" data-tool="angulo" title="√Ångulo (3 clics)">
+                <button type="button" class="img-tool" data-tool="angulo" title="¡ngulo (3 clics)">
                   <span class="material-symbols-outlined">control_camera</span>
                 </button>
-                <button type="button" class="img-tool" data-tool="eje" title="Eje mec√°nico (2 clics)">
+                <button type="button" class="img-tool" data-tool="eje" title="Eje mec·nico (2 clics)">
                   <span class="material-symbols-outlined">timeline</span>
                 </button>
                 <button type="button" class="img-tool" data-tool="anotar" title="Anotar (1 clic)">
@@ -986,7 +986,7 @@
                 </button>
               </div>
               <div class="img-tool-group">
-                <button type="button" class="img-tool img-tool--accion" data-action="rotar" title="Rotar 90¬∞ (tecla R)">
+                <button type="button" class="img-tool img-tool--accion" data-action="rotar" title="Rotar 90∞ (tecla R)">
                   <span class="material-symbols-outlined">rotate_right</span>
                 </button>
                 <button type="button" class="img-tool img-tool--accion" data-action="voltear" title="Voltear horizontal (tecla F)">
@@ -1004,10 +1004,10 @@
                 <div class="img-viewer-info" id="imgViewerInfo"></div>
               </div>
               <div class="img-statusbar" id="imgStatusBar">
-                <span class="img-status-item" id="stHerramienta">Herramienta: ‚Äî</span>
-                <span class="img-status-item" id="stFormato">Formato: ‚Äî</span>
-                <span class="img-status-item" id="stResolucion">Resoluci√≥n: ‚Äî</span>
-                <span class="img-status-item" id="stNumero">Imagen: ‚Äî / ‚Äî</span>
+                <span class="img-status-item" id="stHerramienta">Herramienta: ó</span>
+                <span class="img-status-item" id="stFormato">Formato: ó</span>
+                <span class="img-status-item" id="stResolucion">ResoluciÛn: ó</span>
+                <span class="img-status-item" id="stNumero">Imagen: ó / ó</span>
               </div>
               <div class="img-film-nav">
                 <button type="button" class="btn-film-nav btn-film-nav--before" data-nav="before" aria-label="Ver original">Original</button>
@@ -1049,7 +1049,7 @@
             </div>
           </div>
 
-          <p class="img-film-title">Proyecciones ‚Äî haz clic para cambiar de imagen</p>
+          <p class="img-film-title">Proyecciones ó haz clic para cambiar de imagen</p>
         </div>
       </div>
     </section>
@@ -1072,7 +1072,7 @@
           <div class="form-full resumen" id="facturaResumen">
             <p>Subtotal: <strong id="resumenSubtotal">$0.00</strong></p>
             <p>Honorarios del doctor: <strong id="resumenHonorarios">$0.00</strong></p>
-            <p>Neto cl√≠nica: <strong id="resumenNeto">$0.00</strong></p>
+            <p>Neto clÌnica: <strong id="resumenNeto">$0.00</strong></p>
             <p class="total">Total a pagar: <strong id="resumenTotal">$0.00</strong></p>
           </div>
           <button type="submit" class="btn btn--primary form-full">Emitir factura</button>
@@ -1094,7 +1094,7 @@
               <span class="glo-menos material-symbols-outlined">remove</span>
             </span>
           </summary>
-          <p class="glosario-nota">Precios referenciales en RD$ actualizados seg√∫n tarifario del Colegio M√©dico Dominicano (CMD). √ösalos como base para generar facturas y recibos.</p>
+          <p class="glosario-nota">Precios referenciales en RD$ actualizados seg˙n tarifario del Colegio MÈdico Dominicano (CMD). ⁄salos como base para generar facturas y recibos.</p>
           <div id="glosarioContenido" class="glosario-contenido"></div>
         </details>
       </div>
@@ -1103,18 +1103,18 @@
     <section id="seccion-cirugias" class="seccion">
       <div class="panel">
         <div class="panel-head">
-          <h2 id="tituloFormCirugia">Registrar cirug√≠a</h2>
+          <h2 id="tituloFormCirugia">Registrar cirugÌa</h2>
           <span class="tag" id="countCirugias">0</span>
         </div>
         <form id="cirugiaForm" class="form-grid">
           <label class="form-full">Paciente
             <select id="cirugiaPaciente" required></select>
           </label>
-          <label>Fecha de la cirug√≠a
+          <label>Fecha de la cirugÌa
             <input type="date" id="cirugiaFecha" required />
           </label>
-          <label>Tipo de cirug√≠a
-            <input type="text" id="cirugiaTipo" list="listaCirugiasTipo" required placeholder="Ej.: Artroplastia total de rodilla (pr√≥tesis)" />
+          <label>Tipo de cirugÌa
+            <input type="text" id="cirugiaTipo" list="listaCirugiasTipo" required placeholder="Ej.: Artroplastia total de rodilla (prÛtesis)" />
           </label>
           <label>Lateralidad
             <select id="cirugiaLateralidad">
@@ -1125,13 +1125,13 @@
             </select>
           </label>
           <label>Cirujano
-            <input type="text" id="cirugiaCirujano" placeholder="M√©dico que opera" />
+            <input type="text" id="cirugiaCirujano" placeholder="MÈdico que opera" />
           </label>
           <label>Ayudante(s)
-            <input type="text" id="cirugiaAyudante" placeholder="Ayudante quir√∫rgico" />
+            <input type="text" id="cirugiaAyudante" placeholder="Ayudante quir˙rgico" />
           </label>
-          <label>Sala / Quir√≥fano
-            <input type="text" id="cirugiaSala" placeholder="Ej.: Quir√≥fano 2" />
+          <label>Sala / QuirÛfano
+            <input type="text" id="cirugiaSala" placeholder="Ej.: QuirÛfano 2" />
           </label>
           <label>Anestesia
             <select id="cirugiaAnestesia">
@@ -1139,21 +1139,21 @@
               <option>Regional</option>
               <option>General</option>
               <option>Local</option>
-              <option>Sedaci√≥n</option>
+              <option>SedaciÛn</option>
             </select>
           </label>
-          <label>Duraci√≥n
+          <label>DuraciÛn
             <input type="text" id="cirugiaDuracion" placeholder="Ej.: 1 h 30 min" />
           </label>
-          <label class="form-full">Descripci√≥n del procedimiento
+          <label class="form-full">DescripciÛn del procedimiento
             <textarea id="cirugiaDescripcion" rows="3" placeholder="Detalle del procedimiento realizado"></textarea>
           </label>
           <div class="form-full add-item-row">
             <button type="button" id="btnAgregarImplante" class="btn btn--primary">
               <span class="material-symbols-outlined">add_circle</span>
-              Agregar implante / pr√≥tesis
+              Agregar implante / prÛtesis
             </button>
-            <span class="rec-hint">Registre cada implante: nombre, marca, modelo, lote y fecha de implantaci√≥n.</span>
+            <span class="rec-hint">Registre cada implante: nombre, marca, modelo, lote y fecha de implantaciÛn.</span>
           </div>
           <div id="cirugiaImplantes" class="form-full list"></div>
           <label class="form-full">Complicaciones
@@ -1164,16 +1164,16 @@
           </label>
           <div class="panel-actions form-full">
             <button type="submit" class="btn btn--primary">
-              <span class="material-symbols-outlined">save</span> Guardar cirug√≠a
+              <span class="material-symbols-outlined">save</span> Guardar cirugÌa
             </button>
-            <button type="button" class="btn btn--ghost-dark hidden" id="btnCancelarEdicionCirugia">Cancelar edici√≥n</button>
+            <button type="button" class="btn btn--ghost-dark hidden" id="btnCancelarEdicionCirugia">Cancelar ediciÛn</button>
           </div>
         </form>
       </div>
 
       <div class="panel">
         <div class="panel-head">
-          <h2>Cirug√≠as registradas</h2>
+          <h2>CirugÌas registradas</h2>
           <input type="search" id="buscarCirugia" class="search-input" placeholder="Buscar por paciente, tipo o cirujano..." />
         </div>
         <div id="listaCirugias" class="list"></div>
@@ -1181,7 +1181,7 @@
 
       <div class="panel">
         <div class="panel-head">
-          <h2>Listado de implantes y pr√≥tesis</h2>
+          <h2>Listado de implantes y prÛtesis</h2>
           <span class="tag" id="countImplantes">0</span>
         </div>
         <div class="table-wrap">
@@ -1189,12 +1189,12 @@
             <thead>
               <tr>
                 <th>Paciente</th>
-                <th>Implante / pr√≥tesis</th>
+                <th>Implante / prÛtesis</th>
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Lote</th>
                 <th>Fecha</th>
-                <th>Cirug√≠a</th>
+                <th>CirugÌa</th>
               </tr>
             </thead>
             <tbody id="listaImplantes"></tbody>
@@ -1209,7 +1209,7 @@
     <section id="seccion-rehabilitacion" class="seccion">
       <div class="panel">
         <div class="panel-head">
-          <h2 id="tituloFormRehab">Crear plan de rehabilitaci√≥n</h2>
+          <h2 id="tituloFormRehab">Crear plan de rehabilitaciÛn</h2>
           <span class="tag" id="countRehab">0</span>
         </div>
         <form id="rehabForm" class="form-grid">
@@ -1222,35 +1222,35 @@
           <label>Fecha de fin (estimada)
             <input type="date" id="rehabFechaFin" />
           </label>
-          <label class="form-full">Diagn√≥stico / condici√≥n a tratar
-            <input type="text" id="rehabDiagnostico" placeholder="Ej.: Rehabilitaci√≥n post quir√∫rgica de rodilla derecha" required />
+          <label class="form-full">DiagnÛstico / condiciÛn a tratar
+            <input type="text" id="rehabDiagnostico" placeholder="Ej.: RehabilitaciÛn post quir˙rgica de rodilla derecha" required />
           </label>
           <label class="form-full">Objetivos del plan
-            <textarea id="rehabObjetivos" rows="2" placeholder="Ej.: Recuperar rango de movimiento, fortalecer cu√°driceps, reeducar marcha"></textarea>
+            <textarea id="rehabObjetivos" rows="2" placeholder="Ej.: Recuperar rango de movimiento, fortalecer cu·driceps, reeducar marcha"></textarea>
           </label>
           <label class="form-full">Metas medibles
-            <textarea id="rehabMetas" rows="2" placeholder="Ej.: Lograr flexi√≥n de 120¬∞ en 6 semanas, deambular sin apoyo en 8 semanas"></textarea>
+            <textarea id="rehabMetas" rows="2" placeholder="Ej.: Lograr flexiÛn de 120∞ en 6 semanas, deambular sin apoyo en 8 semanas"></textarea>
           </label>
           <div class="panel-actions form-full">
             <button type="submit" class="btn btn--primary">
               <span class="material-symbols-outlined">save</span> Guardar plan
             </button>
-            <button type="button" class="btn btn--ghost-dark hidden" id="btnCancelarEdicionRehab">Cancelar edici√≥n</button>
+            <button type="button" class="btn btn--ghost-dark hidden" id="btnCancelarEdicionRehab">Cancelar ediciÛn</button>
           </div>
         </form>
       </div>
 
       <div class="panel">
         <div class="panel-head">
-          <h2>Planes de rehabilitaci√≥n</h2>
-          <input type="search" id="buscarRehab" class="search-input" placeholder="Buscar por paciente o diagn√≥stico..." />
+          <h2>Planes de rehabilitaciÛn</h2>
+          <input type="search" id="buscarRehab" class="search-input" placeholder="Buscar por paciente o diagnÛstico..." />
         </div>
         <div id="listaRehab" class="list"></div>
       </div>
 
       <div class="panel">
         <div class="panel-head">
-          <h2 id="tituloFormReferimiento">Referimiento a terapia f√≠sica</h2>
+          <h2 id="tituloFormReferimiento">Referimiento a terapia fÌsica</h2>
           <span class="tag" id="countReferimientos">0</span>
         </div>
         <form id="referimientoForm" class="form-grid">
@@ -1260,24 +1260,24 @@
           <label>Fecha
             <input type="date" id="refFecha" required />
           </label>
-          <label class="form-full">Diagn√≥stico
-            <input type="text" id="refDiagnostico" placeholder="Ej.: Lumbalgia mec√°nica con contractura paravertebral" required />
+          <label class="form-full">DiagnÛstico
+            <input type="text" id="refDiagnostico" placeholder="Ej.: Lumbalgia mec·nica con contractura paravertebral" required />
           </label>
           <fieldset class="form-full ante-grupo">
-            <legend>Plan de terapia f√≠sica</legend>
+            <legend>Plan de terapia fÌsica</legend>
             <label class="ante-chk"><input type="checkbox" value="Mejorar dolor" data-ref-plan /><span>Mejorar dolor</span></label>
             <label class="ante-chk"><input type="checkbox" value="Mejorar movilidad" data-ref-plan /><span>Mejorar movilidad</span></label>
             <label class="ante-chk"><input type="checkbox" value="Fortalecimiento de musculatura paravertebral" data-ref-plan /><span>Fortalecimiento de musculatura paravertebral</span></label>
-            <label class="ante-chk"><input type="checkbox" value="Fortalecimiento de cu√°driceps" data-ref-plan /><span>Fortalecimiento de cu√°driceps</span></label>
+            <label class="ante-chk"><input type="checkbox" value="Fortalecimiento de cu·driceps" data-ref-plan /><span>Fortalecimiento de cu·driceps</span></label>
           </fieldset>
           <label class="form-full">Notas / indicaciones
-            <textarea id="refNotas" rows="2" placeholder="N√∫mero de sesiones, frecuencia, recomendaciones..."></textarea>
+            <textarea id="refNotas" rows="2" placeholder="N˙mero de sesiones, frecuencia, recomendaciones..."></textarea>
           </label>
           <div class="panel-actions form-full">
             <button type="submit" class="btn btn--primary">
               <span class="material-symbols-outlined">save</span> Guardar referimiento
             </button>
-            <button type="button" class="btn btn--ghost-dark hidden" id="btnCancelarEdicionRef">Cancelar edici√≥n</button>
+            <button type="button" class="btn btn--ghost-dark hidden" id="btnCancelarEdicionRef">Cancelar ediciÛn</button>
           </div>
         </form>
       </div>
@@ -1285,21 +1285,21 @@
       <div class="panel">
         <div class="panel-head">
           <h2>Referimientos emitidos</h2>
-          <input type="search" id="buscarReferimiento" class="search-input" placeholder="Buscar por paciente o diagn√≥stico..." />
+          <input type="search" id="buscarReferimiento" class="search-input" placeholder="Buscar por paciente o diagnÛstico..." />
         </div>
         <div id="listaReferimientos" class="list"></div>
       </div>
 
       <div class="panel">
         <div class="panel-head">
-          <h2>√ìrtesis del paciente</h2>
+          <h2>”rtesis del paciente</h2>
           <span class="tag" id="countOrtesis">0</span>
         </div>
         <form id="ortesisForm" class="form-grid">
           <label class="form-full">Paciente
             <select id="ortesisPaciente" required></select>
           </label>
-          <label class="form-full">Diagn√≥stico / indicaci√≥n
+          <label class="form-full">DiagnÛstico / indicaciÛn
             <input type="text" id="ortesisDiagnostico" placeholder="Ej.: Fascitis plantar bilateral, esguince de tobillo derecho" />
           </label>
         </form>
@@ -1307,8 +1307,8 @@
 
       <div class="panel">
         <div class="panel-head">
-          <h2>Selecciona las √≥rtesis por arrastre</h2>
-          <input type="search" id="buscarOrtesis" class="search-input" placeholder="Buscar √≥rtesis por nombre, parte o uso..." />
+          <h2>Selecciona las Ûrtesis por arrastre</h2>
+          <input type="search" id="buscarOrtesis" class="search-input" placeholder="Buscar Ûrtesis por nombre, parte o uso..." />
         </div>
         <div class="ortesis-layout">
           <div class="ortesis-catalogo">
@@ -1316,18 +1316,18 @@
           </div>
           <div class="ortesis-drop">
             <div class="ortesis-drop-head">
-              <h3>√ìrtesis seleccionadas</h3>
+              <h3>”rtesis seleccionadas</h3>
               <span class="tag" id="countOrtesisSel">0</span>
             </div>
             <div id="ortesisSeleccion" class="ortesis-seleccion">
-              <p class="empty">Arrastra aqu√≠ las √≥rtesis desde el cat√°logo.</p>
+              <p class="empty">Arrastra aquÌ las Ûrtesis desde el cat·logo.</p>
             </div>
             <div class="ortesis-acciones">
               <button type="button" class="btn btn--ghost-dark btn-small" id="btnOrtesisLimpiar">
                 <span class="material-symbols-outlined">cleaning_services</span> Limpiar
               </button>
               <button type="button" class="btn btn--primary btn-small" id="btnOrtesisGuardar">
-                <span class="material-symbols-outlined">save</span> Guardar √≥rtesis para el paciente
+                <span class="material-symbols-outlined">save</span> Guardar Ûrtesis para el paciente
               </button>
             </div>
           </div>
@@ -1340,8 +1340,8 @@
             <thead>
               <tr>
                 <th>Paciente</th>
-                <th>√ìrtesis</th>
-                <th>Diagn√≥stico / indicaci√≥n</th>
+                <th>”rtesis</th>
+                <th>DiagnÛstico / indicaciÛn</th>
                 <th>Fecha</th>
                 <th></th>
               </tr>
@@ -1358,7 +1358,7 @@
           <h2>Cuestionario de resultados del paciente (PRO)</h2>
           <span class="tag" id="countPros">0</span>
         </div>
-        <p class="eval-paciente-actual" id="prosPacienteActual">‚Äî Selecciona el paciente actual en el panel superior ‚Äî</p>
+        <p class="eval-paciente-actual" id="prosPacienteActual">ó Selecciona el paciente actual en el panel superior ó</p>
         <form id="prosForm" class="form-grid">
           <label class="form-full">Paciente
             <select id="prosPaciente" required></select>
@@ -1393,7 +1393,7 @@
 <section id="seccion-recetas" class="seccion">
       <div class="panel">
         <div class="panel-head">
-          <h2>Generar receta m√©dica</h2>
+          <h2>Generar receta mÈdica</h2>
           <div class="rec-tabs" role="tablist">
             <button type="button" class="rec-tab active" data-rec-tab="medicamentos" role="tab" aria-selected="true"><span class="rec-tab-txt">Medicamentos</span></button>
             <button type="button" class="rec-tab" data-rec-tab="procedimientos" role="tab" aria-selected="false"><span class="rec-tab-txt">Procedimientos e indicaciones</span></button>
@@ -1415,7 +1415,7 @@
                 <span class="material-symbols-outlined">add_circle</span>
                 Agregar medicamento
               </button>
-              <span class="rec-hint">Cada medicamento genera su propia receta individual (nombre, tipo, v√≠a, presentaci√≥n, dosis, frecuencia y duraci√≥n).</span>
+              <span class="rec-hint">Cada medicamento genera su propia receta individual (nombre, tipo, vÌa, presentaciÛn, dosis, frecuencia y duraciÛn).</span>
             </div>
             <div id="recetaMeds" class="rec-lista"></div>
           </div>
@@ -1423,9 +1423,9 @@
             <div class="add-item-row">
               <button type="button" id="btnAgregarInd" class="btn btn--primary">
                 <span class="material-symbols-outlined">add_circle</span>
-                Agregar procedimiento / indicaci√≥n
+                Agregar procedimiento / indicaciÛn
               </button>
-              <span class="rec-hint">Imagen (radiograf√≠a/sonograf√≠a/RM/EMG), anal√≠ticas prequir√∫rgicas, evaluaciones y perfiles. Cada uno genera su propia receta individual.</span>
+              <span class="rec-hint">Imagen (radiografÌa/sonografÌa/RM/EMG), analÌticas prequir˙rgicas, evaluaciones y perfiles. Cada uno genera su propia receta individual.</span>
             </div>
             <div id="recetaInds" class="rec-lista"></div>
           </div>
@@ -1456,48 +1456,44 @@
               <span class="glo-menos material-symbols-outlined">remove</span>
             </span>
           </summary>
-<p class="glosario-nota">Cat√°logo de 53 medicamentos ortop√©dicos en 10 categor√≠as (AINE, analg√©sicos, relajantes musculares, dolor neurop√°tico, corticoides, condroprotectores, osteoporosis, t√≥picos, tromboprofilaxis y gota) ¬∑ registro sanitario DIGEMAPS (MSP), actualizado 2026. Al escribir el nombre del medicamento, el campo sugiere autom√°ticamente las opciones con miligramo, presentaci√≥n y laboratorio.</p>
+<p class="glosario-nota">Cat·logo de 53 medicamentos ortopÈdicos en 10 categorÌas (AINE, analgÈsicos, relajantes musculares, dolor neurop·tico, corticoides, condroprotectores, osteoporosis, tÛpicos, tromboprofilaxis y gota) ∑ registro sanitario DIGEMAPS (MSP), actualizado 2026. Al escribir el nombre del medicamento, el campo sugiere autom·ticamente las opciones con miligramo, presentaciÛn y laboratorio.</p>
           <div id="glosarioMedsContenido" class="glosario-contenido"></div>
         </details>
       </div>
     </section>
 
-        <section id="seccion-cirugias" class="seccion" hidden>
-      <div class="panel-head"><h2 class="panel-title">Cirug√≠as</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nueva-cirugia"><span class="material-symbols-outlined">add</span> Nueva cirug√≠a</button></div></div>
-      <div class="panel"><div class="tabla-wrap"><table class="tabla" id="tblCirugias"><thead><tr><th>Fecha</th><th>Paciente</th><th>Tipo</th><th>Lado</th><th>Cirujano</th><th>Estado</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
-    </section>
-    <section id="seccion-proms" class="seccion" hidden>
+        <section id="seccion-proms" class="seccion">
       <div class="panel-head"><h2 class="panel-title">PROMs (Patient Reported Outcome Measures)</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nuevo-prom"><span class="material-symbols-outlined">add</span> Nuevo PROM</button></div></div>
       <div class="panel">
         <div class="search-bar"><span class="material-symbols-outlined">search</span><input type="search" id="buscarProms" class="search-input" placeholder="Buscar por paciente o tipo..."></div>
-        <div class="tabla-wrap"><table class="tabla" id="tblProms"><thead><tr><th>Fecha</th><th>Paciente</th><th>Tipo</th><th>Puntaje</th><th>Interpretaci√≥n</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+        <div class="tabla-wrap"><table class="tabla" id="tblProms"><thead><tr><th>Fecha</th><th>Paciente</th><th>Tipo</th><th>Puntaje</th><th>InterpretaciÛn</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
     </section>
-    <section id="seccion-imagenes-dicom" class="seccion" hidden>
-      <div class="panel-head"><h2 class="panel-title">Im√°genes (DICOM / archivos)</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nueva-imagen"><span class="material-symbols-outlined">add</span> Nuevo estudio</button></div></div>
+    <section id="seccion-imagenes-dicom" class="seccion">
+      <div class="panel-head"><h2 class="panel-title">Im·genes (DICOM / archivos)</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nueva-imagen"><span class="material-symbols-outlined">add</span> Nuevo estudio</button></div></div>
       <div class="panel">
-        <div class="search-bar"><span class="material-symbols-outlined">search</span><input type="search" id="buscarImagenes" class="search-input" placeholder="Buscar por paciente, tipo o regi√≥n..."></div>
-        <div class="tabla-wrap"><table class="tabla" id="tblImagenes"><thead><tr><th>Fecha</th><th>Paciente</th><th>Estudio</th><th>Regi√≥n</th><th>Hallazgos</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+        <div class="search-bar"><span class="material-symbols-outlined">search</span><input type="search" id="buscarImagenes" class="search-input" placeholder="Buscar por paciente, tipo o regiÛn..."></div>
+        <div class="tabla-wrap"><table class="tabla" id="tblImagenes"><thead><tr><th>Fecha</th><th>Paciente</th><th>Estudio</th><th>RegiÛn</th><th>Hallazgos</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
     </section>
-    <section id="seccion-rehabilitacion-pt" class="seccion" hidden>
-      <div class="panel-head"><h2 class="panel-title">Rehabilitaci√≥n PT (Sesiones)</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nueva-sesion-pt"><span class="material-symbols-outlined">add</span> Nueva sesi√≥n</button></div></div>
+    <section id="seccion-rehabilitacion-pt" class="seccion">
+      <div class="panel-head"><h2 class="panel-title">RehabilitaciÛn PT (Sesiones)</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nueva-sesion-pt"><span class="material-symbols-outlined">add</span> Nueva sesiÛn</button></div></div>
       <div class="panel">
         <div class="search-bar"><span class="material-symbols-outlined">search</span><input type="search" id="buscarPT" class="search-input" placeholder="Buscar por paciente..."></div>
-        <div class="tabla-wrap"><table class="tabla" id="tblPT"><thead><tr><th>Fecha</th><th>Paciente</th><th>Sesi√≥n #</th><th>Dolor Antes/Despu√©s</th><th>Asistencia</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+        <div class="tabla-wrap"><table class="tabla" id="tblPT"><thead><tr><th>Fecha</th><th>Paciente</th><th>SesiÛn #</th><th>Dolor Antes/DespuÈs</th><th>Asistencia</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
     </section>
-    <section id="seccion-implantes" class="seccion" hidden>
+    <section id="seccion-implantes" class="seccion">
       <div class="panel-head"><h2 class="panel-title">Implantes</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nuevo-implante"><span class="material-symbols-outlined">add</span> Nuevo implante</button></div></div>
       <div class="panel">
-        <div class="search-bar"><span class="material-symbols-outlined">search</span><input type="search" id="buscarImplantes" class="search-input" placeholder="Buscar por c√≥digo, modelo o fabricante..."></div>
-        <div class="tabla-wrap"><table class="tabla" id="tblImplantes"><thead><tr><th>C√≥digo</th><th>Fabricante</th><th>Modelo</th><th>Estado</th><th>Ubicaci√≥n/Paciente</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+        <div class="search-bar"><span class="material-symbols-outlined">search</span><input type="search" id="buscarImplantes" class="search-input" placeholder="Buscar por cÛdigo, modelo o fabricante..."></div>
+        <div class="tabla-wrap"><table class="tabla" id="tblImplantes"><thead><tr><th>CÛdigo</th><th>Fabricante</th><th>Modelo</th><th>Estado</th><th>UbicaciÛn/Paciente</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
     </section>
-    <section id="seccion-autorizaciones" class="seccion" hidden>
-      <div class="panel-head"><h2 class="panel-title">Autorizaciones Pre-Auth</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nueva-autorizacion"><span class="material-symbols-outlined">add</span> Nueva autorizaci√≥n</button></div></div>
+    <section id="seccion-autorizaciones" class="seccion">
+      <div class="panel-head"><h2 class="panel-title">Autorizaciones Pre-Auth</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nueva-autorizacion"><span class="material-symbols-outlined">add</span> Nueva autorizaciÛn</button></div></div>
       <div class="panel">
-        <div class="search-bar"><span class="material-symbols-outlined">search</span><input type="search" id="buscarAutorizaciones" class="search-input" placeholder="Buscar por paciente, n¬∫ o CPT..."></div>
-        <div class="tabla-wrap"><table class="tabla" id="tblAutorizaciones"><thead><tr><th>Fecha</th><th>Paciente</th><th>Procedimiento CPT</th><th>N¬∞ Auth</th><th>Estado</th><th>Vencimiento</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
+        <div class="search-bar"><span class="material-symbols-outlined">search</span><input type="search" id="buscarAutorizaciones" class="search-input" placeholder="Buscar por paciente, n∫ o CPT..."></div>
+        <div class="tabla-wrap"><table class="tabla" id="tblAutorizaciones"><thead><tr><th>Fecha</th><th>Paciente</th><th>Procedimiento CPT</th><th>N∞ Auth</th><th>Estado</th><th>Vencimiento</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
     </section>
-    <section id="seccion-facturacion-cargos" class="seccion" hidden>
-      <div class="panel-head"><h2 class="panel-title">Cargos / Facturaci√≥n</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nuevo-cargo"><span class="material-symbols-outlined">add</span> Nuevo cargo</button></div></div>
+    <section id="seccion-facturacion-cargos" class="seccion">
+      <div class="panel-head"><h2 class="panel-title">Cargos / FacturaciÛn</h2><div class="panel-actions"><button class="btn btn--primary" data-action="nuevo-cargo"><span class="material-symbols-outlined">add</span> Nuevo cargo</button></div></div>
       <div class="panel">
         <div class="search-bar"><span class="material-symbols-outlined">search</span><input type="search" id="buscarCargos" class="search-input" placeholder="Buscar por paciente o CPT..."></div>
         <div class="tabla-wrap"><table class="tabla" id="tblCargos"><thead><tr><th>Fecha</th><th>Paciente</th><th>CPT/HCPCS</th><th>Dx</th><th>Monto</th><th>Estado</th><th>Acciones</th></tr></thead><tbody></tbody></table></div></div>
@@ -1507,19 +1503,19 @@
         <div class="politicas-head">
           <span class="material-symbols-outlined politica-ico">privacy_tip</span>
           <div>
-            <h2>Pol√≠tica de Privacidad y Tratamiento de Datos Personales</h2>
-            <p class="panel-sub">Aplicable a los registros cl√≠nicos de pacientes de <strong>Ortopedia y Traumatolog√≠a</strong> gestionados en el sistema <strong>MedHistorical ‚Äì Ortoped√≠a</strong>.</p>
+            <h2>PolÌtica de Privacidad y Tratamiento de Datos Personales</h2>
+            <p class="panel-sub">Aplicable a los registros clÌnicos de pacientes de <strong>Ortopedia y TraumatologÌa</strong> gestionados en el sistema <strong>MedHistorical ñ OrtopedÌa</strong>.</p>
           </div>
         </div>
         <p class="politica-meta">
           <span class="material-symbols-outlined">update</span>
-          <strong>√öltima actualizaci√≥n:</strong> octubre de 2026 &nbsp;¬∑&nbsp;
-          <strong>Versi√≥n:</strong> 1.0 &nbsp;¬∑&nbsp;
-          <strong>√Åmbito:</strong> Rep√∫blica Dominicana
+          <strong>⁄ltima actualizaciÛn:</strong> octubre de 2026 &nbsp;∑&nbsp;
+          <strong>VersiÛn:</strong> 1.0 &nbsp;∑&nbsp;
+          <strong>¡mbito:</strong> Rep˙blica Dominicana
         </p>
         <div class="politica-alert">
           <span class="material-symbols-outlined">gavel</span>
-          <p>Los datos relativos a la salud son <strong>datos especialmente protegidos (sensibles)</strong> conforme al numeral 8 del art√≠culo 2 de la <strong>Ley No. 172-13</strong>. Su tratamiento exige el <strong>consentimiento expreso y por escrito</strong> del paciente (art√≠culos 73 y 74 de la misma ley) y el deber de guardar el <strong>secreto m√©dico</strong>.</p>
+          <p>Los datos relativos a la salud son <strong>datos especialmente protegidos (sensibles)</strong> conforme al numeral 8 del artÌculo 2 de la <strong>Ley No. 172-13</strong>. Su tratamiento exige el <strong>consentimiento expreso y por escrito</strong> del paciente (artÌculos 73 y 74 de la misma ley) y el deber de guardar el <strong>secreto mÈdico</strong>.</p>
         </div>
       </div>
 
@@ -1535,133 +1531,133 @@
           <span class="help-card-ico material-symbols-outlined">menu_book</span>
           <div>
             <strong>Base legal</strong>
-            <p>Constituci√≥n (art. 44), Ley 172-13, Ley 42-01 General de Salud y Ley 126-02.</p>
+            <p>ConstituciÛn (art. 44), Ley 172-13, Ley 42-01 General de Salud y Ley 126-02.</p>
           </div>
         </div>
         <div class="help-card">
           <span class="help-card-ico material-symbols-outlined">health_and_safety</span>
           <div>
             <strong>Datos sensibles</strong>
-            <p>Diagn√≥sticos, im√°genes, cirug√≠as e historia cl√≠nica: protecci√≥n reforzada y confidencialidad.</p>
+            <p>DiagnÛsticos, im·genes, cirugÌas e historia clÌnica: protecciÛn reforzada y confidencialidad.</p>
           </div>
         </div>
         <div class="help-card">
           <span class="help-card-ico material-symbols-outlined">verified_user</span>
           <div>
             <strong>Tus derechos</strong>
-            <p>Acceso, rectificaci√≥n, actualizaci√≥n, oposici√≥n y supresi√≥n (ARCO) y acci√≥n de h√°beas data.</p>
+            <p>Acceso, rectificaciÛn, actualizaciÛn, oposiciÛn y supresiÛn (ARCO) y acciÛn de h·beas data.</p>
           </div>
         </div>
       </div>
 
       <div class="panel">
         <h2>1. Responsable del tratamiento</h2>
-        <p>El responsable del tratamiento es el profesional de la salud en <strong>Ortopedia y Traumatolog√≠a</strong> y/o el centro sanitario que opera el sistema <strong>MedHistorical ‚Äì Ortoped√≠a</strong>, quien decide sobre las finalidades y los medios del tratamiento de los datos personales de sus pacientes (en lo sucesivo, ¬´el Responsable¬ª).</p>
-        <p>El personal autorizado (m√©dicos, asistentes y personal administrativo) act√∫a bajo la direcci√≥n del Responsable y est√° obligado a la confidencialidad, conforme al secreto profesional m√©dico.</p>
+        <p>El responsable del tratamiento es el profesional de la salud en <strong>Ortopedia y TraumatologÌa</strong> y/o el centro sanitario que opera el sistema <strong>MedHistorical ñ OrtopedÌa</strong>, quien decide sobre las finalidades y los medios del tratamiento de los datos personales de sus pacientes (en lo sucesivo, ´el Responsableª).</p>
+        <p>El personal autorizado (mÈdicos, asistentes y personal administrativo) act˙a bajo la direcciÛn del Responsable y est· obligado a la confidencialidad, conforme al secreto profesional mÈdico.</p>
       </div>
 
       <div class="panel">
-        <h2>2. Marco legal aplicable (Rep√∫blica Dominicana)</h2>
-        <p>Esta pol√≠tica se rige por la legislaci√≥n dominicana vigente, en especial:</p>
+        <h2>2. Marco legal aplicable (Rep˙blica Dominicana)</h2>
+        <p>Esta polÌtica se rige por la legislaciÛn dominicana vigente, en especial:</p>
         <ul class="politica-list">
-          <li><strong>Constituci√≥n de la Rep√∫blica Dominicana, art√≠culo 44:</strong> derecho a la intimidad y al honor personal; toda persona puede acceder a los datos que sobre ella reposen en registros p√∫blicos o privados y conocer su destino y uso. El tratamiento debe respetar los principios de <em>calidad, licitud, lealtad, seguridad y finalidad</em>.</li>
-          <li><strong>Ley No. 172-13</strong> (G.O. 10737, 15/12/2013) sobre Protecci√≥n Integral de los Datos Personales: define los datos de salud como <em>datos especialmente protegidos</em> (art. 2, num. 8 y 10), exige consentimiento expreso y por escrito (arts. 73 y 74), regula el deber de seguridad (art. 6), los derechos ARCO (arts. 7, 8, 10 y 15) y la cesi√≥n de datos (art. 28).</li>
-          <li><strong>Ley No. 42-01 General de Salud</strong> (8/3/2001): ordena el manejo del expediente cl√≠nico, el consentimiento informado y la confidencialidad de la informaci√≥n de salud.</li>
-          <li><strong>Ley No. 126-02</strong> sobre Comercio Electr√≥nico, Documentos y Firmas Digitales: validez y seguridad de los registros y documentos electr√≥nicos.</li>
-          <li><strong>C√≥digo de √âtica del Colegio M√©dico Dominicano</strong> y dem√°s normas sobre el secreto profesional y la historia cl√≠nica.</li>
+          <li><strong>ConstituciÛn de la Rep˙blica Dominicana, artÌculo 44:</strong> derecho a la intimidad y al honor personal; toda persona puede acceder a los datos que sobre ella reposen en registros p˙blicos o privados y conocer su destino y uso. El tratamiento debe respetar los principios de <em>calidad, licitud, lealtad, seguridad y finalidad</em>.</li>
+          <li><strong>Ley No. 172-13</strong> (G.O. 10737, 15/12/2013) sobre ProtecciÛn Integral de los Datos Personales: define los datos de salud como <em>datos especialmente protegidos</em> (art. 2, num. 8 y 10), exige consentimiento expreso y por escrito (arts. 73 y 74), regula el deber de seguridad (art. 6), los derechos ARCO (arts. 7, 8, 10 y 15) y la cesiÛn de datos (art. 28).</li>
+          <li><strong>Ley No. 42-01 General de Salud</strong> (8/3/2001): ordena el manejo del expediente clÌnico, el consentimiento informado y la confidencialidad de la informaciÛn de salud.</li>
+          <li><strong>Ley No. 126-02</strong> sobre Comercio ElectrÛnico, Documentos y Firmas Digitales: validez y seguridad de los registros y documentos electrÛnicos.</li>
+          <li><strong>CÛdigo de …tica del Colegio MÈdico Dominicano</strong> y dem·s normas sobre el secreto profesional y la historia clÌnica.</li>
         </ul>
-        <p class="politica-note"><span class="material-symbols-outlined">info</span> Existe un <em>proyecto de ley</em> de Protecci√≥n de Datos Personales (2026) en discusi√≥n en el Congreso Nacional. Cuando sea promulgado, esta pol√≠tica se ajustar√° a la nueva normativa.</p>
+        <p class="politica-note"><span class="material-symbols-outlined">info</span> Existe un <em>proyecto de ley</em> de ProtecciÛn de Datos Personales (2026) en discusiÛn en el Congreso Nacional. Cuando sea promulgado, esta polÌtica se ajustar· a la nueva normativa.</p>
       </div>
 
       <div class="panel">
         <h2>3. Datos personales que tratamos</h2>
-        <p>En el contexto de la atenci√≥n traumatol√≥gica y ortop√©dica, el sistema puede tratar las siguientes categor√≠as:</p>
+        <p>En el contexto de la atenciÛn traumatolÛgica y ortopÈdica, el sistema puede tratar las siguientes categorÌas:</p>
         <ul class="politica-list">
-          <li><strong>Datos identificativos:</strong> nombre, c√©dula de identidad y electoral, c√≥digo de paciente, edad, sexo y fotograf√≠a.</li>
-          <li><strong>Datos de contacto:</strong> tel√©fono, correo electr√≥nico y direcci√≥n.</li>
-          <li><strong>Datos de salud (sensibles):</strong> motivo de consulta, diagn√≥sticos, antecedentes, evaluaciones f√≠sicas y m√©dicas, resultados de estudios e im√°genes m√©dicas (radiograf√≠as, resonancias, tomograf√≠as), cirug√≠as e implantes, tratamientos, rehabilitaci√≥n y cuestionarios de resultados (PROs).</li>
-          <li><strong>Datos de seguro y facturaci√≥n:</strong> aseguradora (ARS), n√∫mero de afiliaci√≥n y datos necesarios para la facturaci√≥n de servicios m√©dicos.</li>
+          <li><strong>Datos identificativos:</strong> nombre, cÈdula de identidad y electoral, cÛdigo de paciente, edad, sexo y fotografÌa.</li>
+          <li><strong>Datos de contacto:</strong> telÈfono, correo electrÛnico y direcciÛn.</li>
+          <li><strong>Datos de salud (sensibles):</strong> motivo de consulta, diagnÛsticos, antecedentes, evaluaciones fÌsicas y mÈdicas, resultados de estudios e im·genes mÈdicas (radiografÌas, resonancias, tomografÌas), cirugÌas e implantes, tratamientos, rehabilitaciÛn y cuestionarios de resultados (PROs).</li>
+          <li><strong>Datos de seguro y facturaciÛn:</strong> aseguradora (ARS), n˙mero de afiliaciÛn y datos necesarios para la facturaciÛn de servicios mÈdicos.</li>
           <li><strong>Datos de cuenta del personal:</strong> usuarios del sistema (nombre, correo y credenciales de acceso cifradas) para controlar el acceso.</li>
         </ul>
-        <p class="politica-note"><span class="material-symbols-outlined">info</span> El sistema est√° dise√±ado para tratar <strong>√∫nicamente los datos necesarios</strong> para la atenci√≥n (principio de minimizaci√≥n y de finalidad).</p>
+        <p class="politica-note"><span class="material-symbols-outlined">info</span> El sistema est· diseÒado para tratar <strong>˙nicamente los datos necesarios</strong> para la atenciÛn (principio de minimizaciÛn y de finalidad).</p>
       </div>
 
       <div class="panel">
         <h2>4. Finalidad del tratamiento</h2>
         <ul class="politica-list">
-          <li>Prestar, documentar y dar seguimiento a la atenci√≥n m√©dica ortop√©dica y traumatol√≥gica.</li>
-          <li>Elaborar y conservar la historia cl√≠nica y el expediente del paciente.</li>
-          <li>Agendar y gestionar citas, diagn√≥sticos, cirug√≠as, rehabilitaci√≥n y evoluci√≥n del paciente.</li>
-          <li>Emitir recetas, √≥rdenes de estudios, informes y facturas.</li>
-          <li>Fines de administraci√≥n, estad√≠stica interna y mejora de la calidad asistencial (con datos agregados o disociados cuando sea posible).</li>
-          <li>Cumplir obligaciones legales, sanitarias y de facturaci√≥n aplicables.</li>
+          <li>Prestar, documentar y dar seguimiento a la atenciÛn mÈdica ortopÈdica y traumatolÛgica.</li>
+          <li>Elaborar y conservar la historia clÌnica y el expediente del paciente.</li>
+          <li>Agendar y gestionar citas, diagnÛsticos, cirugÌas, rehabilitaciÛn y evoluciÛn del paciente.</li>
+          <li>Emitir recetas, Ûrdenes de estudios, informes y facturas.</li>
+          <li>Fines de administraciÛn, estadÌstica interna y mejora de la calidad asistencial (con datos agregados o disociados cuando sea posible).</li>
+          <li>Cumplir obligaciones legales, sanitarias y de facturaciÛn aplicables.</li>
         </ul>
-        <p>Los datos <strong>no se utilizar√°n para finalidades distintas</strong> a las informadas sin nueva autorizaci√≥n del paciente, salvo las excepciones previstas por la ley.</p>
+        <p>Los datos <strong>no se utilizar·n para finalidades distintas</strong> a las informadas sin nueva autorizaciÛn del paciente, salvo las excepciones previstas por la ley.</p>
       </div>
 
       <div class="panel">
         <h2>5. Consentimiento informado</h2>
-        <p>Al registrarse como paciente, la persona otorga su <strong>consentimiento libre, expreso, consciente y por escrito</strong> para el tratamiento de sus datos de salud y de los datos particularmente sensibles, conforme a los art√≠culos 73 y 74 de la Ley No. 172-13.</p>
-        <p>El paciente puede <strong>revocar el consentimiento</strong> en cualquier momento sin efectos retroactivos, salvo cuando el tratamiento sea necesario por razones de salud p√∫blica, urgencia, estudios epidemiol√≥gicos disociados o cuando exista un deber legal de conservar la informaci√≥n.</p>
+        <p>Al registrarse como paciente, la persona otorga su <strong>consentimiento libre, expreso, consciente y por escrito</strong> para el tratamiento de sus datos de salud y de los datos particularmente sensibles, conforme a los artÌculos 73 y 74 de la Ley No. 172-13.</p>
+        <p>El paciente puede <strong>revocar el consentimiento</strong> en cualquier momento sin efectos retroactivos, salvo cuando el tratamiento sea necesario por razones de salud p˙blica, urgencia, estudios epidemiolÛgicos disociados o cuando exista un deber legal de conservar la informaciÛn.</p>
       </div>
 
       <div class="panel">
-        <h2>6. Confidencialidad y secreto m√©dico</h2>
-        <p>Todo el personal est√° obligado a guardar el <strong>secreto profesional</strong>. El acceso a la historia cl√≠nica se limita al personal autorizado y al paciente titular. La informaci√≥n solo podr√° comunicarse a terceros en los casos previstos por la ley (por ejemplo, requerimiento judicial, salud p√∫blica o consentimiento del paciente).</p>
+        <h2>6. Confidencialidad y secreto mÈdico</h2>
+        <p>Todo el personal est· obligado a guardar el <strong>secreto profesional</strong>. El acceso a la historia clÌnica se limita al personal autorizado y al paciente titular. La informaciÛn solo podr· comunicarse a terceros en los casos previstos por la ley (por ejemplo, requerimiento judicial, salud p˙blica o consentimiento del paciente).</p>
       </div>
 
       <div class="panel">
         <h2>7. Medidas de seguridad</h2>
-        <p>Conforme al deber de seguridad de la Ley No. 172-13, el Responsable adopta medidas t√©cnicas, organizativas y de seguridad para evitar la alteraci√≥n, p√©rdida, consulta, tratamiento o acceso no autorizados, entre ellas:</p>
+        <p>Conforme al deber de seguridad de la Ley No. 172-13, el Responsable adopta medidas tÈcnicas, organizativas y de seguridad para evitar la alteraciÛn, pÈrdida, consulta, tratamiento o acceso no autorizados, entre ellas:</p>
         <ul class="politica-list">
-          <li>Control de acceso mediante <strong>usuario y contrase√±a</strong> y roles (administrador / usuario).</li>
-          <li>Identificaci√≥n del paciente mediante <strong>c√≥digo de acceso</strong> para consultas controladas.</li>
-          <li>Conexi√≥n cifrada (HTTPS/SSL) y resguardo de la base de datos en servidores con medidas de protecci√≥n.</li>
-          <li>Copias de respaldo y pol√≠ticas de conservaci√≥n de la informaci√≥n.</li>
-          <li>Pr√°ctica de confidencialidad y manejo responsable por parte del personal.</li>
+          <li>Control de acceso mediante <strong>usuario y contraseÒa</strong> y roles (administrador / usuario).</li>
+          <li>IdentificaciÛn del paciente mediante <strong>cÛdigo de acceso</strong> para consultas controladas.</li>
+          <li>ConexiÛn cifrada (HTTPS/SSL) y resguardo de la base de datos en servidores con medidas de protecciÛn.</li>
+          <li>Copias de respaldo y polÌticas de conservaciÛn de la informaciÛn.</li>
+          <li>Pr·ctica de confidencialidad y manejo responsable por parte del personal.</li>
         </ul>
       </div>
 
       <div class="panel">
-        <h2>8. Comunicaci√≥n y cesi√≥n de datos a terceros</h2>
-        <p>Los datos solo podr√°n ser <strong>cedidos</strong> para fines directamente relacionados con el inter√©s leg√≠timo del cedente y del cesionario y con el <strong>consentimiento previo</strong> del titular, conforme al art√≠culo 28 de la Ley No. 172-13. Podr√°n comunicarse a:</p>
+        <h2>8. ComunicaciÛn y cesiÛn de datos a terceros</h2>
+        <p>Los datos solo podr·n ser <strong>cedidos</strong> para fines directamente relacionados con el interÈs legÌtimo del cedente y del cesionario y con el <strong>consentimiento previo</strong> del titular, conforme al artÌculo 28 de la Ley No. 172-13. Podr·n comunicarse a:</p>
         <ul class="politica-list">
-          <li>Aseguradoras (ARS) y entidades de pago, para la facturaci√≥n de servicios m√©dicos.</li>
-          <li>Laboratorios, centros de im√°genes u otros profesionales, cuando sea necesario para la atenci√≥n del paciente.</li>
-          <li>Autoridades competentes, cuando exista una obligaci√≥n legal o requerimiento judicial.</li>
+          <li>Aseguradoras (ARS) y entidades de pago, para la facturaciÛn de servicios mÈdicos.</li>
+          <li>Laboratorios, centros de im·genes u otros profesionales, cuando sea necesario para la atenciÛn del paciente.</li>
+          <li>Autoridades competentes, cuando exista una obligaciÛn legal o requerimiento judicial.</li>
         </ul>
       </div>
 
       <div class="panel">
-        <h2>9. Conservaci√≥n de los datos</h2>
-        <p>Los datos se conservar√°n durante el tiempo necesario para cumplir con la finalidad asistencial y el <strong>plazo legal de conservaci√≥n del expediente cl√≠nico</strong>. Cumplidos los plazos, los datos ser√°n <strong>suprimidos</strong> o anonimizados, salvo que exista una obligaci√≥n legal de conservarlos. Durante el plazo de prescripci√≥n de eventuales responsabilidades, los datos podr√°n mantenerse bloqueados a disposici√≥n de las autoridades (art. 15 de la Ley No. 172-13).</p>
+        <h2>9. ConservaciÛn de los datos</h2>
+        <p>Los datos se conservar·n durante el tiempo necesario para cumplir con la finalidad asistencial y el <strong>plazo legal de conservaciÛn del expediente clÌnico</strong>. Cumplidos los plazos, los datos ser·n <strong>suprimidos</strong> o anonimizados, salvo que exista una obligaciÛn legal de conservarlos. Durante el plazo de prescripciÛn de eventuales responsabilidades, los datos podr·n mantenerse bloqueados a disposiciÛn de las autoridades (art. 15 de la Ley No. 172-13).</p>
       </div>
 
       <div class="panel">
         <h2>10. Derechos del titular de los datos</h2>
-        <p>El paciente puede ejercer en cualquier momento sus derechos de <strong>Acceso, Rectificaci√≥n, Actualizaci√≥n, Oposici√≥n y Supresi√≥n (ARCO)</strong>, as√≠ como conocer el destino y uso de sus datos. En caso de discriminaci√≥n, inexactitud o error, podr√° exigir la suspensi√≥n, rectificaci√≥n o actualizaci√≥n.</p>
-        <p>Tambi√©n puede presentar la <strong>acci√≥n judicial de h√°beas data</strong> conforme a la Constituci√≥n y a la Ley No. 172-13. Las solicitudes se atienden a trav√©s de los canales oficiales del Responsable, previa acreditaci√≥n de la identidad del titular.</p>
+        <p>El paciente puede ejercer en cualquier momento sus derechos de <strong>Acceso, RectificaciÛn, ActualizaciÛn, OposiciÛn y SupresiÛn (ARCO)</strong>, asÌ como conocer el destino y uso de sus datos. En caso de discriminaciÛn, inexactitud o error, podr· exigir la suspensiÛn, rectificaciÛn o actualizaciÛn.</p>
+        <p>TambiÈn puede presentar la <strong>acciÛn judicial de h·beas data</strong> conforme a la ConstituciÛn y a la Ley No. 172-13. Las solicitudes se atienden a travÈs de los canales oficiales del Responsable, previa acreditaciÛn de la identidad del titular.</p>
       </div>
 
       <div class="panel">
         <h2>11. Menores de edad y personas bajo tutela</h2>
-        <p>Cuando el paciente sea menor de edad o se encuentre legalmente incapacitado, el tratamiento de sus datos y el consentimiento ser√°n otorgados por sus <strong>padres, representantes o tutores legales</strong>, en el inter√©s superior del menor y de la persona bajo tutela.</p>
+        <p>Cuando el paciente sea menor de edad o se encuentre legalmente incapacitado, el tratamiento de sus datos y el consentimiento ser·n otorgados por sus <strong>padres, representantes o tutores legales</strong>, en el interÈs superior del menor y de la persona bajo tutela.</p>
       </div>
 
       <div class="panel">
-        <h2>12. Credenciales, cookies y datos de navegaci√≥n</h2>
-        <p>El sistema utiliza √∫nicamente los datos t√©cnicos necesarios para <strong>autenticar el acceso</strong> del personal autorizado. Las credenciales de usuario se almacenan de forma resguardada y no se comparten. No se realiza perfilado comercial ni se venden datos personales a terceros.</p>
+        <h2>12. Credenciales, cookies y datos de navegaciÛn</h2>
+        <p>El sistema utiliza ˙nicamente los datos tÈcnicos necesarios para <strong>autenticar el acceso</strong> del personal autorizado. Las credenciales de usuario se almacenan de forma resguardada y no se comparten. No se realiza perfilado comercial ni se venden datos personales a terceros.</p>
       </div>
 
       <div class="panel">
-        <h2>13. Cambios a esta pol√≠tica</h2>
-        <p>Esta pol√≠tica puede actualizarse para reflejar cambios legales, t√©cnicos u operativos. La versi√≥n vigente ser√° siempre la publicada en esta secci√≥n del sistema, indicando la fecha de √∫ltima actualizaci√≥n.</p>
+        <h2>13. Cambios a esta polÌtica</h2>
+        <p>Esta polÌtica puede actualizarse para reflejar cambios legales, tÈcnicos u operativos. La versiÛn vigente ser· siempre la publicada en esta secciÛn del sistema, indicando la fecha de ˙ltima actualizaciÛn.</p>
       </div>
 
       <div class="panel">
         <h2>14. Contacto</h2>
-        <p>Para ejercer sus derechos o realizar consultas sobre esta pol√≠tica, el titular puede dirigirse al Responsable del tratamiento a trav√©s de los <strong>canales oficiales del consultorio o centro de Ortopedia</strong> (correo electr√≥nico y tel√©fono registrados en su ficha) o presentarse personalmente en el centro de atenci√≥n.</p>
-        <p class="politica-nota"><span class="material-symbols-outlined">balance</span> Al usar este sistema, el personal autorizado declara conocer y cumplir esta pol√≠tica y el marco legal dominicano sobre protecci√≥n de datos personales y salud.</p>
+        <p>Para ejercer sus derechos o realizar consultas sobre esta polÌtica, el titular puede dirigirse al Responsable del tratamiento a travÈs de los <strong>canales oficiales del consultorio o centro de Ortopedia</strong> (correo electrÛnico y telÈfono registrados en su ficha) o presentarse personalmente en el centro de atenciÛn.</p>
+        <p class="politica-nota"><span class="material-symbols-outlined">balance</span> Al usar este sistema, el personal autorizado declara conocer y cumplir esta polÌtica y el marco legal dominicano sobre protecciÛn de datos personales y salud.</p>
       </div>
     </section>
 
@@ -1672,11 +1668,11 @@
           <label>Nombre
             <input type="text" id="auNombre" required placeholder="Nombre completo" />
           </label>
-          <label>Correo electr√≥nico
+          <label>Correo electrÛnico
             <input type="email" id="auEmail" required placeholder="usuario@clinica.com" />
           </label>
-          <label>Contrase√±a
-            <input type="text" id="auPassword" required minlength="4" placeholder="M√≠nimo 4 caracteres" />
+          <label>ContraseÒa
+            <input type="text" id="auPassword" required minlength="4" placeholder="MÌnimo 4 caracteres" />
           </label>
           <label>Rol
             <select id="auRol">
@@ -1694,7 +1690,7 @@
           <h2>Usuarios del sistema</h2>
           <span class="tag" id="countUsuarios">0</span>
         </div>
-        <p class="panel-sub">Cambia el rol de cada usuario, restablece su contrase√±a o elim√≠nalo.</p>
+        <p class="panel-sub">Cambia el rol de cada usuario, restablece su contraseÒa o elimÌnalo.</p>
         <div id="listaUsuarios" class="list"></div>
       </div>
 
@@ -1702,13 +1698,13 @@
         <div class="panel-head">
           <h2>Opciones del sistema</h2>
         </div>
-        <p class="panel-sub">Muestra u oculta secciones y funciones para todos los usuarios. Los cambios se aplican de inmed√≠ato.</p>
+        <p class="panel-sub">Muestra u oculta secciones y funciones para todos los usuarios. Los cambios se aplican de inmedÌato.</p>
         <div id="configOpciones" class="list"></div>
         <div class="form-grid" id="configLimites">
-          <label>L√≠mite de citas por d√≠a
-            <input type="number" id="cfgLimiteD√≠a" min="1" />
+          <label>LÌmite de citas por dÌa
+            <input type="number" id="cfgLimiteDÌa" min="1" />
           </label>
-          <label>L√≠mite de citas por semana
+          <label>LÌmite de citas por semana
             <input type="number" id="cfgLimiteSemana" min="1" />
           </label>
           <label class="form-full">Color de los botones
@@ -1729,7 +1725,7 @@
         <div class="panel-head">
           <h2>Zona de peligro</h2>
         </div>
-        <p class="panel-sub">Reinicia el programa a cero: borra pacientes, citas, evaluaciones, registros cl√≠nicos, documentos, facturas, recetas y las estad√≠sticas del dashboard. Se conservan las cuentas de usuario y la base de datos (data.db). Solo t√∫, como administrador, puedes hacerlo.</p>
+        <p class="panel-sub">Reinicia el programa a cero: borra pacientes, citas, evaluaciones, registros clÌnicos, documentos, facturas, recetas y las estadÌsticas del dashboard. Se conservan las cuentas de usuario y la base de datos (data.db). Solo t˙, como administrador, puedes hacerlo.</p>
         <button type="button" id="btnEliminarDatosSistema" class="btn btn--danger">Eliminar datos del sistema</button>
         <p class="form-msg" id="systemMsg"></p>
       </div>
@@ -1739,12 +1735,12 @@
   <div class="modal-backdrop" id="modalAgendar">
     <div class="modal-card">
       <div class="modal-head">
-        <h2>Agendar cita r√°pida</h2>
+        <h2>Agendar cita r·pida</h2>
         <button type="button" class="modal-close" data-cerrar="modalAgendar" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
-      <p class="panel-sub" id="agendarPacienteNombre">‚Äî</p>
+      <p class="panel-sub" id="agendarPacienteNombre">ó</p>
       <form id="agendarForm" class="form-grid">
         <label>Fecha
           <input type="date" id="agendarFecha" required />
@@ -1775,10 +1771,10 @@
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
-      <p class="panel-sub" id="ccPacienteTexto">‚Äî</p>
+      <p class="panel-sub" id="ccPacienteTexto">ó</p>
       <form id="completarCitaForm" class="form-grid">
-        <label class="form-full">D√≠agn√≥stico
-          <textarea id="ccD√≠agnostico" rows="3" placeholder="D√≠agn√≥stico de la consulta"></textarea>
+        <label class="form-full">DÌagnÛstico
+          <textarea id="ccDÌagnostico" rows="3" placeholder="DÌagnÛstico de la consulta"></textarea>
         </label>
         <label class="form-full">Tratamiento / Notas
           <textarea id="ccTratamiento" rows="3" placeholder="Tratamiento, indicaciones o notas"></textarea>
@@ -1811,18 +1807,18 @@
   <div class="modal-backdrop" id="modalSeleccionImpresion">
     <div class="modal-card">
       <div class="modal-head">
-        <h2>Seleccionar qu√© imprimir</h2>
+        <h2>Seleccionar quÈ imprimir</h2>
         <button type="button" class="modal-close" data-cerrar="modalSeleccionImpresion" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
-      <p class="panel-sub">Marca los documentos que deseas imprimir. Solo se imprimir√° lo que marques.</p>
+      <p class="panel-sub">Marca los documentos que deseas imprimir. Solo se imprimir· lo que marques.</p>
       <div id="printPickerList" class="list"></div>
       <p class="form-msg" id="printPickerMsg"></p>
       <div class="modal-actions">
         <button type="button" class="btn btn--ghost-dark" data-cerrar="modalSeleccionImpresion">Cancelar</button>
         <button type="button" id="btnPrintPickerConfirm" class="btn btn--primary">
-          <span class="material-symbols-outlined">print</span> Imprimir selecci√≥n
+          <span class="material-symbols-outlined">print</span> Imprimir selecciÛn
         </button>
       </div>
     </div>
@@ -1831,13 +1827,13 @@
   <div class="modal-backdrop" id="modalVerEstudio">
     <div class="modal-card modal-card--ancho">
       <div class="modal-head">
-        <h2 id="estudioViewT√≠tulo">Estudio m√©dico</h2>
+        <h2 id="estudioViewTÌtulo">Estudio mÈdico</h2>
         <button type="button" class="modal-close" data-cerrar="modalVerEstudio" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
 <p class="panel-sub" id="estudioViewMeta"></p>
-      <img id="estudioViewImg" alt="Estudio m√©dico" class="estudio-view-img" />
+      <img id="estudioViewImg" alt="Estudio mÈdico" class="estudio-view-img" />
       <div id="estudioViewDicom" class="estudio-dicom" hidden></div>
       <div id="estudioViewSelector" class="estudio-view-selector"></div>
       <div class="modal-actions">
@@ -1852,30 +1848,30 @@
   <div class="modal-backdrop" id="modalRaRegistro">
     <div class="modal-card">
       <div class="modal-head">
-        <h2>Nuevo registro cl√≠nico</h2>
+        <h2>Nuevo registro clÌnico</h2>
         <button type="button" class="modal-close" data-cerrar="modalRaRegistro" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
       <form id="raRegistroForm" class="form-grid">
-        <p class="form-full panel-sub" id="raRegistroPaciente">‚Äî</p>
-        <label class="form-full">T√≠tulo
-          <input type="text" id="raRegistroT√≠tulo" required placeholder="Ej: Consulta inicial" />
+        <p class="form-full panel-sub" id="raRegistroPaciente">ó</p>
+        <label class="form-full">TÌtulo
+          <input type="text" id="raRegistroTÌtulo" required placeholder="Ej: Consulta inicial" />
         </label>
         <label class="form-full">Tipo
           <select id="raRegistroTipo">
             <option value="Motivo de consulta">Motivo de consulta</option>
-            <option value="Examen f√≠sico">Examen f√≠sico</option>
-            <option value="D√≠agn√≥stico">D√≠agn√≥stico</option>
+            <option value="Examen fÌsico">Examen fÌsico</option>
+            <option value="DÌagnÛstico">DÌagnÛstico</option>
           </select>
         </label>
         <label class="form-full">Detalle
-          <textarea id="raRegistroDetalle" rows="3" placeholder="Descripci√≥n del registro..."></textarea>
+          <textarea id="raRegistroDetalle" rows="3" placeholder="DescripciÛn del registro..."></textarea>
         </label>
-        <label>Pr√≥xima cita - fecha
+        <label>PrÛxima cita - fecha
           <input type="date" id="raRegistroProxCitaFecha" />
         </label>
-        <label>Pr√≥xima cita - hora
+        <label>PrÛxima cita - hora
           <div class="hora-wrap">
             <input type="time" id="raRegistroProxCitaHora" />
             <select id="raRegistroProxCitaAmPm">
@@ -1901,9 +1897,9 @@
         </button>
       </div>
       <form id="raDocumentoForm" class="form-grid">
-        <p class="form-full panel-sub" id="raDocumentoPaciente">‚Äî</p>
-        <label class="form-full">Descripci√≥n
-          <input type="text" id="raDocumentoDescripcion" placeholder="Descripci√≥n del archivo" />
+        <p class="form-full panel-sub" id="raDocumentoPaciente">ó</p>
+        <label class="form-full">DescripciÛn
+          <input type="text" id="raDocumentoDescripcion" placeholder="DescripciÛn del archivo" />
         </label>
         <label class="form-full">Archivo
           <input type="file" id="raDocumentoArchivo" required />
@@ -1916,7 +1912,7 @@
   <div class="modal-backdrop" id="modalStats">
     <div class="modal-card modal-card--stats">
       <div class="modal-head">
-        <h2>Estad√≠sticas de pacientes atendidos</h2>
+        <h2>EstadÌsticas de pacientes atendidos</h2>
         <button type="button" class="modal-close" data-cerrar="modalStats" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
@@ -1939,7 +1935,7 @@
             <span class="material-symbols-outlined">calendar_view_month</span> 3 meses
           </button>
           <button type="button" class="btn btn--ghost-dark btn-small" data-rango="anio">
-            A√±o
+            AÒo
           </button>
         </div>
         <div class="form-full add-item-row">
@@ -1982,7 +1978,7 @@
         <button type="button" id="calPrev" class="icon-btn" title="Mes anterior">
           <span class="material-symbols-outlined">chevron_left</span>
         </button>
-        <h3 id="calT√≠tulo"></h3>
+        <h3 id="calTÌtulo"></h3>
         <button type="button" id="calNext" class="icon-btn" title="Mes siguiente">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
@@ -2031,14 +2027,14 @@
         <label class="form-full">Paciente
           <select id="regEPaciente" required></select>
         </label>
-        <label class="form-full">T√≠tulo
+        <label class="form-full">TÌtulo
           <input type="text" id="regETitulo" required />
         </label>
         <label class="form-full">Tipo
           <select id="regETipo">
             <option value="Motivo de consulta">Motivo de consulta</option>
-            <option value="Examen f√≠sico">Examen f√≠sico</option>
-            <option value="D√≠agn√≥stico">D√≠agn√≥stico</option>
+            <option value="Examen fÌsico">Examen fÌsico</option>
+            <option value="DÌagnÛstico">DÌagnÛstico</option>
           </select>
         </label>
         <label>Fecha
@@ -2048,7 +2044,7 @@
           <input type="number" id="regEEVA" min="0" max="10" step="1" placeholder="0" />
         </label>
         <label class="form-full">Detalle
-          <textarea id="regEDetalle" rows="3" placeholder="Descripci√≥n del registro..."></textarea>
+          <textarea id="regEDetalle" rows="3" placeholder="DescripciÛn del registro..."></textarea>
         </label>
         <label class="form-full">Documento adjunto
           <input type="file" id="regEArchivo" accept=".pdf,image/*" />
@@ -2068,15 +2064,15 @@
   <div class="modal-backdrop" id="modalConfirmarEliminacion">
     <div class="modal">
       <div class="modal-head">
-        <h3 id="confElimT√≠tulo">Confirmar con contrase√±a</h3>
+        <h3 id="confElimTÌtulo">Confirmar con contraseÒa</h3>
         <button type="button" class="modal-close" data-cerrar="modalConfirmarEliminacion" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
       <p id="confElimTexto" class="panel-sub"></p>
       <form class="form-grid" onsubmit="return false;">
-        <label class="form-full">Contrase√±a de usuario
-          <input type="password" id="confPassword" placeholder="Escribe tu contrase√±a" autocomplete="current-password" />
+        <label class="form-full">ContraseÒa de usuario
+          <input type="password" id="confPassword" placeholder="Escribe tu contraseÒa" autocomplete="current-password" />
         </label>
         <p id="confElimMsg" class="form-msg"></p>
         <div class="form-full modal-actions">
@@ -2097,7 +2093,7 @@
       </div>
       <div id="pacElimInfo" class="panel-sub"></div>
       <div class="form-grid">
-        <p class="form-msg" id="pacElimMsg">Elige qu√© hacer con este paciente. Ambas acciones requieren tu contrase√±a de usuario.</p>
+        <p class="form-msg" id="pacElimMsg">Elige quÈ hacer con este paciente. Ambas acciones requieren tu contraseÒa de usuario.</p>
         <div class="form-full modal-actions">
           <button type="button" id="btnRestaurarPacElim" class="btn btn--ghost-dark">
             <span class="material-symbols-outlined">restore</span> Restaurar paciente
@@ -2148,7 +2144,7 @@
   <div class="modal-backdrop" id="modalEditarFactura">
     <div class="modal">
       <div class="modal-head">
-        <h3 id="edFactT√≠tulo">Editar factura</h3>
+        <h3 id="edFactTÌtulo">Editar factura</h3>
         <button type="button" class="modal-close" data-cerrar="modalEditarFactura" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
@@ -2166,7 +2162,7 @@
         <div class="form-full resumen" id="edFactResumen">
           <p>Subtotal: <strong id="edResumenSubtotal">$0.00</strong></p>
           <p>Honorarios del doctor: <strong id="edResumenHonorarios">$0.00</strong></p>
-          <p>Neto cl√≠nica: <strong id="edResumenNeto">$0.00</strong></p>
+          <p>Neto clÌnica: <strong id="edResumenNeto">$0.00</strong></p>
           <p class="total">Total a pagar: <strong id="edResumenTotal">$0.00</strong></p>
         </div>
         <div class="form-full modal-actions">
@@ -2180,7 +2176,7 @@
 <div class="modal-backdrop" id="modalReceta">
     <div class="modal">
       <div class="modal-head">
-        <h3>Receta m√©dica</h3>
+        <h3>Receta mÈdica</h3>
         <button type="button" class="modal-close" data-cerrar="modalReceta" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
@@ -2196,7 +2192,7 @@
   <div class="modal-backdrop" id="modalVerCirugia">
     <div class="modal modal--wide">
       <div class="modal-head">
-        <h3>Detalle de cirug√≠a</h3>
+        <h3>Detalle de cirugÌa</h3>
         <button type="button" class="modal-close" data-cerrar="modalVerCirugia" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
@@ -2207,7 +2203,7 @@
           <input type="date" id="cirugiaSegFecha" />
         </label>
         <label>Nota del seguimiento
-          <input type="text" id="cirugiaSegNotas" placeholder="Evoluci√≥n, signos de alarma, pr√≥xima cita..." />
+          <input type="text" id="cirugiaSegNotas" placeholder="EvoluciÛn, signos de alarma, prÛxima cita..." />
         </label>
         <div class="form-full">
           <button type="button" class="btn btn--primary" id="btnAgregarSegCirugia">
@@ -2239,7 +2235,7 @@
   <div class="modal-backdrop" id="modalVerOrtesis">
     <div class="modal">
       <div class="modal-head">
-        <h3>Detalle de √≥rtesis</h3>
+        <h3>Detalle de Ûrtesis</h3>
         <button type="button" class="modal-close" data-cerrar="modalVerOrtesis" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
@@ -2254,7 +2250,7 @@
   <div class="modal-backdrop" id="modalVerEvalMed">
     <div class="modal modal--wide">
       <div class="modal-head">
-        <h3>Detalle de la evaluaci√≥n m√©dica</h3>
+        <h3>Detalle de la evaluaciÛn mÈdica</h3>
         <button type="button" class="modal-close" data-cerrar="modalVerEvalMed" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
@@ -2269,39 +2265,39 @@
   <div class="modal-backdrop" id="modalVerRehab">
     <div class="modal modal--wide">
       <div class="modal-head">
-        <h3>Plan de rehabilitaci√≥n</h3>
+        <h3>Plan de rehabilitaciÛn</h3>
         <button type="button" class="modal-close" data-cerrar="modalVerRehab" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
       <div id="rehabVista"></div>
       <div class="rehab-sesion-form form-grid" id="rehabSesionForm">
-        <h4 class="form-full">Registrar sesi√≥n de fisioterapia</h4>
+        <h4 class="form-full">Registrar sesiÛn de fisioterapia</h4>
         <label>Fecha
           <input type="date" id="rehabSesionFecha" required />
         </label>
-        <label>Tipo de sesi√≥n
+        <label>Tipo de sesiÛn
           <select id="rehabSesionTipo">
             <option value="Fisioterapia">Fisioterapia</option>
             <option value="Terapia ocupacional">Terapia ocupacional</option>
-            <option value="Ejercicio terap√©utico">Ejercicio terap√©utico</option>
+            <option value="Ejercicio terapÈutico">Ejercicio terapÈutico</option>
             <option value="Electroterapia">Electroterapia</option>
             <option value="Hidroterapia">Hidroterapia</option>
-            <option value="Evaluaci√≥n / control">Evaluaci√≥n / control</option>
+            <option value="EvaluaciÛn / control">EvaluaciÛn / control</option>
           </select>
         </label>
         <label>Terapeuta
           <input type="text" id="rehabSesionTerapeuta" placeholder="Fisioterapeuta a cargo" />
         </label>
         <label class="form-full">Ejercicios realizados
-          <textarea id="rehabSesionEjercicios" rows="2" placeholder="Ej.: Isom√©tricos de cu√°driceps 3x15, arco de movimiento pasivo, marcha en paralelas"></textarea>
+          <textarea id="rehabSesionEjercicios" rows="2" placeholder="Ej.: IsomÈtricos de cu·driceps 3x15, arco de movimiento pasivo, marcha en paralelas"></textarea>
         </label>
-        <label class="form-full">Notas / evoluci√≥n
-          <textarea id="rehabSesionNotas" rows="2" placeholder="Evoluci√≥n, dolor, logros y ajustes"></textarea>
+        <label class="form-full">Notas / evoluciÛn
+          <textarea id="rehabSesionNotas" rows="2" placeholder="EvoluciÛn, dolor, logros y ajustes"></textarea>
         </label>
         <div class="form-full">
           <button type="button" class="btn btn--primary" id="btnAgregarSesionRehab">
-            <span class="material-symbols-outlined">add_circle</span> Guardar sesi√≥n
+            <span class="material-symbols-outlined">add_circle</span> Guardar sesiÛn
           </button>
         </div>
       </div>
@@ -2318,7 +2314,7 @@
   <div class="modal-backdrop" id="modalEvalExtremidad">
     <div class="modal modal--extrem">
       <div class="modal-head">
-        <h3 id="evalExtremT√≠tulo">Mano</h3>
+        <h3 id="evalExtremTÌtulo">Mano</h3>
         <button type="button" class="modal-close" data-cerrar="modalEvalExtremidad" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
@@ -2326,7 +2322,7 @@
       <div class="eval-extrem-layout">
         <div class="eval-extrem-svg" id="evalExtremSvg"></div>
         <div class="eval-extrem-panel">
-          <h4>Tipo de lesi√≥n</h4>
+          <h4>Tipo de lesiÛn</h4>
           <div id="lesionChipsExtrem" class="eval-tipos"></div>
           <button type="button" class="btn btn--ghost-dark btn-small" id="btnEvalExtremBorrador">
             <span class="material-symbols-outlined">ink_eraser</span> Borrador
@@ -2349,15 +2345,15 @@
   <div class="modal-backdrop" id="modalEvalResultado">
     <div class="modal modal--eval-result">
       <div class="modal-head">
-        <h3>Evaluaci√≥n f√≠sica ¬∑ <span id="evalResultadoT√≠tulo"></span></h3>
+        <h3>EvaluaciÛn fÌsica ∑ <span id="evalResultadoTÌtulo"></span></h3>
         <button type="button" class="modal-close" data-cerrar="modalEvalResultado" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
       <div class="eval-resultado">
-        <img id="evalResultadoImg" class="eval-resultado-img" alt="Resultado de la evaluaci√≥n f√≠sica" />
+        <img id="evalResultadoImg" class="eval-resultado-img" alt="Resultado de la evaluaciÛn fÌsica" />
         <div id="evalResultadoLeyenda" class="eval-resultado-leyenda"></div>
-        <h4>Descripci√≥n</h4>
+        <h4>DescripciÛn</h4>
         <p id="evalResultadoNota" class="eval-resultado-nota"></p>
       </div>
     </div>
@@ -2371,9 +2367,9 @@
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
-      <p class="eval-columna-hint">Elige el tipo de lesi√≥n, haz clic sobre una regi√≥n de la columna (o su punto/letra) para marcarla. Puedes marcar <b>varios tipos</b> en la misma regi√≥n: cambia de tipo y vuelve a hacer clic.</p>
+      <p class="eval-columna-hint">Elige el tipo de lesiÛn, haz clic sobre una regiÛn de la columna (o su punto/letra) para marcarla. Puedes marcar <b>varios tipos</b> en la misma regiÛn: cambia de tipo y vuelve a hacer clic.</p>
       <div class="eval-columna-tipos">
-        <span class="eval-prueba-titulo">Tipo de lesi√≥n</span>
+        <span class="eval-prueba-titulo">Tipo de lesiÛn</span>
         <div id="columnaTipos" class="eval-tipos"></div>
         <button type="button" class="btn btn--ghost-dark btn-small" id="btnColumnaBorrador">
           <span class="material-symbols-outlined">ink_eraser</span> Borrador
@@ -2389,32 +2385,32 @@
   <div class="modal-backdrop" id="modalCambiarPass">
     <div class="modal-card">
       <div class="modal-head">
-        <h2 id="cpT√≠tulo">Cambiar contrase√±a</h2>
+        <h2 id="cpTÌtulo">Cambiar contraseÒa</h2>
         <button type="button" class="modal-close" data-cerrar="modalCambiarPass" title="Cerrar">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
       <p class="panel-sub" id="cpMensaje"></p>
-      <label id="cpActualWrap" class="form-full">Contrase√±a actual
+      <label id="cpActualWrap" class="form-full">ContraseÒa actual
         <span class="pass-wrap">
           <input type="password" id="cpActual" autocomplete="current-password" />
-          <button type="button" class="pass-toggle" data-pass-toggle="cpActual" title="Mostrar / ocultar contrase√±a">
+          <button type="button" class="pass-toggle" data-pass-toggle="cpActual" title="Mostrar / ocultar contraseÒa">
             <span class="material-symbols-outlined">visibility</span>
           </button>
         </span>
       </label>
-      <label class="form-full">Nueva contrase√±a
+      <label class="form-full">Nueva contraseÒa
         <span class="pass-wrap">
           <input type="password" id="cpNueva" autocomplete="new-password" />
-          <button type="button" class="pass-toggle" data-pass-toggle="cpNueva" title="Mostrar / ocultar contrase√±a">
+          <button type="button" class="pass-toggle" data-pass-toggle="cpNueva" title="Mostrar / ocultar contraseÒa">
             <span class="material-symbols-outlined">visibility</span>
           </button>
         </span>
       </label>
-      <label class="form-full">Confirmar nueva contrase√±a
+      <label class="form-full">Confirmar nueva contraseÒa
         <span class="pass-wrap">
           <input type="password" id="cpConfirmar" autocomplete="new-password" />
-          <button type="button" class="pass-toggle" data-pass-toggle="cpConfirmar" title="Mostrar / ocultar contrase√±a">
+          <button type="button" class="pass-toggle" data-pass-toggle="cpConfirmar" title="Mostrar / ocultar contraseÒa">
             <span class="material-symbols-outlined">visibility</span>
           </button>
         </span>
@@ -2423,7 +2419,7 @@
       <div class="modal-actions">
         <button type="button" class="btn btn--ghost-dark" id="cpCancelar">Cancelar</button>
         <button type="button" id="cpGuardar" class="btn btn--primary">
-          <span class="material-symbols-outlined">key</span> Guardar contrase√±a
+          <span class="material-symbols-outlined">key</span> Guardar contraseÒa
         </button>
       </div>
     </div>
@@ -2437,17 +2433,17 @@
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
-      <p class="panel-sub">Gu√≠a r√°pida de cada opci√≥n del sistema. Elige una secci√≥n para ver sus tarjetas.</p>
+      <p class="panel-sub">GuÌa r·pida de cada opciÛn del sistema. Elige una secciÛn para ver sus tarjetas.</p>
 
       <div class="help-tabs" role="tablist" aria-label="Secciones de ayuda">
         <button type="button" class="help-tab active" data-tab="ayuda-inicio"><span class="material-symbols-outlined">space_dashboard</span> Inicio</button>
         <button type="button" class="help-tab" data-tab="ayuda-pacientes"><span class="material-symbols-outlined">groups</span> Pacientes</button>
         <button type="button" class="help-tab" data-tab="ayuda-citas"><span class="material-symbols-outlined">event_available</span> Citas</button>
-        <button type="button" class="help-tab" data-tab="ayuda-medica"><span class="material-symbols-outlined">stethoscope</span> Evoluci√≥n m√©dica</button>
-        <button type="button" class="help-tab" data-tab="ayuda-eval-fisica"><span class="material-symbols-outlined">accessibility_new</span> Evaluaci√≥n f√≠sica</button>
-        <button type="button" class="help-tab" data-tab="ayuda-registros"><span class="material-symbols-outlined">folder_open</span> Historial cl√≠nico</button>
+        <button type="button" class="help-tab" data-tab="ayuda-medica"><span class="material-symbols-outlined">stethoscope</span> EvoluciÛn mÈdica</button>
+        <button type="button" class="help-tab" data-tab="ayuda-eval-fisica"><span class="material-symbols-outlined">accessibility_new</span> EvaluaciÛn fÌsica</button>
+        <button type="button" class="help-tab" data-tab="ayuda-registros"><span class="material-symbols-outlined">folder_open</span> Historial clÌnico</button>
         <button type="button" class="help-tab" data-tab="ayuda-archivos"><span class="material-symbols-outlined">image</span> Archivos</button>
-        <button type="button" class="help-tab" data-tab="ayuda-facturacion"><span class="material-symbols-outlined">receipt_long</span> Facturaci√≥n</button>
+        <button type="button" class="help-tab" data-tab="ayuda-facturacion"><span class="material-symbols-outlined">receipt_long</span> FacturaciÛn</button>
         <button type="button" class="help-tab" data-tab="ayuda-sistema"><span class="material-symbols-outlined">settings</span> Sistema</button>
         <button type="button" class="help-tab" data-tab="ayuda-tips"><span class="material-symbols-outlined">tips_and_updates</span> Consejos</button>
       </div>
@@ -2464,21 +2460,21 @@
             <span class="help-card-ico material-symbols-outlined">home</span>
             <div>
               <strong>Inicio / Dashboard</strong>
-              <p>Resumen con pr√≥ximas citas, citas completadas y diagn√≥stico, citas sin consulta y pacientes sin cita. El bot√≥n "Pacientes atendidos" abre las estad√≠sticas.</p>
+              <p>Resumen con prÛximas citas, citas completadas y diagnÛstico, citas sin consulta y pacientes sin cita. El botÛn "Pacientes atendidos" abre las estadÌsticas.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">monitoring</span>
             <div>
-              <strong>Estad√≠sticas</strong>
-              <p>Rango de fechas con totales y gr√°ficos de dona: citas por per√≠odo y por d√≠a de la semana. Exporta e imprime el reporte.</p>
+              <strong>EstadÌsticas</strong>
+              <p>Rango de fechas con totales y gr·ficos de dona: citas por perÌodo y por dÌa de la semana. Exporta e imprime el reporte.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">calendar_month</span>
             <div>
               <strong>Calendario</strong>
-              <p>Vista mensual de citas por d√≠a. Haz clic en un d√≠a para ver el detalle o editarlo. Navega con las flechas.</p>
+              <p>Vista mensual de citas por dÌa. Haz clic en un dÌa para ver el detalle o editarlo. Navega con las flechas.</p>
             </div>
           </div>
         </div>
@@ -2496,21 +2492,21 @@
             <span class="help-card-ico material-symbols-outlined">group</span>
             <div>
               <strong>Pacientes</strong>
-              <p>Registra pacientes con c√≥digo autom√°tico, edad, c√©dula y seguro. Puedes editar, ver la ficha o marcar para eliminar (borrado suave).</p>
+              <p>Registra pacientes con cÛdigo autom·tico, edad, cÈdula y seguro. Puedes editar, ver la ficha o marcar para eliminar (borrado suave).</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">delete_forever</span>
             <div>
               <strong>Pacientes eliminados</strong>
-              <p>Solo los administradores pueden quitar un paciente de la lista. El bot√≥n "Mostrar eliminados" permite restablecerlos o eliminarlos por completo con tu contrase√±a; al borrarlos se eliminan tambi√©n sus citas, registros, documentos, facturas y recetas.</p>
+              <p>Solo los administradores pueden quitar un paciente de la lista. El botÛn "Mostrar eliminados" permite restablecerlos o eliminarlos por completo con tu contraseÒa; al borrarlos se eliminan tambiÈn sus citas, registros, documentos, facturas y recetas.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">person_off</span>
             <div>
               <strong>Pacientes sin cita</strong>
-              <p>Lista los pacientes activos que no tienen cita activa. El bot√≥n "Agendar cita" los agenda al momento.</p>
+              <p>Lista los pacientes activos que no tienen cita activa. El botÛn "Agendar cita" los agenda al momento.</p>
             </div>
           </div>
         </div>
@@ -2528,21 +2524,21 @@
             <span class="help-card-ico material-symbols-outlined">event</span>
             <div>
               <strong>Citas</strong>
-              <p>Agenda citas por paciente y turno, consulta la lista, env√≠a avisos por WhatsApp o correo e imprime los turnos. Respeta los l√≠mites diario y semanal configurados.</p>
+              <p>Agenda citas por paciente y turno, consulta la lista, envÌa avisos por WhatsApp o correo e imprime los turnos. Respeta los lÌmites diario y semanal configurados.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">task_alt</span>
             <div>
-              <strong>Citas completadas y diagn√≥stico</strong>
-              <p>Desde una cita pendiente puedes marcarla como completada y guardar el diagn√≥stico y tratamiento. Aqu√≠ se lista todo el historial: reabrir o eliminar una entrada.</p>
+              <strong>Citas completadas y diagnÛstico</strong>
+              <p>Desde una cita pendiente puedes marcarla como completada y guardar el diagnÛstico y tratamiento. AquÌ se lista todo el historial: reabrir o eliminar una entrada.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">pending_actions</span>
             <div>
               <strong>Citas sin consulta</strong>
-              <p>Registra casos que a√∫n no pasan a consulta con su fecha y motivo para que no se pierdan.</p>
+              <p>Registra casos que a˙n no pasan a consulta con su fecha y motivo para que no se pierdan.</p>
             </div>
           </div>
         </div>
@@ -2551,7 +2547,7 @@
       <div class="help-section" id="ayuda-medica" data-cards="6">
         <div class="help-section-head">
           <span class="help-section-ico material-symbols-outlined">stethoscope</span>
-          <h4>Evoluci√≥n m√©dica</h4>
+          <h4>EvoluciÛn mÈdica</h4>
           <span class="help-section-tag">6 tarjetas</span>
           <span class="material-symbols-outlined help-section-chevron">expand_more</span>
         </div>
@@ -2559,43 +2555,43 @@
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">folder_open</span>
             <div>
-              <strong>Historial cl√≠nico</strong>
-              <p>Elige el tipo de registro (motivo de consulta, examen f√≠sico o diagn√≥stico), escribe el detalle, agenda la pr√≥xima cita y hora, y adjunta documentos (PDF o imagen).</p>
+              <strong>Historial clÌnico</strong>
+              <p>Elige el tipo de registro (motivo de consulta, examen fÌsico o diagnÛstico), escribe el detalle, agenda la prÛxima cita y hora, y adjunta documentos (PDF o imagen).</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">stethoscope</span>
             <div>
-              <strong>Evaluaci√≥n f√≠sica</strong>
-              <p>Elige el sexo de la figura anat√≥mica, selecciona un tipo de lesi√≥n y haz clic sobre las zonas del cuerpo para marcarlas. Puedes aplicar varios tipos de lesi√≥n a una misma zona: selecciona otro tipo y vuelve a hacer clic sobre ella. Manos y pies tienen detalle por dedos. Guarda el resultado para revisarlo despu√©s.</p>
+              <strong>EvaluaciÛn fÌsica</strong>
+              <p>Elige el sexo de la figura anatÛmica, selecciona un tipo de lesiÛn y haz clic sobre las zonas del cuerpo para marcarlas. Puedes aplicar varios tipos de lesiÛn a una misma zona: selecciona otro tipo y vuelve a hacer clic sobre ella. Manos y pies tienen detalle por dedos. Guarda el resultado para revisarlo despuÈs.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">medical_services</span>
             <div>
-              <strong>Cirug√≠as e implantes</strong>
-              <p>Registra procedimientos quir√∫rgicos con cirujano, sala, anestesia y duraci√≥n. A√±ade las filas de implantes (nombre, marca, modelo, lote y fecha) y anota el seguimiento postoperatorio en cada detalle.</p>
+              <strong>CirugÌas e implantes</strong>
+              <p>Registra procedimientos quir˙rgicos con cirujano, sala, anestesia y duraciÛn. AÒade las filas de implantes (nombre, marca, modelo, lote y fecha) y anota el seguimiento postoperatorio en cada detalle.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">physical_therapy</span>
             <div>
-              <strong>Rehabilitaci√≥n</strong>
-              <p>Crea planes de rehabilitaci√≥n y fisioterapia con diagn√≥stico, objetivos y metas, y registra cada sesi√≥n (tipo, terapeuta, ejercicios y evoluci√≥n) desde el detalle del plan.</p>
+              <strong>RehabilitaciÛn</strong>
+              <p>Crea planes de rehabilitaciÛn y fisioterapia con diagnÛstico, objetivos y metas, y registra cada sesiÛn (tipo, terapeuta, ejercicios y evoluciÛn) desde el detalle del plan.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">fact_check</span>
             <div>
               <strong>Cuestionarios (PROs)</strong>
-              <p>Registra resultados reportados por el paciente: EVA de dolor, escala funcional y satisfacci√≥n. Cada respuesta se valora con deslizadores y el sistema calcula el promedio autom√°ticamente.</p>
+              <p>Registra resultados reportados por el paciente: EVA de dolor, escala funcional y satisfacciÛn. Cada respuesta se valora con deslizadores y el sistema calcula el promedio autom·ticamente.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">medication</span>
             <div>
-              <strong>Recetas m√©dicas</strong>
-              <p>Genera recetas con uno o varios medicamentos: tipo (gen√©rico/comercial), v√≠a (oral/t√≥pica), dosis, frecuencia y duraci√≥n del tratamiento. Gu√°rdalas, rev√≠salas e impr√≠melas.</p>
+              <strong>Recetas mÈdicas</strong>
+              <p>Genera recetas con uno o varios medicamentos: tipo (genÈrico/comercial), vÌa (oral/tÛpica), dosis, frecuencia y duraciÛn del tratamiento. Gu·rdalas, revÌsalas e imprÌmelas.</p>
             </div>
           </div>
         </div>
@@ -2604,7 +2600,7 @@
       <div class="help-section" id="ayuda-eval-fisica" data-cards="4">
         <div class="help-section-head">
           <span class="help-section-ico material-symbols-outlined">accessibility_new</span>
-          <h4>Evaluaci√≥n f√≠sica</h4>
+          <h4>EvaluaciÛn fÌsica</h4>
           <span class="help-section-tag">4 tarjetas</span>
           <span class="material-symbols-outlined help-section-chevron">expand_more</span>
         </div>
@@ -2612,28 +2608,28 @@
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">accessibility_new</span>
             <div>
-              <strong>Figura anat√≥mica</strong>
+              <strong>Figura anatÛmica</strong>
               <p>Selecciona el sexo del paciente para mostrar la silueta correspondiente (hombre, mujer o neutra). La figura se usa como base para marcar hallazgos.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">category</span>
             <div>
-              <strong>Tipos de lesi√≥n</strong>
-              <p>Elige una categor√≠a (fractura, luxaci√≥n, esguince, tendinopat√≠a, contractura, otra) y un color para diferenciar visualmente cada hallazgo en la figura.</p>
+              <strong>Tipos de lesiÛn</strong>
+              <p>Elige una categorÌa (fractura, luxaciÛn, esguince, tendinopatÌa, contractura, otra) y un color para diferenciar visualmente cada hallazgo en la figura.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">pan_tool</span>
             <div>
               <strong>Marcado interactivo</strong>
-              <p>Haz clic sobre la figura para colocar marcas. En manos y pies se abre un detalle por dedos (falanges). Cada clic a√±ade el tipo seleccionado a la zona y puedes combinar varios tipos en una misma zona.</p>
+              <p>Haz clic sobre la figura para colocar marcas. En manos y pies se abre un detalle por dedos (falanges). Cada clic aÒade el tipo seleccionado a la zona y puedes combinar varios tipos en una misma zona.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">save</span>
             <div>
-              <strong>Guardado y revisi√≥n</strong>
+              <strong>Guardado y revisiÛn</strong>
               <p>Al guardar se registra el hallazgo con su tipo, color, zonas marcadas y notas. Puedes revisar evaluaciones anteriores desde la lista lateral y ver la figura con las marcas superpuestas.</p>
             </div>
           </div>
@@ -2643,7 +2639,7 @@
       <div class="help-section" id="ayuda-registros" data-cards="4">
         <div class="help-section-head">
           <span class="help-section-ico material-symbols-outlined">folder_open</span>
-          <h4>Historial cl√≠nico</h4>
+          <h4>Historial clÌnico</h4>
           <span class="help-section-tag">4 tarjetas</span>
           <span class="material-symbols-outlined help-section-chevron">expand_more</span>
         </div>
@@ -2652,28 +2648,28 @@
             <span class="help-card-ico material-symbols-outlined">edit_note</span>
             <div>
               <strong>Tipos de registro</strong>
-              <p>Tres categor√≠as: <em>Motivo de consulta</em> (por qu√© viene), <em>Examen f√≠sico</em> (hallazgos objetivos) y <em>Diagn√≥stico</em> (conclusi√≥n y plan). Cada uno se guarda con fecha y hora.</p>
+              <p>Tres categorÌas: <em>Motivo de consulta</em> (por quÈ viene), <em>Examen fÌsico</em> (hallazgos objetivos) y <em>DiagnÛstico</em> (conclusiÛn y plan). Cada uno se guarda con fecha y hora.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">event</span>
             <div>
-              <strong>Pr√≥xima cita</strong>
-              <p>Puedes agendar la siguiente cita directamente desde el registro: elige fecha, hora y turno. Si el paciente ya ten√≠a cita pendiente, se sugiere reusarla.</p>
+              <strong>PrÛxima cita</strong>
+              <p>Puedes agendar la siguiente cita directamente desde el registro: elige fecha, hora y turno. Si el paciente ya tenÌa cita pendiente, se sugiere reusarla.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">attach_file</span>
             <div>
               <strong>Adjuntos</strong>
-              <p>Adjunta PDFs o im√°genes (radiograf√≠as, consentimientos, estudios) a cada registro. Se muestran en miniatura y se pueden abrir o descargar desde la lista.</p>
+              <p>Adjunta PDFs o im·genes (radiografÌas, consentimientos, estudios) a cada registro. Se muestran en miniatura y se pueden abrir o descargar desde la lista.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">history</span>
             <div>
-              <strong>L√≠nea de tiempo</strong>
-              <p>Todos los registros del paciente aparecen en orden cronol√≥gico inverso con iconos por tipo. Puedes editar, imprimir o eliminar entradas propias; los eliminados se marcan y no se borran definitivamente.</p>
+              <strong>LÌnea de tiempo</strong>
+              <p>Todos los registros del paciente aparecen en orden cronolÛgico inverso con iconos por tipo. Puedes editar, imprimir o eliminar entradas propias; los eliminados se marcan y no se borran definitivamente.</p>
             </div>
           </div>
         </div>
@@ -2682,7 +2678,7 @@
       <div class="help-section" id="ayuda-facturacion" data-cards="3">
         <div class="help-section-head">
           <span class="help-section-ico material-symbols-outlined">receipt_long</span>
-          <h4>Facturaci√≥n</h4>
+          <h4>FacturaciÛn</h4>
           <span class="help-section-tag">3 tarjetas</span>
           <span class="material-symbols-outlined help-section-chevron">expand_more</span>
         </div>
@@ -2691,21 +2687,21 @@
             <span class="help-card-ico material-symbols-outlined">point_of_sale</span>
             <div>
               <strong>Crear factura</strong>
-              <p>Selecciona el paciente y a√±ade filas de procedimientos o conceptos. Cada fila tiene descripci√≥n, cantidad, precio unitario y subtotal autom√°tico. El total se calcula al momento.</p>
+              <p>Selecciona el paciente y aÒade filas de procedimientos o conceptos. Cada fila tiene descripciÛn, cantidad, precio unitario y subtotal autom·tico. El total se calcula al momento.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">print</span>
             <div>
-              <strong>Impresi√≥n y c√≥digo</strong>
-              <p>Al guardar se genera un c√≥digo √∫nico de factura. Usa el bot√≥n "Imprimir" para obtener una versi√≥n lista para papel o PDF con el desglose completo.</p>
+              <strong>ImpresiÛn y cÛdigo</strong>
+              <p>Al guardar se genera un cÛdigo ˙nico de factura. Usa el botÛn "Imprimir" para obtener una versiÛn lista para papel o PDF con el desglose completo.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">list_alt</span>
             <div>
-              <strong>Listado y b√∫squeda</strong>
-              <p>Todas las facturas emitidas se listan con paciente, fecha, total y c√≥digo. Puedes filtrar por nombre, c√≥digo o rango de fechas y reimprimir cualquier factura anterior.</p>
+              <strong>Listado y b˙squeda</strong>
+              <p>Todas las facturas emitidas se listan con paciente, fecha, total y cÛdigo. Puedes filtrar por nombre, cÛdigo o rango de fechas y reimprimir cualquier factura anterior.</p>
             </div>
           </div>
         </div>
@@ -2714,7 +2710,7 @@
       <div class="help-section" id="ayuda-archivos" data-cards="4">
         <div class="help-section-head">
           <span class="help-section-ico material-symbols-outlined">image</span>
-          <h4>Archivos, im√°genes y facturaci√≥n</h4>
+          <h4>Archivos, im·genes y facturaciÛn</h4>
           <span class="help-section-tag">4 tarjetas</span>
           <span class="material-symbols-outlined help-section-chevron">expand_more</span>
         </div>
@@ -2729,22 +2725,22 @@
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">radiology</span>
             <div>
-              <strong>Estudios e im√°genes (DICOM)</strong>
-              <p>Sube placas, radiograf√≠as o archivos DICOM (.dcm). El visor extrae los metadatos (paciente, modalidad, fechas) y muestra la imagen en escala de grises.</p>
+              <strong>Estudios e im·genes (DICOM)</strong>
+              <p>Sube placas, radiografÌas o archivos DICOM (.dcm). El visor extrae los metadatos (paciente, modalidad, fechas) y muestra la imagen en escala de grises.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">photo_filter</span>
             <div>
-              <strong>Visor de im√°genes</strong>
-              <p>Ajusta brillo, contraste, zoom, rotaci√≥n e inversi√≥n de las im√°genes de estudio para inspeccionar con m√°s detalle.</p>
+              <strong>Visor de im·genes</strong>
+              <p>Ajusta brillo, contraste, zoom, rotaciÛn e inversiÛn de las im·genes de estudio para inspeccionar con m·s detalle.</p>
             </div>
           </div>
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">receipt_long</span>
             <div>
-              <strong>Facturaci√≥n</strong>
-              <p>Emite facturas seleccionando paciente y procedimientos (con precios base), calcula el total y las imprime por c√≥digo.</p>
+              <strong>FacturaciÛn</strong>
+              <p>Emite facturas seleccionando paciente y procedimientos (con precios base), calcula el total y las imprime por cÛdigo.</p>
             </div>
           </div>
         </div>
@@ -2761,8 +2757,8 @@
           <div class="help-card">
             <span class="help-card-ico material-symbols-outlined">admin_panel_settings</span>
             <div>
-              <strong>Administraci√≥n</strong>
-              <p>Solo visible para administradores: crea usuarios, asigna roles, configura las opciones del sistema (secciones y l√≠mites) y elimina definitivamente pacientes.</p>
+              <strong>AdministraciÛn</strong>
+              <p>Solo visible para administradores: crea usuarios, asigna roles, configura las opciones del sistema (secciones y lÌmites) y elimina definitivamente pacientes.</p>
             </div>
           </div>
         </div>
@@ -2771,17 +2767,17 @@
       <section class="help-section" id="ayuda-tips">
         <div class="help-section-head">
           <span class="help-section-ico material-symbols-outlined">tips_and_updates</span>
-          <h4>C√≥mo usar el sistema</h4>
+          <h4>CÛmo usar el sistema</h4>
           <span class="material-symbols-outlined help-section-chevron">expand_more</span>
         </div>
         <div class="help-tips">
           <span class="material-symbols-outlined">tips_and_updates</span>
           <div>
             <ul>
-              <li>Todo lo que guardas se almacena autom√°ticamente en la base de datos local (SQLite). No necesitas guardar manualmente.</li>
-              <li>El primer usuario registrado es el administrador; solo √©l ve el bot√≥n de administraci√≥n y este bot√≥n de ayuda.</li>
+              <li>Todo lo que guardas se almacena autom·ticamente en la base de datos local (SQLite). No necesitas guardar manualmente.</li>
+              <li>El primer usuario registrado es el administrador; solo Èl ve el botÛn de administraciÛn y este botÛn de ayuda.</li>
               <li>Usa "Modo claro / oscuro" (icono de luna) en la barra superior.</li>
-              <li>Cierra sesi√≥n desde el men√∫ lateral. Los datos permanecen en el sistema.</li>
+              <li>Cierra sesiÛn desde el men˙ lateral. Los datos permanecen en el sistema.</li>
             </ul>
           </div>
         </div>
@@ -2798,11 +2794,11 @@
         </button>
       </div>
       <form id="notaInicioForm" class="form-grid">
-        <label class="form-full">T√≠tulo (opcional)
-          <input type="text" id="notaTitulo" maxlength="80" placeholder="T√≠tulo de la nota" />
+        <label class="form-full">TÌtulo (opcional)
+          <input type="text" id="notaTitulo" maxlength="80" placeholder="TÌtulo de la nota" />
         </label>
         <label class="form-full">Nota
-          <textarea id="notaTexto" rows="4" required placeholder="Escribe aqu√≠ la nota..."></textarea>
+          <textarea id="notaTexto" rows="4" required placeholder="Escribe aquÌ la nota..."></textarea>
         </label>
         <button type="submit" class="btn btn--primary form-full">Guardar nota</button>
       </form>
@@ -2836,40 +2832,40 @@
             <option value="Femenino">Femenino</option>
           </select>
         </label>
-        <label>C√©dula / Documento
-          <input type="text" id="edPacCedula" placeholder="C√©dula de identidad" />
+        <label>CÈdula / Documento
+          <input type="text" id="edPacCedula" placeholder="CÈdula de identidad" />
         </label>
         <label>Seguro / Aseguradora
           <input type="text" id="edPacSeguro" placeholder="Aseguradora" />
         </label>
-        <label>Tel√©fono
-          <input type="tel" id="edPacTelefono" placeholder="Tel√©fono" />
+        <label>TelÈfono
+          <input type="tel" id="edPacTelefono" placeholder="TelÈfono" />
         </label>
         <label>Correo
           <input type="email" id="edPacEmail" placeholder="Correo" />
         </label>
-        <label>Raz√≥n de la consulta
+        <label>RazÛn de la consulta
           <select id="edPacRazon">
-            <option value="">Selecciona una raz√≥n</option>
+            <option value="">Selecciona una razÛn</option>
             <option>Consulta general</option>
             <option>Dolor articular</option>
             <option>Dolor lumbar / espalda</option>
             <option>Dolor cervical / cuello</option>
-            <option>Lesi√≥n deportiva</option>
+            <option>LesiÛn deportiva</option>
             <option>Fractura / traumatismo</option>
-            <option>Esguince / distensi√≥n</option>
+            <option>Esguince / distensiÛn</option>
             <option>Consulta de seguimiento</option>
-            <option>Postoperatorio / control quir√∫rgico</option>
-            <option>Valoraci√≥n prequir√∫rgica</option>
-            <option>Rehabilitaci√≥n / terapia f√≠sica</option>
-            <option>Pr√≥tesis / reemplazo articular</option>
-            <option>Infecci√≥n osteoarticular</option>
-            <option>Deformidad / alteraci√≥n postural</option>
-            <option>Tumor / masa √≥sea</option>
+            <option>Postoperatorio / control quir˙rgico</option>
+            <option>ValoraciÛn prequir˙rgica</option>
+            <option>RehabilitaciÛn / terapia fÌsica</option>
+            <option>PrÛtesis / reemplazo articular</option>
+            <option>InfecciÛn osteoarticular</option>
+            <option>Deformidad / alteraciÛn postural</option>
+            <option>Tumor / masa Ûsea</option>
           </select>
         </label>
         <label class="form-full">Historia actual
-          <textarea id="edPacHistoriaActual" rows="3" placeholder="Motivo de consulta ampliado, evoluci√≥n del padecimiento actual..."></textarea>
+          <textarea id="edPacHistoriaActual" rows="3" placeholder="Motivo de consulta ampliado, evoluciÛn del padecimiento actual..."></textarea>
         </label>
         <label class="form-full">Notas
           <textarea id="edPacNotas" rows="3" placeholder="Notas del paciente"></textarea>
@@ -2881,7 +2877,7 @@
 
   <div class="modal-backdrop" id="modalCirugia">
     <div class="modal-card modal-card--ancho">
-      <div class="modal-head"><h3 id="tituloModalCirugia">Nueva cirug√≠a</h3><button type="button" class="modal-close" data-cerrar="modalCirugia">√ó</button></div>
+      <div class="modal-head"><h3 id="tituloModalCirugia">Nueva cirugÌa</h3><button type="button" class="modal-close" data-cerrar="modalCirugia">◊</button></div>
       <form id="formCirugia" class="form-grid">
         <input type="hidden" id="cirId" />
         <label>Paciente<select id="cirPaciente"></select></label>
@@ -2892,7 +2888,7 @@
         <label>Estado<select id="cirEstado"><option>Programada</option><option>Realizada</option><option>Cancelada</option><option>Postergada</option></select></label>
         <label class="form-full">Notas<textarea id="cirNotas" rows="3"></textarea></label>
         <div class="form-full modal-actions">
-          <button type="button" class="btn hidden" id="btnCancelarEdicionCirugia">Cancelar edici√≥n</button>
+          <button type="button" class="btn hidden" id="btnCancelarEdicionCirugia">Cancelar ediciÛn</button>
           <button type="button" class="btn" data-cerrar="modalCirugia">Cancelar</button>
           <button type="submit" class="btn btn--primary">Guardar</button>
         </div>
@@ -2901,17 +2897,17 @@
   </div>
   <div class="modal-backdrop" id="modalProm">
     <div class="modal-card modal-card--ancho">
-      <div class="modal-head"><h3 id="tituloModalProm">Nuevo PROM</h3><button type="button" class="modal-close" data-cerrar="modalProm">√ó</button></div>
+      <div class="modal-head"><h3 id="tituloModalProm">Nuevo PROM</h3><button type="button" class="modal-close" data-cerrar="modalProm">◊</button></div>
       <form id="formProm" class="form-grid">
         <input type="hidden" id="promId" />
         <label>Paciente<select id="promPaciente"></select></label>
         <label>Fecha<input type="date" id="promFecha" /></label>
         <label>Tipo<input type="text" id="promTipo" placeholder="Ej. WOMAC, VAS, DASH" /></label>
         <label>Puntaje Total<input type="number" step="any" id="promPuntaje" /></label>
-        <label class="form-full">Interpretaci√≥n<input type="text" id="promInterp" /></label>
+        <label class="form-full">InterpretaciÛn<input type="text" id="promInterp" /></label>
         <label class="form-full">Notas<textarea id="promNotas" rows="2"></textarea></label>
         <div class="form-full modal-actions">
-          <button type="button" class="btn hidden" id="btnCancelarEdicionProm">Cancelar edici√≥n</button>
+          <button type="button" class="btn hidden" id="btnCancelarEdicionProm">Cancelar ediciÛn</button>
           <button type="button" class="btn" data-cerrar="modalProm">Cancelar</button>
           <button type="submit" class="btn btn--primary">Guardar</button>
         </div>
@@ -2920,16 +2916,16 @@
   </div>
   <div class="modal-backdrop" id="modalImagen">
     <div class="modal-card modal-card--ancho">
-      <div class="modal-head"><h3 id="tituloModalImagen">Nuevo estudio</h3><button type="button" class="modal-close" data-cerrar="modalImagen">√ó</button></div>
+      <div class="modal-head"><h3 id="tituloModalImagen">Nuevo estudio</h3><button type="button" class="modal-close" data-cerrar="modalImagen">◊</button></div>
       <form id="formImagen" class="form-grid">
         <input type="hidden" id="imgId" />
         <label>Paciente<select id="imgPaciente"></select></label>
         <label>Fecha<input type="date" id="imgFecha" /></label>
         <label>Tipo de estudio<input type="text" id="imgTipo" placeholder="Rx, RM, TAC..." /></label>
-        <label>Regi√≥n<input type="text" id="imgRegion" placeholder="Rodilla, Columna..." /></label>
+        <label>RegiÛn<input type="text" id="imgRegion" placeholder="Rodilla, Columna..." /></label>
         <label class="form-full">Hallazgos<textarea id="imgHallazgos" rows="2"></textarea></label>
         <div class="form-full modal-actions">
-          <button type="button" class="btn hidden" id="btnCancelarEdicionImagen">Cancelar edici√≥n</button>
+          <button type="button" class="btn hidden" id="btnCancelarEdicionImagen">Cancelar ediciÛn</button>
           <button type="button" class="btn" data-cerrar="modalImagen">Cancelar</button>
           <button type="submit" class="btn btn--primary">Guardar</button>
         </div>
@@ -2938,18 +2934,18 @@
   </div>
   <div class="modal-backdrop" id="modalPT">
     <div class="modal-card modal-card--ancho">
-      <div class="modal-head"><h3 id="tituloModalPT">Nueva sesi√≥n PT</h3><button type="button" class="modal-close" data-cerrar="modalPT">√ó</button></div>
+      <div class="modal-head"><h3 id="tituloModalPT">Nueva sesiÛn PT</h3><button type="button" class="modal-close" data-cerrar="modalPT">◊</button></div>
       <form id="formPT" class="form-grid">
         <input type="hidden" id="ptId" />
         <label>Paciente<select id="ptPaciente"></select></label>
         <label>Fecha<input type="date" id="ptFecha" /></label>
-        <label>Sesi√≥n #<input type="number" id="ptSesion" /></label>
+        <label>SesiÛn #<input type="number" id="ptSesion" /></label>
         <label>Dolor Antes<input type="number" step="any" id="ptDolorAntes" /></label>
-        <label>Dolor Despu√©s<input type="number" step="any" id="ptDolorDesp" /></label>
-        <label>Asistencia<select id="ptAsistencia"><option>Asisti√≥</option><option>Falt√≥</option><option>Justificada</option></select></label>
+        <label>Dolor DespuÈs<input type="number" step="any" id="ptDolorDesp" /></label>
+        <label>Asistencia<select id="ptAsistencia"><option>AsistiÛ</option><option>FaltÛ</option><option>Justificada</option></select></label>
         <label class="form-full">Objetivo/Notas<textarea id="ptNotas" rows="2"></textarea></label>
         <div class="form-full modal-actions">
-          <button type="button" class="btn hidden" id="btnCancelarEdicionPT">Cancelar edici√≥n</button>
+          <button type="button" class="btn hidden" id="btnCancelarEdicionPT">Cancelar ediciÛn</button>
           <button type="button" class="btn" data-cerrar="modalPT">Cancelar</button>
           <button type="submit" class="btn btn--primary">Guardar</button>
         </div>
@@ -2958,20 +2954,20 @@
   </div>
   <div class="modal-backdrop" id="modalImplante">
     <div class="modal-card modal-card--ancho">
-      <div class="modal-head"><h3 id="tituloModalImplante">Nuevo implante</h3><button type="button" class="modal-close" data-cerrar="modalImplante">√ó</button></div>
+      <div class="modal-head"><h3 id="tituloModalImplante">Nuevo implante</h3><button type="button" class="modal-close" data-cerrar="modalImplante">◊</button></div>
       <form id="formImplante" class="form-grid">
         <input type="hidden" id="implId" />
-        <label>C√≥digo<input type="text" id="implCodigo" /></label>
+        <label>CÛdigo<input type="text" id="implCodigo" /></label>
         <label>Fabricante<input type="text" id="implFabricante" /></label>
         <label>Modelo<input type="text" id="implModelo" /></label>
         <label>Lote<input type="text" id="implLote" /></label>
         <label>Serie<input type="text" id="implSerie" /></label>
-        <label>Tama√±o<input type="text" id="implTamanio" /></label>
+        <label>TamaÒo<input type="text" id="implTamanio" /></label>
         <label>Fecha caducidad<input type="date" id="implCaducidad" /></label>
         <label>Estado<select id="implEstado"><option>Disponible</option><option>En uso</option><option>Retirado</option><option>Caducado</option></select></label>
         <label class="form-full">Notas<textarea id="implNotas" rows="2"></textarea></label>
         <div class="form-full modal-actions">
-          <button type="button" class="btn hidden" id="btnCancelarEdicionImplante">Cancelar edici√≥n</button>
+          <button type="button" class="btn hidden" id="btnCancelarEdicionImplante">Cancelar ediciÛn</button>
           <button type="button" class="btn" data-cerrar="modalImplante">Cancelar</button>
           <button type="submit" class="btn btn--primary">Guardar</button>
         </div>
@@ -2980,19 +2976,19 @@
   </div>
   <div class="modal-backdrop" id="modalAutorizacion">
     <div class="modal-card modal-card--ancho">
-      <div class="modal-head"><h3 id="tituloModalAutorizacion">Nueva autorizaci√≥n</h3><button type="button" class="modal-close" data-cerrar="modalAutorizacion">√ó</button></div>
+      <div class="modal-head"><h3 id="tituloModalAutorizacion">Nueva autorizaciÛn</h3><button type="button" class="modal-close" data-cerrar="modalAutorizacion">◊</button></div>
       <form id="formAutorizacion" class="form-grid">
         <input type="hidden" id="authId" />
         <label>Paciente<select id="authPaciente"></select></label>
         <label>Fecha solicitud<input type="date" id="authFechaSol" /></label>
         <label>Procedimiento CPT<input type="text" id="authCPT" /></label>
-        <label>N¬∞ Autorizaci√≥n<input type="text" id="authNum" /></label>
+        <label>N∞ AutorizaciÛn<input type="text" id="authNum" /></label>
         <label>Estado<select id="authEstado"><option>Solicitada</option><option>Aprobada</option><option>Denegada</option><option>Vencida</option></select></label>
         <label>Vencimiento<input type="date" id="authVenc" /></label>
         <label>Aseguradora<input type="text" id="authAseg" /></label>
         <label class="form-full">Notas<textarea id="authNotas" rows="2"></textarea></label>
         <div class="form-full modal-actions">
-          <button type="button" class="btn hidden" id="btnCancelarEdicionAutorizacion">Cancelar edici√≥n</button>
+          <button type="button" class="btn hidden" id="btnCancelarEdicionAutorizacion">Cancelar ediciÛn</button>
           <button type="button" class="btn" data-cerrar="modalAutorizacion">Cancelar</button>
           <button type="submit" class="btn btn--primary">Guardar</button>
         </div>
@@ -3001,7 +2997,7 @@
   </div>
   <div class="modal-backdrop" id="modalCargo">
     <div class="modal-card modal-card--ancho">
-      <div class="modal-head"><h3 id="tituloModalCargo">Nuevo cargo</h3><button type="button" class="modal-close" data-cerrar="modalCargo">√ó</button></div>
+      <div class="modal-head"><h3 id="tituloModalCargo">Nuevo cargo</h3><button type="button" class="modal-close" data-cerrar="modalCargo">◊</button></div>
       <form id="formCargo" class="form-grid">
         <input type="hidden" id="cargoId" />
         <label>Paciente<select id="cargoPaciente"></select></label>
@@ -3013,7 +3009,7 @@
         <label>Estado<select id="cargoEstado"><option>Por cobrar</option><option>Cobrado</option><option>Anulado</option><option>Denegado</option></select></label>
         <label class="form-full">Notas<textarea id="cargoNotas" rows="2"></textarea></label>
         <div class="form-full modal-actions">
-          <button type="button" class="btn hidden" id="btnCancelarEdicionCargo">Cancelar edici√≥n</button>
+          <button type="button" class="btn hidden" id="btnCancelarEdicionCargo">Cancelar ediciÛn</button>
           <button type="button" class="btn" data-cerrar="modalCargo">Cancelar</button>
           <button type="submit" class="btn btn--primary">Guardar</button>
         </div>
