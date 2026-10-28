@@ -8214,3 +8214,45 @@ table th { background: #f8fafc; font-weight: 600; }
 .tag.success { background: rgba(46,125,50,0.12); color: var(--clin-success); }
 .tag.warning { background: rgba(237,138,0,0.12); color: var(--clin-warning); }
 .tag.danger { background: rgba(198,40,40,0.12); color: var(--clin-danger); }
+
+/* === ESQUEMA COMPLETO UX/UI CLÍNICO === */
+:root {
+  --clin-primary: #1F5FA8;
+  --clin-primary-light: rgba(31,95,168,0.08);
+  --clin-secondary: #5B6B7C;
+  --clin-bg: #F5F7FA;
+  --clin-surface: #FFFFFF;
+  --clin-success: #2E7D32;
+  --clin-warning: #ED8A00;
+  --clin-danger: #C62828;
+  --clin-border: rgba(15,23,42,0.08);
+  --clin-text: #1a1a1a;
+  --clin-text-muted: #5B6B7C;
+  --clin-radius: 8px;
+  --clin-shadow: 0 1px 2px rgba(15,23,42,0.02), 0 4px 12px rgba(15,23,42,0.05);
+  --clin-shadow-hover: 0 2px 4px rgba(15,23,42,0.03), 0 12px 28px rgba(15,23,42,0.08);
+  --clin-font: 'Inter','Roboto',system-ui,-apple-system,sans-serif;
+}
+* { font-family: var(--clin-font); }
+body { background: var(--clin-bg); color: var(--clin-text); }
+.topbar { height: 56px; background: var(--clin-surface); border-bottom: 1px solid var(--clin-border); display:flex; align-items:center; gap:16px; }
+.sidebar { width: 240px; background: var(--clin-surface); border-right: 1px solid var(--clin-border); }
+.sidebar.collapsed { width: 64px; }
+.nav-group-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--clin-text-muted); padding: 12px 16px 6px; }
+.nav-item.active > a { background: var(--clin-primary-light); color: var(--clin-primary); border-left: 3px solid var(--clin-primary); font-weight: 600; }
+.nav-item:hover > a { background: rgba(15,23,42,0.02); }
+.badge { background: var(--clin-danger); color:#fff; border-radius: 999px; padding: 0 8px; font-size: 11px; }
+.kpi-card { background: var(--clin-surface); border: 1px solid var(--clin-border); border-radius: var(--clin-radius); padding: 16px; box-shadow: var(--clin-shadow); transition: all .2s ease; }
+.kpi-card:hover { box-shadow: var(--clin-shadow-hover); transform: translateY(-1px); cursor: pointer; }
+.kpi-card h3 { font-size: 12px; color: var(--clin-text-muted); text-transform: uppercase; letter-spacing: .05em; }
+.kpi-card .value { font-size: 28px; font-weight: 700; color: var(--clin-text); }
+.panel { background: var(--clin-surface); border: 1px solid var(--clin-border); border-radius: var(--clin-radius); box-shadow: var(--clin-shadow); }
+.btn { min-height: 40px; border-radius: 6px; font-weight: 600; }
+.btn--primary { background: var(--clin-primary); color:#fff; }
+.btn--primary:hover { background: #1a56a0; }
+.table thead th { background: #f8fafc; color: var(--clin-text-muted); font-size: 12px; text-transform: uppercase; }
+.table tbody tr:hover { background: rgba(31,95,168,0.02); }
+.tabs .tab.active { color: var(--clin-primary); border-bottom: 2px solid var(--clin-primary); }
+.timeline-item { border-left: 2px solid var(--clin-border); padding-left: 16px; position: relative; }
+.timeline-item:before { content:''; width: 10px; height: 10px; border-radius:50%; background: var(--clin-primary); position:absolute; left:-6px; top:4px; }
+.ai-fab { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background: var(--clin-primary); color:#fff; box-shadow: var(--clin-shadow-hover); }
