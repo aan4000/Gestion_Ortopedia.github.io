@@ -8156,3 +8156,32 @@ body.dark .login-card {
 .stat-card .stat-icon { background: radial-gradient(circle, rgba(20,184,166,0.16), transparent 70%); color: var(--color-terracotta-light); }
 .panel-head h2 { font-weight: 700; letter-spacing: -0.02em; }
 .quick-actions { display:flex; flex-wrap:wrap; gap:10px; }
+
+/* Paleta UX mejorada */
+:root {
+  --primary: #0f766e;
+  --primary-hover: #14b8a6;
+  --primary-pressed: #0d9488;
+  --accent: #0e7490;
+  --surface-bg: #f8fafc;
+  --surface-card: #ffffff;
+  --border-subtle: rgba(15,23,42,0.08);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #06b6d4;
+}
+/* Navegación fluida */
+.nav-item, .nav-sub-item { transition: all var(--transition-base); }
+.nav-item:hover > a, .nav-sub-item:hover > a { background: rgba(20,184,166,0.08); padding-left: 18px; }
+/* Botones unificados */
+.btn { font-family: var(--font-sans); border: 1px solid transparent; }
+.btn--primary { background: var(--btn-grad); color:#fff; }
+.btn--ghost { background: transparent; color: var(--text); border-color: var(--border-subtle); }
+.btn--ghost:hover { background: rgba(15,23,42,0.04); }
+/* Inputs */
+input, select, textarea { font-family: var(--font-sans); border-radius: var(--r-lg); border: 1px solid var(--border-subtle); transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary-hover); box-shadow: var(--focus-ring); }
