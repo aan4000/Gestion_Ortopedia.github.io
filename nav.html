@@ -1,6 +1,6 @@
 <div class="menu">
-  <button id="rotador" aria-label="Abrir menú" aria-expanded="false">
-    <span id="rotadorIcon" class="material-symbols-outlined">folder</span>
+  <button id="rotador" aria-label="Abrir/cerrar menú" aria-expanded="false" title="Colapsar menú">
+    <span id="rotadorIcon" class="material-symbols-outlined">menu_open</span>
   </button>
 </div>
 
@@ -8,54 +8,74 @@
   <section class="contenido">
     <div class="sidebar-header">
       <span class="material-symbols-outlined">orthopedics</span>
-      <span class="sidebar-title">Ortopedia</span>
+      <span class="sidebar-title">OrtoSistema</span>
+    </div>
+    <div class="sidebar-search">
+      <button type="button" id="btnCmdPalette" class="cmd-trigger" title="Buscar con Ctrl+K">
+        <span class="material-symbols-outlined">search</span>
+        <span>Buscar paciente / comando…</span>
+        <kbd>Ctrl+K</kbd>
+      </button>
     </div>
     <ul>
+      <li class="nav-group-label">Principal</li>
       <li class="nav-item" data-seccion="inicio">
-        <a href="#inicio">
+        <a href="#/inicio">
           <span class="material-symbols-outlined format">home</span>
-          <span class="nav-label">Inicio / Dashboard</span>
+          <span class="nav-label">Inicio</span>
+        </a>
+      </li>
+      <li class="nav-item" data-seccion="agenda">
+        <a href="#/agenda">
+          <span class="material-symbols-outlined format">calendar_month</span>
+          <span class="nav-label">Agenda</span>
         </a>
       </li>
       <li class="nav-item" data-seccion="pacientes">
-        <a href="#pacientes">
+        <a href="#/pacientes">
           <span class="material-symbols-outlined format">group</span>
           <span class="nav-label">Pacientes</span>
         </a>
       </li>
-<li class="nav-item" data-seccion="citas">
-  <a href="#citas">
-    <span class="material-symbols-outlined format">event</span>
-    <span class="nav-label">Citas</span>
-    <span class="material-symbols-outlined nav-caret">expand_more</span>
-  </a>
-  <ul class="nav-sub">
-      <li class="nav-sub-item" data-seccion="citas-completadas">
-        <a href="#citas-completadas">
-          <span class="material-symbols-outlined format">task_alt</span>
-          <span class="nav-label">Citas completadas y diagnósticos</span>
+      <li class="nav-item" data-seccion="quirofano">
+        <a href="#/quirofano">
+          <span class="material-symbols-outlined format">surgical</span>
+          <span class="nav-label">Quirófano</span>
         </a>
       </li>
-      <li class="nav-sub-item hidden" data-seccion="proxima-cita">
-        <a href="#proxima-cita">
-          <span class="material-symbols-outlined format">event_repeat</span>
-          <span class="nav-label">Próxima cita</span>
+      <li class="nav-item" data-seccion="estudios">
+        <a href="#/estudios">
+          <span class="material-symbols-outlined format">radiology</span>
+          <span class="nav-label">Estudios</span>
         </a>
       </li>
-      <li class="nav-sub-item" data-seccion="citas-sin-consulta">
-        <a href="#citas-sin-consulta">
-          <span class="material-symbols-outlined format">pending_actions</span>
-          <span class="nav-label">Citas sin consulta</span>
+      <li class="nav-item" data-seccion="rehabilitacion">
+        <a href="#/rehabilitacion">
+          <span class="material-symbols-outlined format">physical_therapy</span>
+          <span class="nav-label">Rehabilitación</span>
         </a>
       </li>
-      <li class="nav-sub-item" data-seccion="pacientes-sin-cita">
-        <a href="#pacientes-sin-cita">
-          <span class="material-symbols-outlined format">person_off</span>
-          <span class="nav-label">Pacientes sin cita</span>
+      <li class="nav-group-label">Administrativo</li>
+      <li class="nav-item" data-seccion="referimientos">
+        <a href="#/referimientos">
+          <span class="material-symbols-outlined format">sync_alt</span>
+          <span class="nav-label">Referimientos</span>
+          <span class="nav-badge hidden" data-badge="referimientos">0</span>
         </a>
       </li>
-    </ul>
-</li>
+      <li class="nav-item" data-seccion="autorizaciones">
+        <a href="#/autorizaciones">
+          <span class="material-symbols-outlined format">verified</span>
+          <span class="nav-label">Autorizaciones</span>
+          <span class="nav-badge hidden" data-badge="autorizaciones">0</span>
+        </a>
+      </li>
+      <li class="nav-item" data-seccion="facturacion">
+        <a href="#/facturacion">
+          <span class="material-symbols-outlined format">receipt_long</span>
+          <span class="nav-label">Facturación</span>
+        </a>
+      </li>
       <li class="nav-item" data-seccion="recetas">
         <a href="#recetas">
           <img class="nav-ico" src="icons/nav-recetas.png" alt="" />
@@ -166,26 +186,32 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <div class="user-chip">
-        <div class="avatar avatar--sidebar">
-          <img id="sidebarAvatar" alt="" hidden />
-          <span id="sidebarAvatarIcon" class="material-symbols-outlined avatar-fallback">account_circle</span>
+      <button type="button" id="btnAsistenteIA" class="ai-sidebar-btn">
+        <span class="material-symbols-outlined">smart_toy</span>
+        <span class="nav-label">Asistente IA</span>
+      </button>
+      <div class="user-menu">
+        <button type="button" id="btnUserMenu" class="user-chip user-chip--menu">
+          <div class="avatar avatar--sidebar">
+            <img id="sidebarAvatar" alt="" hidden />
+            <span id="sidebarAvatarIcon" class="material-symbols-outlined avatar-fallback">account_circle</span>
+          </div>
+          <div class="user-meta">
+            <span id="sidebarUserName" class="user-name">Usuario</span>
+            <span id="sidebarUserRole" class="user-role">Rol</span>
+          </div>
+          <span class="material-symbols-outlined caret">expand_more</span>
+        </button>
+        <div id="userMenuDropdown" class="user-dropdown hidden">
+          <button type="button" id="btnPerfil"><span class="material-symbols-outlined">person</span>Perfil</button>
+          <button type="button" id="btnConfiguracion"><span class="material-symbols-outlined">settings</span>Configuración</button>
+          <button type="button" id="btnFotoAccion"><span class="material-symbols-outlined">add_a_photo</span>Foto de perfil</button>
+          <button type="button" id="btnCambiarPassNav"><span class="material-symbols-outlined">key</span>Cambiar contraseña</button>
+          <div class="dropdown-divider"></div>
+          <button type="button" id="logoutBtn"><span class="material-symbols-outlined">logout</span>Cerrar sesión</button>
         </div>
-        <span id="sidebarUserName">Usuario</span>
       </div>
-      <button type="button" id="btnFotoAccion" class="logout-btn foto-btn" title="Subir o remover foto de perfil">
-        <span class="material-symbols-outlined foto-btn-icon">add_a_photo</span>
-        <span class="foto-btn-text">Subir foto</span>
-      </button>
       <input type="file" id="fotoInput" accept="image/*" hidden />
-      <button id="logoutBtn" class="logout-btn">
-        <span class="material-symbols-outlined">logout</span>
-        Salir
-      </button>
-      <button type="button" id="btnCambiarPassNav" class="logout-btn" title="Cambiar mi contraseña">
-        <span class="material-symbols-outlined">key</span>
-        Cambiar contraseña
-      </button>
     </div>
   </section>
 </div>
