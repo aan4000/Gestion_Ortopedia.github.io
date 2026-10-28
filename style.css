@@ -8185,3 +8185,32 @@ body.dark .login-card {
 /* Inputs */
 input, select, textarea { font-family: var(--font-sans); border-radius: var(--r-lg); border: 1px solid var(--border-subtle); transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary-hover); box-shadow: var(--focus-ring); }
+
+/* Esquema clínico: tokens */
+:root {
+  --clin-primary: #1F5FA8;
+  --clin-secondary: #5B6B7C;
+  --clin-bg: #F5F7FA;
+  --clin-surface: #FFFFFF;
+  --clin-success: #2E7D32;
+  --clin-warning: #ED8A00;
+  --clin-danger: #C62828;
+  --clin-border: rgba(31, 95, 168, 0.12);
+  --clin-text: #1a1a1a;
+  --clin-text-muted: #5B6B7C;
+  --clin-radius: 8px;
+  --clin-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 12px rgba(15,23,42,0.06);
+  --clin-font: 'Inter','Roboto',system-ui,-apple-system,sans-serif;
+}
+body { background: var(--clin-bg); font-family: var(--clin-font); }
+.panel, .card, .modal-card { border-radius: var(--clin-radius); box-shadow: var(--clin-shadow); background: var(--clin-surface); }
+.btn--primary, .btn-primary { background: var(--clin-primary); border-color: var(--clin-primary); }
+.btn--primary:hover { filter: brightness(1.05); }
+.topbar { height: 56px; background: var(--clin-surface); border-bottom: 1px solid var(--clin-border); }
+.sidebar { width: 240px; }
+.sidebar.collapsed { width: 64px; }
+.nav-item.active > a { background: rgba(31,95,168,0.08); color: var(--clin-primary); border-left: 3px solid var(--clin-primary); }
+table th { background: #f8fafc; font-weight: 600; }
+.tag.success { background: rgba(46,125,50,0.12); color: var(--clin-success); }
+.tag.warning { background: rgba(237,138,0,0.12); color: var(--clin-warning); }
+.tag.danger { background: rgba(198,40,40,0.12); color: var(--clin-danger); }
